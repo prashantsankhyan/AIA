@@ -1,0 +1,227 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid page-background" >
+  <div class ="row mt-2" >
+       <div class="col-sm-4">
+        <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ClaimNumber" (ngModelChange)="onClaimNumberChange($event)"  />
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By ClaimNo</button>
+	     </div>
+        
+       </div>
+       <div class="col-sm-4">
+         <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.LineShortName" (ngModelChange)="onLineShortNameChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Policy</button>
+	     </div>
+      </div>
+      <div class="col-sm-4">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ReportedTo" (ngModelChange)="onReportedToChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Vin</button>
+	     </div>
+        
+      </div>
+     
+    
+         <div class="col-sm-8 mt-2" >
+        <div class="row">
+  <div class="col-sm-3 mb-3" *ngFor="let data of listOfPolicy" (click) ="viewRemkarsByChiledPolciy(data)">
+    <div class="policy-card">
+      <div class="policy-header">
+        {{ data.LineName }}/{{ data.LineShortName }}
+      </div>
+
+      <div class="policy-body">
+        <div class="policy-name">
+          {{ data.ChildPolicyName }}
+        </div>
+
+        <div class="policy-date">
+          <i class="fas fa-calendar-alt"></i>
+          {{ data.Effective | date:'MM/dd/yyyy' }}
+          -
+          {{ data.Expiration | date:'MM/dd/yyyy' }}
+        </div>
+         <div class="policy-date">
+
+            <i>CR</i>
+          
+          {{data.IssuingCompanyName}} <br/>
+           <i>BR</i>
+          {{data.BrokerName}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+       
+         
+       
+      
+        </div>
+        <div class="col-sm-4 mt-2 " style="text-align: right;">
+           <button type="button" class="btn btn--primary  uppercase"(click)="getListOfDoneClaims()" style="margin-right: 2px;background-color: #dc3545;color: white">📌 List Done Claims  </button>
+                <button type="button" class="btn btn--primary  uppercase" style="margin-right: 2px;background-color: #fd7e14;">📎 Add Attachment </button>
+                <button type="button" class="btn btn--primary  uppercase" (click)="addEditClaims($event)"  style="background-color: #198754;color: white;">🧾 Add Claims </button>
+      
+          
+            
+
+        </div>
+     
+     
+       
+    
+      </div>
+ 
+ 
+
+<div  class="scrolling mt-2"  >
+  <table  class="table table-bordered  finger"  >
+
+    <thead>
+      <tr>
+          <th> Claim Number</th>  
+          <th>  Policy Type </th>
+         
+           <th>Reported To</th>
+           <th>Claim Type</th>
+           <th>Driver</th>
+           <th>Truck</th>
+           <th>Trailer </th>
+           
+          
+           <th >Date Of Loss</th>
+           <th >EnteredBy </th>
+           <th > </th>
+        
+      
+       
+        
+      </tr>
+    </thead>
+    <tbody >
+     <tr *ngFor ="let data of allList|claims:searchCriteria" (dblclick)="getListOfAdjustors(data)">
+       <td>   
+       <span *ngIf="data.ClaimNumber && data.ClaimNumber.trim() !== ''" class="claim-highlight">
+    {{ data.ClaimNumber }}
+  </span>
+  <span *ngIf="!data.ClaimNumber || data.ClaimNumber.trim() === ''">
+    Missing
+  </span>
+        <br/>
+        {{data.InformationReceivedBy}}
+      </td>
+    <td>
+  {{ data.LineName }} / {{ data.LineShortName }} <br/>
+
+  <span *ngIf="data.LineName === 'CPKG'">
+   
+    {{ data.ChildPolicyDescription }}
+  </span>
+
+  {{ data.Effective | date: 'MM/dd/yyyy' }} ↔️ {{ data.Expiration | date: 'MM/dd/yyyy' }}
+</td>
+    
+      <td>{{data.ReportedTo}}</td>
+      <td>{{data.ClaimType}}</td>
+     <td [ngStyle]="{
+      'color': data.DriverName == null && data.Driver ? '#e93423' : 'rgba(15, 15, 15, 0.542)',
+     
+    }">
+  {{ data.DriverName == null ? (data.Driver ? data.Driver : '') : data.DriverName }}
+</td>
+      <td [ngStyle]="{
+  'color': data.Truck_VIN == null && data.Truck ? '#e93423' : 'rgba(15, 15, 15, 0.542)',
+
+}">
+  {{ data.Truck_VIN == null ? (data.Truck ? data.Truck : '') : data.Truck_VIN }}
+</td>
+    <!-- Trailer Column -->
+<td [ngStyle]="{
+  'color': data.Trailer_VIN == null && data.Trailer ? '#e93423' : 'rgba(15, 15, 15, 0.542)',
+ 
+}">
+  {{ data.Trailer_VIN == null ? (data.Trailer ? data.Trailer : '') : data.Trailer_VIN }}
+</td>
+      
+     
+     <td>{{data.DateofLoss|date:'MM/dd/yyyy'}}</td>
+     <td>{{data.EnteredBy}} </td>
+     
+    
+   
+   <td>
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    [ngStyle]="{ 'background-color': !data.IsQADone ? '#1987547a' : '', 'color': !data.IsQADone ? 'white' : '' }"
+  >
+    <a><img src="assets/32.png" width="20px" height="20px"></a>
+  </button>
+
+  <mat-menu #menu="matMenu">
+     <button mat-menu-item (click)="addEditClaims(data)" style="text-align: center;">
+      <a href="javascript:void(0)" style="text-decoration: none;">
+        <img src="assets/edit1.png" width="50px" height="50px">
+        <!-- <span style="font-size: 5px;color:black;">Edit</span> -->
+      </a>
+    </button>
+     <button mat-menu-item (click)="confirmClaim(data)" style="text-align: center;">
+      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 5px;">
+        <img src="assets/confirm.png" width="40px" height="40px">
+        <!-- <span style="font-size: 5px;color:black;">Confirm</span> -->
+      </a>
+    </button>
+   
+    <button mat-menu-item (click)="addEditNote(data)" style="text-align: center;">
+      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 3px;">
+        <img src="assets/note.png" width="40px" height="40px">
+        <!-- <span style="font-size: 5px;color:black;">Note</span> -->
+      </a>
+    </button>
+    <button mat-menu-item (click)="viewOfNote(data)" style="text-align: center;">
+      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 4px;">
+        <img src="assets/viewNote.png" width="40px" height="40px">
+        <!-- <span style="font-size: 5px;color:black;">View Note</span> -->
+      </a>
+    </button>
+   
+    <button mat-menu-item (click)="doneIt(data)" style="color: red;text-align: center;" >
+      <a href="javascript:void(0)" style="text-decoration: none;">
+        <img src="assets/done.png" width="50px" height="50px">
+        <!-- <span style="font-size: 5px;color:black;">Claim Done</span> -->
+      </a>
+    </button>
+      <button mat-menu-item (click)="lossNoticeClaim(data)" style="color: red;text-align: center;" >
+      <a href="javascript:void(0)" style="text-decoration: none;">
+        
+        <span style="width: 50px;"> 📄</span>
+        <!-- <span style="font-size: 5px;color:black;">Claim Done</span> -->
+      </a>
+    </button>
+
+    
+  </mat-menu>
+</td>
+
+   </tr>
+     
+      
+      
+     
+    
+    </tbody>
+   
+  </table>
+ </div>
+
+
+  </div>
+</div>
+

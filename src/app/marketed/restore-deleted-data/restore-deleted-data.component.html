@@ -1,0 +1,72 @@
+
+
+
+
+
+
+
+<!-- <div class="card mt-2 mb-2" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+<h2 style="text-align: center;font-family: sans-serif;margin-top: 10px;"> MARKETED</h2>
+</div> -->
+
+
+
+<mat-dialog-content class="mat-typography">
+
+<form [formGroup] ="retoreFormForm">
+  <div class="row p-1">
+   
+     <div class="col-sm-12">
+       <div class="form-floating" >
+     
+     <input type="text" id="floatingEffective" 
+       placeholder="Effective"  class="form-control mt-1"
+       formControlName ="Effective"[(ngModel)]="Effective" 
+       (ngModelChange)="changeNextDate()"[ngClass]= "{ 'is-invalid': submit && f['Effective'].errors }">
+     <div *ngIf ="submit && f['Effective'].errors" class="invalid-feedback">
+       <div *ngIf ="f['Effective'].errors">Effective is required</div>
+     </div> 
+   <label for="floatingEffective">Effective Date</label> 
+ </div>
+   </div>
+     <div class="col-sm-12">
+       <div class="form-floating" >
+         
+         <input type="text" class="form-control mt-1"
+          formControlName ="Expiration"
+          id="floatingExpiration" 
+          placeholder="Expiration"  
+          [(ngModel)]="Expiration" bsDatepicker  [ngClass]= "{ 'is-invalid': submit && f['Expiration'].errors }">
+         <div *ngIf ="submit && f['Expiration'].errors" class="invalid-feedback">
+           <div *ngIf ="f['Expiration'].errors">Expiration is required</div>
+       </div> 
+       <label for="floatingExpiration">Expiration Date</label> 
+     </div>
+       </div>
+
+    
+  </div>
+ 
+  
+ 
+
+     
+
+ 
+
+</form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end"  *ngIf ="messageSuccess">
+ <a href="javascript:void(0)" (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i> {{MarkedPolicyID == '0'? ' Save ':'Update'}}</a>
+ <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+
+</mat-dialog-actions>
+
+
+
+
+
+
+

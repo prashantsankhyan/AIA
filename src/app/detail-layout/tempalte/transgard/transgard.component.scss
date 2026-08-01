@@ -1,0 +1,50 @@
+table, th, td {
+ border: 1px solid;
+ color: black !important;
+ border-color: black !important;
+}
+
+table {
+ width: 100%;
+}
+table {
+ width: 100%;
+ border-collapse: collapse;
+ table-layout: fixed; /* Ensures equal width for all columns */
+}
+
+td {
+ padding: 3px;
+ border: 1px solid #ddd;
+ word-wrap: break-word; /* Ensures text wraps properly */
+}
+
+
+@media print {
+ @page {
+   size: auto; 
+   margin: 0; 
+ }
+
+ /* Remove any browser-generated headers and footers */
+ body {
+   -webkit-print-color-adjust: exact;
+   print-color-adjust: exact;
+   margin: 0;
+   padding: 0;
+ }
+
+ /* Hide any unwanted elements like page numbers */
+ header, footer {
+   display: none !important;
+   visibility: hidden;
+ }
+}
+
+.page-break {
+	page-break-after: always;
+}
+.scrolling{
+  height:550px;  
+  overflow:scroll;
+}

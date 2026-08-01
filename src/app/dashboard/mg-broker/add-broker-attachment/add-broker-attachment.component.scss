@@ -1,0 +1,86 @@
+.mat-drawer-container {
+ background-color: #fafafa !important;
+ color: rgba(0, 0, 0, 0.87);
+}
+
+label {
+ font-size: small;
+ font-weight: 500;
+ color: #0000008c;
+}
+
+.form-select {
+ display: block;
+ width: 100%;
+ padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.5;
+ color: #0000008c;
+ background-color: #fff;
+ background-repeat: no-repeat;
+ background-position: right 0.75rem center;
+ background-size: 16px 12px;
+ border: 1px solid #ced4da;
+ border-radius: 0.25rem;
+ -webkit-appearance: none;
+ appearance: none;
+}
+
+td, th {
+ border-color: inherit !important;
+ border-style: hidden !important;
+ border-width: 0;
+ font-weight: 400;
+ font-size: larger;
+}
+
+.scrolling1 {
+ height: 530px;
+ overflow: scroll;
+}
+
+p {
+ font-family: Lato;
+}
+
+.error {
+ color: #f00;
+}
+
+.dragarea {
+ font-size: 1.5rem;
+ border: 3px solid #bbb;
+ padding: 1.5rem;
+ background-color: #fff;
+ color: #bbb;
+}
+
+.droparea {
+font-size: 1.5rem;
+border: 3px dashed #bbb;
+padding: 1.5rem;
+background-color: #eff;
+color: #aaa;
+}
+
+
+.file-container {
+// width: 450px;
+border: 4px dotted black;
+.file {
+   opacity: 0;
+   padding: 3rem;
+   width: auto;
+   height: 3rem;
+}
+}
+.compact-field mat-form-field {
+  --mat-form-field-container-height: 12px !important;
+}
+
+.compact-field .mat-mdc-form-field-infix {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  min-height: 12px !important;
+}

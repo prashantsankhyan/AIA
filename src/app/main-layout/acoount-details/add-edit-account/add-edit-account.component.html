@@ -1,0 +1,667 @@
+
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+  <mat-dialog-content class="mat-typography" >
+    
+    
+        <form [formGroup] ="accountDetailForm" *ngIf ="showSpinerDataUpload">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingLookUpCode" 
+                  placeholder="LookUp Code" 
+                  [(ngModel)] ="LookUpCode"
+                  formControlName="LookUpCode"
+                  (blur)="LookUpCode ? loadContactInfo() : null"
+                />
+                <label for="floatingLookUpCode">Lookup Code</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+             
+              <input type="text" class="form-control " class="form-control formControl" formControlName="EnteredBy"style="display:none">
+                        <input type="text" class="form-control " class="form-control formControl " formControlName="UpdatedBy" style="display:none">
+                        
+                        <div class="form-floating mb-1">
+                          <input 
+                            type="text" 
+                            class="form-control" 
+                            id="floatingAccountName" 
+                            placeholder="Account Name" 
+                            
+                            formControlName="AccountName"
+                            [ngClass]= "{ 'is-invalid': submit && f['AccountName'].errors }"/>
+                          <label for="floatingAccountName">Account Name</label>
+                         
+   <div *ngIf ="submit && f['AccountName'].errors" class="invalid-feedback">
+  <div *ngIf ="f['AccountName'].errors">Account Name is required</div>
+  </div> 
+                        </div>
+                       
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating" >
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingDBA" 
+                  placeholder="DBA" 
+                  formControlName="BDA" style="height: 9px">
+                <label for="floatingDBA">DBA</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingAccountType" 
+                  placeholder="Account Type" 
+                  [(ngModel)]="AccountType" 
+                  formControlName="AccountType" 
+                  readonly
+                />
+                <label for="floatingAccountType">Account Type</label>
+              </div>
+              
+            </div>
+           
+           
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingCA" 
+                  placeholder="CA#" 
+                  formControlName="CA"
+                />
+                <label for="floatingCA">CA#</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="MC"
+                  placeholder="MC#" 
+                 
+                />
+                <label >MC#</label>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <select 
+                  class="form-select" 
+                  id="floatingAccountSource" 
+                  formControlName="AccountSource"
+                >
+                  <option hidden value="" disabled selected>Select Account Source</option>
+                  <option value="Email">Email</option>
+                  <option value="Paramjeet Dhami">Paramjit Dhami</option>
+                  <option value="CJ">CJ</option>
+                  <option value="Boota Singh Dhami">Boota Singh Dhami</option>
+                  <option value="Kabir Singh">Kabir Singh</option>
+                  <option value="Sale">Sale</option>
+                  <option value="Direct Client">Direct Client</option>
+                </select>
+                <label for="floatingAccountSource">Referred By</label>
+              </div>
+             
+              
+            </div>
+      
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <select 
+                  class="form-select" 
+                  id="floatingBusinessType" 
+                  formControlName="BusinessType"
+                >
+                  <option hidden value="" disabled selected>Select Type Of Business</option>
+                  <option value="Brokerage">Brokerage</option>
+                  <option value="Trucker">Trucker</option>
+                  <option value="For Hire">For Hire</option>
+                </select>
+                <label for="floatingBusinessType">Type Of Business</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingPhoneNumber" 
+                  placeholder="Business Number" 
+                  formControlName="PhoneNumber"
+                />
+                <label for="floatingPhoneNumber">Business Number</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="floatingEmailID" 
+                  placeholder="Email Address" 
+                  formControlName="EmailID"
+                />
+                <label for="floatingEmailID">Email Address</label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingFaxNo" 
+                  placeholder="Fax Number" 
+                  formControlName="FaxNo"
+                />
+                <label for="floatingFaxNo">Fax Number</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingYearInBusiness" 
+                  placeholder="Year In Business" 
+                  formControlName="YearInBusiness"
+                />
+                <label for="floatingYearInBusiness">Year In Business</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <select 
+                  class="form-select" 
+                  id="floatingOperationType" 
+                  formControlName="OperationType"
+                >
+                  <option hidden value="" disabled selected>Type of Operation</option>
+                  <option value="Dry">Dry</option>
+                  <option value="Reefer">Reefer</option>
+                  <option value="Flat Bed">Flat Bed</option>
+                  <option value="Intermodal Containers">Intermodal Containers</option>
+                  <option value="Dump Truck">Dump Truck</option>
+                  <option value="Dry-Reefer">Dry-Reefer</option>
+                  <option value="Dry-Reefer-Flat Bed">Dry-Reefer-Flat Bed</option>
+                  <option value="Reefer-Flat Bed">Reefer-Flat Bed</option>
+                  <option value="Box Truck">Box Truck</option>
+                </select>
+                <label for="floatingOperationType">Type of Operation</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingDescription" 
+                  placeholder="Mailing Address (Street Address)" 
+                  formControlName="Description"
+                />
+                <label for="floatingDescription">Mailing Address(Street Address)</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingCity" 
+                  placeholder="City" 
+                  formControlName="City"
+                />
+                <label for="floatingCity">City</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingState" 
+                  placeholder="State" 
+                  formControlName="State"
+                />
+                <label for="floatingState">State</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingZIP" 
+                  placeholder="Zip" 
+                  formControlName="ZIP"
+                />
+                <label for="floatingZIP">Zip</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingGaragingAddress" 
+                  placeholder="Garaging Address" 
+                  formControlName="GaragingAddress"
+                />
+                <label for="floatingGaragingAddress">Garaging Address</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingGaragingCity" 
+                  placeholder="Garaging City" 
+                  formControlName="GaragingCity"
+                />
+                <label for="floatingGaragingCity">Garaging City</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingGaragingState" 
+                  placeholder="Garaging State" 
+                  formControlName="GaragingState"
+                />
+                <label for="floatingGaragingState">Garaging State</label>
+              </div>
+              
+            </div>
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingGaragingPinCode" 
+                  placeholder="Garaging Zip" 
+                  formControlName="GaragingPinCode"
+                />
+                <label for="floatingGaragingPinCode">Garaging Zip</label>
+              </div>
+              
+            </div>
+            <!-- <div class="col-sm-3">
+              <label >Country</label>
+              <input type="text" class="form-control "  formControlName="Country">
+              
+            </div> -->
+           
+           
+            <div class="col-sm-3">
+              <div class="form-floating mb-1">
+                <select 
+                #effectiveDateSelect
+                  class="form-select" 
+                  id="floatingEffectiveDate" 
+                  formControlName="EffectiveDate" 
+                  (change)="changeEffectiveDate(effectiveDateSelect.value)"
+                >
+                  <option hidden value="" disabled selected>Enter Effective Date</option>
+                  <!-- <option value="New Venture">New Venture</option> -->
+                  <option value="{{currentDate | date:'MM/dd/yyyy'}}">{{currentDate | date:'MM/dd/yyyy'}}</option>
+                </select>
+                <label for="floatingEffectiveDate">Effective Date</label>
+                
+              </div>
+             
+            </div>
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="floatingEffectiveDate1" 
+                      [(ngModel)]="EffectiveDate" 
+                      formControlName="EffectiveDate" 
+                      placeholder="Effective Date"
+                       [ngClass]="{ 'is-invalid': submit && f['EffectiveDate'].errors }"
+                    >
+                    <label for="floatingEffectiveDate1">Effective Date</label>
+                   
+                  </div>
+                  
+                </div>
+      
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <select 
+                      class="form-select" 
+                      id="floatingRadius" 
+                      [(ngModel)]="Radius" 
+                      formControlName="Radius"
+                    >
+                      <option hidden value="" disabled selected>Select Radius Type</option>
+                      <option value="11 Western">11 Western</option>
+                      <option value="11 Western+TX">11 Western+TX</option>
+                      <option value="48 States">48 States</option>
+                      <option value="500 Miles">500 Miles</option>
+                      <option value="1000 Miles">1000 Miles</option>
+                      <option value="CA">CA</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <label for="floatingRadius">Radius</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="floatingRadius1" 
+                      [(ngModel)]="Radius" 
+                      formControlName="Radius" 
+                      placeholder="Radius"
+                    >
+                    <label for="floatingRadius1">Radius</label>
+                  </div>
+                </div>
+      
+              
+               
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="floatingNoOfUnit" 
+                     
+                      formControlName="No_of_Unit" 
+                      placeholder="No Of Unit"
+                    >
+                    <label for="floatingNoOfUnit">No Of Unit</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="floatingNoOfDriver" 
+                     
+                      formControlName="No_of_Driver" 
+                      placeholder="No Of Driver"
+                    >
+                    <label for="floatingNoOfDriver">No Of Driver</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <select 
+                      class="form-select" 
+                      id="floatingPolicyType" 
+                      formControlName="PolicyType"
+                    >
+                      <option hidden value="" disabled selected>Select Policy Type</option>
+                      <option value="Package">Package</option>
+                      <option value="AL">AL - Auto Liability</option>
+                      <option value="PD">PD</option>
+                      <option value="MTC">MTC - Motor Truck Cargo</option>
+                      <option value="General Liability">General Liability</option>
+                      <option value="Contingent Auto Liability">Contingent Auto Liability</option>
+                      <option value="Contingent Motor Truck Cargo">Contingent Motor Truck Cargo</option>
+                      <option value="Non-Trucking Liability">Non-Trucking Liability</option>
+                      <option value="Excess Liability">Excess Liability</option>
+                      <option value="Umbrella Liability">Umbrella Liability</option>
+                      <option value="Contingent Excess Liability">Contingent Excess Liability</option>
+                      <option value="Occupational Accidental">Occupational Accidental</option>
+                      <option value="Worker Compensation">Worker Compensation</option>
+                    </select>
+                    <label for="floatingPolicyType">Policy Type</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-floating mb-1">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="floatingLastPremium" 
+                     
+                      formControlName="LastPremium" 
+                      placeholder="Last Premium"
+                    >
+                    <label for="floatingLastPremium">Last Premium</label>
+                  </div>
+                </div>
+                <!-- <div class="col-sm-3">
+                  
+                  <button class="btn btn-outline-primary mt-1" (click)="changeAccountype()" style="font-size: smaller;">Change Account Type</button>
+                </div> -->
+               
+      
+             
+              
+             
+              
+        
+      
+            
+          </div>
+          <div formArrayName="AccountIdentificationDetail">
+            <div *ngFor="let data of formArrIdentification.controls; let i = index" [formGroupName]="i" class="row mb-1">
+              <!-- Column for IdentificationType -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select 
+                    class="form-select" 
+                    id="floatingIdentificationType{{i}}" 
+                    formControlName="IdentificationType" 
+                    aria-label="Select Identification Type"
+                  >
+                    <option hidden value="" disabled selected>Select Type</option>
+                    <option value="Federal Employer Identification Number">
+                      FEIN# / Federal Employer Identification Number
+                    </option>
+                  </select>
+                  <label for="floatingIdentificationType{{i}}">Identification Type</label>
+                </div>
+              </div>
+          
+              <!-- Column for IdentificationNumber -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingIdentificationNumber{{i}}" 
+                    placeholder="Identification Number" 
+                    formControlName="IdentificationNumber"
+                  />
+                  <label for="floatingIdentificationNumber{{i}}">Identification Number</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div formArrayName="AccountPrimaryDetail">
+            <div *ngFor="let data of employeeFormArr.controls; let i = index" [formGroupName]="i" class="row mb-1">
+              <!-- Name Field -->
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingName{{i}}" 
+                   [(ngModel)]="Name"
+                    placeholder="Name" 
+                    formControlName="Name"
+                  />
+                  <label for="floatingName{{i}}">Name</label>
+                </div>
+              </div>
+          
+              <!-- Designation Field -->
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingDesignation{{i}}" 
+                    placeholder="Designation" 
+                    formControlName="Designation"
+                    style="height: 20px;"
+                  />
+                  <label for="floatingDesignation{{i}}">Designation</label>
+                </div>
+              </div>
+          
+              <!-- Phone No Field -->
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingPhoneNo{{i}}" 
+                    placeholder="Phone No" 
+                    [(ngModel)]="PhoneNo"
+                    formControlName="PhoneNo"
+                  />
+                  <label for="floatingPhoneNo{{i}}">Phone No</label>
+                </div>
+              </div>
+          
+              <!-- Email ID Field -->
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingEmailID{{i}}" 
+                    placeholder="Email ID" 
+                    formControlName="EmailID"
+                  />
+                  <label for="floatingEmailID{{i}}">Email ID</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      
+      
+          <div formArrayName="AccountRelationShipDetail">
+            <div *ngFor="let data of formArr.controls; let i = index" [formGroupName]="i" class="row mb-1">
+              
+              <!-- Select for RelatedAccountID -->
+              <div class="col-md-3">
+                <div class="form-floating mb-1">
+                  <select 
+                    class="form-select" 
+                    id="floatingRelatedAccountID{{i}}" 
+                    formControlName="RelatedAccountID" 
+                    aria-label="Select Related Account"
+                  >
+                    <option hidden value="" disabled selected>Select Type</option>
+                    <option *ngFor="let data of listOfAccount" [value]="data.AccountID">
+                      {{data.AccountName}}
+                    </option>
+                  </select>
+                  <label for="floatingRelatedAccountID{{i}}">Select Related Account</label>
+                </div>
+              </div>
+              
+              <!-- Select for RelationshipType -->
+              <div class="col-md-3">
+                <div class="form-floating mb-1">
+                  <select 
+                    class="form-select" 
+                    id="floatingRelationshipType{{i}}" 
+                    formControlName="RelationshipType" 
+                    aria-label="Select Relationship Type"
+                  >
+                    <option hidden value="" disabled selected>Select Type</option>
+                    <option value="prospect">Corporation / Subsidiary</option>
+                    <option value="franchisor">Franchisor/Franchisee</option>
+                    <option value="main-sub">Main/Sub</option>
+                    <option value="organization-member">Organization/Member</option>
+                    <option value="parent-child">Parent/Child</option>
+                    <option value="referred">Referred Account/Referred By</option>
+                  </select>
+                  <label for="floatingRelationshipType{{i}}">Select Relationship Type</label>
+                </div>
+              </div>
+          
+              <!-- Input for Role -->
+              <div class="col-md-6">
+                <div class="form-floating mb-1">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="floatingRole{{i}}" 
+                    placeholder="Role" 
+                    formControlName="Role"
+                  />
+                  <label for="floatingRole{{i}}">Role</label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+         
+          
+      
+         
+          <!-- <div class="text-center">
+            <div  *ngIf ="messageSuccess">
+              <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="onSubmit();">{{AccountID == ''? ' Add Data ':'Update Data'}}</button>
+              <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
+              
+             
+          
+                
+               
+              
+              </div>
+          </div> -->
+          
+          
+        </form>
+        
+    
+   
+        <div *ngIf ="!showSpinerDataUpload">
+          <h3 style="text-align: center;"> please  wait data is doing update  </h3>
+        
+         </div>
+   </mat-dialog-content>
+  
+   <mat-dialog-actions align="end"  *ngIf ="messageSuccess">
+    <a href="javascript:void(0)" (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i> {{AccountID == ''? ' ADD ACCOUNT ':'UPDATE ACCOUNT'}}</a>
+    <a href="javascript:void(0)"(click)="closeModel()"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+   
+  </mat-dialog-actions>
+  
+ </div>
+
+
+
+
+ 

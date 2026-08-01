@@ -1,0 +1,265 @@
+
+<app-nav-bar></app-nav-bar>
+
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+  <div class="container-fluid page-background" >
+        <div class="row">
+      
+       <div class="col-xl-3 col-sm-6 col-12" (click) ="getAllMarkedPolicy()">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h4 class="primary"> ALL MARKETED</h4>
+                  
+                </div>
+                <div class="align-self-center">
+                 
+                      <img src="assets/icons8-mark-80.png" width="50px" height="50px">
+                 
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card" (click) ="deleteDataOfMarketd()">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex mb-2">
+                <div class="media-body text-left">
+                  <h4 class="danger">
+                    Expire & Delete
+                  </h4>
+               
+                  
+                </div>
+                <div class="align-self-center">
+                  <img src="assets/icons8-delete-100.png" width="50px" height="50px">
+                 
+                </div>
+              </div>
+              
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%; font-size: 10px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+     <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card" (click)="listOfAttachemnt()">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h4 class="danger">
+                    ATTACHMENTS
+                  </h4>
+                  
+                </div>
+                <div class="align-self-center">
+                 <img src="assets/attached.png" width="50px" height="50px">
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <div class="col-xl-3 col-sm-6 col-12" >
+        <div class="card" (click) ="editMarketd($event)">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex mb-2">
+                
+                <div class="media-body text-left">
+                  <h4 class="success">ADD MARKETED</h4>
+                  <!-- <span>Bounce Rate</span> -->
+                </div>
+                <div class="align-self-center">
+                   <img src="assets/insurance.png" width="50px" height="50px">
+                  
+                </div>
+              </div>
+             
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    
+   
+ 
+ <div class="scrolling  mt-2 padding:0" *ngIf ="showAllData" style="padding: 0; margin: 0;">
+  <table  class="table table-bordered table-hover dt-responsive"style="margin: 0; padding: 0; border-collapse: collapse;cursor: pointer;"  >
+
+    <thead>
+      <tr>
+        <th >Line Name</th>
+        <th>Line Of  Business</th>
+        <th>Source</th>
+        <th>Effective</th>
+        <th>Expiration</th>
+        <!-- <th>Driver</th>
+        <th>Truck</th> -->
+        <th style="width: 30px;"></th>
+
+        
+        <th style="width: 30px;"></th>
+        <!-- <th style="width: 30px;"></th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="listOfMarkedPolicy.length === 0">
+        <tr>
+          <td colspan="7" class="text-center  fw-bold" style="height: 200px; vertical-align: middle;">
+            No data available
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngFor="let data of listOfMarkedPolicy | marketed:searchCriteria" 
+      
+      [ngClass]="{'bg-orange text-white': data?.DeletedChildPolicy === 'ChildPolicy_Deleted'}">
+      
+      <ng-container *ngIf="data.IsDeleted !== true">
+          <td (click)="!data?.IsChildPolicyExist && completeNextStep(data)"
+  [class.disabled-cell]="data?.IsChildPolicyExist">{{data?.LineShortName}}</td>
+          <td>{{data?.LineName}}</td>
+          <td>{{data?.Source}}</td>
+          <td>{{data?.Effective | date:'MM/dd/yyyy'}}</td>
+          <td>{{data?.Expiration | date:'MM/dd/yyyy'}}</td>
+  
+          <!-- Show red icon if fields are not filled -->
+          <td> 
+              <mat-icon style="color: red; font-size: small;" *ngIf="!(data?.AllFieldsFill)">
+                  error
+              </mat-icon>
+              <mat-icon style="color: green; font-size: small;" *ngIf="data?.AllFieldsFill">
+                  check_circle
+              </mat-icon>
+          </td>
+  
+       <td>
+
+  <!-- 🔹 Case 1: IsChildPolicyExist = false AND EnteredBy has value -->
+  <ng-container
+    *ngIf="!data?.IsChildPolicyExist && data?.EnteredBy !== null; else checkDeleteOnly">
+
+    <a href="javascript:void(0)"
+       [matMenuTriggerFor]="menuFull"
+       style="text-align: center; font-size: small;">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </a>
+
+    <mat-menu #menuFull="matMenu">
+      <button mat-menu-item (click)="updateStatus(data)">
+        Confirm Data
+      </button>
+      <button mat-menu-item (click)="editMarketd(data)">
+        Edit Marketed
+      </button>
+      <button mat-menu-item (click)="delete(data)" style="color: red;">
+        Delete Marketed
+      </button>
+    </mat-menu>
+
+  </ng-container>
+
+  <!-- 🔹 Case 2: IsChildPolicyExist = false AND EnteredBy = null -->
+  <ng-template #checkDeleteOnly>
+    <ng-container *ngIf="!data?.IsChildPolicyExist && data?.EnteredBy === null">
+
+      <a href="javascript:void(0)"
+         [matMenuTriggerFor]="menuDeleteOnly"
+         style="text-align: center; font-size: small;">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+      </a>
+
+      <mat-menu #menuDeleteOnly="matMenu">
+        <button mat-menu-item (click)="delete(data)" style="color: red;">
+          Delete Marketed
+        </button>
+      </mat-menu>
+
+    </ng-container>
+  </ng-template>
+
+</td>
+
+
+
+          
+          
+        
+       
+
+       
+  
+      </ng-container>
+  </tr>
+  
+    
+    </tbody>
+   
+  </table>
+</div>
+ 
+
+
+
+<div class="scrollable-table-body mt-2" *ngIf ="showDeleteData">
+  <table  class="table  table-striped table-bordered " >
+    <table  class="table  table-striped table-bordered " >
+
+      <thead>
+        <tr>
+          <th >Line Name</th>
+          <th>Line Of  Business</th>
+          <th>Source</th>
+          <th>Effective</th>
+          <th>Expiration</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+       
+        <tr>
+        
+        
+    </tr>
+    
+      
+      </tbody>
+     
+    </table>
+  
+   
+  </table>
+</div>
+
+  </div>
+ 
+
+  </div>
+
+
+     
+     

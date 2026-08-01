@@ -1,0 +1,63 @@
+<div *ngIf="showSpiner">
+  <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="!showSpiner">
+  <div class="container-fluid mt-3" >
+
+    <form [formGroup]="commodityForm" (ngSubmit)="onSubmit()">
+      
+      <div class="card  border-0" style="background-color: white">
+        <div class="card-header  text-white text-center fw-bold" style="background-color: #1397d5;">
+          🚚 Enter Commodity Details
+        </div>
+
+        <div class="card-body">
+          <!-- Header Row -->
+          <div class="row bg-light text-primary fw-semibold text-center py-2 border rounded mb-2">
+            <div class="col-sm-3">Type</div>
+            <div class="col-sm-2">Max Value</div>
+            <div class="col-sm-2">Avg Value</div>
+            <div class="col-sm-2">Total</div>
+            <div class="col-sm-3">Major Shipper</div>
+          </div>
+
+          <!-- Repeating rows -->
+          <div formArrayName="Commodity">
+            <div *ngFor="let Commodity of getCommodityFormControls('Commodity').controls; let i = index" [formGroupName]="i" class="row mb-2 align-items-center">
+              <div class="col-sm-3">
+                <input type="text" class="form-control" formControlName="Type"  />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control " formControlName="MaxValue"  />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control " formControlName="AvgValue"  />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control " formControlName="Total"  />
+              </div>
+              <div class="col-sm-3">
+                <input type="text" class="form-control " formControlName="MajorShipper"  />
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-end mt-4" *ngIf="showSaveButtion">
+            <!-- <a
+              href="javascript:void(0)"
+              (click)="onSubmit();"
+              class="btn btn-sm btn-success shadow-sm px-4"
+              style="font-family: sans-serif;"
+            >
+              <span class="material-symbols-rounded align-middle">add</span> ADD COMMODITY
+            </a> -->
+
+            <a href="javascript:void(0)"  (click)="onSubmit()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2" style="font-family: sans-serif;" *ngIf ="messageSuccess"><span class="material-symbols-rounded align-middle">add</span> ADD COMMODITY</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

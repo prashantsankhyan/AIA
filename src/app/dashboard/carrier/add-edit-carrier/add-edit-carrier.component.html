@@ -1,0 +1,100 @@
+
+
+
+
+<div class="container-fluid"   >
+
+  <form [formGroup]="addEditCarrierForm">
+  
+    <div class="row p-1">
+       <div class="col-sm-6">
+           <label>Carrier</label>
+           <input type="text" class="form-control" formControlName ='CarrierName' [(ngModel)]="CarrierName" (keyup)="onChangeAccountName()">
+           <input type="text" class="form-control" formControlName ='AccountName' [(ngModel)]="CarrierName" style="display: none;">
+           
+       </div>
+       <div class="col-sm-6">
+        <label>Phone</label>
+        <input type="text" class="form-control" formControlName ='Phone'>
+      </div>
+      <div class="col-sm-6">
+        <label>NAIC</label>
+        <input type="text" class="form-control" formControlName ='NAIC'>
+      </div>
+      <div class="col-sm-6">
+       <label>EmailID</label>
+       <input type="text" class="form-control" formControlName ='EmailID'>
+     </div>
+     <div class="col-sm-6">
+      <label>FaxNo</label>
+      <input type="text" class="form-control" formControlName ='FaxNo'>
+    </div>
+    <div class="col-sm-6">
+     <label>Country</label>
+     <input type="text" class="form-control" formControlName ='Country'>
+   </div>
+   <div class="col-sm-6">
+    <label>Street Address</label>
+    <textarea type="text" class="form-control" formControlName ='Address' row="10"></textarea>
+   </div>
+   <div class="col-sm-6">
+    <label>City</label>
+    <input type="text" class="form-control" formControlName ='City'>
+  </div>
+   <div class="col-sm-6">
+    <label>State</label>
+    <input type="text" class="form-control" formControlName ='State'>
+  </div>
+ 
+ <div class="col-sm-6">
+  <label>ZIP</label>
+  <input type="text" class="form-control" formControlName ='ZIP'>
+</div>
+<div class="col-sm-6">
+ <label>Description</label>
+
+ <textarea class="form-control" rows="3" formControlName ='Description'></textarea>
+</div>
+
+<div class="col-sm-6">
+ <label>Website</label>
+ <input type="text" class="form-control" formControlName ='Website'>
+</div>
+
+    </div>
+   
+    
+    
+  
+    
+  
+     
+     
+     
+
+ 
+     <div style="text-align: right;" class="mt-2 mb-2">
+
+      <div *ngIf ="messageSuccess">
+        <button type="button" style="width: 140px;" class="btn btn-outline-success"(click)="onSubmit()">{{carrierId == undefined? ' SAVE ':'UPDATE'}} CARRIER</button>
+        <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>CANCEL</button>
+        
+       
+    
+          
+         
+        
+        </div>
+     
+    </div>
+   
+   
+ </form>
+
+
+
+
+ 
+  
+  
+ </div>

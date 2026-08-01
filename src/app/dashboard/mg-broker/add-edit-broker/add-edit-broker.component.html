@@ -1,0 +1,99 @@
+
+
+
+
+<div class="container-fluid"   >
+
+ 
+  <form [formGroup]="addEditBrokerForm">
+  
+    <div class="row">
+       <div class="col-sm-6">
+           <label>Broker Name</label>
+           <input type="text" class="form-control" formControlName ='AccountName' >
+          
+           
+       </div>
+       <div class="col-sm-6">
+        <label>LookUp Code</label>
+        <input type="text" class="form-control" formControlName ='LookUpCode'>
+      </div>
+      <div class="col-sm-6">
+       <label>Address</label>
+        <input type="text" class="form-control" formControlName ='Address1'>
+     
+     </div>
+     <div class="col-sm-6">
+      <label>City</label>
+      <input type="text" class="form-control" formControlName ='City'>
+    </div>
+    <div class="col-sm-6">
+     <label>State</label>
+     <input type="text" class="form-control" formControlName ='StateCode'>
+   </div>
+   <div class="col-sm-6">
+    <label>ZIP</label>
+    <input type="text" class="form-control" formControlName ='ZipCode'>
+  </div>
+  <div class="col-sm-6">
+   <label>Region Province</label>
+   <input type="text" class="form-control" formControlName ='RegionProvince'>
+ </div>
+ <div class="col-sm-6">
+  <label>Number</label>
+  <input type="text" class="form-control" formControlName ='PrimaryNumber'>
+</div>
+<div class="col-sm-6">
+ <label>Email</label>
+ <input type="text" class="form-control" formControlName ='PrimaryEmailAddress'>
+</div>
+<div class="col-sm-6">
+ <label>Website Name</label>
+ <input type="text" class="form-control" formControlName ='WebsiteAddress'>
+</div>
+<div class="col-sm-6">
+ <label>Description</label>
+ 
+ <textarea class="form-control" formControlName ='WebsiteDescription' rows="3"></textarea>
+</div>
+<div class="col-sm-6">
+
+</div>
+
+    </div>
+   
+    
+    
+  
+    
+  
+      <div   style="text-align: right;" class="mt-2 mb-2">
+
+      <div *ngIf ="messageSuccess">
+        <button type="button" style="width: 130px;" class="btn btn-outline-success"(click)="onSubmit()">{{BrokerID == undefined? ' SAVE ':'UPDATE'}} BROKER</button>
+        <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>CANCEL</button>
+        
+       
+    
+          
+         
+        
+        </div>
+     
+    </div>
+     
+     
+
+ 
+    
+   
+   
+ </form>
+
+
+
+
+ 
+  
+  
+ </div>

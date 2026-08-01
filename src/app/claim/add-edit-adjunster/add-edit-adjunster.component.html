@@ -1,0 +1,109 @@
+<div class="container">
+
+
+<div class=" mt-2 mb-2">
+ <form [formGroup]="addEditAdjusterdForm">
+     <div class="row p-1">
+        
+         <div class="col-sm-6 ">
+             <label> Name</label>
+           
+            <input type="text" class="form-control mt-1"   formControlName ="AdjustName"  [ngClass]= "{ 'is-invalid': submit && f['AdjustName'].errors }">
+            <div *ngIf ="submit && f['AdjustName'].errors" class="invalid-feedback">
+             <div *ngIf ="f['AdjustName'].errors">Name is required</div>
+         </div> 
+         </div>
+         <div class="col-sm-6 ">
+             <label>Business </label>
+             <input type="text" class="form-control mt-1"  formControlName ="Business"  [ngClass]= "{ 'is-invalid': submit && f['Business'].errors }">
+             <div *ngIf ="submit && f['Business'].errors" class="invalid-feedback">
+              <div *ngIf ="f['Business'].errors">Business is required</div>
+          </div> 
+ 
+         </div>
+         <div class="col-sm-6 ">
+             <label> City </label>
+             <input type="text" class="form-control mt-1"  formControlName ="City"  [ngClass]= "{ 'is-invalid': submit && f['City'].errors }">
+             <div *ngIf ="submit && f['City'].errors" class="invalid-feedback">
+              <div *ngIf ="f['City'].errors">City is required</div>
+          </div> 
+ 
+         </div>
+         <div class="col-sm-6 ">
+             <label> State</label>
+            <input type="text" class="form-control mt-1"   formControlName ="State"  [ngClass]= "{ 'is-invalid': submit && f['State'].errors }">
+            <div *ngIf ="submit && f['State'].errors" class="invalid-feedback">
+             <div *ngIf ="f['State'].errors">State is required</div>
+         </div> 
+         </div>
+         <div class="col-sm-6 ">
+             <label>Country</label>
+             <input type="text" class="form-control mt-1"   formControlName ="Country"  [ngClass]= "{ 'is-invalid': submit && f['Country'].errors }">
+             <div *ngIf ="submit && f['Country'].errors" class="invalid-feedback">
+              <div *ngIf ="f['Country'].errors">Country is required</div>
+          </div> 
+           
+         </div>
+         <div class="col-sm-6 ">
+             <label>Phone</label>
+            <input type="text" class="form-control mt-1"   formControlName ="Phone"  [ngClass]= "{ 'is-invalid': submit && f['Phone'].errors }">
+            <div *ngIf ="submit && f['Phone'].errors" class="invalid-feedback">
+             <div *ngIf ="f['Phone'].errors">Phone is required</div>
+         </div> 
+         </div>
+       
+        
+         <div class="col-sm-6 ">
+             <label>Email </label>
+             <input type="text" class="form-control mt-1" formControlName ="Email"  >
+             
+ 
+         </div>
+        
+       
+         <div class="col-sm-6 ">
+             <label>Fax </label>
+            <input type="text" class="form-control"   formControlName ="Fax"  >
+           
+         </div>
+ 
+         <div class="col-sm-6 mb-3">
+             <label>Comments</label>
+            <input type="text" class="form-control"   formControlName ="Comments">
+           
+         </div>
+      
+        
+       
+       
+       
+       
+      
+     
+ 
+ 
+     </div>
+ 
+ </form>
+</div>
+
+<div class="text-center mt-5 mb-5">
+ <div class="mt-5"  *ngIf ="messageSuccess">
+   <button type="button" class="btn btn-outline-success btn-lg" style="width: 120px;" (click)="onSubmit()" > {{AdjustID ==undefined ?'Save':'Update'}}</button>
+   <button type="button" class="btn btn-outline-danger btn-lg" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+     
+    
+   
+   </div>
+</div>
+<!-- <div class="text-center mt-5">
+ <div class="btn-group  gap-2  " >
+    
+     <button mat-stroked-button class="text-right"(click)="onSubmit()">Save</button>
+     <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+    
+   
+   </div>
+</div> -->
+
+</div>

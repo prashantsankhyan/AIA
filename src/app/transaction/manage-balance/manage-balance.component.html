@@ -1,0 +1,32 @@
+<div class="container">
+ <div class="card" style="text-align: center;">
+     <div class="card-header d-flex" style="background-color: #3f51b5; color: white;text-align: center;">
+       
+       <span href="javascript:void(0)" style=" color: white; " >  Manage Balance</span>
+       
+   </div>
+  
+ </div>
+
+ <form [formGroup]="addEditForm">
+     <div class="mt-1">
+         <label>Receive Balance</label>
+         <input type="number" class="form-control mt-1" formControlName ="ReceiveAmount" >
+     </div>
+     <div class="mt-2">
+      <label>Note</label>
+      <textarea type="text" rows="4" class="form-control mt-1" formControlName ="Notes" ></textarea>
+  </div>
+   </form>
+   <div class="text-center mt-5">
+     <div  *ngIf ="messageSuccess">
+       <button type="button" class="btn btn-outline-success btn-lg" style="width: 120px;"  (click)="onSubmit()"> Save</button>
+       <button type="button" class="btn btn-outline-danger btn-lg" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+         
+     </div>
+    
+      
+     
+     </div>
+    
+</div>

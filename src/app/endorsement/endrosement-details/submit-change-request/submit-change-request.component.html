@@ -1,0 +1,2574 @@
+
+ <div id="print-section">
+<body>
+  <div id="main_div">
+
+     <div style="text-align: right;">
+       {{EnteredBy}}
+     </div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0px 1px solid #000;">
+          <tr>
+            <td width="22%"><img src="assets/certs/logo1.png"  width="150" height="60" class="mb-1"/></td>
+            <td width="58%" class="policy fontText">COMMERCIAL POLICY CHANGE REQUEST</td>
+            <td width="20%"  style="border:1px solid #000; border-bottom:0px solid #000;" align="center">DATE (MM/DD/YYYY) <br />
+              <input  type="text" [value]="today | date: 'MM/dd/yyyy'" style="font-weight: bold;text-align: center;" />
+            </td>
+          </tr>
+      </table>
+    <div class="left_div">
+      <table width="100%" cellspacing="0" cellpadding="0" style="border-bottom:0px solid #000; border-top:1px solid #000; border-left:1px solid #000; border-right:1px solid #000;">
+          <tr >
+            <td valign="top" colspan="2" class="small_textsec fontText"><span style="margin-left: 2px;font-size: 10px;" class="fontText">AGENCY</span></td>
+          </tr>
+         <tr >
+
+          <td width="100%"  colspan="2" class="bordrb " > <span style="margin-left: 2px;"></span><textarea  rows="4" [value]="agencyInfo" style="font-size: 15px; font-weight: 600;width: 99%;margin-bottom: 2px;"></textarea></td>
+          </tr>
+          <tr class="bordrb"style="height:30px">
+            <td width="15%"  class="bordrb small_textsec"><span class="fontText" style="margin-left: 2px;margin-top: 2px;line-height: 1;font-size: 10px;"class ="fontText">CONTACT <br/><span style="margin-left: 2px;">NAME</span> </span></td>
+            <td width="85%" class="bordrb "><input name="" [value]="OwnerName" type="text" class="input_text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px;margin-right: 2px;" /></td>
+          </tr>
+          <tr class="bordrb" style="height:30px">
+            <td width="25%" class="bordrb small_textsec" ><span style="margin-left: 2px;margin-top: 2px;line-height: 1;font-size: 10px;"class ="fontText">PHONE <br/> (A/C, No, Ext):</span></td>
+            <td width="75%" class="bordrb"><input  type="text" [value] ="phonenUmber"  class=" input_text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px;margin-right: 2px;"/></td>
+          </tr>
+          <tr class="bordrb" style="height:30px">
+            <td width="15%"  class="bordrb small_textsec"><span style="margin-left: 2px;margin-top: 2px;line-height: 1;font-size: 10px;"class ="fontText">FAX<br/>(A/C, No):</span>
+            </td>
+            <td width="85%" class="bordrb"><input name="" type="text" [value] ="faxNumber" class=" input_text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px"/></td>
+          </tr>
+            <tr class="bordrb" style="height:30px">
+            <td width="15%"  class="bordrb small_textsec"><span style="width:100%; margin-left: 2px;margin-top: 2px;line-height: 1;font-size: 10px;"class ="fontText">E-MAIL <br/> ADDRESS:</span>
+            </td>
+            <td width="85%" class="bordrb"><input name="" type="text"  class=" input_text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px"/></td>
+            </tr>
+          <tr class="bordrb" style="height:30px">
+            <td colspan="2" class="bordrb"><table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td  class="small_textsec"><span style="margin-left: 2px;font-size: 10px;" class ="fontText">CODE</span></td>
+                  <td class="bordrr "><input name="" type="text"  style="width:100%; float:left;margin-bottom: 1px;margin-top:1px; margin-right: 2px;"/></td>
+                  <td class="small_textsec"><span style="margin-left: 2px;font-size: 10px;"class ="fontText">SUBCODE</span></td>
+                  <td><input name="" type="text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px;margin-right: 2px;" /></td>
+                </tr>
+              </table></td>
+          </tr>
+           <tr class="bordrb" style="height:30px">
+            <td width="20%"  class="bordrb small_textsec"><span style="margin-left: 2px;font-size: 10px;"class ="fontText">AGENCY CUSTOMER ID</span>
+            </td>
+            <td width="80%" class="bordrb"><input name="" [value]="lookUpCode" type="text"  class=" input_text" style="width:100%; float:left;margin-bottom: 1px;margin-top:1px"/></td>
+            </tr>
+          <tr>
+        <td colspan="2"class=" small_textsec "><span style="margin-left: 2px;font-size: 10px;" class ="fontText">NAMED INSURED</span></td>
+        </tr>
+        <tr  style="height:30px">
+        <td colspan="2"class="bordrb "><input name="" type="text"  [value]="accountName"  class=" input_text" width="100%" style="width:98%;float:left;margin-bottom: 1px;margin-top:1px;margin-right: 2px;"/></td>
+        </tr>
+
+        <tr>
+        <td colspan="2"class="bordrb "><textarea name="" cols="0" rows="4" style ="width: 98%; margin-left: 2px;margin-top: 2px;margin-bottom: 2px;"></textarea>  </tr>
+        
+          </table>
+    
+    </div>
+    
+    
+    
+    
+    <div class="right_div">
+      <table width="100%" cellspacing="0" cellpadding="0" style="border-left:0px solid #000; border-top:1px solid #000; border-right:1px solid #000; border-bottom:0px solid #000;">
+        <tr >
+          <td valign="top" class=" bordrb">
+            <table width="100%" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="small_textsec bordrr"  >
+                <span style="margin-left: 4px;font-size: 10px;" class ="fontText"> CARRIER</span>  
+                  <br>
+                  <!-- <input class="mb-1" type="text" [value] ="ListOfAllDriver[0]?.IssuingCompanyName" style="width:95%;margin-left: 4px;height:30px;font-size: 15px; font-weight: 600;"/> -->
+                   <span style="font-size: 15px; font-weight: 600;  margin-bottom: 4px; margin-top: 5px;margin-left: 2px;"> {{issuingCompanyName}} </span>
+                </td>
+                <td width="20%" style ="text-align: center;font-size: 10px;" class=" fontText">NAIC CODE<br>
+                  <!-- <input class ="mb-1 ml-1 mr-1" type="text" width="100%" [value] ='ListOfAllDriver[0]?.NAIC' style="width:98%; float:left;height:30px;font-size: 15px; font-weight: 600;margin-left: 1px;text-align: center;"/> -->
+                  <span style="font-size: 15px; font-weight: 600; display: inline-block; margin-bottom: 4px;margin-top: 5px;"> {{ListOfAllDriver[0]?.NAIC}} </span>
+                </td>
+              </tr>
+            </table>
+    
+          </td>
+        </tr>
+    
+      
+        <tr >
+          <td valign="top" class="small_textsec fontText"style="border-bottom:1px solid #000; padding: 4px;font-size: 10px;">ATTENTION<br/> <br/></td>
+        </tr>
+       
+        <tr >
+          <td valign="top" class="small_textsec fontText" style="padding: 4px;font-size: 10px;" >POLICY NUMBER
+          </td>
+        </tr>
+        <tr >
+          <td valign="top" class=" bordrb"  >
+            
+            <!-- <input name="" type="text" [value] ="ListOfAllDriver[0]?.ChildPolicyName" width="100%" style="width:88%; float:left;padding: 6.6px;font-size: 15px; font-weight: 600;"/> -->
+              <span style="font-size: 15px; font-weight: 600;  margin-bottom: 4px; margin-top: 5px;margin-left: 2px;"> {{childPolicyName}} </span>
+          </td>
+        </tr>
+      
+        <tr >
+          <td valign="top" class=" bordrb small_textsec fontText"  style="padding: 4px;font-size: 10px;">ACCOUNT NUMBER<br/>
+            <!-- <input name="" type="text" width="100%" style="width:100%; height: 20px; float:left;"/> --><br/>
+
+          </td>
+        </tr>
+    
+        <tr >
+          <td valign="top" class=" bordrb "  >
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="33%" class="small_textsec bordrr fontText" style="text-align: center;font-size: 10px;">EFFECTIVE DATE OF CHANGE 
+                  <!-- <br>
+                  <input name="" type="text" width="100%" [value]="EffectiveDateChange | date:'MM/dd/yyyy'" style="width:95%; float:left; margin-top: 5px; margin-bottom: 1px;margin-left: 2px;font-size: 15px; font-weight: 600;text-align: center;"/> -->
+                 <span style="font-size: 15px; font-weight: 600;  margin-bottom: 8px; margin-top: 5px;margin-left: 2px;"> {{EffectiveDateChange | date:'MM/dd/yyyy'}} </span>
+                </td>
+                <td width="33%" class="small_textsec bordrr fontText" style="text-align: center;font-size: 10px;">POLICY INCEPTION DATE<br>
+                  <!-- <input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.Effective | date :'MM/dd/yyyy'" style="width:95%; float:left; margin-top: 5px; margin-bottom: 5px;margin-left: 2px;font-size: 15px; font-weight: 600;text-align: center;"/> -->
+                    <span style="font-size: 15px; font-weight: 600;  margin-bottom: 8px; margin-top: 5px;margin-left: 2px;"> {{EffectiveDate | date :'MM/dd/yyyy'}} </span>
+                </td>
+                <td width="33%" class="small_textsec fontText" style="text-align: center;font-size: 10px;">
+                  POLICY EXPIRATION DATE<br>
+                  <!-- <input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.Expiration | date :'MM/dd/yyyy'" style="width:95%; float:left; margin-top: 5px; margin-bottom: 5px;margin-left: 2px;font-size: 15px; font-weight: 600;text-align: center;"/> -->
+                   <span style="font-size: 15px; font-weight: 600;  margin-bottom: 8px; margin-top: 10px;margin-left: 2px;margin-top: 2px;"> {{ExpirationDate | date :'MM/dd/yyyy'}} </span>
+                </td>
+              </tr>
+    
+            </table>
+            
+          </td>
+        </tr>
+    
+    
+        <tr >
+          <td valign="top" class="bordrb" style="padding: 0;">
+         
+<table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding: 0; margin: 0; line-height: 1; ">
+  <tr style="padding: 0; margin: 0;">
+    <td class="small_textsec font" valign="top" style="text-align: center; padding: 0; margin: 0;">POLICY TYPE</td>
+
+    <!-- PROPERTY Column -->
+    <td style="padding: 0;">
+      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding: 0; margin: 0;">
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" [checked]="isProperty" style="margin: 0;border-top: 0px solid black;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="font-size: 12px;margin-left: 2px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">PROPERTY</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="font-size: 12px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">INLAND MARINE</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox"  [checked]="isUmbrella" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="font-size: 12px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">UMBRELLA</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox"  [checked]="isGeneralLiability"  style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="font-size: 12px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">GENERAL LIABILITY</span></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- AUTO Column -->
+    <td style="padding: 0;">
+      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding: 0; margin: 0;">
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" [checked]="isAuto" style="margin: 0;border-top: 0px solid black;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;font-size: 12px;margin-left: 2px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">AUTO</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" [checked]="isTruckers" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;font-size: 12px;margin-left: 2px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">TRUCKERS</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" [checked]="isMotorCarriers" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;font-size: 12px;margin-left: 2px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">MOTOR CARRIERS</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;font-size: 12px;margin-left: 2px;"><span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">BUSINESS OWNERS</span></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- WORKERS COMP Column -->
+    <td style="padding: 0;">
+      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding: 0; margin: 0;">
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" [checked]="isWorkersComp" style="margin: 0;border-top: 0px solid black;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;"> <span style="margin-left: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 11px">WORKERS COMP</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;"></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;"></td>
+        </tr>
+        <tr>
+          <td style="padding: 0;"><input class="form-check-input" type="checkbox" style="margin: 0;border-bottom: 0px solid black;" /></td>
+          <td class="small_text font" style="padding: 0;"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</td>
+
+        </tr>
+        <tr >
+          <td valign="top" class=" bordrb small_textsec" style="height:107px" >
+          
+          <p class="p-2 mt-4 font"> THIS IS AN ACKNOWLEDGEMENT OF YOUR REQUEST. UPON APPROVAL, THE COMPANY'S<br/>
+            RECORDS WILL BE ADJUSTED ACCORDINGLY, AND IF A PREMIUM ADJUSTMENT IS<br/>
+            REQUIRED, IT WILL BE DONE AT PREMIUM AUDIT OR BY ENDORSEMENT.<br/></p> 
+          
+          </td>
+        </tr></table>
+    
+    </div>
+    <br clear="left">
+    
+    <h4 style="font-weight: 600;margin-left: 2px;font-family: Arial,">SHORT DESCRIPTION OF CHANGES / REMARKS <span>(ACORD 101, Additional Remarks Schedule, may be attached if more space is required)</span></h4>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td><input name="" type="text" width="100%" style="width:100%; float:left; padding: 10px 0px;margin-top: 1px;margin-bottom: 1px;"/></td>
+      </tr>
+    </table>
+    
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: -4px;">
+      <tr>
+        <td width="60%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial,">PREMISES INFORMATION</h4></td>
+        <td> <input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;"><br/></td>
+        <td class="small_textsec font">ADD</td>
+        <td> <input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;"><br/></td>
+        <td class="small_textsec font">CHANGE</td>
+        <td><input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;"><br/></td>
+        <td class="small_textsec font">DELETE</td>
+       
+      </tr>
+    </table>
+    
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="bordrr bordrb fontText" style="text-align: center;width: 5%;font-size: 12px;font-weight: bold;padding-top: 4px;" > LOC # </td>
+        <td class="bordrr  bordrb fontText" style="text-align: center;width: 5%;margin-top: 1px;font-size: 12px;font-weight: bold;">BLD #</td>
+        <td class="bordrr bordrb fontText" style="text-align: center;width: 20%;margin-top: 1px;font-size: 12px;font-weight: bold;">STREET, CITY, COUNTY, STATE, ZIP+4</td>
+        <td class="bordrr bordrb fontText" style="text-align: center;width: 7%;margin-top: 1px;font-size: 12px;font-weight: bold;">CITY LIMITS<br/></td>
+        <td class="bordrr bordrb fontText" style="text-align: center;width: 7%;margin-top: 1px;font-size: 12px;font-weight: bold;">INTEREST</td>
+        <td class="bordrr bordrb fontText" style="text-align: center;width: 5%;margin-top: 1px;font-size: 12px;font-weight: bold;">YR BUILT</td>
+        <td  style="text-align: center;width: 8%;margin-top: 1px;font-size: 12px;font-weight: bold;" class="bordrb fontText">PART OCCUPIED</td>
+       
+      </tr>
+      <tr>
+        <td class="bordrr" ></td>
+        <td class="bordrr" ></td>
+        <td class="" ></td>
+        <td class="" > 
+          <input class="form-check-input " type="checkbox" value="" style="margin-top: -1px;"><span style="font-size: 12px;margin-left: 3px;margin-top: 25px;"
+class="font">INSIDE</span> <br/>
+                  <input class="form-check-input " type="checkbox" value="" style="margin-top: -1px;"><span style="font-size: 12px;margin-left: 3px;margin-top: 5px;" 
+class="font">OUTSIDE</span><br/> 
+        </td>
+        <td class="bordrr">
+         <input class="form-check-input " type="checkbox" value="" style="margin-top: -1px;"><span style="font-size: 12px;margin-left: 3px;"
+class="font">OWNER</span> <br/>
+                  <input class="form-check-input " type="checkbox" value="" style="margin-top: -1px;"><span style="font-size: 12px;margin-left: 3px;" 
+class="font">TENANT</span><br/> 
+        </td>
+        <td class="bordrr" >
+
+        </td>
+        <td >
+          
+        </td>
+       
+      </tr>
+    </table>
+    
+    
+    
+    
+     <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: -4px;">
+      <tr>
+        <td width="60%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial," >NATURE OF BUSINESS / DESCRIPTION OF OPERATIONS BY PREMISE(S)</h4></td>
+        <td> <input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;border-top: 1px solid black;border-top: 1px solid black;"><br/></td>
+        <td class="small_textsec font">ADD</td>
+        <td> <input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;border-top: 1px solid black;border-top: 1px solid black;"><br/></td>
+        <td class="small_textsec font">CHANGE</td>
+        <td><input class="form-check-input " type="checkbox" value="" style="margin-top: 4px;border-top: 1px solid black;border-top: 1px solid black;"><br/></td>
+        <td class="small_textsec font">DELETE</td>
+       
+      </tr>
+    </table>
+    
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="bordrr fontText"  style="font-size: 12px;text-align: center;width: 9%;font-weight: bold;">LOC # <br/> <br/> <br/> </td>
+        <td class="bordrr  fontText"style="font-size: 12px;text-align: center;width: 9%;font-weight: bold;">BLD #  <br/> <br/> <br/></td>
+        <td style="font-size: 12px;text-align: center;width: 80%;"></td>
+        
+       
+      </tr>
+      
+    </table>
+    
+   
+    <!-- //1// -->
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: -4px;">
+      <tr>
+        <td width="30%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial," >AUTO-VEHICLE DESCRIPTION / LIMITS    </h4></td>
+        <td> <input class="form-check-input " type="checkbox" value=""  style ="border-bottom-left-radius: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText" style="font-size: 12px;" width="25%">POLICY LIMIT(S) CHANGED</td>
+        <td> <input class="form-check-input " type="checkbox"  [checked]="ListOfAllVehicle[0]?.Status === 'ADD'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">ADD</td>
+        <td> <input class="form-check-input " type="checkbox" [checked]="ListOfAllVehicle[0]?.Status === 'Change'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">CHANGE</td>
+        <td><input class="form-check-input " type="checkbox" [checked]="ListOfAllVehicle[0]?.Status === 'Permanent_Delete'"  style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">DELETE</td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;table-layout: fixed; border-collapse: collapse;">
+     
+      <tr>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">VEH #</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">YEAR</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MAKE</td>
+    <td style="text-align: center; font-size: 16px;  width: 15%;" class="bordrr bordrb fontText">{{ListOfAllVehicle[0]?.Make}}</td>
+    <td style="text-align: center; width: 5%;" class="bordrb small_textsec fontText"><span style="margin-left: 2px;font-size: 12px;font-size: 11px;">BODY TYPE:</span></td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[0]?.BodyType}}</td>
+    <td style="text-align: center; font-size: 12px; width: 15%;" class="bordrr small_textsec fontText">VEHICLE TYPE</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">SYM/ AGE</td>
+    <td style="font-size: 11px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COMP /<br/> OTC SYM</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COLL SYM</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-size: 17px; width: 5%;" class="bordrb bordrr">&nbsp;</td>
+    <td style="text-align: center;  width: 5%;" class="bordrb bordrr"><span style="font-size: 16px;text-align: center;">{{ListOfAllVehicle[0]?.Year}}</span></td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MODEL:</td>
+    <td style="text-align: center; font-size: 16px;  width: 10%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[0]?.Model}}</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrb small_textsec fontText">V.I.N.:</td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[0]?.VIN}}</td>
+
+    <!-- VEHICLE TYPE CHECKBOXES -->
+    <td style="text-align: center; font-size: 17px; width: 15%;" class="bordrb bordrr">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;border-left: 0px solid black; "></td>
+          <td><span style="font-size: 11px;">PP</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">SPEC</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">COML</span></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- Empty Columns with Widths -->
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb" style="width: 10%;">&nbsp;</td>
+  </tr>
+    
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;"  colspan="2"><span style="margin-top: 2px;margin-bottom: 2px;"></span>GARAGING ADDRESS</td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"  colspan="2"><span style="margin-top: 1px;">STREET (Required in KY)</span><br> </td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" colspan="2"><span style="margin-top: 1px;">CITY</span><br> </td>   
+        <td class="bordrr  bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" colspan="2" valign="top" ><span style="margin-top: 1px;">COUNTY</span><br> </td>    
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" ><span style="margin-top: 1px;">STATE</span> <br></td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"><span style="margin-top: 1px;">ZIP</span><br> </td>
+      
+       
+      </tr>
+    
+    
+      
+    
+    
+    
+   
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left:1px solid #000;border-right: 1px solid black;table-layout: fixed; border-collapse: collapse;">
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 4%;">LIC STATE <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">TERR <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"   style="font-size: 11px;text-align: center;width: 10%;">GVW / GCW <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">CLASS<br/></td>
+        <td class=" bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SIC <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">FACTOR <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SEAT CP <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">RADIUS <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText"valign="top"   style="font-size: 12px;text-align: center;width: 15%;">FARTHEST TERMINAL <br/><br/></td>
+        <td class="bordrb small_textsec fontText" valign="top"   style="font-size: 12px;text-align: center;width: 10%;">COST NEW <br/><span *ngIf="ListOfAllVehicle[0]?.LineName === 'PHYD'">
+  ${{ ListOfAllVehicle[0]?.Value }}
+</span> </td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left: 1px solid black;border-right: 1px solid black;">
+            <tr>
+              <td  class="fontText" style="padding: 0;">
+              <span style="font-size: 12px; margin-left: 3px;margin-top: 5px;font-weight:bold">USE</span>
+ 
+   <div class="box-group" style="margin-top: 8px;">
+    <div class="box-item">
+      <div class="square-box"style="border-left: 0px solid black;"></div>
+      <span style="font-size: 11px;  margin-left: 3px;"class="fontText">PLEASURE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-left: 0px solid black;border-top: 0px solid black;border-bottom: 0px solid;"></div>
+      <span  style="font-size: 10px;  margin-left: 3px;"class="fontText">FARM</span>
+    </div>
+
+  
+  </div>
+</td>
+
+  <td valign="top" style="padding: 0;">
+    <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">COMM'L</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">RETAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SERVICE</span>
+    </div>
+  </div>
+</td>
+  <td valign="top" style="padding: 0;">
+  <!-- <table style="border-collapse: collapse; font-size: 11px;">
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0; font-size: 11px;">FOR HIRE</td>
+    </tr>
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0;"></td>
+    </tr>
+  </table> -->
+   <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;  margin-left: 3px;">FOR HIRE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RETAIL</span> -->
+    </div>
+
+   
+  </div>
+</td>
+
+  <!-- Repeated inner tables - now space-reduced -->
+  <td valign="top" style="padding: 0;">
+    
+   
+    <div class="layout">
+   
+    <div class="left-line">
+    <div class="v-line "></div>
+      
+    </div>
+
+    <!-- Right side: Label and boxes -->
+    <div class="">
+      <div class="fontText" style="line-height: 1;margin-top: 0px; margin-left: 5px; font-size: 11px;font-weight:bold">CHECK <br /> OVERAGES</div>
+  <div class="box-group" style="margin-top: 3px;">
+    <div class="box-item">
+      <div class="square-box"></div>
+      <span class="fontText"  style="font-size: 10px; margin-left: 3px;">LIAB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 3px;">NO-FAULT</span>
+    </div>
+
+   
+  </div>
+    </div>
+  </div>
+
+  </td>
+
+  <td valign="top" style="padding: 0;">
+  
+
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px; margin-left: 3px;" class="fontText">ADD'L<br/>NOE-MAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">MED PAY</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNINS<br/> MOTOR</span>
+    </div>
+  </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+
+       <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNDRINS <br/> MOTOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">TOWING <br/> & LABOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SPECCOFL</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">F</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FT</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FTW</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">LSP</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COMP/OTC</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COLL</span>
+    </div>
+      </div>
+  </td>
+  <td valign="top" style="padding: 0;">
+   
+
+      <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RENT REIMB</span> -->
+       <span style="font-size: 10px; margin-left: 3px;margin-right: 3px;"class="fontText">RENT <br/> REIMB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FG</span>
+    </div>
+
+    <div class="box-item" style="border-top: white;">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 11px;"></span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" class="bordrr" style="padding: 0;border-left: 1px solid black;">
+    <table style="border-collapse: collapse;">
+      
+    <div class="horizontal-box-row">
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 11px;font-weight:bold;margin-left:2px">DEDUCTIBLES</span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box" style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">ACV</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+      <div class="black-box1"style="border-left:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:9px">AA <span style="margin-left: 9px;"></span> </span>
+    </div>
+
+    <div class="box-with-label1">
+      <div class="black-box1"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 2px;">ST AMT</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+     
+      <span class="fontText" style="margin-top: 7px;font-size: 11px; margin-left: 2px;">$</span>
+    </div>
+
+   
+
+   
+  </div>
+
+    </table>
+  </td>
+
+  <td valign="top"  style="padding: 0;">
+    <table style="border-collapse: collapse; font-size: 11px;">
+   <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      <div class="black-box"style="border-left:0px solid black;border-top:0px solid black"></div>
+      <span class="fontText" style="font-size: 10px;margin-left:2px">COMP/ <br/> OTC </span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">SPEC <br/> C OF L </span>
+    </div>
+
+   
+    </div>
+    <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      
+      <span class="fontText" style="font-size: 10px;margin-left:2px"> $ </span>
+    </div>
+
+    
+    </div>
+    <div class="horizontal-box-row" style="border-top: 1px solid black;margin-top: 11px;">
+    <div class="box-with-label1">
+    
+      <span class="fontText" style="font-size: 10px;margin-left:2px;margin-top: 8px;"> $ </span>
+    </div>
+
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 10px;margin-left:80px;margin-top: 8px;">COLL</span>
+    </div>
+    </div>
+  
+ 
+     
+    </table>
+  </td>
+</tr>
+
+      
+              
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;padding: 0;">
+        <tr>
+  <td class=" bordrb  small_textsec fontText" style="font-size: 11px; width: 20%;">
+   <span  style="line-height: 1; margin-left: 2px;margin-top: 3px;"> DRIVE TO WORK <br/> <span style="margin-left: 2px;">SCHOOL</span> </span>
+  </td>
+  <td class=" bordrb" style="width: 10%;">
+     <div class="box-with-label">
+      <div class="black-box1" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class="fontText" style="font-size: 11px;">< 15 MILES </span>
+    </div>
+
+    <!-- <input class="form-check-input" type="checkbox" value="" style="margin: 0;" /> -->
+  </td>
+ 
+  <td class=" bordrb bordrr" style="width: 13%; ">
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class=" fontText" style="font-size: 11px;">15 MILES + </span>
+    </div>
+  </td>
+ 
+  <td class="bordrb bordrr  small_textsec fontText" style="width: 30%; font-size: 11px;  line-height: 1">
+   <span style="margin-left: 4px;margin-top: 3px;">NET VEH <br/><span style="margin-left: 2px;">DR/CR:</span></span> 
+  </td>
+  <td class="bordrb   small_textsec fontText" style="font-size: 11px;width: 30%;  text-align: center; vertical-align: bottom;">
+   <span > TOTAL PREM: $</span>
+  </td>
+  <td class="bordrb  " style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+   <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%;  text-align: center; vertical-align: top;">
+   
+  </td>
+  <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+</tr>
+
+      <tr>
+        <td colspan="10">
+          <table witdh="100%"  cellpadding="0" cellspacing="0" style="float: left; width: 100%;">
+            <tr>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 11px;padding: 2px;" >LIABILITY</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">NO FAULT</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">ADD'L NO FAULT </td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">MEDICAL PAYMENTS</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNINSURED MOTORISTS</td>
+              <td class="bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNDERINSURED MOTORISTS</td>
+            </tr>
+            <tr>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText"style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+            </tr>
+          </table>
+    
+    
+        </td>
+        
+       
+       
+      </tr>
+    </table>
+    <!-- //22/ -->
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: -5px;">
+      <tr>
+        <td width="30%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial," >AUTO-VEHICLE DESCRIPTION / LIMITS    </h4></td>
+        <td> <input class="form-check-input " type="checkbox" value=""  style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText" style="font-size: 12px;" width="25%">POLICY LIMIT(S) CHANGED</td>
+        <td> <input class="form-check-input " type="checkbox" [checked]="ListOfAllVehicle[1]?.Status === 'ADD'"style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">ADD</td>
+        <td> <input class="form-check-input " type="checkbox" [checked]="ListOfAllVehicle[1]?.Status === 'Change'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">CHANGE</td>
+        <td><input class="form-check-input " type="checkbox" [checked]="ListOfAllVehicle[1]?.Status === 'Permanent_Delete'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">DELETE</td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;table-layout: fixed; border-collapse: collapse;">
+     
+      <tr>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">VEH #</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">YEAR</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MAKE</td>
+    <td style="text-align: center; font-size: 16px;  width: 15%;" class="bordrr bordrb fontText">{{ListOfAllVehicle[1]?.Make}}</td>
+    <td style="text-align: center; width: 5%;" class="bordrb small_textsec fontText"><span style="margin-left: 2px;font-size: 12px;font-size: 11px;">BODY TYPE:</span></td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[1]?.BodyType}}</td>
+    <td style="text-align: center; font-size: 12px; width: 15%;" class="bordrr small_textsec fontText">VEHICLE TYPE</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">SYM/ AGE</td>
+    <td style="font-size: 11px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COMP /<br/> OTC SYM</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COLL SYM</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-size: 17px; width: 5%;" class="bordrb bordrr">&nbsp;</td>
+    <td style="text-align: center;  width: 5%;" class="bordrb bordrr"><span style="font-size: 16px;text-align: center;">{{ListOfAllVehicle[1]?.Year}}</span></td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MODEL:</td>
+    <td style="text-align: center; font-size: 16px;  width: 10%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[1]?.Model}}</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrb small_textsec fontText">V.I.N.:</td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{ListOfAllVehicle[1]?.VIN}}</td>
+
+    <!-- VEHICLE TYPE CHECKBOXES -->
+    <td style="text-align: center; font-size: 17px; width: 15%;" class="bordrb bordrr">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;border-left: 0px solid black; "></td>
+          <td><span style="font-size: 11px;">PP</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">SPEC</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">COML</span></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- Empty Columns with Widths -->
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb" style="width: 10%;">&nbsp;</td>
+  </tr>
+    
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;"  colspan="2"><span style="margin-top: 2px;margin-bottom: 2px;"></span>GARAGING ADDRESS</td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"  colspan="2"><span style="margin-top: 1px;">STREET (Required in KY)</span><br> </td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" colspan="2"><span style="margin-top: 1px;">CITY</span><br> </td>   
+        <td class="bordrr  bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" colspan="2" valign="top" ><span style="margin-top: 1px;">COUNTY</span><br> </td>    
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" ><span style="margin-top: 1px;">STATE</span> <br></td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"><span style="margin-top: 1px;">ZIP</span><br> </td>
+      
+       
+      </tr>
+    
+    
+      
+    
+    
+    
+   
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left:1px solid #000;border-right: 1px solid black;table-layout: fixed; border-collapse: collapse;">
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 4%;">LIC STATE <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">TERR <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"   style="font-size: 11px;text-align: center;width: 10%;">GVW / GCW <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">CLASS<br/></td>
+        <td class=" bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SIC <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">FACTOR <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SEAT CP <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">RADIUS <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText"valign="top"   style="font-size: 12px;text-align: center;width: 15%;">FARTHEST TERMINAL <br/><br/></td>
+        <td class="bordrb small_textsec fontText" valign="top"   style="font-size: 12px;text-align: center;width: 10%;">COST NEW <br/> <span *ngIf="ListOfAllVehicle[0]?.LineName === 'PHYD'">
+  ${{ListOfAllVehicle[0]?.Value}}
+</span> </td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left: 1px solid black;border-right: 1px solid black;">
+            <tr>
+              <td  class="fontText" style="padding: 0;">
+              <span style="font-size: 12px; margin-left: 3px;margin-top: 5px;font-weight:bold">USE</span>
+ 
+   <div class="box-group" style="margin-top: 8px;">
+    <div class="box-item">
+      <div class="square-box"style="border-left: 0px solid black;"></div>
+      <span style="font-size: 11px;  margin-left: 3px;"class="fontText">PLEASURE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-left: 0px solid black;border-top: 0px solid black;border-bottom: 0px solid;"></div>
+      <span  style="font-size: 10px;  margin-left: 3px;"class="fontText">FARM</span>
+    </div>
+
+  
+  </div>
+</td>
+
+  <td valign="top" style="padding: 0;">
+    <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">COMM'L</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">RETAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SERVICE</span>
+    </div>
+  </div>
+</td>
+  <td valign="top" style="padding: 0;">
+  <!-- <table style="border-collapse: collapse; font-size: 11px;">
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0; font-size: 11px;">FOR HIRE</td>
+    </tr>
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0;"></td>
+    </tr>
+  </table> -->
+   <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;  margin-left: 3px;">FOR HIRE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RETAIL</span> -->
+    </div>
+
+   
+  </div>
+</td>
+
+  <!-- Repeated inner tables - now space-reduced -->
+  <td valign="top" style="padding: 0;">
+    
+   
+    <div class="layout">
+   
+    <div class="left-line">
+      <div class="v-line"></div>
+    </div>
+
+    <!-- Right side: Label and boxes -->
+    <div class="">
+      <div class="fontText" style="line-height: 1;margin-top: 0px; margin-left: 5px; font-size: 11px;font-weight:bold">CHECK <br /> OVERAGES</div>
+  <div class="box-group" style="margin-top: 3px;">
+    <div class="box-item">
+      <div class="square-box"></div>
+      <span class="fontText"  style="font-size: 10px; margin-left: 3px;">LIAB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 3px;">NO-FAULT</span>
+    </div>
+
+   
+  </div>
+    </div>
+  </div>
+
+  </td>
+
+  <td valign="top" style="padding: 0;">
+  
+
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px; margin-left: 3px;" class="fontText">ADD'L<br/>NOE-MAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">MED PAY</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNINS<br/> MOTOR</span>
+    </div>
+  </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+
+       <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNDRINS <br/> MOTOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">TOWING <br/> & LABOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SPECCOFL</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">F</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FT</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FTW</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">LSP</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COMP/OTC</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COLL</span>
+    </div>
+      </div>
+  </td>
+  <td valign="top" style="padding: 0;">
+   
+
+      <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RENT REIMB</span> -->
+       <span style="font-size: 10px; margin-left: 3px;margin-right: 3px;"class="fontText">RENT <br/> REIMB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FG</span>
+    </div>
+
+    <div class="box-item" style="border-top: white;">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 11px;"></span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" class="bordrr" style="padding: 0;border-left: 1px solid black;">
+    <table style="border-collapse: collapse;">
+      
+    <div class="horizontal-box-row">
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 11px;font-weight:bold;margin-left:2px">DEDUCTIBLES</span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box" style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">ACV</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+      <div class="black-box1"style="border-left:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:9px">AA <span style="margin-left: 9px;"></span> </span>
+    </div>
+
+    <div class="box-with-label1">
+      <div class="black-box1"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 2px;">ST AMT</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+     
+      <span class="fontText" style="margin-top: 7px;font-size: 11px; margin-left: 2px;">$</span>
+    </div>
+
+   
+
+   
+  </div>
+
+    </table>
+  </td>
+
+  <td valign="top"  style="padding: 0;">
+    <table style="border-collapse: collapse; font-size: 11px;">
+   <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      <div class="black-box"style="border-left:0px solid black;border-top:0px solid black"></div>
+      <span class="fontText" style="font-size: 10px;margin-left:2px">COMP/ <br/> OTC </span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">SPEC <br/> C OF L </span>
+    </div>
+
+   
+    </div>
+    <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      
+      <span class="fontText" style="font-size: 10px;margin-left:2px"> $ </span>
+    </div>
+
+    
+    </div>
+    <div class="horizontal-box-row" style="border-top: 1px solid black;margin-top: 11px;">
+    <div class="box-with-label1">
+    
+      <span class="fontText" style="font-size: 10px;margin-left:2px;margin-top: 8px;"> $ </span>
+    </div>
+
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 10px;margin-left:80px;margin-top: 8px;">COLL</span>
+    </div>
+    </div>
+  
+ 
+     
+    </table>
+  </td>
+</tr>
+
+      
+              
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;padding: 0;">
+        <tr>
+  <td class=" bordrb  small_textsec fontText" style="font-size: 11px; width: 20%;">
+   <span  style="line-height: 1; margin-left: 2px;margin-top: 3px;"> DRIVE TO WORK <br/> <span style="margin-left: 2px;">SCHOOL</span> </span>
+  </td>
+  <td class=" bordrb" style="width: 10%;">
+     <div class="box-with-label">
+      <div class="black-box1" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class="fontText" style="font-size: 11px;">< 15 MILES </span>
+    </div>
+
+    <!-- <input class="form-check-input" type="checkbox" value="" style="margin: 0;" /> -->
+  </td>
+ 
+  <td class=" bordrb bordrr" style="width: 13%; ">
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class=" fontText" style="font-size: 11px;">15 MILES + </span>
+    </div>
+  </td>
+ 
+  <td class="bordrb bordrr  small_textsec fontText" style="width: 30%; font-size: 11px;  line-height: 1">
+   <span style="margin-left: 4px;margin-top: 3px;">NET VEH <br/><span style="margin-left: 4px;">DR/CR:</span></span> 
+  </td>
+  <td class="bordrb   small_textsec fontText" style="font-size: 11px;width: 30%;; vertical-align: bottom;">
+   <span > TOTAL PREM: $</span>
+  </td>
+  <td class="bordrb  " style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+   <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%;  text-align: center; vertical-align: top;">
+   
+  </td>
+  <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+</tr>
+
+      <tr>
+        <td colspan="10">
+          <table witdh="100%"  cellpadding="0" cellspacing="0" style="float: left; width: 100%;">
+            <tr>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 11px;padding: 2px;" >LIABILITY</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">NO FAULT</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">ADD'L NO FAULT </td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">MEDICAL PAYMENTS</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNINSURED MOTORISTS</td>
+              <td class="bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNDERINSURED MOTORISTS</td>
+            </tr>
+            <tr>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText"style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+            </tr>
+          </table>
+    
+    
+        </td>
+        
+       
+       
+      </tr>
+    </table>
+
+    <!-- //3// -->
+
+     <table width="100%"  style="border-collapse: collapse;padding: 0;">
+  <tr>
+    <td width="62%" style="padding: 0; ">
+      <h4 style="font-weight: 600;margin-left: 2px;font-family: Arial,; margin: 0;">
+        DRIVER INFORMATION (List drivers who frequently use own vehicles)
+      </h4>
+    </td>
+    
+    <td style="padding: 0; ">
+      <input class="form-check-input" type="checkbox" [checked]="ListOfAllDriver[0]?.Status === 'ADD'" style="margin: 0; display: block;border-top: 0px solid black;">
+    </td>
+    <td class="small_textsec" style="padding: 0 4px; ">ADD</td>
+    
+    <td style="padding: 0; ;">
+      <input class="form-check-input" type="checkbox" [checked]="ListOfAllDriver[0]?.Status === 'Change'" style="margin: 0; display: block;border-top: 0px solid black;">
+    </td>
+    <td class="small_textsec" style="padding: 0 4px; ">CHANGE</td>
+    
+    <td style="padding: 0;">
+      <input class="form-check-input" type="checkbox" [checked]="ListOfAllDriver[0]?.Status === 'Permanent_Delete'"   style="margin: 0; display: block;border-top: 0px solid black;">
+    </td>
+    <td class="small_textsec" style="padding: 0 4px; ">DELETE</td>
+  </tr>
+</table>
+
+
+
+    
+    <table width="100%"    style="border:1px solid #000;margin-top: -1px;">
+      <tr>
+        <td class="bordrr bordrb  small_textsec fontText" style="text-align: center;font-size: 10px;line-height: 1;">DRIVER<br/> #</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="25%">NAME <br/>CITY, STATE AND ZIP CODE </td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="3%">SEX</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="3%">MAR <br/>STAT</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"  width="9%">DATE OF BIRTH </td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="3%">YRS <br/>EXP</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="3%">YEAR <br/> LIC</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="15%">DRIVERS LICENSE NUMBER/<br/>SOCIAL SECURITY NUMBER
+        </td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="3%">STATE <br/>LIC</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="9%">DATE <br/>HIRE</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="4%">BROADEN.<br/>NO-FAULT</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="3%">DOC</td>
+        <td class="bordrr bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;"width="3%">USE <br/>VEH #</td>
+        <td class="bordrb small_textsec fontText"   style="text-align: center;font-size: 10px;line-height: 1;" width="3%">USE</td>
+       
+      </tr>
+      <tr>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%"  style="width:95%;  padding: 0px;text-align: center;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.DriverName" style="width:95%;  padding: 0px;text-align: center;font-size: 16px; margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.Gender === ''? 'M':''"  style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.Gender === ''? 'M':''"  style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.DateofBirth | date:'MM/dd/yyyy'"   style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+        <td class="bordrr"  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.DriverLicenceNo"  style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/> </td>
+        <td class="bordrr "  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.StateLicenced" style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr "  align="center"><input name="" type="text" width="100%" [value] ="ListOfAllDriver[0]?.DriverStage"  style="width:95%;  padding: 0px;text-align: center;font-size: 16px;margin-left: 1px;margin-right:1px;margin-top: 1px; margin-bottom: 1px;"/></td>
+        <td class="bordrr "  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+        <td class="bordrr "  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+        <td class="bordrr "  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+        <td class=""  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 0px;"/></td>
+       
+      </tr>
+
+      <tr style="border: 1px solid black;">
+        <td class="bordrr small_textsec fontText"  style="font-size: 10px;text-align: center;padding: 4px;" colspan="14"> * MARITAL STATUS / CIVIL UNION (if applicable)</td>
+       
+      </tr>
+    </table>
+
+
+    <!-- 44 -->
+    
+    
+    
+    
+    
+     <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="50%"><h4 class="small_textsec fontText mt-1" style="font-size: 14px;">ACORD 175 (2012/04) </h4></td>
+        <td width="10%"><h4 class="small_textsec fontText mt-1" style="font-size: 14px;">Page 1 of 2 </h4></td>
+        <td width="40%" align="right"><h4 class="small_textsec fontText mt-1" style="font-size: 14px;">© 1991-2012 ACORD CORPORATION. All rights reserved. </h4></td>
+       
+       
+      </tr>
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: 15px;">
+      <tr>
+        <td width="100%" align="center"><h4 class="small_textsec fontText"style="font-size: 14px;">The ACORD name and logo are registered marks of ACORD</h4></td>
+       </tr>
+    </table>
+    
+     <div class="page-break">
+            
+           </div>
+
+           <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="60%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial,; margin: 0;">WORKERS COMPENSATION RATING INFORMATION</h4></td>
+    
+        <td class="small_textsec" width="20%" ><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial,; margin: 0;">AGENCY CUSTOMER ID:</h4></td>
+      
+        <td class="small_textsec bordrb"width="10%" style="margin-bottom:2px;font-weight: 600;margin-left: 2px;font-family: Arial,; margin: 0;">{{EndorsementID}}-CK </td>
+        
+        <td class="small_textsec bordrb" width="10%"style="font-weight: 600;margin-left: 2px;font-family: Arial,; margin: 0;">{{EnteredBy}}</td>
+       
+      </tr>
+    </table>
+    
+  
+
+   
+   
+    
+
+
+ 
+    
+    <table width="100%" class="no-space-table" style="border:1px solid #000; border-collapse: collapse; margin-top: 10px;">
+  <!-- Header Row -->
+  <tr>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 5%;">TYPE OF <br/><span>CHANGE</span></td>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 5%;">STATE</td>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 5%;">LOC</td>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 5%;">CLASS CODE</td>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 5%;">DESCR CODE</td>
+    <td class="bordrr bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 45%;">CATEGORIES, DUTIES, CLASSIFICATIONS</td>
+    
+    <!-- # OF EMPLOYEE Header with nested Full/Part -->
+    <td colspan="2" class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px; width: 10%;">
+      #OF <br/> EMPLOYEE
+      <div style="border-top: 1px solid #000;;"></div>
+      <table style="width: 100%; border-collapse: collapse;margin-left: 1px;">
+        <tr>
+          <td style="border-right: 1px solid #000; text-align: center; font-size: 10px;margin-left: 1px;">FULL </td>
+          <td style="text-align: center; font-size: 10px;"> PART</td>
+        </tr>
+        <tr >
+          <td style="border-right: 1px solid #000; text-align: center; font-size: 10px;margin-left: 1px;">TIME</td>
+          <td style="text-align: center; font-size: 10px;">TIME</td>
+        </tr>
+      </table>
+    </td>
+
+    <td class="bordrb small_textsec fontText" style="line-height: 1; font-size:12px; text-align: center; width: 15%;">
+      ESTIMATED<br/>ANNUAL<br/>REMUNERATION
+    </td>
+  </tr>
+
+  <!-- Input Row -->
+  <tr>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text"  style="width:93%; margin: 0px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text"  style="width:95%; margin: 1px;" /></td>
+    <td class="bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+  </tr>
+   <tr>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text"  style="width:93%; margin: 0px;" /></td>
+    <td class="bordrr bordrb" align="center"><input type="text"  style="width:95%; margin: 1px;" /></td>
+    <td class="bordrb" align="center"><input type="text" style="width:95%; margin: 1px;" /></td>
+  </tr>
+</table>
+
+    
+
+    <table width="100%" class="no-space-table" style="margin-top: -4px;"  >
+      <tr>
+        <td><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial" class="bordrr">PROPERTY / INLAND MARINE - PREMISES INFORMATION </h4></td>
+        <td class="small_textsec fontText bordrr"style="font-size: 11px;"><span style="margin-left: 5px;">PREMISES #:</span> </td>
+        <td class="small_textsec fontText"style="font-size: 11px;"><span style="margin-left: 5px;">BUILDING #:</span> </td>
+        <td> <input class="form-check-input" type="checkbox" value="" style="border-bottom: 0px solid black;" ><br/></td>
+        <td class="small_textsec fontText"style="font-size: 11px;">ADD</td>
+        <td> <input class="form-check-input" type="checkbox" value="" style="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 11px;">CHANGE</td>
+        <td><input class="form-check-input" type="checkbox" value="" style="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 11px;">DELETE</td>
+       
+      </tr>
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0"  style="border:1px solid #000;">
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 10%;">SUBJECT OF INSURANCE</td>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 5%;">AMOUNT</td>
+        <td class="bordrr bordrb small_textsec fontText" style="font-size: 11px;text-align: center;width: 5%;">COINS %</td>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 5%;">VALUATION</td>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 8%;">CAUSES OF LOSS</td>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 5%;">INFLATION GUARD %</td>
+        <td class="bordrr bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 5%;">DEDUCTIBLE</td>
+        <td class="bordrb small_textsec fontText"  style="font-size: 11px;text-align: center;width: 20%;"> FORMS AND CONDITIONS TO APPLY</td>
+                
+       
+      </tr>
+      <tr>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%; margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/> </td>
+       
+        
+      </tr>
+      <tr>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%; margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/></td>
+        <td class="bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  margin-top: 1px;margin-bottom: 1px;margin-left: 1px;margin-right: 1px;"/> </td>
+
+        
+      </tr>
+      <tr>
+        <td colspan="8" class="bordrb">
+          <table  width="100%"  cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="small_textsec fontText" style="font-size: 11px;margin-bottom: 10px;">ADDITIONAL COVERAGES, OPTIONS, RESTRICTIONS, ENDORSEMENTS AND RATING INFORMATION (Attach ACORD 101, Additional Remarks Schedule, if more space is required)<br/>
+                <br/>
+              </td>
+            </tr>
+            <tr>
+              <td><span style="margin-top: 5px;"></span></td>
+            </tr>
+          </table>
+
+        </td>
+
+      </tr>
+      <tr>
+        <td colspan="8">
+          <table  width="100%"  cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="bordrr small_textsec fontText" style="font-size: 11px;"  align="left" width="30%">CONSTRUCTION TYPE</td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;"width="15%" >DISTANCE TO<br/> HYDRANT &nbsp; &nbsp; &nbsp; &nbsp; FIRE STAT </td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;" width="20%">FIRE DISTRICT / CODE NUMBER</td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;">PROT CL</td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;"># STORIES</td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;"># BASM'TS</td>
+              <td class="bordrr small_textsec fontText"style="font-size: 11px;text-align: center;">YR BUILT</td>
+              <td class="small_textsec fontText"style="font-size: 11px;text-align: center;">TOTAL AREA</td>
+                      
+             
+            </tr>
+            <tr>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrr bordrb"  align="center">
+                <table  width="100%"  cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="bordrr small_textfour" align="right"><input name="" type="text" width="100%" style="width:70%;  padding: 1px; margin-bottom: 1px;"/>FT </td>
+                    <td class="small_textfour" align="right"><input name="" type="text" width="100%" style="width:70%;  padding: 1px;margin-bottom: 1px;"/> MI</td>
+                  </tr>
+                 </table>   
+              </td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/></td>
+              <td class="bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  padding: 1px;"/> </td>
+             
+              
+            </tr>
+          </table>
+        </td>
+        
+      </tr>
+      <tr>
+        <td colspan="8" class="bordrb">
+
+          <table class="tight-table no-space-table" width="100%"  >
+            <tr>
+              <td class="small_textsec fontText" style="font-size: 10px;" colspan="2"><span style="margin-left: 2px;">BUILDING IMPROVEMENTS</span></td>
+              <td ><input class="form-check-input " type="checkbox" value="" ></td>
+              <td style="width: 15%;" class="bordrr checkbox_text"><span style="margin-left: 2px;border-bottom: 0px solid black;">PLUMBING, YR</span></td>
+              <td class="small_textsec small_textfour444"><span style="margin-left: 2px;color: black">BLDG CODE <br/>  <span style="margin-left: 2px;">GRADE</span> </span></td>
+              <td class=" bordrr  small_textsec small_textfour444"> <span style="margin-left: 2px;color: black">INSPECTED? <br/> <span class="center-span">Y/N</span></span></td>
+              <td class="bordrr small_textsec"><span style="margin-left: 2px;color: black">ROOF TYPE</span></td>
+              <td class=" small_textfour" width="40%"><span style="margin-left: 2px;color: black">OTHER OCCUPANCIES</span></td>
+              
+            </tr>
+            <tr class="tight-row no-space-table" style="margin-top: -15px;">
+              <td style="width: 5%;"><input class="form-check-input" type="checkbox" value="" ></td>
+              <td class="checkbox_text"  style="text-align: left;">WIRING YR:</td>
+              <td ><input class="form-check-input" type="checkbox" value="" style="margin-top: -2px;border-top: 1px solid black"></td>
+              <td class="bordrr checkbox_text" align="left" width="8%"><span style="margin-left: 2px;">HEATING, YR:</span> </td>
+              <td class=" bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%;  "/></td>
+              <td class=" bordrb bordrr"  align="center"><input class="form-check-input" type="checkbox" value="" > </td>
+              <td class="bordrr bordrb"  align="center"><input name="" type="text" width="100%" style="width:95%; "/></td>
+              <td class="" rowspan="2"  align="center"><input name="" type="text" width="100%" style="width:95%;  "/></td>
+             
+            </tr>
+            <tr class="tight-row no-space-table">
+              <td><input class="form-check-input " type="checkbox" value="" style="border-top: 0px solid black"></td>
+              <td class="checkbox_text"  align="left"><span style="margin-left: 2px;">ROOFING, YR</span></td>
+              <td class=""><input class="form-check-input " type="checkbox" value="" style="border-top: 0px solid black"></td>
+              <td class="bordrr checkbox_text"  align="left"><span style="margin-left: 2px;">OTHER:</span> </td>
+              <td class="bordrr small_textsec "  align="left" colspan="3"><span style="margin-left: 2px;color: black;">TAX CODE</span>  <input name="" type="text" width="100%" style="width:65%;  padding: 0px;"/></td>
+              
+              
+             
+            </tr>
+
+          </table>
+
+        </td>
+
+      </tr>
+
+      <tr>
+        <td colspan="8" class="bordrb">
+        <table width="100%"  cellpadding="0" cellspacing="0">
+          <tr>
+            <td class=" bordrr small_textfour fontText"><span style="margin-left: 2px;font-size: 11px;">RIGHT EXPOSURE & DISTANCE</span> </td>
+            <td class="bordrr small_textfour fontText"><span style="margin-left: 2px;font-size: 11px;">LEFT EXPOSURE & DISTANCE</span></td>
+            <td class=" small_textfour fontText"><span style="margin-left: 2px;font-size: 11px;">REAR EXPOSURE & DISTANCE</span></td>
+          </tr>
+
+          <tr>
+            <td class="bordrr"><input name="" type="text" width="100%" class ="mb-2" style="width:95%;  ;"/></td>
+            <td class="bordrr"><input name="" type="text" width="100%" class ="mb-2"  style="width:95%;"/></td>
+            <td><input name="" type="text" width="100%" class ="mb-2"  style="width:95%; "/></td>
+          </tr>
+           </table> 
+          </td>
+      </tr>
+
+      <tr>
+        <td colspan="8" class="bordrb" >
+          <table width="100%"  class="tight-table no-space-table" >
+            <tr >
+              <td class="small_textfour bordrr small_textfour fontText"  width="33%"><span style="margin-left: 2px;font-size: 11px;">BURGLAR ALARM TYPE</span></td>
+              <td class="small_textfour bordrr small_textfour fontText"  width="27%"><span style="margin-left: 2px;font-size: 11px;">CERTIFICATE #</span></td>
+              <td class=" small_textfour bordrr small_textfour fontText checkbox_text"><span style="margin-left: 2px;font-size: 11px;">EXPIRATION DATE</span></td>
+              <td class="small_textsec bordrr small_textfour fontText"><span style="margin-left: 2px;font-size: 11px;">EXTENT</span></td>
+              <td class=" small_textsec small_textfour fontText"><span style="margin-left: 2px;font-size: 11px;">GRADE</span></td>
+              <td class=""><input class="form-check-input" type="checkbox" value=""style="margin-top: 1px solid black;" ></td>
+              <td class=" checkbox_text" width="9%">CENTRAL STATION</td>
+
+            </tr>
+            <tr  class="tight-row no-space-table">
+              <td class=" bordrr " ></td>
+              <td class=" bordrr "></td>
+              <td class="  bordrr"></td>
+              <td class=" bordrr"></td>
+              <td class=" "></td>
+              <td class=""><input class="form-check-input" type="checkbox" value="" style="margin-top: -2px;border-bottom: 0px solid black;"></td>
+              <td class=" checkbox_text">WITH KEYS</td>
+
+            </tr>
+            
+          </table>
+
+
+        </td>
+
+      </tr>
+
+
+
+      <tr>
+        <td colspan="8" class="bordrb">
+          <table width="100%"  class="tight-table no-space-table">
+            <tr>
+              <td class=" bordrr small_textfour fontText"  width="74.6%"><span style="margin-left: 2px;">BURGLAR ALARM TYPE</span></td>
+              <td class="  small_textfour fontText"  width="12.4%"><span style="margin-left: 2px;">CERTIFICATE #</span></td>
+              
+              <td class=""><input class="form-check-input" type="checkbox" value="" style="border-bottom: 0px solid black;margin-left: 4px;"></td>
+              <td class=" checkbox_text" width="9%"><span style="margin-left: 2px;">CLOCK HOURLY</span></td>
+
+            </tr>
+            <tr class="tight-row no-space-table">
+              <td class="small_textfour bordrr " ></td>
+              <td class="small_textfour "></td>
+              
+              <td ><input class="form-check-input" type="checkbox" style="margin-left: 4px;"></td>
+              <td class=" checkbox_text"></td>
+
+            </tr>
+            
+          </table>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="8" class="">
+
+          <table width="100%"  class="tight-table no-space-table">
+            <tr>
+              <td class="small_textfour fontText bordrr "  width="58%"><span style="margin-left: 2px;">PREMISES FIRE PROTECTION (Sprinklers, Standpipes, CO2/Chemical Systems)</span></td>
+              <td class="small_textfour fontText  "  width="29%"><span style="margin-left: 2px;">FIRE ALARM MANUFACTURER</span></td>
+              
+              <td class=""><input class="form-check-input" type="checkbox" value="" style="margin-left: 4px;"></td>
+              <td class=" checkbox_text" width="9%">CENTRAL STATION</td>
+
+            </tr>
+            <tr class="tight-row no-space-table">
+              <td class="small_textfour bordrr " ></td>
+              <td class="small_textfour  "></td>
+              
+              <td class=""><input class="form-check-input" type="checkbox" value="" style="border-top: 0px solid black; margin-left: 4px;" ></td>
+              <td class=" checkbox_text">LOCAL GONG </td>
+
+            </tr>
+            
+          </table>
+        </td>
+
+      </tr>
+    </table>  
+
+
+        
+ <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 0;">
+  <tr>
+    <td width="40%" style="padding: 0;" class="bordrr">
+      <h4 style="margin: 0; padding: 0;font-weight: 600; margin-left: 2px; font-family: Arial;">INLAND MARINE - SCHEDULED EQUIPMENT</h4>
+    </td>
+    <td class="small_textsec fontText " style="padding: 0;">
+    <span style="margin-left: 2px;"> % COINSURANCE:</span> 
+      <input type="text" style="width: 45%; padding: 0; margin: 0;" />
+    </td>
+    <td style="padding: 0;">
+      <input class="form-check-input" type="checkbox" value="" style="margin: 0;;border-bottom: 0ps solid black;margin-top: -1px;" /><br/>
+    </td>
+    <td class="small_textsec fontText" style="padding: 0;">ADD</td>
+    <td style="padding: 0;">
+      <input class="form-check-input" type="checkbox" value="" style="margin: 0;border-bottom: 0ps solid black;margin-top: -1px;" /><br/>
+    </td>
+    <td class="small_textsec fontText" style="padding: 0;">CHANGE</td>
+    <td style="padding: 0;">
+      <input class="form-check-input" type="checkbox" value="" style="margin: 0;margin-top: -1px;" /><br/>
+    </td>
+    <td class="small_textsec fontText" style="padding: 0;">DELETE</td>
+  </tr>
+</table>
+
+
+    
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;margin-top: -1px;">
+      <tr>
+        <td  class="small_textfour bordrb bordrr fontText" align="center" width="5%">#</td>
+        <td class="small_textfour bordrb bordrr fontText" align="center">MODEL YEAR</td>
+        <td class="small_textfour bordrb bordrr fontText"  align="center" width="40%">DESCRIPTION (TYPE, MANUFACTURER, MODEL, CAPACITY, ETC)</td>
+        <td class="small_textfour bordrb bordrr fontText"  align="center"> ID #/SERIAL #</td>
+        <td class="small_textfour bordrb bordrr fontText"  align="center">DATE PURCHASED</td>
+        <td class="small_textfour bordrb bordrr fontText"  align="center">NEW/USED</td>
+        <td class="small_textfour bordrb fontText"  align="center">AMOUNT OF INSURANCE</td>
+       
+      </tr>
+      <tr>
+        <td  class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"> <input name="" type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/> </td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="192%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb"><input name=""  type="text" width="92%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+       
+      </tr>
+ <tr>
+        <td  class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"> <input name="" type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;  padding: 0px; margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/> </td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="92%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb bordrr"><input name=""  type="text" width="192%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+        <td class="small_textfour bordrb"><input name=""  type="text" width="92%" style="width:92%;   margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;"/></td>
+       
+      </tr>
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 0;">
+      <tr>
+        <td width="85%" style="padding: 0;"><h4 style="margin: 0; padding: 0;font-weight: 600; margin-left: 2px; font-family: Arial;">GENERAL LIABILITY - LIMITS</h4></td>
+        <td style="padding: 0;"> <input class="form-check-input " type="checkbox" value=""style="margin: 0;border-top:0px solid black" ><br/></td>
+        <td class="small_textsec" style="padding: 0;">CHANGE</td>
+     </tr>
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">GENERAL AGGREGATE</span></td>
+        <td class="small_textfour bordrb bordrr fontText"> <span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span> </td>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">DAMAGE TO RENTED PREMISES</span></td>
+        <td class="small_textfour bordrb fontText"><span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span></td>
+      </tr>
+      <tr>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">PRODUCTS & COMPLETED OPERATIONS AGGREGATE</span></td>
+        <td class="small_textfour bordrb bordrr fontText"> <span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span></td>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">MEDICAL EXPENSE (Any one person)</span></td>
+        <td class="small_textfour bordrb fontText"> <span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span></td>
+      </tr>
+
+      <tr>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">PERSONAL & ADVERTISING INJURY</span></td>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span></td>
+        <td class="small_textfour bordrb bordrr fontText"><span style="margin-left: 2px;">EMPLOYEE BENEFITS</span></td>
+        <td class="small_textfour bordrb fontText"><span style="margin-left: 1px;">$</span><span  style="width:85%;  padding: 0px;"></span></td>
+      </tr>
+
+      <tr>
+        <td class="small_textfour bordrr fontText"><span style="margin-left: 2px;">EACH OCCURRENCE</span></td>
+        <td class="small_textfour bordrr fontText"><span style="margin-left: 1px;">$</span><span  style="width:85%;  "><input type="text"  style ="margin-bottom: 2px;"></span></td>
+        <td class="small_textfour bordrr fontText"></td>
+        <td class="small_textfour fontText"><span style="margin-left: 1px;">$</span><span  style="width:85%;  "> <input type="text"  style ="margin-bottom: 2px;"></span></td>
+      </tr>
+    
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="100%"><h4 style="font-weight: 600; margin-left: 2px; font-family: Arial;">GENERAL LIABILITY - SCHEDULE OF HAZARDS</h4></td>
+        
+     </tr>
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;" >TYPE OF CHANGE </td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">LOC #</td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">HAZ #</td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">CLASSIFICATION</td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">CLASS CODE</td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">PREMIUM BASIS</td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">EXPOSURE </td>
+        <td class="small_textfour bordrb bordrr fontText"  style="text-align: center;width: 5%;">TERR</td>
+        <td class="small_textfour  fontText"  style="text-align: center;width: 25%;">PREMIUM BASIS CODES </td>
+      </tr>
+      <tr>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb  bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textnormal" rowspan="3" width="20%" >
+          
+         <span style="margin-left: 60px;">(S) GROSS SALES - PER $1,000/SALES</span><br>
+         <span style="margin-left: 60px;"> (P) PAYROLL - PER $1,000/PAY</span><br>
+         <span style="margin-left: 60px;">(A) AREA - PER 1,000/SQ FT</span><br>
+         <span style="margin-left: 60px;"> (C) TOTAL COST - PER $1,000/COST</span><br>
+         <span style="margin-left: 60px;"> (M) ADMISSIONS - PER 1,000/ADM</span><br>
+         <span style="margin-left: 60px;">(U) UNIT - PER UNIT</span><br>
+         <span style="margin-left: 60px;"> (T) OTHER</span>
+
+
+
+
+        </td>
+      </tr>
+
+      <tr>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb  bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        
+      </tr>
+
+      <tr>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb  bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+        <td class="small_textfour bordrb bordrr"><span style ="margin-left: 1px; margin-right:1px"><input name="" type="text" width="100%" style="width:80%;  padding: 0px;"/></span></td>
+      </tr>
+    
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 0;">
+      <tr>
+        <td width="85%" style="padding: 0;"><h4 style="margin: 0; padding: 0;font-weight: 600; margin-left: 2px; font-family: Arial;">UMBRELLA</h4></td>
+        <td  style="padding: 0;"> <input class="form-check-input" type="checkbox" value=""style="margin: 0;border-top :0px solid black;" ><br/></td>
+        <td class="small_textsec"  style="padding: 0;">CHANGE</td>
+     </tr>
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="small_textfour fontText" align="left" style="border-bottom:1px solid #000;">LIMIT OF LIABILITY </td>
+        <td class="small_textfour  bordrr fontText" align="left" style="border-bottom:1px solid #000;">$ <input name="" type="text" width="100%" style="width:85%;  margin-top: 2px; margin-bottom: 2px;"/></td>
+       </tr>
+       <tr>
+        <td class="small_textfour bordrb fontText" align="left">RETAINED LIMIT </td>
+        <td class="small_textfour  bordrr fontText" align="left">$ <input name="" type="text" width="100%" style="width:85%;  margin-top: 2px; margin-bottom: 2px;"/></td>
+        <td class="small_textfour fontText" rowspan="2"  width="60%" style="line-height: 5px;font-size: 11px;"><span style="margin-left:1px">OTHER</span> <br/> <span style="margin-left:2px;">(DESCRIBE)</span> <input name="" type="text" width="100%" style="width:85%;  padding: 0px;"/> </td>
+       </tr>
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 0;">
+      <tr>
+        <td width="70%" style="padding: 0;"><h4 style="margin: 0; padding: 0;font-weight: 600; margin-left: 2px; font-family: Arial;">ADDITIONAL INTEREST </h4></td>
+        <td style="padding: 0;"> <input class="form-check-input " type="checkbox" value="" style="margin: 0;border-top: 0px solid black;"><br/></td>
+        <td class="small_textsec" style="padding: 0;">ADD</td>
+        <td style="padding: 0;"> <input class="form-check-input " type="checkbox" value="" style="margin: 0;border-top: 0px solid black;"><br/></td>
+        <td class="small_textsec" style="padding: 0;">CHANGE</td>
+        <td style="padding: 0;"><input class="form-check-input " type="checkbox" value="" style="margin: 0;border-top: 0px solid black;"><br/></td>
+        <td class="small_textsec" style="padding: 0;">DELETE</td>
+       
+      </tr>
+    </table>
+
+    <table width="100%"  cellpadding="0" cellspacing="0" class="tight-table no-space-table" style="border:1px solid #000;">
+      <tr>
+        <td class="small_textfour  bordrr fontText" align="left" colspan="4" width="25%">INTEREST</td>
+        <td class="small_textfour  fontText" style="font-size: 10px;" align="left" width="18%">NAME AND ADDRESS RANK: _____</td>
+        <td class="small_textfour  bordrr" align="left"><input name="" type="text" width="100%" style="width:85%;  padding: 0px;"/></td>
+        <td class="small_textfour   fontText bordrb" > <span style ="margin-left: 2px;font-size: 10px;">EVIDENCE: </span>  </td>
+        <td class="small_textfour  bordrb " align="left" width="4%"><input class="form-check-input " type="checkbox" value="" style="margin-left: 8px;border-bottom: 0px solid black;"></td>
+        <td class="small_textfour  bordrr bordrb fontText" ><span style ="margin-right:5px;font-size: 10px;">CERTIFICATE: </span> </td>
+        <td class="small_textfour  bordrr" align="left"><span style ="margin-left:2px"><input name="" type="text" width="100%" style="width:82%;  padding: 0px;"/></span></td>
+        <td class="small_textfour   bordrb fontText" align="center" width="25%" colspan="2">INTEREST IN ITEM NUMBER</td>
+        
+       </tr>
+
+       <tr class="tight-row no-space-table">
+        <td class="small_textfour  " align="left"><input class="form-check-input" type="checkbox" value="" style="border-left:0px solid black;border-bottom:0px solid black"></td>
+        <td class=" small_textfour fontText" align="left" style="font-size: 9px;">ADDITIONAL INSURED</td>
+        <td class="small_textfour " align="left"><input class="form-check-input" type="checkbox" value="" ></td>
+        <td class=" small_textfour  bordrr fontText" align="left" style="font-size: 9px;">MORTGAGEE</td>
+        <td class="small_textfour" align="left" colspan="3"></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour  bordrr bordrb fontText" align="left" style="font-size: 10px;"><span style="margin-left:2px">LOCATION:</span> </td>
+        <td class="small_textfour bordrb  fontText" align="left"style="font-size: 10px;"><span style="margin-left:2px">BUILDING</span> </td>
+       </tr>
+       <tr>
+        <td class="small_textfour  " align="left"><input class="form-check-input " type="checkbox" value="" style="border-left:0px solid black;border-bottom:0px solid black"></td>
+        <td class=" small_textfour fontText" align="left" style="font-size: 9px;">EMPLOYEE AS LESSOR</td>
+        <td class="small_textfour  " align="left"><input class="form-check-input " type="checkbox" value="" style="border-top:0px solid black"></td>
+        <td class="small_textfour   bordrr fontText" align="left" style="font-size: 9px;">OWNER</td>
+        <td class="small_textfour" align="left" colspan="3"></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour  bordrr bordrb fontText" align="left" style="font-size: 10px;"><span style="margin-left:2px">VEHICLE</span> <input name="" type="text" width="100%" style="width:60%;  padding: 0px;"/></td>
+        <td class="small_textfour  bordrb fontText" align="left"style="font-size: 10px;"><span style="margin-left:2px">BOAT</span> </td>
+       </tr>
+       
+       <tr>
+        <td class="small_textfour " align="left"><input class="form-check-input" type="checkbox" value="" style="border-left:0px solid black"></td>
+        <td class=" small_textfour fontText" align="left" style="font-size: 9px;">LIENHOLDER</td>
+        <td class="small_textfour " align="left"><input class="form-check-input" type="checkbox" value="" style="border-top:0px solid black"></td>
+        <td class=" small_textfour  bordrr fontText" align="left" style="font-size: 9px;">REGISTRANT</td>
+        <td class="small_textfour" align="left" colspan="3"></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour  bordrr bordrb fontText" align="left" style="font-size: 10px;"><span style="margin-left:2px">AIRPORT:</span>        </td>
+        <td class="small_textfour  bordrb" align="left"></td>
+       </tr>
+
+       <tr>
+
+        <td class="small_textfour " align="left"><input class="form-check-input checkboxbottom" type="checkbox" value="" style="border-left:1px solid black"></td>
+        <td class="small_textfour fontText " align="left"style="font-size: 9px;">LOSS PAYEE</td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour" align="left" colspan="3"></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour  bordrr bordrb" align="left"><span style="margin-left:2px">ITEM CLASS:</span> </td>
+        <td class="small_textfour  bordrb" align="left"><span style="margin-left:2px">ITEM</span> <span style="margin-left:1px;margin-right:1px"><input name="" type="text" width="100%" style="width:60%;  padding: 0px;"/></span> </td>
+       </tr>
+       <tr>
+
+        <td class="small_textfour " align="left"><input class="form-check-input " type="checkbox" value="" ></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour bordrb" align="left" colspan="3"></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour  " align="left" colspan="2"><span style="margin-left:2px">ITEM DESCRIPTION</span></td>
+       </tr>
+       <tr>
+
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr " align="left"></td>
+        <td class="small_textfour bordrr" align="left" colspan="3">REFERENCE / LOAN #: <input name="" type="text" width="100%" style="width:70%;  padding: 0px;margin-bottom: 2px;;"/></td>
+        <td class="small_textfour  " align="left"></td>
+        <td class="small_textfour " align="left"></td>
+        <td class="small_textfour  bordrr" align="left"></td>
+        <td class="small_textfour" align="left" colspan="2"><input name="" type="text" width="100%" style="width:95%;margin-left: 1px;margin-right:3px"/></td>
+        
+       </tr>
+       
+    </table>
+
+    
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="100%"><h4 style="font-weight: 600; margin-left: 2px; font-family: Arial;">        
+            SIGNATURE (Any deletion or reduction in coverage requires the Insured's signature)</h4></td>
+ 
+
+      </tr>
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td width="50%" class="small_textsec bordrr fontText"><span style="margin-left:2px">PRODUCER'S SIGNATURE</span></td>        
+        <td class="small_textsec bordrr fontText" width="30%" ><span style="margin-left:2px">PRODUCER'S NAME (Please Print)</span></td>       
+        <td class="small_textsec fontText" width="20%" ><span style="margin-left:2px">STATE PRODUCER LICENSE NO(Required in Florida)</span></td>
+   
+       
+      </tr>
+      <tr>
+        <td width="50%" class="small_textsec bordrr"><img src="assets/certs/sign.png" style="margin-bottom: 1px;"/></td>        
+        <td class="small_textsec bordrr" width="30%" ></td>       
+        <td class="small_textsec" width="20%" ></td>
+   
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style=" border-top:0px solid #000; border-right:1px solid #000;  border-left:1px solid #000; border-bottom:1px solid #000;">
+      <tr>
+        <td width="70%" class="small_textsec bordrr fontText"><span style="margin-left:2px">INSURED'S SIGNATURE</span> </td>        
+        <td class="small_textsec bordrr fontText" width="10%" ><span style="margin-left:2px">DATE</span></td>       
+        <td class="small_textsec fontText" width="20%" ><span style="margin-left:2px">NATIONAL PRODUCER NUMBER</span></td>
+   
+       
+      </tr>
+      <tr>
+        <td class="small_textsec bordrr"><br/><br/></td>        
+        <td class="small_textsec bordrr"><br/><br/></td>       
+        <td class="small_textsec" ><br/><br/></td>
+   
+       
+      </tr>
+    </table>
+
+
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="50%"><h4>ACORD 175 (2012/04) </h4></td>
+        <td width="10%"><h4>Page 2 of 2 </h4></td>
+        <td width="40%" align="right"><h4></h4></td>
+      </tr>
+    </table>
+    <br/><br/><br/>
+
+      <!-- //3// -->
+
+      <div class="page-break" *ngIf="ListOfAllVehicle?.length > 2">
+            
+           </div>
+
+<ng-container *ngFor="let vehicle of ListOfAllVehicle.slice(2); let i = index">
+
+
+
+        <table width="100%"  cellpadding="0" cellspacing="0" style="border:0px solid #000;margin-top: -4px;">
+      <tr>
+        <td width="30%"><h4 style="font-weight: 600;margin-left: 2px;font-family: Arial," >AUTO-VEHICLE DESCRIPTION / LIMITS    </h4></td>
+        <td> <input class="form-check-input " type="checkbox" value=""  style ="border-bottom-left-radius: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText" style="font-size: 12px;" width="25%">POLICY LIMIT(S) CHANGED</td>
+        <td> <input class="form-check-input " type="checkbox"  [checked]="vehicle?.Status === 'ADD'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">ADD</td>
+        <td> <input class="form-check-input " type="checkbox" [checked]="vehicle?.Status === 'Change'" style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">CHANGE</td>
+        <td><input class="form-check-input " type="checkbox" [checked]="vehicle?.Status === 'Permanent_Delete'"  style ="border-bottom: 0px solid black;"><br/></td>
+        <td class="small_textsec fontText"style="font-size: 12px;">DELETE</td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;table-layout: fixed; border-collapse: collapse;">
+     
+      <tr>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">VEH #</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">YEAR</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MAKE</td>
+    <td style="text-align: center; font-size: 16px;  width: 15%;" class="bordrr bordrb fontText">{{vehicle?.Make}}</td>
+    <td style="text-align: center; width: 5%;" class="bordrb small_textsec fontText"><span style="margin-left: 2px;font-size: 12px;font-size: 11px;">BODY TYPE:</span></td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{vehicle?.BodyType}}</td>
+    <td style="text-align: center; font-size: 12px; width: 15%;" class="bordrr small_textsec fontText">VEHICLE TYPE</td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrr small_textsec fontText">SYM/ AGE</td>
+    <td style="font-size: 11px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COMP /<br/> OTC SYM</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrr small_textsec fontText">COLL SYM</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-size: 17px; width: 5%;" class="bordrb bordrr">&nbsp;</td>
+    <td style="text-align: center;  width: 5%;" class="bordrb bordrr"><span style="font-size: 16px;text-align: center;">{{vehicle?.Year}}</span></td>
+    <td style="text-align: center; font-size: 12px; width: 5%;" class="bordrb small_textsec fontText">MODEL:</td>
+    <td style="text-align: center; font-size: 16px;  width: 10%;" class="bordrb bordrr fontText">{{vehicle?.Model}}</td>
+    <td style="font-size: 12px; width: 5%;text-align: center;" class="bordrb small_textsec fontText">V.I.N.:</td>
+    <td style="text-align: center; font-size: 16px;  width: 20%;" class="bordrb bordrr fontText">{{vehicle?.VIN}}</td>
+
+    <!-- VEHICLE TYPE CHECKBOXES -->
+    <td style="text-align: center; font-size: 17px; width: 15%;" class="bordrb bordrr">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;border-left: 0px solid black; "></td>
+          <td><span style="font-size: 11px;">PP</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">SPEC</span></td>
+          <td><input class="form-check-input" type="checkbox" style="margin: 0;"></td>
+          <td><span style="font-size: 11px;">COML</span></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- Empty Columns with Widths -->
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb bordrr" style="width: 5%;">&nbsp;</td>
+    <td class="bordrb" style="width: 10%;">&nbsp;</td>
+  </tr>
+    
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;"  colspan="2"><span style="margin-top: 2px;margin-bottom: 2px;"></span>GARAGING ADDRESS</td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"  colspan="2"><span style="margin-top: 1px;">STREET (Required in KY)</span><br> </td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" colspan="2"><span style="margin-top: 1px;">CITY</span><br> </td>   
+        <td class="bordrr  bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" colspan="2" valign="top" ><span style="margin-top: 1px;">COUNTY</span><br> </td>    
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top" ><span style="margin-top: 1px;">STATE</span> <br></td>
+        <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 12px;" valign="top"><span style="margin-top: 1px;">ZIP</span><br> </td>
+      
+       
+      </tr>
+    
+    
+      
+    
+    
+    
+   
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left:1px solid #000;border-right: 1px solid black;table-layout: fixed; border-collapse: collapse;">
+      <tr>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 4%;">LIC STATE <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">TERR <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"   style="font-size: 11px;text-align: center;width: 10%;">GVW / GCW <br/> <br/></td>
+        <td class="bordrr bordrb small_textsec fontText"  valign="top"  style="font-size: 12px;text-align: center;width: 5%;">CLASS<br/></td>
+        <td class=" bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SIC <br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">FACTOR <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">SEAT CP <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText" valign="top"  style="font-size: 12px;text-align: center;width: 5%;">RADIUS <br/><br/></td>
+        <td class="bordrr bordrb small_textsec fontText"valign="top"   style="font-size: 12px;text-align: center;width: 15%;">FARTHEST TERMINAL <br/><br/></td>
+        <td class="bordrb small_textsec fontText" valign="top"   style="font-size: 12px;text-align: center;width: 10%;">COST NEW <br/></td>
+       
+      </tr>
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border-left: 1px solid black;border-right: 1px solid black;">
+            <tr>
+              <td  class="fontText" style="padding: 0;">
+              <span style="font-size: 12px; margin-left: 3px;margin-top: 5px;font-weight:bold">USE</span>
+ 
+   <div class="box-group" style="margin-top: 8px;">
+    <div class="box-item">
+      <div class="square-box"style="border-left: 0px solid black;"></div>
+      <span style="font-size: 11px;  margin-left: 3px;"class="fontText">PLEASURE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-left: 0px solid black;border-top: 0px solid black;border-bottom: 0px solid;"></div>
+      <span  style="font-size: 10px;  margin-left: 3px;"class="fontText">FARM</span>
+    </div>
+
+  
+  </div>
+</td>
+
+  <td valign="top" style="padding: 0;">
+    <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">COMM'L</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">RETAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SERVICE</span>
+    </div>
+  </div>
+</td>
+  <td valign="top" style="padding: 0;">
+  <!-- <table style="border-collapse: collapse; font-size: 11px;">
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0; font-size: 11px;">FOR HIRE</td>
+    </tr>
+    <tr>
+      <td style="padding: 0;"><input type="checkbox" /></td>
+      <td style="padding: 0;"></td>
+    </tr>
+  </table> -->
+   <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;  margin-left: 3px;">FOR HIRE</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RETAIL</span> -->
+    </div>
+
+   
+  </div>
+</td>
+
+  <!-- Repeated inner tables - now space-reduced -->
+  <td valign="top" style="padding: 0;">
+    
+   
+    <div class="layout">
+   
+    <div class="left-line">
+    <div class="v-line "></div>
+      
+    </div>
+
+    <!-- Right side: Label and boxes -->
+    <div class="">
+      <div class="fontText" style="line-height: 1;margin-top: 0px; margin-left: 5px; font-size: 11px;font-weight:bold">CHECK <br /> OVERAGES</div>
+  <div class="box-group" style="margin-top: 3px;">
+    <div class="box-item">
+      <div class="square-box"></div>
+      <span class="fontText"  style="font-size: 10px; margin-left: 3px;">LIAB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom: 0px solid black;"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 3px;">NO-FAULT</span>
+    </div>
+
+   
+  </div>
+    </div>
+  </div>
+
+  </td>
+
+  <td valign="top" style="padding: 0;">
+  
+
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px; margin-left: 3px;" class="fontText">ADD'L<br/>NOE-MAIL</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">MED PAY</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNINS<br/> MOTOR</span>
+    </div>
+  </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+
+       <div class="box-group">
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;" class="fontText">UNDRINS <br/> MOTOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">TOWING <br/> & LABOR</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;"class="fontText">SPECCOFL</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">F</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FT</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FTW</span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" style="padding: 0;">
+   
+     <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">LSP</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COMP/OTC</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">COLL</span>
+    </div>
+      </div>
+  </td>
+  <td valign="top" style="padding: 0;">
+   
+
+      <div class="box-group">
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <!-- <span style="font-size: 11px;">RENT REIMB</span> -->
+       <span style="font-size: 10px; margin-left: 3px;margin-right: 3px;"class="fontText">RENT <br/> REIMB</span>
+    </div>
+
+    <div class="box-item">
+      <div class="square-box"style="border-top: 0px solid black;"></div>
+      <span style="font-size: 10px;  margin-left: 3px;margin-right: 3px;"class="fontText">FG</span>
+    </div>
+
+    <div class="box-item" style="border-top: white;">
+      <div class="square-box"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span style="font-size: 11px;"></span>
+    </div>
+      </div>
+  </td>
+
+  <td valign="top" class="bordrr" style="padding: 0;border-left: 1px solid black;">
+    <table style="border-collapse: collapse;">
+      
+    <div class="horizontal-box-row">
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 11px;font-weight:bold;margin-left:2px">DEDUCTIBLES</span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box" style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">ACV</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+      <div class="black-box1"style="border-left:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:9px">AA <span style="margin-left: 9px;"></span> </span>
+    </div>
+
+    <div class="box-with-label1">
+      <div class="black-box1"></div>
+      <span class="fontText" style="font-size: 10px;margin-left: 2px;">ST AMT</span>
+    </div>
+
+   
+  </div>
+   <div class="horizontal-box-row1">
+    <div class="box-with-label1">
+     
+      <span class="fontText" style="margin-top: 7px;font-size: 11px; margin-left: 2px;">$</span>
+    </div>
+
+   
+
+   
+  </div>
+
+    </table>
+  </td>
+
+  <td valign="top"  style="padding: 0;">
+    <table style="border-collapse: collapse; font-size: 11px;">
+   <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      <div class="black-box"style="border-left:0px solid black;border-top:0px solid black"></div>
+      <span class="fontText" style="font-size: 10px;margin-left:2px">COMP/ <br/> OTC </span>
+    </div>
+
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top:0px solid black"></div>
+      <span class="fontText"style="font-size: 10px;margin-left:2px">SPEC <br/> C OF L </span>
+    </div>
+
+   
+    </div>
+    <div class="horizontal-box-row">
+    <div class="box-with-label1">
+      
+      <span class="fontText" style="font-size: 10px;margin-left:2px"> $ </span>
+    </div>
+
+    
+    </div>
+    <div class="horizontal-box-row" style="border-top: 1px solid black;margin-top: 11px;">
+    <div class="box-with-label1">
+    
+      <span class="fontText" style="font-size: 10px;margin-left:2px;margin-top: 8px;"> $ </span>
+    </div>
+
+    <div class="box-with-label">
+      
+      <span class="fontText"style="font-size: 10px;margin-left:80px;margin-top: 8px;">COLL</span>
+    </div>
+    </div>
+  
+ 
+     
+    </table>
+  </td>
+</tr>
+
+      
+              
+    </table>
+    <table width="100%"  cellpadding="0" cellspacing="0" style="border:1px solid #000;padding: 0;">
+        <tr>
+  <td class=" bordrb  small_textsec fontText" style="font-size: 11px; width: 20%;">
+   <span  style="line-height: 1; margin-left: 2px;margin-top: 3px;"> DRIVE TO WORK <br/> <span style="margin-left: 2px;">SCHOOL</span> </span>
+  </td>
+  <td class=" bordrb" style="width: 10%;">
+     <div class="box-with-label">
+      <div class="black-box1" style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class="fontText" style="font-size: 11px;">< 15 MILES </span>
+    </div>
+
+    <!-- <input class="form-check-input" type="checkbox" value="" style="margin: 0;" /> -->
+  </td>
+ 
+  <td class=" bordrb bordrr" style="width: 13%; ">
+    <div class="box-with-label">
+      <div class="black-box1"style="border-top: 0px solid black;border-bottom:0px solid black"></div>
+      <span class=" fontText" style="font-size: 11px;">15 MILES + </span>
+    </div>
+  </td>
+ 
+  <td class="bordrb bordrr  small_textsec fontText" style="width: 30%; font-size: 11px;  line-height: 1">
+   <span style="margin-left: 4px;margin-top: 3px;">NET VEH <br/><span style="margin-left: 2px;">DR/CR:</span></span> 
+  </td>
+  <td class="bordrb   small_textsec fontText" style="font-size: 11px;width: 30%;  text-align: center; vertical-align: bottom;">
+   <span > TOTAL PREM: $</span>
+  </td>
+  <td class="bordrb  " style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+   <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%;  text-align: center; vertical-align: top;">
+   
+  </td>
+  <td class="bordrb  small_textfour" style="font-size: 12px;width: 30%; text-align: center; vertical-align: top;">
+   
+  </td>
+</tr>
+
+      <tr>
+        <td colspan="10">
+          <table witdh="100%"  cellpadding="0" cellspacing="0" style="float: left; width: 100%;">
+            <tr>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center; font-size: 11px;padding: 2px;" >LIABILITY</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">NO FAULT</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">ADD'L NO FAULT </td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">MEDICAL PAYMENTS</td>
+              <td class="bordrr bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNINSURED MOTORISTS</td>
+              <td class="bordrb small_textsec fontText" style="text-align: center;font-size: 11px;">UNDERINSURED MOTORISTS</td>
+            </tr>
+            <tr>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText"style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="bordrr fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$</td>
+              <td class="fontText" style="text-align: left;color: #000000;font-size: 12px;margin-left: 2px;padding: 2px;">$ </td>
+            </tr>
+          </table>
+    
+    
+        </td>
+        
+       
+       
+      </tr>
+    </table>
+
+</ng-container>
+
+      <!-- //3// -->
+
+<div class="page-break" *ngIf="ListOfAllDriver?.length > 1">
+            
+           </div>
+
+    <table width="100%"  *ngIf="ListOfAllDriver?.length > 1"   cellpadding="0" cellspacing="0" style="border:0px solid #000;">
+      <tr>
+        <td width="50%"><h3>COMMERCIAL POLICY CHANGE REQUEST - </h3></td>
+      </tr>
+    </table>
+
+    <table width="100%" *ngIf="ListOfAllDriver?.length > 1"   cellpadding="0" cellspacing="0" style="border-top:1px solid #000; border-right:1px solid #000; border-bottom:0px solid #000;border-left:1px solid #000;">
+      <tr>
+        <td width="70%"><h4>DRIVER INFORMATION SCHEDULE</h4></td>
+        <td width="15%"><h4>2329333-CK </h4></td>
+        <td width="5%" align="right"><h4>{{EnteredBy}}</h4></td>
+        <td width="5%" align="right" *ngIf="ListOfAllVehicle?.length <= 2">
+  <h4>PAGE 1</h4>
+</td>
+        <td width="5%" align="right" *ngIf="ListOfAllVehicle?.length > 2"><h4>PAGE 2 </h4></td>
+        <td width="5%" align="right"><h4>OF 1</h4></td>
+      </tr>
+    </table>
+    <table width="100%" *ngIf="ListOfAllDriver?.length > 1"   cellpadding="0" cellspacing="0" style="border-top:1px solid #000; border-right:1px solid #000; border-bottom:0px solid #000;border-left:1px solid #000;">
+      <tr>
+        <td width="100%"><h4>(List drivers who frequently use own vehicles) </h4></td>
+      </tr>
+    </table>
+
+    <table width="100%"  *ngIf="ListOfAllDriver?.length > 1"   cellpadding="0" cellspacing="0" style="border:1px solid #000;">
+      <tr>
+        <td class="small_textfour bordrr bordrb"  align="center">TYPE <br>OF<br/> CHG</td>
+        <td class="small_textfour bordrr bordrb"  align="center">DRV<br/>#</td>
+        <td class="small_textfour bordrr bordrb"  align="center" width="20%">NAME<br> CITY, STATE AND ZIP CODE</td>
+        <td class="small_textfour bordrr bordrb"  align="center">SEX</td>
+        <td class="small_textfour bordrr bordrb"  align="center">MAR <br>STAT</td>
+        <td class="small_textfour bordrr bordrb"  align="center" width="10%">DATE OF BIRTH NO-FAULT USE</td>
+        <td class="small_textfour bordrr bordrb"  align="center">YRS <br>EXP</td>
+        <td class="small_textfour bordrr bordrb" align="center">YEAR <br>LIC</td>
+        <td class="small_textfour bordrr bordrb" align="center" width="20%"> DRIVERS LICENSE NUMBER/<br> SOCIAL SECURITY NUMBER</td>
+        <td class="small_textfour bordrr bordrb" align="center">STATE <br>LIC</td>
+        <td class="small_textfour bordrr bordrb" align="center">DATE <br>HIRE</td>
+        <td class="small_textfour bordrr bordrb" align="center">BROADEN <br>NO-FAUL</td>
+        <td class="small_textfour bordrr bordrb" align="center">DOC</td>
+        <td class="small_textfour bordrr bordrb" align="center">USE <br>VEH #</td>
+        <td class="small_textfour  bordrb" align="center">% <br>USE</td>
+        
+       
+      </tr>
+       <tr *ngFor="let driver of ListOfAllDriver.slice(1); let i = index">
+    <td class="small_textfour bordrr bordrb" align="center" height="50px"></td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.DriverID}}</td> <!-- Display DRV# as index + 2 -->
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.DriverName}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">MALE</td>
+    <td class="small_textfour bordrr bordrb" align="center"> </td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.DateofBirth | date:'MM/dd/yyyy'}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.Experience}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.YearLicensed}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.YearofLicenceIssued | date:'MM/dd/yyyy'}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.StateLicenced}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.DriverStage}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.BroadenNoFault}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.DOC}}</td>
+    <td class="small_textfour bordrr bordrb" align="center">{{driver.UseVehicleNumber}}</td>
+    <td class="small_textfour bordrb" align="center">{{driver.UsePercent}}</td>
+  </tr>
+     
+
+       </table> 
+<br/> <br/><br/>
+    </div>
+    </body>
+ </div>
+  
+  
+    <div  style ="text-align: center;margin-top: 5px;">
+    <button style="width: 300px;color: green;"ngxPrint class="learn-more"[useExistingCss]="true" printSectionId="print-section"  printTitle="m-Trust" >Save And convert PDF 1</button> 
+   </div>
+ 

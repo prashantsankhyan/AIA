@@ -1,0 +1,304 @@
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+ <div class="container-fluid" *ngIf ="!showSpiner">
+ 
+
+
+<div class="scrollable-table-body mt-2">
+  <h4 style="text-align: center;color:#0d6efd"> DRIVER DETAILS</h4>
+<table  class="table table-bordered">
+
+ <thead>
+   <tr>
+     
+     <th>Driver Name</th>
+     <th>Driver Licence No</th>
+     <th>StateLicenced</th>
+     <th>Year of Licence Issued</th>
+     <th>DateofBirth</th>
+     <th>Experience</th>
+     <th>EnteredBy</th>
+    
+     
+    
+   </tr>
+ </thead>
+ <tbody>
+ 
+    <tr *ngFor = "let data of listOfDriver">
+     <td>{{data.DriverName}}</td>
+     <td>{{data.DriverLicenceNo}}</td>
+     
+      <td>{{data.StateLicenced}}</td>
+      <td>{{data.YearofLicenceIssued |date:'MM/dd/yyyy'}}</td>
+      <td>{{data.DateofBirth|date:'MM/dd/yyyy'}}</td>
+      <td>{{data.Experience}}</td>
+      <td>{{data?.EnteredBy}}</td>
+     
+     
+     
+    </tr>
+  
+
+  
+ </tbody>
+
+</table>
+
+</div>
+
+<div class="scrollable-table-body mt-2">
+  <h4 style="text-align: center;color:#0d6efd">Vehicle Details</h4>
+  <table  class="table table-bordered">
+  
+   <thead>
+     <tr>
+       
+       <th>Make</th>
+       <th>Model</th>
+       <th>BodyType</th>
+       <th>VIN</th>
+       <th>Value</th>
+       <th>EnteredBy</th>
+      
+       
+      
+     </tr>
+   </thead>
+   <tbody>
+   
+      <tr *ngFor = "let data of listOfVehicle">
+       <td>{{data.Make}}</td>
+       <td>{{data.Model}}</td>
+       
+        <td>{{data.BodyType}}</td>
+        <td>{{data.VIN }}</td>
+        <td>{{data.Value}}</td>
+        <td>{{data?.EnteredBy}}</td>
+       
+     
+      </tr>
+    
+  
+    
+   </tbody>
+  
+  </table>
+  
+  </div>
+
+
+<h3>Loss Run</h3>
+  <div class="scrollable-table-body mt-2">
+   
+    <table  class="table table-bordered">
+    
+     <thead>
+       <tr>
+         
+         <th>Term</th>
+         <th>TIV</th>
+         <th>APDDeductible</th>
+         <th>MTCDeductible</th>
+         <th>AutoLiabilityDeductible</th>
+         <th>GrossRevenue</th>
+         <th>MTCDeduUnitsatBindctible</th>
+         <th>MaxNumberofUnits</th>
+         <th>UnitsatRenewal</th>
+         <th>Mileage</th>
+        
+        
+         
+        
+       </tr>
+     </thead>
+     <tbody>
+     
+        <tr *ngFor = "let data of LossRunSummaray">
+         <td>{{data.Term}}</td>
+         <td>{{data.TIV}}</td>
+         
+          <td>{{data.APDDeductible}}</td>
+          <td>{{data.MTCDeductible }}</td>
+          <td>{{data.AutoLiabilityDeductible}}</td>
+          <td>{{data.GrossRevenue}}</td>
+          <td>{{data.MTCDeduUnitsatBindctible }}</td>
+          <td>{{data.MaxNumberofUnits}}</td>
+
+          <td>{{data.UnitsatRenewal}}</td>
+          <td>{{data.Mileage }}</td>
+        
+        </tr>
+      
+    
+      
+     </tbody>
+    
+    </table>
+    
+    </div>
+
+
+
+    
+<h3>Auto Liability</h3>
+<div class="scrollable-table-body mt-2">
+ 
+  <table  class="table table-bordered">
+  
+   <thead>
+     <tr>
+       
+       <th>Carrier</th>
+       <th>PolicyNumber</th>
+       <th>PolicyInception</th>
+       <th>PolicyExpiration</th>
+       <th>OpenClaims</th>
+       <th>ClosedClaims</th>
+       <th>TotalNoofClaims</th>
+       <th>Reserve</th>
+       <th>Paid</th>
+       <th>TotalIncurred</th>
+      
+      
+       
+      
+     </tr>
+   </thead>
+   <tbody>
+   
+      <tr *ngFor = "let data of AutoLiability">
+       <td>{{data.Carrier}}</td>
+       <td>{{data.PolicyNumber}}</td>
+       
+        <td>{{data.PolicyInception}}</td>
+        <td>{{data.PolicyExpiration }}</td>
+        <td>{{data.OpenClaims}}</td>
+        <td>{{data.ClosedClaims}}</td>
+        <td>{{data.TotalNoofClaims }}</td>
+        <td>{{data.Reserve}}</td>
+
+        <td>{{data.Paid}}</td>
+        <td>{{data.TotalIncurred }}</td>
+      
+      </tr>
+    
+  
+    
+   </tbody>
+  
+  </table>
+  
+</div>
+
+
+
+<h3>Auto Physical Damage</h3>
+<div class="scrollable-table-body mt-2">
+ 
+  <table  class="table table-bordered">
+  
+   <thead>
+     <tr>
+       
+       <th>Carrier</th>
+       <th>PolicyNumber</th>
+       <th>PolicyInception</th>
+       <th>PolicyExpiration</th>
+       <th>OpenClaims</th>
+       <th>ClosedClaims</th>
+       <th>TotalNoofClaims</th>
+       <th>Reserve</th>
+       <th>Paid</th>
+       <th>TotalIncurred</th>
+      
+      
+       
+      
+     </tr>
+   </thead>
+   <tbody>
+   
+      <tr *ngFor = "let data of AutoPhysicalDamage">
+       <td>{{data.Carrier}}</td>
+       <td>{{data.PolicyNumber}}</td>
+       
+        <td>{{data.PolicyInception}}</td>
+        <td>{{data.PolicyExpiration }}</td>
+        <td>{{data.OpenClaims}}</td>
+        <td>{{data.ClosedClaims}}</td>
+        <td>{{data.TotalNoofClaims }}</td>
+        <td>{{data.Reserve}}</td>
+
+        <td>{{data.Paid}}</td>
+        <td>{{data.TotalIncurred }}</td>
+      
+      </tr>
+    
+  
+    
+   </tbody>
+  
+  </table>
+  
+</div>
+
+
+
+<h3>Moter Truck Cargo</h3>
+<div class="scrollable-table-body mt-2">
+ 
+  <table  class="table table-bordered">
+  
+   <thead>
+     <tr>
+       
+       <th>Carrier</th>
+       <th>PolicyNumber</th>
+       <th>PolicyInception</th>
+       <th>PolicyExpiration</th>
+       <th>OpenClaims</th>
+       <th>ClosedClaims</th>
+       <th>TotalNoofClaims</th>
+       <th>Reserve</th>
+       <th>Paid</th>
+       <th>TotalIncurred</th>
+      
+      
+       
+      
+     </tr>
+   </thead>
+   <tbody>
+   
+      <tr *ngFor = "let data of MoterTruckCargo">
+       <td>{{data.Carrier}}</td>
+       <td>{{data.PolicyNumber}}</td>
+       
+        <td>{{data.PolicyInception}}</td>
+        <td>{{data.PolicyExpiration }}</td>
+        <td>{{data.OpenClaims}}</td>
+        <td>{{data.ClosedClaims}}</td>
+        <td>{{data.TotalNoofClaims }}</td>
+        <td>{{data.Reserve}}</td>
+
+        <td>{{data.Paid}}</td>
+        <td>{{data.TotalIncurred }}</td>
+      
+      </tr>
+    
+  
+    
+   </tbody>
+  
+  </table>
+  
+</div>
+  
+
+<button class="btn btn-success mb-3" (click)="exportToExcel()">Export to Excel</button>
+
+</div>

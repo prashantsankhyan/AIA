@@ -1,0 +1,75 @@
+<div *ngIf ="showSpiner">
+<app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+<div class="container-fluid page-background" >
+ 
+ 
+
+
+
+
+ 
+    
+
+ 
+  
+ 
+   <!-- <div class="row mt-2">
+    <div class="col-sm-1">
+     <button class="btn btn-outline-primary" style="font-size: xx-small;" (click) ="addEditAttachement($event)">Attach File Here</button>
+    
+ 
+    </div>
+    <div class="col-sm-3">
+      <input type="text" name="search"id="search"class="form-control "[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="border-radius: 35px;font-size: xx-small;">
+    </div>
+   </div> -->
+ 
+
+   
+      <div class=" scrollable-table-body mt-3" >
+        
+       <table  class="table table-bordered">
+             <thead >
+               <tr>
+             
+                 <th style="width: 100px;">HoldingID</th>
+                
+                  <th style="width: 600px;">Description</th>
+                
+                 
+                 
+               
+                 <th style="width: 100px;"> Attach</th>
+                  <th style="width: 100px;">Date </th>
+                 
+                 <th style="width: 100px;">Enter By </th>
+                 <th style="width: 20px;"></th>
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor ="let data of listOfAllFatchData" >
+              
+                 <td style="width: 100px;">{{data.HoldingID}}</td>
+                  <td style="width: 600px;">{{data.Description}}</td>
+                 
+                
+                
+                <td style="width: 100px;">{{data.AttachedBy}}</td>
+                <td style="width: 100px;">{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+                <td style="width: 100px;">{{data.EnteredBy}}</td>
+                <td><span (click)="onClickDataGetClick(data)"><i class="fa fa-eye" aria-hidden="true"></i></span></td>
+                
+             
+               </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+</div>
+</div>
+

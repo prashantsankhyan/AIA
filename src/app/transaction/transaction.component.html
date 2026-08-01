@@ -1,0 +1,242 @@
+<app-transaction-nav-bar></app-transaction-nav-bar>
+<div *ngIf ="showSpiner">
+<app-spinner></app-spinner>
+</div>
+<div  *ngIf ="!showSpiner">
+
+ <div class="container-fluid page-background">
+
+   
+    
+ 
+  
+     <div class ="row mt-2" >
+       <div class="col-sm-4">
+        <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ARDue" 
+         (ngModelChange)="onARDueChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By AR Due</button>
+	     </div>
+        
+       </div>
+       <div class="col-sm-4">
+         <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.GenerateInvoice" (ngModelChange)="onGenerateInvoiceChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By GE Date</button>
+	     </div>
+      </div>
+      <div class="col-sm-4">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.Child_EffectiveDate" (ngModelChange)="onChild_EffectiveDateChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By EF Date</button>
+	     </div>
+        
+      </div>
+      <div class="col-sm-4 mt-2">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.Child_ExpirationDate" (ngModelChange)="onChild_ExpirationDateChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By EX Date</button>
+	     </div>
+      
+      </div>
+    
+         <div class="col-sm-4 mt-2">
+        <div class="d-grid" style="text-align: right;" *ngIf ="submitFormAlert">
+      
+        <button class="btn bHeight" style="height: 35px;font-size: small;background-color: #1397d5;color: white;" (click)="goToAttachement()" > ATTACHMENT OF FILE HERE</button>
+       
+       </div>
+      
+      </div>
+      <div class="col-sm-2 mt-2">
+         <div class="d-grid" style="text-align: right;" *ngIf ="submitFormAlert">
+      
+        <button class="btn bHeight" style="height: 35px;font-size: small;background-color: #1397d5;color: white;" (click)="submitForm()" > Genrate Invoice ID  Here</button>
+       
+       </div>
+       <div class="" style="text-align: right;" *ngIf ="!submitFormAlert">
+         <p style="color: red; font-size: small;">Getting Invoice Id </p>
+       
+       </div>
+
+      </div>
+      <div class="col-sm-2 mt-2" style="text-align: right;">
+         
+       <div class=" d-grid" style="text-align: right;">
+        <!-- <input type="text" name="search"class="form-control" [(ngModel)]="searchCriteria.enteredBy" (ngModelChange)="onEnteredByChange($event)" placeholder="Search Enter By" style="border-radius: 40px;"> -->
+
+         <button class="btn bHeight" style="height: 35px;font-size: small; background-color: #1397d5;color: rgb(196, 244, 196);" (click)="addEditTransactions($event)" >ADD TRANSACTION DETAIL </button>
+      </div>
+      </div>
+      
+       
+    
+      </div>
+
+       
+  
+    <div class="scrolling mt-2">
+
+    
+       <table  class="table table-bordered " >
+         <thead class="">
+           <tr >
+             <th scope="col">SR.NO</th>
+             <th scope="col">InID</th>
+             <th scope="col">Policy Name </th>
+             <th scope="col">Policy Date</th>
+             
+             <th scope="col">Generate </th>
+             <th scope="col">ARDue Date </th>
+           
+            
+             <th scope="col">Description</th>
+             <th scope="col">Amount</th>
+             <!-- <th scope="col"> Fee</th>
+            
+             <th scope="col">SurpluxTax</th>
+             
+            
+             <th scope="col">Financed</th>
+             <th  scope="col">ADiscount</th>
+             <th scope="col">AgencyFees</th> -->
+
+             <th scope="col"> Balance</th>
+             
+             <th scope="col">EnterBy</th>
+             <th scope="col"> Received</th>
+             
+             <th scope="col"></th>
+           
+             <th scope="col"></th>
+   
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor ="let data of listOfTransactions |  searchTransactionfilter: searchCriteria" >
+            <td style="width: 10px;">{{data.SrNo}}</td>
+           
+             <td style="width: 10px;">{{data.InvoiceID}}</td>
+             <td >{{data.LineShortName}}-{{data.LineName}} </td>
+             <td>{{data.Child_EffectiveDate |date:'MM-dd-yyyy'}}- {{data.Child_ExpirationDate | date:'MM-dd-yyyy'}}</td>
+            
+             <td>{{data.GenerateInvoice | date:'MM-dd-yyyy'}}</td>
+             <td> {{data.ARDue | date:'MM-dd-yyyy'}}</td>
+            
+             <td >{{data.Service == 0 ? data.ChildPolicy_Description : data.Endorsement_Description}}  </td>
+            
+             <td >{{data.Amount  | currency:'USD':'symbol':'1.2-2'}}</td>
+            
+             <!-- <td >{{data.PolicyFee  | currency:'USD':'symbol':'1.2-2'}}</td>
+             <td >{{data.SurpluxTax  | currency:'USD':'symbol':'1.2-2'}}</td>
+            
+            
+           
+           
+             <td>{{data.CompanyFinanced  | currency:'USD':'symbol':'1.2-2'}}</td>
+             <td>{{data.AgencyDiscount  | currency:'USD':'symbol':'1.2-2'}}</td>
+
+             <td>{{data.AgencyFees  | currency:'USD':'symbol':'1.2-2'}} </td>  -->
+             <td><span style="color: red; font-weight: 500;">{{data.OpeningBalance | currency:'USD':'symbol':'1.2-2'}}</span></td>
+              
+               <td>{{data.EnteredBy }}</td>
+               <td style="color: green;">{{data.TotalRecievedAmount | currency:'USD':'symbol':'1.2-2'}}</td>
+              
+               <td > 
+                <span *ngIf ="data.OpeningBalance !== 0"style="margin-left:15px"><input type="checkbox" class="form-check-input" value="{{data.TransactionID}}" 
+                 (change)="cehckboxcehck($event)">
+                </span>
+               <span *ngIf ="data.OpeningBalance == 0"  style="color: green;"><i class="fa fa-check" aria-hidden="true"></i></span>
+               </td>
+            
+           
+              
+            
+              <td style="width: 10;">
+                <a [matMenuTriggerFor]="menu">  <i class="fa fa-cog" aria-hidden="true"></i></a>
+               
+              <mat-menu #menu="matMenu">
+                 <button   mat-menu-item   (click)="addEditTransactions(data)">
+                   <mat-icon>edit</mat-icon>
+                   <span >Edit</span>
+                 </button>
+                  <button   mat-menu-item   (click)="viewTransactions(data)">
+                   <mat-icon>visibility</mat-icon>
+                   <span >View</span>
+                 </button>
+                 
+                 <button *ngIf ="data.OpeningBalance !== 0" mat-menu-item (click)="manageBalance(data)">
+                   <mat-icon>balance</mat-icon>
+                   <span>Manage Balance</span>
+                 </button>
+                 <button  mat-menu-item  (click)="displayDataBrokerMG(data)">
+                   <mat-icon>balance</mat-icon>
+                   <span>MG & Carrier Name</span>
+                 </button>
+                 <button  mat-menu-item (click) ="addInvoice(data)">
+                   <mat-icon >picture_as_pdf</mat-icon>
+                   <span> Invoice</span>
+                 </button>
+                  <button *ngIf ="data.OpeningBalance == 0"  mat-menu-item (click) ="receipt(data)">
+                   <mat-icon >picture_as_pdf</mat-icon>
+                   <span> Receipt</span>
+                 </button>
+               </mat-menu> 
+              </td>
+               <!-- <td></td>
+             <td><a href="javascript:void(0)" ><mat-icon></mat-icon></a></td> -->
+            
+   
+             
+           </tr>
+          
+         </tbody>
+         
+       </table>
+      </div>
+ 
+   <table class="table">
+     <thead >
+       <tr>
+       
+       </tr>
+     </thead>
+     <tbody>
+       <tr >
+        
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+        
+         <td></td>
+         <td></td>
+         <td></td>
+         <td><p >Total Opening Balance</p></td>
+         <td></td>
+         
+         <td> <p >{{TotalBalance | currency}}</p></td>
+       </tr>
+      
+     
+     </tbody>
+   </table>
+  
+
+    
+     
+
+  
+   
+      
+   </div>
+ </div>
+
+
+

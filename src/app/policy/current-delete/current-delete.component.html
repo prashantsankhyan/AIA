@@ -1,0 +1,59 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div class="container-fluid" *ngIf ="!showSpiner">
+
+   <div class="row mt-2 mb-2">
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="search expire policy">
+
+    </div>
+   
+    <div class="col-sm-9" style="text-align: right;">
+      <a><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+      
+
+    </div>
+
+   </div>
+   <table  class="table " >
+ 
+     <thead>
+       <tr>
+         <th >Line Name</th>
+         <th>Effective-Expiration</th>
+        
+         <th>Broker Name</th>
+         <th>Carrier</th>
+         
+         <th>Description</th>
+         <th>Type</th>
+         <th>Staus</th>
+       </tr>
+     </thead>
+     <tbody>
+      
+       
+         <tr *ngFor ="let data of listDeletePolicy" >
+           <td ><span>{{data.LineName}}/{{data.LineShortName}}</span></td>
+           <td ><span>{{data.Effective | date :'MM/dd/yyyy'}}-{{data.Expiration | date :'MM/dd/yyyy'}}</span></td>
+          
+           <td >{{data.BrokerName}}</td>
+           <td >{{data.IssuingCompanyName}}</td>
+           <td >{{data.Description}}</td>
+           <td >{{data.StageType}}</td>
+           
+           <td >{{data.Policy_Status}}</td>
+           <td><span style="background-color: black;color: white;">{{data.HighLightPolicy == false ?'':'Going To expire'}}</span></td>
+         
+          </tr>
+        
+       
+     
+     </tbody>
+    
+   </table>
+ 
+
+
+</div>

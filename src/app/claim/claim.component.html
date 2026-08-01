@@ -1,0 +1,86 @@
+<app-claim-nav-bar></app-claim-nav-bar>
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid" style="background-color: white;">
+   
+
+  
+ 
+       
+       <div class="col-sm-3 mt-2">
+           <input type="text" [(ngModel)] ="LineName" name="search"id="search"class="form-control mt-1" placeholder="--Search--" style="border-radius: 40px;">
+         </div>
+     <div class="scrolling mt-2" > 
+     
+       <table  class="table table-bordered" style="margin:0 auto;" >
+           <thead  class="" >
+             <tr>
+               <th>Policy  </th>
+               <th>Claim Number</th>
+               <th>Clame  </th>
+               <th>Driver   </th>
+               <th>Truck    </th>
+               <th>Trailer    </th>
+               <th>Date of Loss </th>
+              
+              
+               <th> ReportedTo</th>  
+               
+               
+               <th></th>
+               </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor ="let data of allList" (dblclick)="getListOfAdjustors(data)">
+               <td >{{data.LineName}} </td>
+               <td>{{data.ClaimNumber}}</td>
+               <td>{{data.ClaimType}}</td>
+               <td>{{data.DriverName == null ? data.Driver :data.DriverName }}   <br/><span class="badge bg-dark">{{data.DriverLicenceNo}}</span></td>
+               <td>{{data.Truck_VIN == null ? data.Truck:data.Truck_VIN}} <br/><span class="badge bg-dark">{{data.Truck_BodyType}}</span></td>
+               <td>{{data.Trailer_VIN == null ? data.Trailer:data.Trailer_VIN}} <br/><span class="badge bg-dark">{{data.Trailer_BodyType}}</span></td>
+              <td>{{data.DateofLoss|date:'dd/MM/yyyy'}}</td>
+              <td>{{data.DateReported  |date:'dd/MM/yyyy'}} </td>
+              <td>{{data.ReportedTo}}</td>
+             
+              <td *ngIf ="!data.IsQADone == true">
+               <span class="badge bg-success">New</span>
+            </td>
+            <td *ngIf ="data.IsQADone == true">
+             <span class="badge bg-danger">Checked</span>
+          </td>
+              <td>
+               <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+               <mat-menu #menu="matMenu">
+                
+                 <button mat-menu-item   class="mr-5"  (click)="addSuccessFully(data)">Confirm Here</button>
+                 <button mat-menu-item    class="mr-5" (click)="addEditClaim(data)" >Edit Data</button>
+               <button mat-menu-item (click)="getListOfAdjustors(data)"> Adjustors</button>
+               <button mat-menu-item  (click)="moveToClaima(data)"  class="mr-5" style=" color: red;"> Move Claim</button>
+                 <!-- <button mat-menu-item class="mr-5" routerLink="/detailLayout/claim/claim">pdf</button> -->
+           
+              
+               
+             </mat-menu></td>
+            </tr>
+            
+            
+     
+          
+            
+          
+             
+           
+           
+            
+           </tbody>
+         </table>
+   </div>
+   
+ 
+</div>
+</div>
+
+ 

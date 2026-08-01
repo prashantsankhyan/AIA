@@ -1,0 +1,288 @@
+
+
+
+	
+
+
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{
+	margin:0in;
+	font-size:8.0pt;
+	font-family:"Tahoma",sans-serif;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.BalloonTextChar
+	{
+	
+	font-family:"Tahoma",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:22.5pt .8in .7in .8in;}
+div.WordSection1
+	{page:WordSection1;
+
+		
+	display: table-cell;}
+@page WordSection2
+	{size:8.5in 11.0in;
+	margin:.7in .8in .7in .8in;}
+div.WordSection2
+	{page:WordSection2;}
+@page WordSection3
+	{size:8.5in 11.0in;
+	margin:22.5pt .8in 27.0pt .8in;}
+div.WordSection3
+	{page:WordSection3;}
+@page WordSection4
+	{size:8.5in 11.0in;
+	margin:.7in .8in 9.0pt .8in;}
+div.WordSection4
+	{page:WordSection4;}
+@page WordSection5
+	{size:8.5in 11.0in;
+	margin:.7in .8in .7in .8in;}
+div.WordSection5
+	{page:WordSection5;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+
+	input {
+		border: 0;
+
+}
+
+input[type="checkbox"]{
+	-webkit-appearance: initial;
+	appearance: initial;
+	background: rgb(255, 255, 255);
+	width:15px;
+	height:15px;
+	border: 1px solid #bbbbbb ;
+	position: relative;
+	border-radius: 0px;
+	margin: 0px 2px;
+	}
+	input[type="checkbox"]:checked:after {
+		/* Heres your symbol replacement */
+		content: "X";
+		margin: 0px;
+		
+		color: rgb(14, 14, 14);
+		/* The following positions my tick in the center, 
+			* but you could just overlay the entire box
+			* with a full after element with a background if you want to */
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+		/*
+			* If you want to fully change the check appearance, use the following:
+			* content: " ";
+			* width: 100%;
+			* height: 100%;
+			* background: blue;
+			* top: 0;
+			* left: 0;
+			*/
+}
+
+input[type="checkbox"]:checked {
+	background: rgb(255, 255, 255); margin: 0px;
+}
+input[type="checkbox"]{
+	-webkit-appearance: initial;
+	appearance: initial;
+	background: rgb(255, 255, 255);
+	width:15px;
+	height:15px;
+	border: 1px solid #bbbbbb ;
+	position: relative;
+	border-radius: 0px;margin: 0px 2px;
+	}
+
+
+	
+
+
+
+
+	//
+
+	
+input[type="checkbox1"]{
+	-webkit-appearance: initial;
+	appearance: initial;
+	background: rgb(255, 255, 255);
+	width:19px;
+	height:19px;
+	border: 1px solid #bbbbbb ;
+	position: relative;
+	border-radius: 0px;margin: 0px 2px;
+	}
+	input[type="checkbox1"]:checked:after {
+		/* Heres your symbol replacement */
+		content: "X";margin: 0px;
+		color: rgb(14, 14, 14);
+		/* The following positions my tick in the center, 
+			* but you could just overlay the entire box
+			* with a full after element with a background if you want to */
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+		/*
+			* If you want to fully change the check appearance, use the following:
+			* content: " ";
+			* width: 100%;
+			* height: 100%;
+			* background: blue;
+			* top: 0;
+			* left: 0;
+			*/
+}
+
+input[type="checkbox1"]:checked {
+	background: rgb(255, 255, 255); margin: 0px;
+}
+input[type="checkbox1"]{
+	-webkit-appearance: initial;
+	appearance: initial;
+	background: rgb(255, 255, 255);
+	width:19px;
+	height:19px;
+	border: 1px solid #bbbbbb ;
+	position: relative;
+	border-radius: 0px;margin: 0px 2px;
+	}
+
+	
+button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: inherit;
+	font-family: inherit;
+	&.learn-more {
+			font-weight: 600;
+		
+			text-transform: uppercase;
+			padding: 1.25em 2em;
+		
+		
+			border-radius: 0.75em;
+			transform-style: preserve-3d;
+			transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+			&::before {
+					position: absolute;
+					content: '';
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+				
+					border-radius: inherit;
+				
+					transform: translate3d(0, 0.75em, -1em);
+					transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+			}
+			&:hover {
+			
+					transform: translate(0, 0.25em);
+				
+			}
+		
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1340px) {
+ .scrolling{
+  height:520px;  
+  overflow:scroll;
+ }
+ 
+}
+@media screen and (min-width: 1340px) and (max-width: 1540px) {
+ .scrolling{
+  height:520px;  
+  overflow:scroll;
+ }
+}
+@media screen and (min-width: 1569px) and (max-width: 1800px) {
+ .scrolling{
+ height:600px;  
+ overflow:scroll;
+}
+}
+@media screen and (min-width: 1800px) and (max-width: 2200px) {
+ .scrolling{
+  height:720px;  
+  overflow:scroll;
+ }
+
+}
+
+@media print {
+	@page {
+			size: auto !important; /* Use default page size */
+			margin: 0 !important; /* Remove default margins */
+	}
+
+	/* Remove any browser-generated headers and footers */
+	
+
+	/* Hide any unwanted elements like page numbers */
+	header, footer {
+			display: none !important;
+			visibility: hidden;
+	}
+}
+
+
+.page-break {
+	page-break-after: always;
+}

@@ -1,0 +1,205 @@
+
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+  <div class="container-fluid">
+      <div class="row p-1">
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.DriverName" (ngModelChange)="onDriverNameChange($event)"  
+               />
+                <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Driver</button>
+      </div>
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.DriverLicenceNo" (ngModelChange)="onDriverLicenceNoChange($event)"  
+               />
+               <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By LIC No</button>
+      </div>
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.StateLicenced" (ngModelChange)="onStateLicencedChange($event)" 
+               />
+                <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By State</button>
+      </div>
+     <div class="col-6 col-lg-6">
+          <div class="d-flex flex-wrap gap-3 mt-2">
+  <div  class="body-type-pill">
+    <span class="material-symbols-rounded icon">
+      👨‍✈️ 
+    </span>
+    <span class="text">Number Of Driver : {{driverLength}}</span>
+  </div>
+</div>    
+      </div>
+
+   
+
+       <div class="col-6 col-lg-6 col-sm-6 mt-2" style="text-align: right;" *ngIf="showSaveButtion">
+        
+                <button type="button" class="btn btn--primary  uppercase"(click)="replaceDataByExcleFile($event)" style="margin-right: 2px;background-color: #dc3545;color: white">🔴 Replace  </button>
+                <button type="button" class="btn btn--primary  uppercase"(click)="addDataByExcelFile($event)" style="margin-right: 2px;background-color: #fd7e14;">💡 Import </button>
+                <button type="button" class="btn btn--primary  uppercase " (click)="addEditDriver($event)"  style="background-color: #198754;color: white;">👩‍✈️Driver </button>
+      </div>
+      
+     <div class="col-sm-12 " style="text-align: right;">
+        <a href="javascript:void(0)"  class="" (click)="exportToExcel()">
+          📊
+        </a>
+
+      </div>
+    </div>
+ 
+  
+    
+        <!-- <div class="row">
+          <div class="col-sm-2 mt-1">
+            <input type="text"class="form-control"[(ngModel)]="searchCriteria.DriverName" (ngModelChange)="onDriverNameChange($event)" style="font-size: small;color: black;font-family: sans-serif;" placeholder="Search By  Name">
+          </div> 
+          <div class="col-sm-2 mt-1 ">
+            <input type="text" class="form-control"[(ngModel)]="searchCriteria.DriverLicenceNo" (ngModelChange)="onDriverLicenceNoChange($event)" style="font-size: small;color: black;font-family: sans-serif;" placeholder="Search By L.No">
+          </div>
+           <div class="col-sm-2 mt-1">
+             <input type="text"class="form-control"[(ngModel)]="searchCriteria.StateLicenced" (ngModelChange)="onStateLicencedChange($event)" style="font-size: small;color: black;font-family: sans-serif;"placeholder="Search By State">
+           </div>
+           
+  
+                     <div class="col-sm-6 mt-1" style="text-align: right;" *ngIf ="showSaveButtion">
+               
+                <a  class="d-none d-sm-inline-block btn btn-sm  shadow-sm"style="margin-right: 10px;background-color: #1397d5;color: white;font-family: sans-serif;" (click)="replaceDataByExcleFile($event)"><i class="fas fa-check fa-sm text-white-50"></i> Replace File </a>
+                <a  class="d-none d-sm-inline-block btn btn-sm shadow-sm"style="margin-right: 10px;background-color: #1397d5;color: white;font-family: sans-serif;" (click)="addDataByExcelFile($event)"><i class="fas fa-check fa-sm text-white-50"></i> Import File </a>	
+                <a  class="d-none d-sm-inline-block btn btn-sm shadow-sm"style="margin-right: 10px;background-color: #1397d5;color: white;font-family: sans-serif;" (click)="addEditDriver($event)"><i class="fas fa-check fa-sm text-white-50"></i>Add  Driver</a>
+               
+            </div>
+        
+     
+  </div> -->
+
+    
+   
+    
+   
+    <!-- <div class="row p-2">
+      <div class="col-sm-3"  >
+      <span style="font-family: sans-serif;color: #1397d5;">Number Of Drivers: {{driverLength}}</span>  
+      </div>
+      <div class="col-sm-9 mt-3" style="text-align: right;">
+        <a href="javascript:void(0)" style="color:#1397d5;" class="" (click)="exportToExcel()">
+          <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+        </a>
+
+      </div>
+    </div> -->
+     <div class="scrolling"  >
+        
+          <table  class="table table-bordered table-hover dt-responsive">
+            <thead>
+              <tr>
+                <th>#</th>
+               <th> Name</th>
+                
+                <th>Date Of Birth</th>
+                <th>Issued</th>
+                <th>State </th>
+                <th>Licence No</th>  
+                <th>Age</th> 
+                <th>Experience</th>
+                <th> Stage</th>
+                <th> Type</th>
+                <th>Enter</th>
+                <th *ngIf="showSaveButtion">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>    
+               <tr  *ngFor ="let data of listOfAllDriver|searchDriver:searchCriteria  ;let i = index">
+                 <td>{{i + 1}}</td>
+                 <td>{{data?.DriverName}}</td>
+                
+               
+                 <td>{{data?.DateofBirth |date: 'MM/dd/yyyy'}}</td>
+                 <td>{{data?.YearofLicenceIssued |date: 'MM/dd/yyyy'}}</td>
+                 <td>{{data?.StateLicenced}}</td>
+                 <td>{{data?.DriverLicenceNo}}</td>
+                 <td>{{data?.Age}}</td>
+                 <td>{{data?.Experience}}</td>
+                 <td> {{
+                  isRealDate(data?.DriverStage)
+                    ? (data?.DriverStage | date: 'MM/dd/yyyy')
+                    : data?.DriverStage
+                }}</td>
+                <td [ngClass]="isAuthorized(data?.AuthType) ? 'force-green' : 'force-yellow'"> {{ capitalizeFirstLetter(data?.AuthType) }}</td>
+                 <td>{{ data?.EnteredBy === '' || data?.EnteredBy == null ? data.UpdatedBy + ' (Updated)' : data.EnteredBy }}</td>
+                 <td>{{data.RenewalStatus =="Fresh" ?'NEW':'RENEW'}}</td>
+
+                 <td *ngIf="showSaveButtion"><i class="material-icons"  [matMenuTriggerFor]="menu"  style="color: #0397d6;">&#xE8B8;</i>
+                  <mat-menu #menu="matMenu">
+                  
+                    <button (click)="addEditDriver(data)" mat-menu-item >Edit Driver</button>
+                    <button (click)="delete(data)" mat-menu-item  style="color: red;">Delete Driver</button>
+                  </mat-menu>
+                </td>
+               </tr>
+             
+           
+             
+            </tbody>
+           
+          </table>
+       
+      </div>
+
+
+
+      <div *ngIf ="!showGetDeleteButton" class="card scrolling mt-3" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+        
+        <table  class="table table-bordered table-hover dt-responsive">
+       
+          <thead>
+            <tr>
+              
+              <th>Driver Name</th>
+              <th>Year of License issued</th>
+              <th>Date Of Birth</th>
+             
+              <th>State Licensed</th>
+              <th>Date of Added</th>  
+              <th>Age</th> 
+              <th>Experience</th>
+              <th>Delete Reason</th>
+              <th>Delete Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+            <tr  *ngFor ="let data of allDeleteDriverList" >
+                 
+              <td>{{data.DriverName}}</td>
+              <td>{{data.YearofLicenceIssued|date: 'MM/dd/yyyy'}}</td>
+             
+              <td>{{data.DateofBirth |date: 'MM/dd/yyyy'}}</td>
+              <td>{{data.StateLicenced}}</td>
+              <td>{{data.DateofAdded |date: 'MM/dd/yyyy'}}</td>
+              <td>{{data.Age}}</td>
+              <td>{{data.Experience}}</td>
+              <td>{{data.DeleteReason }}</td>
+              <td>{{data.DeletedTimeStamp| date:'MM/dd/yyyy'}}</td>
+             
+            
+             </tr>
+             
+           
+         
+           
+          </tbody>
+         
+        </table>
+     
+    </div>
+          
+  
+  
+  </div>
+  
+</div>
+
+

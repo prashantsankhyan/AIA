@@ -1,0 +1,17 @@
+
+  <form [formGroup]="addEditNoteForm">
+ <mat-dialog-content class="mat-typography card">
+ <div class="form-floating">
+  <textarea class="form-control" formControlName="Notes"  placeholder="Leave a Note here"  style="height: 120px; width: 350px;"></textarea>
+  <label style="color: rgba(0, 0, 0, 0.449)">Enter Note Here</label>
+</div>
+</mat-dialog-content>
+  </form>
+
+<mat-dialog-actions align="end">
+   <a *ngIf ="showButton" href="javascript:void(0)"(click)="onSubmit()"> <img src="assets/save_8361323.png" width="50px" height="50px" ></a>
+ 
+   
+   
+</mat-dialog-actions>
+ 

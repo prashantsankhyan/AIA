@@ -1,0 +1,65 @@
+
+<app-policy-nav></app-policy-nav>
+
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+  <div class="container-fluid">
+   
+   
+    
+      <div class="card mt-5 scrolling" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+        <table  class="table table-bordered table-hover dt-responsive" >
+      
+          <thead>
+            <tr>
+              <th >Line Name</th>
+              <th>Line Of  Business</th>
+              <th>Source</th>
+              <th>Effective</th>
+              <th>Expiration</th>
+              <th></th>
+              
+              <th>Working Option</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let data of listOfMarkedPolicy" (dblclick) ="completeNextStep(data)">
+              <td>{{data?.LineShortName}}</td>
+              <td>{{data?.LineName}}</td>
+              <td>{{data?.Source}}</td>
+              <td>{{data?.Effective  | date :'MM/dd/yyyy'}}</td>
+              <td>{{data?.Expiration | date :'MM/dd/yyyy'}}</td>
+              <td  > 
+                <mat-icon style="color: red; font-size: small;" *ngIf="!(data?.AllFieldsFill)">
+                  error
+                </mat-icon>
+                <mat-icon style="color: green; font-size: small;" *ngIf="data?.AllFieldsFill">
+                  check_circle
+                </mat-icon>
+          
+              </td>
+             
+              
+              <td><button mat-button [matMenuTriggerFor]="menu" style="font-size: x-small;height: 12px;">Select </button>
+               <mat-menu #menu="matMenu">
+                 <button mat-menu-item (click)="editMarketd(data)">Edit Marketed</button>
+               
+               </mat-menu>
+             </td>
+            </tr>
+          
+          </tbody>
+         
+        </table>
+      </div>
+      
+     
+  
+   </div>
+ </div>
+
+
+
+

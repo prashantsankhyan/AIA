@@ -1,0 +1,128 @@
+
+ <!-- <h5 style="text-align: center;margin-top: 20px;">Endrosement List</h5> -->
+
+ <div *ngIf ="showEndrosementList">
+  show list
+
+</div>
+<div *ngIf ="!showEndrosementList">
+
+ <div class="container-fluid">
+   <div class="row mt-2 mb-2">
+   
+     <div class="col-sm-9" style="text-align: right;">
+       <a href="javascript:void(0);" (click)="closeModel()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+     
+     </div>
+ </div>
+ 
+ <div *ngIf="listOfAllData">
+ 
+  
+  
+    <ng-container >
+      <div class="scrollable-table-body">
+        <table  class="table table-bordered" >
+ 
+          <thead>
+            <tr>
+              <th>Driver S.NO</th>
+              <th>Name</th>
+              <th> Licence Issued </th>
+              <th>Date of Birth:</th>
+              <th>State Licenced</th> 
+              <th>Licence No</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container >
+              <tr *ngFor="let driver of listOfAllData.Drivers ; let i = index">
+                <td>{{i+1}} -{{ driver.EndorsementID === 0 ? 'By Policy' : 'By Endorsement' }}</td>
+                <td>{{ driver.DriverName }}</td>
+                <td>{{ driver.YearofLicenceIssued | date }}</td>
+              
+                <td>{{ driver.DateofBirth | date }}</td>
+                <td>{{ driver.StateLicenced }}</td>
+                
+                <td>{{ driver.DriverLicenceNo }}</td>
+               
+            
+              
+              </tr>
+            </ng-container>
+           
+            
+            
+           
+          
+          </tbody>
+         
+        </table>
+      </div>
+     
+   </ng-container>
+  
+
+ 
+
+  <ng-container >
+    <div class="scrollable-table-body"> 
+      <table  class="table table-bordered" >
+
+        <thead>
+          <tr>
+            <th style="width: 175px;">Vehicle S.NO</th>
+            <th style="width: 100px;">Type</th>
+            <th style="width: 100px;">Year </th>
+            <th style="width: 200px;">Make</th>
+            <th style="width: 210px;">Model</th> 
+            <th style="width: 210px;">VIN</th>
+            <th>Value</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container >
+            <tr *ngFor="let vehicle of listOfAllData.Vehicles ; let i = index">
+              <td>{{i+1}} - {{ vehicle.EndorsementID === 0 ? 'By Policy' : 'By Endorsement' }}</td>
+              <td>{{ vehicle.VehicleType }}</td>
+              <td> {{ vehicle.Year }}</td>
+            
+              <td>{{ vehicle.Make }}</td>
+              <td>{{ vehicle.Model }}</td>
+              
+              <td>{{ vehicle.VIN }}</td>
+              <td>{{ vehicle.Value | currency }}</td>
+             
+          
+            
+            </tr>
+          </ng-container>
+         
+          
+          
+         
+        
+        </tbody>
+       
+      </table>
+    </div>
+  
+ </ng-container>
+
+
+<ul class="mt-2">
+    <li *ngFor="let remark of listOfAllData.Remarks">
+      <p><strong>Remark:</strong> {{ remark.Remarks }}</p>
+   
+    </li>
+  </ul>
+ 
+</div>
+
+
+ </div>
+</div>
+
+

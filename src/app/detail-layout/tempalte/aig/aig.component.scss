@@ -1,0 +1,105 @@
+/* CSS Document */
+.scrolling{
+ height:550px;  
+ overflow:scroll;
+
+ 
+}
+*{padding:0px; margin:0px;}
+body{ font-family: Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px;}
+#main_div{ width:98%;margin-left: auto; margin-right:auto;}
+#main_div .space{ float:left; width:100%; height:50px;}
+#main_div h4{font-size:18px; text-align: center; width:100%; font-weight:600}
+#main_div .small{font-size:12px; text-align: center; width:100%; float:left; margin-bottom:10px;}
+#main_div .smallbold{font-size:16px; text-align: center; width:100%; float:left; margin-bottom:10px;font-weight:600}
+#main_div .smallboldsec{font-size:14px; text-align: left; width:100%; float:left; margin-bottom:10px;font-weight:600}
+#main_div  table tr td{font-size:14px; padding-bottom:4px; }
+.inputtext{border-bottom:1px solid #000;}
+input[type="text"]{ 
+    border: 0px solid #000 ;width:100%; font-size:16px; color:#666666; height:20px; line-height:20px;
+    }
+input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: rgb(255, 255, 255);
+    width: 20px;
+    height: 20px;
+    border: 0px solid #000 ;
+    position: relative;
+    }
+   
+input[type="checkbox"]:checked {
+    background: rgb(255, 255, 255);
+}
+input[type="checkbox"]:checked:after {
+    /* Heres your symbol replacement */
+    content: "X";
+    color: rgb(14, 14, 14);
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
+}
+.inputtext{border-bottom:1px solid #adadad!important;}
+.inpucheckbox{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: rgb(255, 255, 255);
+    width: 15px!important;
+    height: 15px!important;
+    border: 1px solid #000 !important ; margin-right:10px;
+    position: relative;
+    }
+
+
+    .inpucheckboxbordernone{
+        -webkit-appearance: initial;
+        appearance: initial;
+        background: rgb(167, 167, 167);
+        width: 30px!important;
+        height: 30px!important;
+        border:0px solid #000 ; border-bottom:1px solid #000 !important;margin-right:10px;
+        position: relative;
+        }
+.inputtextsec{border-bottom:1px solid #adadad!important; width:90%!important;}
+.pagebreak {  
+    page-break-after: left;
+}
+.border_bottom{border-bottom:0px solid #000}
+.border_right{border-right:1px solid #000}
+.border_topright{border-right:1px solid #000; border-top:1px solid #000;}
+.smallmm{font-size:11px; }
+.paddingl{padding-left:10px;}
+.border_bottomleftright{border-left:1px solid #000; border-bottom:1px solid #000;}
+.border_leftright{border-left:1px solid #000; border-right:1px solid #000;}
+.border_bottomlright{border-left:1px solid #000; border-right:1px solid #000;border-bottom:1px solid #000;}
+.company{font-size:11px !important;;text-align:center;font-weight:600; line-height:12px!important;padding-bottom:10px!important;}
+.VEHICLE{font-size:13px !important;;text-align:left;font-weight:bold; line-height:12px!important;padding-left:10px!important;}
+.Trucks{font-size:13px !important;;text-align:left;line-height:12px!important;padding-left:15px!important;}
+.Dryvan{font-size:12px !important;;text-align:left;line-height:12px!important;padding-left:25px!important;}
+.companysec{font-size:11px !important;;text-align:center;font-weight:600; line-height:10px!important;padding-bottom:0px!important;}
+.inputtextbottom{border:0px solid #000; margin-left: 3px; margin-right: 3px; width:80%!important; height: 20px!important;}
+
+.companyleft{font-size:11px !important;;text-align:left;font-weight:600; line-height:10px!important;padding-bottom:10px!important; padding-left:20px; padding-top:10px;}
+.APPLICATION{font-size:14px !important;;text-align:center;font-weight:600; line-height:18px!important;padding-bottom:10px!important;}
+.appcontet{font-size:13px !important;;text-align:left; line-height:18px!important;padding-bottom:18px!important;}
+.plaese{font-size:14px !important;;text-align:left;font-weight:600; line-height:18px!important;padding-bottom:10px!important;}
+.padding2{padding-left:20px;}
+.TO{font-size:18px !important;;text-align:left;font-weight:600; line-height:18px!important;padding-bottom:10px!important;}
+
+.companycolum{font-size:11px !important;;text-align:center;font-weight:600; line-height:12px!important;padding-bottom:2px!important;}

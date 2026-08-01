@@ -1,0 +1,91 @@
+<app-transaction-nav-bar></app-transaction-nav-bar>
+<hr class="policy-divider">
+
+  <div *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+  </div>
+ 
+
+<div class="container-fluid" style="background-color: white;">
+ <div *ngIf ="!showSpiner">
+
+
+
+ 
+  
+ 
+   
+  <div class="row mt-2" >
+    <div class="col-sm-4 mt-1">
+       <a routerLink ="/transaction" class="btn btn-primary" class="d"  data-title="Back To Previous"></a>
+
+    </div>
+    
+   
+    <div class="col-sm-3">
+    <input
+  type="text"
+  class="form-control mt-1 mb-3 text-center"
+  placeholder="Search File Here"
+  [(ngModel)]="searchTerm"
+/>
+
+    </div>
+     <div class="col-sm-3">
+      
+    </div>
+
+     <div class="col-sm-2 mt-2" style="text-align: right;">
+      <a (click)="addEditAttachement()" href="javascript:void(0)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-right: 10px;"><i  class="fas fa-check fa-sm text-white-50"></i> ADD ATTACHMENT </a>
+      
+    
+ 
+    </div>
+   </div>
+    
+   
+   
+
+   
+      <div class="scrollable-table-body" >
+        
+       <table  class="table table-bordered table-hover dt-responsive">
+             <thead >
+               <tr>
+                 <th >File Path</th>
+                 <th >Finance Section</th>
+                 <th >Endorsement Section</th>
+                
+                 <th >AP Invoice Section </th>
+                 
+                 <th >Date</th>
+                 <th>Enter By </th>
+                 
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr  *ngFor ="let data of filteredAttachments | searchTransactionAttachemn:searchCriteria" (click)="onRowClick(data)">
+                <td>{{data.FileName}}</td>
+                <td>{{data.PolicyType}}</td>
+                <td>{{data.TransactionType}}</td>
+                <td>{{data.Description}}</td>
+
+                
+                <td>{{data.AttachmentDate | date: 'MM/dd/yyyy'}}</td>
+             
+                <td>{{data.AttachedBy}}</td>
+              
+               
+               
+                
+               </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+ </div>
+</div>
+
+

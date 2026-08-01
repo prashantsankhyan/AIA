@@ -1,0 +1,33 @@
+
+ .form-select {
+ 
+ color: rgba(33, 37, 41, 0.93) !important;;
+  font-size: 14px;
+ }
+
+ tr {
+  border-color: bisque;
+  border-style: hidden;
+  border-width: 0;
+}
+
+
+label {
+  display: inline-flex;
+  font-size: smaller;
+  color: rgba(33, 37, 41, 0.668) !important;;
+  font-size: 15px;
+  
+}
+
+
+.form-floating-group input {
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+  font-size: medium;
+}
+

@@ -1,0 +1,117 @@
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ 
+ <div class="container-fluid page-background">
+ 
+    <div style="border-top: 1px solid rgba(0, 0, 0, 0.085);">
+      <div class ="row mt-2">
+   
+        <div class="col-sm-2 ">
+        
+           <a (click)="backToClaims()"href="javascript:void(0)"> <img src="assets/back.png" width="50px" /></a>
+        
+        </div>
+        <div class="col-sm-2">
+          
+        </div>
+        <div class="col-sm-2">
+          
+        </div>
+        <div class="col-sm-2">
+        
+       </div>
+       <div class="col-sm-2">
+        
+       </div>
+       
+        <div class="col-sm-2 mb-2" style="text-align: right;">
+           <button type="button" class="btn btn--primary  uppercase" (click)="addEditAdjustor($event)"  style="background-color: #1397d5;color: white;">🧾 Add Adjuster </button>
+      
+            
+        </div>
+    
+      </div>
+    </div>
+  
+ 
+ 
+ 
+ 
+
+
+
+
+ <div class="scrolling">
+ <table  class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name </th>
+        <th>Business </th>
+        
+        <th>Phone</th>
+        <th>Emial</th>
+
+       
+        <th>Fax</th>
+        <th>Comment</th>
+
+        <th>EnteredBy</th>  
+        <th></th> 
+       
+       
+       
+   
+       
+       
+     
+      
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor ="let data of  getALLAdjustsList">
+        <td >{{data.AdjustName}}</td>
+        <td>{{data.Business}}</td>
+       
+      
+       <td>{{data.Phone}}</td>
+       <td>{{data.Email}}</td>
+       <td>{{data.Fax}}</td>
+       <td>{{data.Comments}}</td>
+       <td>{{data.EnteredBy}}</td>
+       
+      
+       <td> 
+        <a class="mr-5"  href="javascript:void(0)" (click)="addEditAdjustor(data)"  ><mat-icon class="mt-1">edit</mat-icon></a> 
+       </td>
+
+       
+       
+     
+
+  
+     
+     
+      </tr>
+      
+    
+    
+     
+    </tbody>
+  </table>
+ </div>
+  
+ 
+
+
+
+
+  
+    
+ 
+</div>
+</div>

@@ -1,0 +1,61 @@
+
+<div *ngIf ="showSpiner">
+ <h3 style="text-align: center;">Please  wait .....</h3>
+</div>
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid " >
+   
+     
+       <form [formGroup] ="accountDetailForm" >
+         
+<!--         
+           <h4  style="text-align: center;margin-top: 20px;">Account Type</h4>
+           
+           <select class="form-select"[(ngModel)]="AccountType"  formControlName="AccountType">
+             <option hidden value="" disabled selected  >Select Account Type</option>
+                 
+             <option value="Client">Client</option>
+            
+           </select> -->
+        
+     
+     
+           <div class="mt-5">
+            
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Confirm Account (Here)</div>
+                                
+                             
+                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div> -->
+                        </div>
+                        <div class="col-auto" *ngIf ="messageSuccess">
+                          <a href="javascript:void(0)" class="btn btn-success btn-circle " (click)="onSubmit()">
+                            <i class="fas fa-check"></i>
+                        </a>
+                        
+                        <a href="javascript:void(0)" class="btn btn-danger btn-circle" (click)="closeComponent()"  style="margin-left: 5px;">
+                          <i class="fa fa-times"></i>
+                      </a>
+                        </div>
+                    </div>
+                
+        </div>
+        
+        
+     
+        
+         
+         
+       </form>
+       
+  
+  
+  
+  </div>
+</div>
+
+
+
+

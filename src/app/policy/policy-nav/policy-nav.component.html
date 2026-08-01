@@ -1,0 +1,239 @@
+
+
+<!-- <div class="container-fluid">
+ <nav class="navbar navbar-expand-lg navbar-white bg-white" style="transition: box-shadow 0.3s ease;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/dashboard/_dashboard"><img src="../../../assets/img/logo.png" style="height: 45px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item">
+          <p style="color: #17a0bc;font-size: smaller;">Owner Name - <span>{{ownerName}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Account Name - <span>{{accountName}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Code - <span>{{lookUpCode}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Email - <span> {{emailID}}</span>
+          </p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Phone Number - <span>{{phoneNumber}}</span></p>
+       
+        </li>
+      
+      </ul>
+      <div class="d-flex">
+       
+        <button class="btn btn-outline-primary mt-2" style="height: 30px;font-size: small;" (click)="addPolicyHere($event)" >Add Policy Here</button>
+        <div>
+         <button class="btn btn-outline-primary bb" style="font-size: smaller; margin-top: -2px;margin-left: 2px; " mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        
+        <mat-menu #menu="matMenu">
+         
+       
+          <button mat-menu-item  routerLink="./attachment">
+            <mat-icon>folder_zip</mat-icon>
+            <span> List Of Attachment</span>
+          </button>
+         
+
+          
+        </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+ </nav>
+ 
+ <router-outlet></router-outlet>
+ 
+</div> -->
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+   
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar = shadow">
+             
+               
+                <a class="sidebar-brand d-flex align-items-center justify-content-center"href="javascript:void(0)" routerLink="/dashboard">
+                  <div class="sidebar-brand-icon rotate-n-0" style="background-color: white;">
+                      <img 
+  src="../../../assets/img/otherlogo.PNG" 
+  width="150" 
+  height="50" 
+  loading="eager" 
+  fetchpriority="high" 
+  alt="Logo">
+                  </div>
+                      <div class="sidebar-brand-text mx-3"><sup></sup></div>
+                  
+                  <div  > 
+               </div>
+              </a>
+
+              
+             
+              
+                <ul class="navbar-nav ml-auto">
+                 
+                 
+
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                       
+                        <!-- Dropdown - Messages -->
+                        
+                    </li>
+
+                    <!-- Nav Item - Alerts -->
+                     
+                     
+                    <li class="nav-item  " >
+                      
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
+                          <i class="fa fa-handshake-o fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{teamName}}"  >{{teamName}}</span>
+                      </a>
+                      
+                      
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-building fa-fw mr-1 " aria-hidden="true"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{accountName}}">{{accountName}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  " >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
+                          <i class="fa fa-user mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{ownerName}}"  >{{ownerName}}</span>
+                      </a>
+                     </li>
+                    <li class="nav-item" >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-file-code-o fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{lookUpCode}}">{{lookUpCode}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fas fa-envelope fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{emailID}}" >{{emailID}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-volume-control-phone fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span matTooltip="{{phoneNumber}}" >{{phoneNumber}}</span>
+                      </a>
+                    </li>
+                   
+                    
+                    
+
+                    <!-- Nav Item - Messages -->
+                   
+
+<div  class="topbar-divider d-none d-sm-block"></div>
+
+<!-- Nav Item - User Information -->
+   <li   class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" (click)="logout()"  id="userDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+          {{userName}}
+        </span>
+        <img class="img-profile rounded-circle"
+            src="/assets/img/undraw_profile.svg">
+      </a>
+    <!-- Dropdown - User Information -->
+    <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+    [class.show]="isNameDropdownOpen"
+        aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="javascript:void(0)"(click)="addAccountDetail($event)">
+            
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Account
+        </a>
+        <a class="dropdown-item" href="javascript:void(0)"routerLink="/mainLayout/account">
+          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            update
+        </a>
+         <a class="dropdown-item" href="javascript:void(0)">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            Activity Log
+        </a> 
+       
+         <a class="dropdown-item"href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal" >
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+        </a>
+    </div> -->
+     </li>
+
+
+
+
+                   
+
+                </ul>
+
+            </nav>
+            
+            
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+       
+     
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+
+</body>
+<div class="container-fluid" >
+  <router-outlet></router-outlet>
+
+   
+ </div>
+
+
+
+
+
+

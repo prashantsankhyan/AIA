@@ -1,0 +1,25 @@
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+
+</div>
+
+<body *ngIf ="!showSpiner">
+
+<div class="table-wrapper">
+  <table class="name-table">
+    <thead>
+      <tr>
+        <th>Notes</th>
+         <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let data of allNote"><td>{{data.Notes}}</td>
+      <td>{{data.EnteredByDateTime|date:'MM/dd/yyyy'}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+
+</body>

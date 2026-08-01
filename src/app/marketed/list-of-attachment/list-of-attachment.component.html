@@ -1,0 +1,92 @@
+<app-nav-bar></app-nav-bar>
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div class="container-fluid" style="background-color: white;">
+ 
+ 
+ <div *ngIf ="!showSpiner">
+  <a routerLink ="/marketed" class="btn btn-primary" class="d"  data-title="<-Back To"></a>
+
+  <div class="card-header mt-2">
+    <div class="row p-1">
+      <div class="col-sm-2 mt- mb-1">
+        <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.FileName" (ngModelChange)="onFileNameChange($event)" style="font-size: xx-small;" placeholder="Search By File Name">
+      </div> 
+      <div class="col-sm-2 mt- mb-1">
+        <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.Description" (ngModelChange)="onDescriptionChange($event)" style="font-size: xx-small;" placeholder="Search By Description">
+      </div>
+       <div class="col-sm-2 mt- mb-1">
+         <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="font-size: xx-small;"placeholder="Search By Date">
+       </div>
+       <div class="col-sm-2 mt- mb-1">
+        <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.PolicyType" (ngModelChange)="onPolicyTypeChange($event)" style="font-size: xx-small;"placeholder="Search By Policy Type">
+      </div>
+       
+       <div class="col-sm-2 mt- mb-1">
+         <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)" style="font-size: xx-small;" placeholder="Search By Enter By">
+       </div>
+      
+      <div class="col-sm-2 mt- mb-1" style="text-align: right;">
+        <a href="javascript:void(0)" (click)="addEditAttachement($event)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm " style="margin-right: 10px;"><i class="fas fa-check fa-sm text-white-50"></i> Add Attachment </a>
+       
+       
+    
+       </div>
+    </div>
+  </div>
+ 
+  
+ 
+   <!-- <div class="row mt-2">
+    <div class="col-sm-1">
+     <button class="btn btn-outline-primary" style="font-size: xx-small;" (click) ="addEditAttachement($event)">Attach File Here</button>
+    
+ 
+    </div>
+    <div class="col-sm-3">
+      <input type="text" name="search"id="search"class="form-control "[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="border-radius: 35px;font-size: xx-small;">
+    </div>
+   </div> -->
+   
+
+   
+      <div class="scrollable-table-body mt-3" >
+        
+       <table  class="table table-bordered">
+             <thead >
+               <tr>
+             
+                 <th style="width: 200px;">File Path</th>
+                
+                
+                 <th style="width: 100px;">Date </th>
+                 
+                 
+                 <th style="width: 500px;">Description</th>
+                 <th style="width: 100px;">Policy Type</th>
+                 
+                 <th style="width: 100px;">Attached By </th>
+                 <!-- <th style="width: 20px;"></th> -->
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor ="let data of listOfAllFatchData |  searchMarketAttachemnt:searchCriteria " (dblclick)="onRowClick(data)">
+              
+                 <td style="width: 350px;">{{data.FileName}}</td>
+                 <td style="width: 150px;">{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+                
+                <td style="width: 500px;">{{data.Description}}</td>
+                <td style="width: 500px;">{{data.PolicyType}}</td>
+                <td style="width: 150px;">{{data.EnteredBy}}</td>
+                
+             
+               </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+ </div>
+</div>

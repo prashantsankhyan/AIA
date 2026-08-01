@@ -1,0 +1,139 @@
+<mat-dialog-content class="mat-typography" [formGroup]="addEditVehicleForm">
+  <div class="row">
+     <div class="col-sm-12">
+      <label>Unit</label>
+      <input type="text" class="form-control" formControlName="Unit" [ngClass]= "{ 'is-invalid': submit && f['Unit'].errors }">
+       <div *ngIf ="submit && f['Year'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Unit'].errors">Unit is required</div>
+                 </div>
+    </div>
+    <div class="col-sm-12">
+      <label>Year</label>
+      <input type="text" class="form-control" formControlName="Year" [ngClass]= "{ 'is-invalid': submit && f['Year'].errors }">
+       <div *ngIf ="submit && f['Year'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Year'].errors">Year is required</div>
+                 </div>
+    </div>
+
+    <div class="col-sm-12 mt-2">
+      <label>Make</label>
+      <input type="text" class="form-control" formControlName="Make" [ngClass]= "{ 'is-invalid': submit && f['Make'].errors }">
+        <div *ngIf ="submit && f['Make'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Make'].errors">Make is required</div>
+                 </div>
+    </div>
+
+    <div class="col-sm-12  mt-2">
+      <label>Model</label>
+      <input type="text" class="form-control" formControlName="Model" [ngClass]= "{ 'is-invalid': submit && f['Model'].errors }">
+        <div *ngIf ="submit && f['Model'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Model'].errors">Model is required</div>
+                 </div>
+    </div>
+     <div class="col-sm-12  mt-1">
+      <label>Body Type</label>
+      
+        <select class="form-select formControl " id="floatingBodyType" placeholder="BodyType" formControlName ="BodyType"  aria-label="Default select example"  [ngClass]= "{ 'is-invalid': submit && f['BodyType'].errors }">
+                  <option hidden value="" disabled selected  > </option>
+                  <option value="Tractor"> Tractor</option>
+                  <option value="Dump Truck"> Dump Truck </option>
+                  <option value="Pickup Box Truck"> Pickup Box Truck </option>
+                  <option value="Service Truck"> Service Truck </option>
+                  <option value="Box Truck"> Box Truck </option>
+                  <option value="Flatbed"> Flatbed </option>
+                  <option value="Intermodal"> intermodal </option>
+                  <option value="Dry trailer"> Dry trailer </option>
+                  <option value="Reefer Trailer">Reefer trailer </option>
+                  <option value="Trailer"> Trailer </option>
+                </select>
+       <div *ngIf ="submit && f['BodyType'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['BodyType'].errors">BodyType is required</div>
+                 </div>
+    </div>
+
+    <div class="col-sm-12  mt-2">
+      <label>VIN</label>
+      <input type="text" class="form-control" formControlName="VIN"[ngClass]= "{ 'is-invalid': submit && f['VIN'].errors }">
+        <div *ngIf ="submit && f['VIN'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['VIN'].errors">VIN is required</div>
+                 </div>
+    </div>
+
+    <div class="col-sm-12  mt-2">
+      <label>Value</label>
+      <input type="text" class="form-control" formControlName="Value"[ngClass]= "{ 'is-invalid': submit && f['Value'].errors }">
+        <div *ngIf ="submit && f['Value'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Value'].errors">Value is required</div>
+                 </div>
+    </div>
+
+    <div class="col-sm-12  mt-2">
+      <label>Policy Number</label>
+     <select class="form-select mt-1"
+        formControlName="PolicyNumber"
+        [ngClass]="{ 'is-invalid': submit && f['PolicyNumber'].errors }">
+  <option value="" disabled>  <span *ngIf ="showSpiner">Please wait data is doing upload</span> <span *ngIf ="!showSpiner">-- Select Under Policy --</span> </option>
+
+  <option *ngFor="let policy of listOfPolicy" 
+          [value]="policy.ChildPolicyName">
+       {{ policy.ChildPolicyName }}
+  </option>
+</select>
+
+    <div *ngIf ="submit && f['PolicyNumber'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['PolicyNumber'].errors">PolicyNumber is required</div>
+                 </div>
+       
+    </div>
+
+    <div class="col-sm-12  mt-1">
+      <label>Option</label>
+      
+       <select  class="form-select mt-1"formControlName="Option" [ngClass]="{ 'is-invalid': submit && f['Option'].errors }">
+        <option value ="ADD">ADD</option>
+          <option value ="UPDTAE">UPDTAE</option>
+            <option value ="DELETE">DELETE</option>
+      </select>
+       <div *ngIf ="submit && f['Option'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Option'].errors">Option is required</div>
+                 </div>
+    </div>
+     <div class="col-sm-12  mt-2">
+      <label>Description</label>
+       
+                        
+                        
+      <input type="text" class="form-control" formControlName="Description" >
+      
+    </div>
+
+    <div class="col-sm-12  mt-2">
+      <label>Enter Date</label>
+
+      <input type="date" class="form-control" formControlName="EnterDate"bsDatepicker [ngClass]="{ 'is-invalid': submit && f['EnterDate'].errors }"
+    
+      >
+       <div *ngIf ="submit && f['EnterDate'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['EnterDate'].errors">Enter Date is required</div>
+                 </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="text-center" *ngIf ="messageSuccess">
+    <a href="javascript:void(0)"
+       (click)="onSubmit()"
+       class="d-none d-sm-inline-block btn btn-sm shadow-sm me-2"
+       style="background-color: #1397d5; color: white; font-family: sans-serif;">
+      <i class="fas fa-check fa-sm text-white-50"></i>
+      {{ VehicleID == undefined ? 'ADD' : 'EDIT' }} VEHICLE
+    </a>
+
+    <a href="javascript:void(0)"
+       class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+       style="background-color: rgb(199, 64, 64); color: white; font-family: sans-serif;"
+       mat-dialog-close>
+      <i class="fas fa-times fa-sm text-white-50"></i> Cancel
+    </a>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,669 @@
+
+
+ <div class="container-fluid scrolling mt-2">
+  <div class="spinner" *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+
+   
+  </div>
+ 
+  <div *ngIf ="!showSpiner">
+      
+         <form [formGroup]="clinetSummaryForm" >
+           <!-- Your form content goes here -->
+           <h4 >Personnel</h4>
+           <div formArrayName="Personnel">
+           
+               <div class="row">
+                 <div class="col-sm-3 mt-1">
+                   <label >Position</label>
+                 </div>
+                 <div class="col-sm-3 mt-1">
+                   <label >Name</label>
+                 </div>
+                 <div class="col-sm-3 mt-1">
+                   <label >Years</label>
+                 </div>
+                 <div class="col-sm-3 mt-1">
+                   <label >Ownership</label>
+                 </div>
+ 
+               </div>
+               
+               
+              
+              
+           
+             <div *ngFor="let personnel of getClinetSummaryFormControls('Personnel').controls; let i = index">
+               <div formGroupName="{{i}}">
+                 <div class="row">
+                   <div class="col-sm-3 mt-1 ">
+                     <input formControlName="Position" class="form-control"  />
+                   </div>
+                   <div class="col-sm-3 mt-1 ">
+                     <input formControlName="Name"class="form-control" />
+                   </div>
+                   <div class="col-sm-3 mt-1">
+                     <input formControlName="Years"class="form-control"  />
+                   </div>
+                   <div class="col-sm-3 mt-1">
+                     <input formControlName="ownerShip"class="form-control"  />
+                   </div>
+ 
+ 
+                 </div>
+                 <!-- Personnel form controls go here -->
+                 
+                 
+                 
+                
+       
+                 <!-- <button type="button" (click)="removeRow('Personnel', i)">Remove Personnel</button> -->
+               </div>
+             </div>
+             <!-- <button type="button" (click)="addNewLineRow('Personnel')">Add Personnel</button> -->
+           </div>
+       
+           <!-- Similar sections for other form arrays (Commodity, Coverage, etc.) -->
+           <div class="row p-2" >
+             <div class="col-sm-6">
+               <h4 class="mt-3" style="color: white;">Filings Requested:</h4>
+               <div class="row">
+                 <div class="col-sm-6">
+                   <label id ="text3d">Needed State Filings</label>
+                   <input type="text" class="form-control" formControlName ="NeededStateFillings">
+                  </div>
+                  <div class="col-sm-6">
+                   <label id ="text3d">Applicable states</label>
+                   <input type="text" class="form-control" formControlName ="ApplicableStates">
+                  </div>
+               </div>
+              
+             </div>
+       
+             <div class="col-sm-6">
+               <h6 >Terminal Locations:</h6>
+               <div class="col-sm-12">
+              
+                 <label id ="text3d">Address, City, State</label>
+                 <textarea type="text" rows="4" class="form-control"  formControlName ="TerminalLocation"></textarea>
+                
+                </div>
+             </div>
+              
+            
+       
+             </div>
+ 
+             <h4 class="mt-1" style="color: white;">Projected and Historical Exposures</h4>
+             <div class="row p-2" >
+             
+              <div class="col-sm-3 mt-1">
+               <label id ="text3d">Radius 0 to 50 miles</label>
+               <input type="text" class="form-control" formControlName ="Radius0To50Miles">
+              </div>
+              <div class="col-sm-3 mt-1">
+               <label id ="text3d">Radius 51 to 200 miles</label>
+               <input type="text" class="form-control" formControlName ="Radius51to200Miles">
+              </div>
+              <div class="col-sm-3 mt-1">
+               <label id ="text3d">Radius 201 to 500miles</label>
+               <input type="text" class="form-control" formControlName ="Radius201to500Miles">
+              </div>
+              <div class="col-sm-3 mt-1">
+               <label id ="text3d">Radius 501+ miles</label>
+               <input type="text" class="form-control" formControlName ="Radius501PlusMiles">
+              </div>
+            
+       
+             </div>
+ 
+            
+             <h6 style="text-align: center;margin-top: 10px;">Please check COMMODITY INFORMATION page </h6>
+             <!-- <div formArrayName="Commodity">
+             
+                 <div class="row">
+                   <div class="col-sm-2">
+                     <label style="color: white;">Type</label>
+                   </div>
+                   <div class="col-sm-2">
+                     <label style="color: white;">MaxValue</label>
+                   </div>
+                   <div class="col-sm-2">
+                     <label style="color: white;">AvgValue</label>
+                   </div>
+                   <div class="col-sm-3 mt-1">
+                     <label style="color: white;">Total</label>
+                   </div>
+                   <div class="col-sm-3 mt-1">
+                     <label style="color: white;">MajorShipper</label>
+                   </div>
+   
+                 </div>
+                 
+                 
+                
+                
+             
+               <div *ngFor="let Commodity of getClinetSummaryFormControls('Commodity').controls; let i = index">
+                 <div formGroupName="{{i}}">
+                   <div class="row">
+                     <div class="col-sm-2">
+                       <input formControlName="Type" class="form-control"  />
+                     </div>
+                     <div class="col-sm-2">
+                       <input formControlName="MaxValue"class="form-control" />
+                     </div>
+                     <div class="col-sm-2">
+                       <input formControlName="AvgValue"class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="Total"class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="MajorShipper"class="form-control"  />
+                     </div>
+   
+   
+                   </div>
+                  
+                   
+                   
+                   
+                  
+         
+                
+                 </div>
+               </div>
+             
+             </div> -->
+ 
+ 
+ 
+             <h5 style="text-align: center;">COVERAGE REQUEST SUMMARY</h5>
+              <h5 style="text-align: center;">AL </h5>
+             <div formArrayName="Coverage">
+             
+                 <div class="row">
+                   <div class="col-sm-2">
+                     <label >AutoLiability</label>
+                   </div>
+                   <div class="col-sm-2">
+                     <label >LimitRequested</label>
+                   </div>
+                   <div class="col-sm-2">
+                     <label >Deductible</label>
+                   </div>
+                   <div class="col-sm-3 ">
+                     <label >CurrentCarrier</label>
+                   </div>
+                   <div class="col-sm-3">
+                     <label >ExpiringPremium</label>
+                   </div>
+   
+                 </div>
+                 
+                 
+                
+                
+             
+               <div *ngFor="let Coverage of getClinetSummaryFormControls('Coverage').controls; let i = index">
+                 <div formGroupName="{{i}}">
+                   <div class="row">
+                     <div class="col-sm-2">
+                       <input formControlName="AutoLiability" class="form-control"  />
+                     </div>
+                     <div class="col-sm-2">
+                       <input formControlName="LimitRequested"class="form-control" />
+                     </div>
+                     <div class="col-sm-2">
+                       <input formControlName="Deductible"class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="CurrentCarrier"class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="ExpiringPremium"class="form-control"  />
+                     </div>
+   
+   
+                   </div>
+                   <!-- Personnel form controls go here -->
+                   
+                   
+                   
+                  
+         
+                   <!-- <button type="button" (click)="removeRow('Personnel', i)">Remove Personnel</button> -->
+                 </div>
+               </div>
+               <!-- <button type="button" (click)="addNewLineRow('Personnel')">Add Personnel</button> -->
+             </div>
+ 
+ 
+ 
+             <h5 style="text-align: center;" class="mt-3">PHYSICAL DAMAGE</h5>
+             <div formArrayName="PhysicalDamage">
+             
+                 <div class="row">
+                   <div class="col-sm-3 ">
+                     <label >PhysicalDamage</label>
+                   </div>
+                   <div class="col-sm-3 ">
+                     <label >Deductible</label>
+                   </div>
+                   <div class="col-sm-3 ">
+                     <label >CurrentCarrier</label>
+                   </div>
+                   <div class="col-sm-3 ">
+                     <label >ExpiringPremium</label>
+                   </div>
+                
+   
+                 </div>
+                 
+                 
+                
+                
+             
+               <div *ngFor="let PhysicalDamage of getClinetSummaryFormControls('PhysicalDamage').controls; let i = index">
+                 <div formGroupName="{{i}}">
+                   <div class="row">
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="PhysicalDamage" class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="Deductible"class="form-control" />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="CurrentCarrier"class="form-control"  />
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <input formControlName="ExpiringPremium"class="form-control"  />
+                     </div>
+                    
+   
+   
+                   </div>
+                   <!-- Personnel form controls go here -->
+                   
+                   
+                   
+                  
+         
+                   <!-- <button type="button" (click)="removeRow('Personnel', i)">Remove Personnel</button> -->
+                 </div>
+               </div>
+               <!-- <button type="button" (click)="addNewLineRow('Personnel')">Add Personnel</button> -->
+             </div>
+ 
+             <h5 class="mt-3" style="text-align: center;">TRAILER INTERCHANGE</h5>
+             <div class="row p-2" >
+               <div class="col-sm-2">
+                 <label id ="text3d">Trailer Interchange</label>
+                 
+                 <select class="form-select formControl mt-1" formControlName ="TrailerInterchange"   >
+                   <option hidden value="" disabled selected  >Select Trailer Interchange</option>
+                   <option  value="Yes">Yes</option>
+                   <option value="No">No</option>
+                  
+                 
+                  
+                 </select>
+               
+                </div>
+                <div class="col-sm-2">
+                 <label id ="text3d">Limit Requested</label>
+                 <input type="text" class="form-control" formControlName ="LimitRequested">
+                </div>
+              
+                <div class="col-sm-2">
+                 <label id ="text3d">Deductible</label>
+                 <input type="text" class="form-control" formControlName ="Deductible">
+                </div>
+ 
+                <div class="col-sm-3 mt-1">
+                 <label id ="text3d">Current Carrier</label>
+                 <input type="text" class="form-control" formControlName ="CurrentCarrier">
+                </div>
+                
+                <div class="col-sm-3 mt-1">
+                 <label id ="text3d">Expiring Premium</label>
+                 <input type="text" class="form-control" formControlName ="ExpiringPremium">
+                </div>
+                
+         
+             
+                
+              
+         
+               </div>
+ 
+               <h5 style="text-align: center; margin-top: 10px;">MOTOR TRUCK CARGO </h5>
+               <div formArrayName="MotorTruckCargo">
+               
+                   <div class="row">
+                     <div class="col-sm-2">
+                       <label >MotorTruckCargo</label>
+                     </div>
+                     <div class="col-sm-2">
+                       <label >LimitRequested</label>
+                     </div>
+                     <div class="col-sm-2">
+                       <label >Deductible</label>
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <label >CurrentCarrier</label>
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <label >ExpiringPremium</label>
+                     </div>
+                  
+     
+                   </div>
+                   
+                   
+                  
+                  
+               
+                 <div *ngFor="let MotorTruckCargo of getClinetSummaryFormControls('MotorTruckCargo').controls; let i = index">
+                   <div formGroupName="{{i}}">
+                     <div class="row">
+                       <div class="col-sm-2">
+                         <input formControlName="MotorTruckCargo" class="form-control"  />
+                       </div>
+                       <div class="col-sm-2">
+                         <input formControlName="LimitRequested"class="form-control" />
+                       </div>
+                       <div class="col-sm-2">
+                         <input formControlName="Deductible"class="form-control"  />
+                       </div>
+                       <div class="col-sm-3 mt-1">
+                         <input formControlName="CurrentCarrier"class="form-control"  />
+                       </div>
+                       <div class="col-sm-3 mt-1">
+                         <input formControlName="ExpiringPremium"class="form-control"  />
+                       </div>
+                      
+     
+     
+                     </div>
+                     <!-- Personnel form controls go here -->
+                     
+                     
+                     
+                    
+           
+                     <!-- <button type="button" (click)="removeRow('Personnel', i)">Remove Personnel</button> -->
+                   </div>
+                 </div>
+                 <!-- <button type="button" (click)="addNewLineRow('Personnel')">Add Personnel</button> -->
+               </div>
+ 
+               <h5 style="text-align: center; margin-top: 10px;">GENERAL LIABILITY COVERAGE</h5>
+               <div formArrayName="Liabilities">
+               
+                   <div class="row">
+                     <div class="col-sm-2">
+                       <label >MotorTruckCargo</label>
+                     </div>
+                     <div class="col-sm-2">
+                       <label >LimitRequested</label>
+                     </div>
+                     <div class="col-sm-2">
+                       <label >Deductible</label>
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <label >CurrentCarrier</label>
+                     </div>
+                     <div class="col-sm-3 mt-1">
+                       <label >ExpiringPremium</label>
+                     </div>
+                  
+     
+                   </div>
+                   
+                   
+                  
+                  
+               
+                 <div *ngFor="let Liabilities of getClinetSummaryFormControls('Liabilities').controls; let i = index">
+                   <div formGroupName="{{i}}">
+                     <div class="row">
+                       <div class="col-sm-2">
+                         <input formControlName="MotorTruckCargo" class="form-control"  />
+                       </div>
+                       <div class="col-sm-2">
+                         <input formControlName="LimitRequested"class="form-control" />
+                       </div>
+                       <div class="col-sm-2">
+                         <input formControlName="Deductible"class="form-control"  />
+                       </div>
+                       <div class="col-sm-3 mt-1">
+                         <input formControlName="CurrentCarrier"class="form-control"  />
+                       </div>
+                       <div class="col-sm-3 mt-1">
+                         <input formControlName="ExpiringPremium"class="form-control"  />
+                       </div>
+                      
+     
+     
+                     </div>
+                     <!-- Personnel form controls go here -->
+                     
+                     
+                     
+                    
+           
+                     <!-- <button type="button" (click)="removeRow('Personnel', i)">Remove Personnel</button> -->
+                   </div>
+                 </div>
+                 <!-- <button type="button" (click)="addNewLineRow('Personnel')">Add Personnel</button> -->
+               </div>
+            <!-- //Hide data // -->
+
+                  <!-- <div class="row">
+                <div class="col-sm-6">
+                  
+  <div formArrayName="ClientSummaryUmbrella">
+                 
+  <div class="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryUmbrella').controls; let i = index"
+    [formGroupName]="i">
+    
+  <div class="col-sm-6">
+ <label style="font-size: 14px; color: black;">
+     Umbrella Limit:
+      
+    </label>
+    <input type="text" class="form-control"formControlName="UmbrellaLimit" />
+  </div>
+   <div class="col-sm-6">
+    <label style="font-size: 14px; color: black;">
+     Umbrella Deductible:
+      
+    </label>
+    <input type="text"class="form-control" formControlName="UmbrellaDeductible" />
+
+  </div>
+   
+    
+   
+  </div>
+ 
+               </div>
+                </div>
+                <div class="col-sm-6">
+               
+                  <div formArrayName="ClientSummaryContCargo">
+  
+  <div class="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryContCargo').controls; let i = index"
+    [formGroupName]="i"
+  >
+
+  <div class="col-sm-6">
+ <label style="font-size: 14px; color: black;">Contingent Cargo Limit: </label>
+    <input type="text" class="form-control" formControlName="ContCargoLimit" />
+  </div>
+  <div class="col-sm-6">
+    <label style="font-size: 14px; color: black;">Contingent Cargo Deductible: </label>
+     <input type="text" class="form-control" formControlName="ContCargoDeductible" />
+
+  </div>
+   
+    
+   
+  </div>
+ 
+</div>
+
+                </div>
+
+               </div>
+
+
+             
+
+        <div class="row">
+          <div class="col-sm-6">
+<div formArrayName="ClientSummaryContLiability">
+  
+  <div class="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryContLiability').controls; let i = index"
+    [formGroupName]="i"
+  >
+  <div class="col-sm-6">
+<label style="font-size: 14px; color: black;">Contingent Liability Limit:</label>
+    <input type="text" class="form-control" formControlName="ContLiabilityLimit" />
+  </div>
+   <div class="col-sm-6">
+<label style="font-size: 14px; color: black;">Contingent Liability Deductible: </label>
+    <input type="text" class="form-control" formControlName="ContLiabilityDeductible" />
+  </div>
+    
+    
+   
+  </div>
+  
+</div>
+          </div>
+           <div class="col-sm-6">
+<div formArrayName="ClientSummaryContXS">
+  
+  <div class ="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryContXS').controls; let i = index"
+    [formGroupName]="i"
+  >
+  <div class="col-sm-6">
+<label style="font-size: 14px; color: black;">Contingent Excess XS Limit:
+      
+    </label>
+    <input type="text" class="form-control" formControlName="ContXSLimit" />
+  </div>
+  <div class="col-sm-6">
+  <label style="font-size: 14px; color: black;">
+ Contingent Excess XS   Deductible:
+      
+    </label>
+    <input type="text" class="form-control" formControlName="ContXSDeductible" />
+  </div>
+    
+  
+ 
+  </div>
+ 
+</div>
+          </div>
+
+        </div>     
+
+
+   <div class="row">
+    <div class="col-sm-6">
+<div formArrayName="ClientSummaryNTL">
+ 
+  <div class="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryNTL').controls; let i = index"
+    [formGroupName]="i"
+  >
+  <div class="col-sm-6">
+  <label style="font-size: 14px; color: black;">Non Trucking Liability NTL Limit:</label>
+    <input type="text" class="form-control" formControlName="NTLLimit" />
+  </div>
+    <div class="col-sm-6">
+ <label style="font-size: 14px; color: black;">Non Trucking Liability NTL  Deductible:</label>
+    <input type="text" class="form-control" formControlName="NTLDeductible" />
+  </div>
+  
+   
+   
+  </div>
+ 
+</div>
+    </div>
+     <div class="col-sm-6">
+
+<div formArrayName="ClientSummaryXS">
+  
+  <div class="row"
+    *ngFor="let group of getClinetSummaryFormControls('ClientSummaryXS').controls; let i = index"
+    [formGroupName]="i"
+  >
+   <div class="col-sm-6">
+<label style="font-size: 14px; color: black;">Excess Liability XS Limit:
+     
+    </label>
+     <input type="text" class="form-control" formControlName="XSLimit" />
+    </div>
+     <div class="col-sm-6">
+ <label style="font-size: 14px; color: black;">Excess Liability XS  Deductible:
+    
+    </label>
+      <input type="text" class="form-control" formControlName="XSDeductible" />
+    </div>
+
+
+   
+    
+   
+  
+  </div>
+  
+</div>
+
+    </div>
+     <div class="col-sm-4">
+ <label style="font-size: 14px; color: black;">Towing Limit & Storage:
+    
+    </label>
+      <textarea class="form-control" placeholder="Write a comment..." rows ='2'></textarea>
+    </div>
+
+   </div> -->
+
+
+
+
+              
+             
+              
+               
+         
+         </form>
+         <div *ngIf ="messageSuccess" >
+          <div class="text-center mt-5 mb-5" *ngIf ="showSaveButtion">
+            <a href="javascript:void(0)"  (click)="onSubmit()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2" style="font-family: sans-serif;"> ADD CLIENT SUMMARY</a>
+         
+            <!-- <button  style="width: 140px;color: green;" class="learn-more"(click)="onSubmit()">Save </button> -->
+          
+          </div>
+        </div>
+      
+       
+ </div>
+   
+ </div>
+ 
+
+

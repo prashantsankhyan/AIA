@@ -1,0 +1,74 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid" style="background-color: white;">
+  
+
+  
+ 
+       
+       <div class="col-sm-3 mt-2">
+          
+           <input type="text"  name="search"id="search"class="form-control mt-1" placeholder="--Search--" style="border-radius: 40px;">
+         </div>
+  
+
+     
+
+
+  
+     <div class="scrolling mt-2" > 
+     
+       <table  class="table table-bordered" style="margin:0 auto;" >
+           <thead >
+             <tr>
+               <th>Policy  </th>
+               <th>Clame  </th>
+               <th>Driver   </th>
+               <th>Truck    </th>
+               <th>Trailer    </th>
+               <th>Date of Loss </th>
+              
+              
+               <th> Description</th>  
+               <th>  </th>
+               
+               </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor ="let data of listOfMoveClaim" >
+               <td >{{data.LineName}} </td>
+               <td>{{data.ClaimType}}</td>
+               <td>{{data.DriverName == null ? data.Driver :'' }}   <br/><span class="badge bg-dark">{{data.DriverLicenceNo}}</span></td>
+               <td>{{data.Truck_VIN == null ? data.Truck:data.Truck_VIN}} <br/><span class="badge bg-dark">{{data.Truck_BodyType}}</span></td>
+               <td>{{data.Trailer_VIN == null ? data.Trailer:data.Trailer_VIN}} <br/><span class="badge bg-dark">{{data.Trailer_BodyType}}</span></td>
+              <td>{{data.DateofLoss|date:'dd/MM/yyyy'}}</td>
+              <td>{{data.DateReported  |date:'dd/MM/yyyy'}} </td>
+              <td>{{data.DeleteReason}}</td>
+              <td>
+                <button type="button" class="btn btn-outline-success btn-sm"  (click)="viewOfAdjuster(data)" >View</button>
+               
+             </td>
+             
+           
+             
+            </tr>
+            
+            
+     
+          
+            
+          
+             
+           
+           
+            
+           </tbody>
+         </table>
+   </div>
+   
+ 
+</div>
+</div>

@@ -1,0 +1,248 @@
+.card-body {
+ border: 1.3mm solid black; /* Thick Black Border */
+ padding: 8px; /* Keep space inside */
+ border-radius: 5px; /* Optional: Slightly rounded corners */
+}
+.underline-input {
+ border: none;
+ border-bottom: 1px solid black;
+ width: 350px; /* Adjust width as needed */
+ outline: none;
+ font-size: 11px;
+ margin-left: 10px;
+}
+
+.underline-input1 {
+ border: none;
+ border-bottom: 1px solid black;
+ width: 100px; /* Adjust width as needed */
+ outline: none;
+ font-size: 11px;
+ margin-left: 10px;
+}
+.underline-input000 {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 150px; /* Adjust width as needed */
+  outline: none;
+  font-size: 11px;
+  margin-left: 10px;
+ }
+.underline-input2 {
+ border: none;
+ border-bottom: 1px solid black;
+ width: 100px; /* Adjust width as needed */
+ outline: none;
+ font-size: 11px;
+ margin-left: 10px;
+}
+.underline-input4 {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 50px; /* Adjust width as needed */
+    outline: none;
+    font-size: 11px;
+    margin-left: 10px;
+   }
+
+   .underline-input5 {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 40px; /* Adjust width as needed */
+    outline: none;
+    font-size: 16px;
+    margin-left: 10px;
+   }
+   .underline-input7 {
+    border: none;
+   
+    width: 30px; /* Adjust width as needed */
+    outline: none;
+    font-size: 11px;
+    margin-left: 10px;
+   }
+   .underline-input9 {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 60px; /* Adjust width as needed */
+    outline: none;
+    font-size: 10px;
+    margin-left: 1px;
+   }
+   .underline-input8 {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 62px; /* Adjust width as needed */
+    outline: none;
+    font-size: 9px;
+    margin-left: 1px;
+   }
+
+   .underline-input10 {
+    border: none;
+    
+    width: 90px; /* Adjust width as needed */
+    outline: none;
+    font-size: 10px;
+    margin-left: 1px;
+   }
+   .underline-input12 {
+    border: none;
+   
+    width: 200px; /* Adjust width as needed */
+    outline: none;
+    font-size: 12px;
+    margin-left: 0px;
+   }
+   .underline-input13 {
+    border: none;
+   
+    width: 100px; /* Adjust width as needed */
+    outline: none;
+    font-size: 12px;
+    margin-left: 0px;
+   }
+
+.strong-border-table {
+ border: 0.1mm solid black !important; /* Strong black border */
+ font-size: small;
+}
+.strong-border-table th, 
+.strong-border-table td {
+ border: 0.1mm solid black !important; /* Each cell gets a black border */
+ 
+ padding: 10px; /* Adds space inside cells */
+}
+.strong-border-table td {
+ border: 0.1mm solid black !important; /* Each cell gets a black border */
+ padding: 2px !important; /* Reduce padding to decrease height */
+ height: 23px !important; /* Set a fixed height */
+ line-height: 20px; /* Ensure text aligns within the height */
+}
+
+.small-table {
+ width: 170px !important;  /* Reduce width */
+ border-collapse: collapse; /* Remove extra spacing */
+ margin-left: 20px !important; /* Add space from the left */
+ text-align: left; /* Ensure text starts from the left */
+}
+
+.small-table td {
+ padding: 0 !important;  /* Remove padding */
+ margin: 0 !important;   /* Remove margin */
+ height: 15px !important;  /* Reduce row height */
+ font-size: 7px !important; /* Minimize text size */
+ line-height: 10px !important; /* Compress text further */
+ text-align: left !important; /* Align text to the left */
+}
+
+.center-bold-table th, 
+.center-bold-table td {
+    text-align: center !important; /* Centers text */
+    font-weight: bold !important; /* Makes text bold */
+}
+
+
+.no-underline {
+    text-decoration: none;
+}
+
+.scrolling{
+    height:500px;  
+    overflow:scroll;
+}
+
+
+@media print {
+    @page {
+      size: auto; /* Use default page size */
+      margin: 0; /* Remove default margins */
+    }
+  
+    /* Remove any browser-generated headers and footers */
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      margin: 0;
+      padding: 0;
+    }
+  
+    /* Hide any unwanted elements like page numbers */
+    header, footer {
+      display: none !important;
+      visibility: hidden;
+    }
+  }
+
+ /* Hide default checkbox */
+ input[type="checkbox"] {
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.40);  /* Normal black border */
+  border-radius: 1px;  /* Slight rounding */
+  background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+/* Checkbox checked style */
+ input[type="checkbox"]:checked {
+
+ border-color: black;
+}
+
+/* Checkmark inside checkbox */
+input[type="checkbox"]:checked::after {
+  content: '✕';
+  font-size: 3px;
+ padding: auto;
+  
+  position: absolute;
+  color: black;
+  margin-top: -3px; 
+ 
+  left: -5%;
+  
+  font-weight:100;
+}
+.custom-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.custom-radio span {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+.gap-small {
+  margin-top: 10px;
+}
+
+.gap-medium {
+  margin-top: 30px;
+}
+
+.gap-large {
+  margin-top: 60px;
+}
+
+.gap-larger {
+  margin-top: 100px;
+}
+
+
+
+.page-break {
+	page-break-after: always;
+}

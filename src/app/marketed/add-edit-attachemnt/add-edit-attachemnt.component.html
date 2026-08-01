@@ -1,0 +1,124 @@
+
+<div class="container">
+ <div *ngIf ="!showFiv">
+     <h5>File Size is  Big sow it will take some time to Upload</h5>
+     <app-spinner></app-spinner>
+   </div>
+   <h4 style="text-align: center;"> Account Name  : {{accountName}}</h4>
+   <div class="card mt-2">
+   
+    <div class="container-fluid " *ngIf ="showFiv">
+    
+ 
+       
+         <form [formGroup] ="addEditAttachmentForm"> 
+             <div class="row ">
+            
+                 
+                 <div class="col-sm-12 mt-3">
+                     <label>Upload file here</label>
+                     <div class=" file-container center  text-center" >
+                         
+                         <label>Upload file here</label>
+                         <input
+                         type="file"
+                         class="file"
+                         placeholder="File Name"
+                         multiple
+                         accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav"
+                         
+                         (change)= "onFileUpload($event)"  [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+                         <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                             <div *ngIf ="f['abc'].errors">FIle is required</div>
+                         </div>
+                         <label>Upload file here</label>
+                     </div>
+                 </div>
+                  
+                    
+             <div *ngIf ="files">
+                 {{files.name}}
+              
+             </div>
+             <div class="mt-3 mb-3"> 
+                 <label>Description</label>
+                 <select class="form-select form-select-sm" formControlName="Description" aria-label=".form-select-sm example"[ngClass]= "{ 'is-invalid': submit && f['Description'].errors }">
+                   
+                    <option hidden value="" disabled selected  >Select Description Type</option>
+                    <option value="Agency communication">Agency communication</option>
+                    <option  value="Application">Application</option>
+                    <option value="Company Reports">Company Reports</option>
+                    <option value="Drivers">Drivers</option>
+                    <option value="MVRs">MVRs</option>
+                    <option value="Safety Reports">Safety reports</option>
+                    <option value="Financials heading">Financials</option>
+
+                    
+                    
+                    <option value="Vehicles">Vehicles</option>
+                    <option value="IFTA">IFTA</option>
+                    <option value="Loss Runs">Loss Runs</option>
+                    <option value="Endorsement ">Endorsement </option>
+                    <option value="Submissions">Submissions</option>
+                    <option value="Quote">Quote</option>
+                    <option value="Cab Card">Cab Card</option>
+
+                  </select>
+                
+                 <div *ngIf ="submit && f['Description'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Description'].errors">Description is required</div>
+                 </div>
+             </div>
+             <div class="mt-1 mb-3"> 
+                <label>Select Policy</label>
+                <select class="form-select form-select-sm" formControlName="PolicyType" aria-label=".form-select-sm example">
+                    <option hidden value="" disabled selected  > Select Source</option>
+                    <option hidden value="" disabled selected  >Select Policy Type</option>
+                    <option value="Package">Package</option>
+                    <option  value="AL">AL -Auto Liability</option>
+                    <option value="PD">PD</option>
+                    <option value="MTC">MTC -Motor Truck Cargo</option>
+                    <option value="General Liability">General Liability</option>
+                    <option value="Contingent Auto Liability">Contingent Auto Liability</option>
+                    <option value="Contingent Motor Truck Cargo">Contingent Motor Truck Cargo</option>
+                    <option value="Non-Trucking Liability">Non-Trucking Liability</option>
+                    <option value="Excess Liability">Excess Liability</option>
+                    <option value="Umbrella Liability">Umbrella Liability</option>
+                    <option value="Contingent Excess Liability">Contingent Excess Liability</option>
+                    <option value="Occupational Accidental">Occupational Accidental</option>
+                    <option value="Worker Compensation"> Worker Compensation</option>
+                    
+                  </select>
+            </div>
+                     
+               
+             </div>
+         
+            
+         </form>
+      
+    
+        <div class="text-center mt-4 mb-4">
+         <div >
+           <button type="button" class="btn btn-outline-success btn-sm" style="width: 120px;" (click)="onSubmit()" > Save</button>
+           <button type="button" class="btn btn-outline-danger btn-sm" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+             
+            
+           
+           </div>
+       </div>
+     
+         <!-- <div class="text-center mt-5 mb-5">
+             <div class="btn-group  gap-2  " >
+                
+                 <button mat-stroked-button class="text-right" (click)="onSubmit()">Save</button>
+                 <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+                
+               
+               </div>
+         </div> -->
+     
+     </div>
+   </div>
+
+</div>

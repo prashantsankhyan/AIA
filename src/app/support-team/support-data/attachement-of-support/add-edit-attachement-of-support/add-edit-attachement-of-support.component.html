@@ -1,0 +1,101 @@
+
+<div class="container">
+ <div *ngIf ="!showFiv">
+     <h5>File Size is  Big sow it will take some time to Upload</h5>
+     <app-spinner></app-spinner>
+   </div>
+   <h4 style="text-align: center;"> Account Name  : {{accountName}}</h4>
+   <div >
+   
+    <div class="container-fluid " *ngIf ="showFiv">
+    
+ 
+       
+         <form [formGroup] ="addEditAttachmentForm"> 
+             <div class="row ">
+                <!-- <div class="mt-2"> 
+                    <label> Policy Type</label>
+                    <select class="form-select mt-1" >
+                     <option>New</option>
+                     <option>Renew</option>
+                    
+                   </select>
+                  </div> -->
+              <div class="mt-2"> 
+               <label > Seletc Under  Policy</label>
+             
+               <select  class="form-select mt-1" formControlName="UnderPolicy">
+                <option value="" disabled selected >-- Select Under Policy --</option>
+                 <option  *ngFor="let policy of listOfPolicy" [value]="policy.LineName">
+ <span *ngIf ="!showSpiner">{{ policy.LineName }}</span>   
+  </option>
+              </select>
+             </div>
+          
+                 <div class="col-sm-12 mt-3">
+                     <label>Upload file here</label>
+                     <div class=" file-container center  text-center mt-2" >
+                         
+                         <label>Upload file here</label>
+                         <input
+                         type="file"
+                         class="file"
+                         placeholder="File Name"
+                         multiple
+                         accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav"
+                         
+                         (change)= "onFileUpload($event)"  [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+                         <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                             <div *ngIf ="f['abc'].errors">FIle is required</div>
+                         </div>
+                         <label>Upload file here</label>
+                     </div>
+                 </div>
+                  
+                    
+             <div *ngIf ="files">
+                 {{files.name}}
+              
+             </div>
+             <div class="mt-3 mb-3"> 
+                 <label>Description</label>
+                 <input type="text" class="form-control mt-2"  formControlName ="Description" [ngClass]= "{ 'is-invalid': submit && f['Description'].errors }">
+                 <div *ngIf ="submit && f['Description'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Description'].errors">Description is required</div>
+                 </div>
+             </div>
+
+            
+                     
+               
+             </div>
+         
+            
+         </form>
+      
+    
+        <div class=" mt-4 mb-4">
+         <div  style="text-align: right;">
+         
+             
+                   <a href="javascript:void(0)"  (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i>Upload Data</a>
+        <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+           
+           
+           </div>
+       </div>
+     
+         <!-- <div class="text-center mt-5 mb-5">
+             <div class="btn-group  gap-2  " >
+                
+                 <button mat-stroked-button class="text-right" (click)="onSubmit()">Save</button>
+                 <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+                
+               
+               </div>
+         </div> -->
+     
+     </div>
+   </div>
+
+</div>

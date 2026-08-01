@@ -1,0 +1,65 @@
+<div *ngIf ="showSpiner">
+  
+<app-spinner></app-spinner>
+</div>
+
+
+<div  class="container-fluid" *ngIf ="!showSpiner">
+    <div class="row mb-2">
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search (Under Policy, Description, Date, Entered By)..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    <div class="col-8 col-lg-8 col-sm-8 mt-2" style="text-align: right;">
+
+<button type="button"(click)="addEditAttachement()" class="btn btn--primary  uppercase" style="margin-right: 2px;background-color: #dc3545;color: white">📎 ADD Attachement  </button>
+    </div>
+  </div>
+      
+      
+<div class="scrolling mt-2" style="background-color: #f0f2f55c;">
+  <table class="table table-bordered table-hover dt-responsive" style="background-color: #f0f2f532;" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Under Policy</th>
+        <th>File Name</th>
+        <th>Description</th>
+        <th>File Type</th>
+       
+        <th>Enter Date</th>
+       
+        <th>Entered By</th>
+       
+        
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of listOfAllFatchData |searchSupportAttachment:searchTerm; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ file?.UnderPolicy }}</td>
+        <td>{{ file?.FileName }}</td>
+        <td>{{ file?.Description }}</td>
+        <td>{{ file?.FileType }}</td>
+        <!-- <td>{{ file?.FileSizeInBytes | number }} bytes</td> -->
+        <td>{{ file?.AttachmentDate | date:'dd/MM/yyyy' }}</td>
+        
+        <td>{{ file?.EnteredBy }}</td>
+       
+        
+        <td>
+          <button mat-button color="primary" (click)="onRowClick(file)">
+            <i class="material-icons">download</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>

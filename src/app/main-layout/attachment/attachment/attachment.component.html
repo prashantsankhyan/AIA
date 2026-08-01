@@ -1,0 +1,79 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div class="container-fluid" style="background-color: white;">
+ <div *ngIf ="!showSpiner">
+
+
+  <div class="card-header mt-2">
+    <div class="row p-1">
+      <div class="col-sm-3 mt- mb-1">
+        <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.FileName" (ngModelChange)="onFileNameChange($event)" style="font-size: xx-small;" placeholder="Search By File Name">
+      </div> 
+      <div class="col-sm-3 mt- mb-1">
+        <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.Description" (ngModelChange)="onDescriptionChange($event)" style="font-size: xx-small;" placeholder="Search By Description">
+      </div>
+       <div class="col-sm-2 mt- mb-1">
+         <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="font-size: xx-small;"placeholder="Search By Date">
+       </div>
+     
+       
+       <div class="col-sm-2 mt- mb-1">
+         <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)" style="font-size: xx-small;" placeholder="Search By Enter By">
+       </div>
+      
+      <div class="col-sm-2 mt- mb-1" style="text-align: right;">
+        <a href="javascript:void(0)" (click)="addEditAttachement($event)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm " style="margin-right: 10px;"><i class="fas fa-check fa-sm text-white-50"></i> Add Attachment </a>
+       
+       
+    
+       </div>
+    </div>
+  </div>
+ 
+  
+ 
+
+
+   
+      <div class="card mt-3 scrolling" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+        
+       <table  class="table table-bordered table-hover dt-responsive">
+             <thead >
+               <tr>
+                 <th style="width: 200px;">File Path</th>
+                
+                
+                 <th style="width: 150px;">Date </th>
+                 
+                 <th style="width: 500px;">Description</th>
+                 <th style="width: 150px;">Attached By </th>
+                 <th style="width: 20px;"></th>
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor ="let data of listOfAllFatchData | srachSaleAttachemnt:searchCriteria" >
+              
+                 <td style="width: 350px;">{{data.FileName}}</td>
+                 <td style="width: 150px;">{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+                
+                <td style="width: 500px;">{{data.Description}}</td>
+                <td style="width: 150px;">{{data.EnteredBy}}</td>
+                
+                <td>
+                  <a [href]="data.FileUrl" target="_blank">
+                    <mat-icon>visibility</mat-icon>
+                  </a>
+                </td>
+             
+               </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+ </div>
+</div>
+
+

@@ -1,0 +1,1019 @@
+<div class="container-fluid dd" >
+  <div class="team-select-wrapper" *ngIf="showTeamSelector">
+  
+
+  <select
+    id="teamSelect"
+    #teamSelect
+    class="team-dropdown"
+    (change)="getNameOfTeam(teamSelect.value)"
+  >
+    <option value="">Choose a team</option>
+    <option>Sale Team</option>
+    <option>Submission Team</option>
+    <option>Binding Team</option>
+    <option>Claim Team</option>
+    <option>Transaction Team</option>
+    <option>Support Team</option>
+    <option>Account Team</option>
+    <option>Master Login</option>
+  </select>
+</div>
+
+<div *ngIf ="showSaleTeam" class=""  >
+
+  <div class="container mt-1 mb-3">
+    <div class="row">
+      <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+         (ngModelChange)="onLookUpCodeChange($event)"/>
+		<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+  (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Type</button>
+		
+	</div>
+      </div>
+
+    </div>
+
+	
+	
+</div>
+    <!-- <div class="row p-2 ">
+      <div class="col-sm-2 ">
+        <div class="search__container">
+
+          <input class="search__input" type="text" [(ngModel)]="searchCriteria.name"
+         
+          placeholder="Search By Name"
+          aria-label="Search by name" >
+      </div>
+      
+     </div>
+     <div class="col-sm-2 ">
+      <select
+  class="form-select"
+  [(ngModel)]="searchCriteria.accountType"
+  (ngModelChange)="onAccountTypeChange($event)"
+  aria-label="Search By Account Type"
+>
+  <option value="" disabled>Select Account Type</option>
+  <option value ='INSURED'>Insured</option>
+  <option value ='Client'>Client</option>
+</select>
+    </div>
+     <div class="col-sm-3">
+       <input
+       class="search__input" type="text"
+         [(ngModel)]="searchCriteria.lookUpCode"
+         (ngModelChange)="onLookUpCodeChange($event)"
+         placeholder="Search By LookUp Code"
+         aria-label="Search"
+       />
+     </div>
+     <div class="col-sm-2">
+      <input
+      class="search__input" type="text"
+        [(ngModel)]="searchCriteria.city"
+        (ngModelChange)="onCityChange($event)"
+        placeholder="Search By City "
+        aria-label="Search"
+      />
+    </div>
+    <div class="col-sm-2 ">
+      <input
+      class="search__input" type="text"
+        [(ngModel)]="searchCriteria.state"
+        (ngModelChange)="onStateChange($event)"
+        placeholder="Search By State"
+        aria-label="Search"
+      />
+    </div>
+  
+    </div> -->
+  
+   
+     
+      
+       
+      <div *ngIf ="showSpiner">
+      <app-spinner></app-spinner>
+
+      </div>
+      <div *ngIf ="!showSpiner">
+        <div class="scrollable-table-body mt-2"  >
+        
+          <table  class="table table-bordered table-hover dt-responsive">
+         
+            <thead>
+              <tr>
+                <th >Account Name</th>
+                <th>Code</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Zip</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Entered By</th>
+                <!-- <th>Delete</th>
+                -->
+              </tr>
+            </thead>
+            <tbody>
+            
+               <tr  *ngFor ="let data of listOfAllAcount | searchFilter: searchCriteria" (dblclick)="getNoteByAccountId(data)">
+                <td (click)="getNoteByAccountId(data)">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+                 <td>{{data.LookUpCode}}</td>
+                 <td>{{data.PhoneNumber }}</td>
+                 <td>{{data.EmailID | lowercase}}</td>
+                 <td>{{data.ZIP}}</td>
+                 <td>{{data.City}}-{{data.State}}-{{data.Country}}</td>
+                 <td [ngClass]="getEffectiveDateFlagClass(data.EffectiveDateFlag)" style="text-align: center;">{{data.EffectiveDate}}</td>
+                 <td>{{data.EnteredBy}}</td>
+                 
+                 <!-- <td >
+                  <mat-icon style="color: red; font-size: small;" *ngIf="data.AccountType === 'Prospective'" (click) ="deleteProspectiveAccount(data)">error</mat-icon>
+                  <mat-icon style="color: green; font-size: small;" *ngIf="data.AccountType === 'Client'" (click) ="deleteClientAccount(data)">check_circle</mat-icon>
+                
+                </td> -->
+               
+               
+            
+               </tr>
+             
+           
+             
+            </tbody>
+           
+          </table>
+       
+      </div>
+     
+      </div>
+    
+     
+</div>
+
+<div *ngIf ="showLossRun" class="">
+  <div class="row p-2 mt-2">
+    <div class="col-sm-2 ">
+      <div class="search__container">
+
+        <input class="search__input" type="text" [(ngModel)]="searchCriteria.name"
+        (ngModelChange)="onNameChange($event)"
+        placeholder="Search By Name"
+        aria-label="Search by name" >
+    </div>
+    
+   </div>
+   <div class="col-sm-2 ">
+    <select
+class="form-select"
+[(ngModel)]="searchCriteria.accountType"
+(ngModelChange)="onAccountTypeChange($event)"
+aria-label="Search By Account Type"
+>
+<option value="" disabled>Select Account Type</option>
+<option value ='INSURED'>Insured</option>
+<option value ='Client'>Client</option>
+</select>
+  </div>
+   <div class="col-sm-3">
+     <input
+     class="search__input" type="text"
+       [(ngModel)]="searchCriteria.lookUpCode"
+       (ngModelChange)="onLookUpCodeChange($event)"
+       placeholder="Search By LookUp Code"
+       aria-label="Search"
+     />
+   </div>
+   <div class="col-sm-2">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"
+      placeholder="Search By City "
+      aria-label="Search"
+    />
+  </div>
+  <div class="col-sm-2 ">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.state"
+      (ngModelChange)="onStateChange($event)"
+      placeholder="Search By State"
+      aria-label="Search"
+    />
+  </div>
+
+  </div>
+   
+     
+      
+       
+      <div *ngIf ="showSpiner">
+        <app-spinner></app-spinner>
+
+      </div>
+      <div *ngIf ="!showSpiner">
+        <div class="scrollable-table-body mt-2"  >
+        
+          <table  class="table table-bordered table-hover dt-responsive">
+         
+            <thead>
+              <tr>
+                <th >Account Name</th>
+                <th>Lookup Code</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Zip</th>
+                <th>Address</th>
+                <th>Entered Date</th>
+                <!-- <th>Enter By</th>
+                <th>Delete</th> -->
+               
+              </tr>
+            </thead>
+            <tbody>
+            
+               <tr  *ngFor ="let data of listOfAllAcount | searchFilter: searchCriteria" (dblclick)="addLossRun(data)">
+                <td (click)="addLossRun(data)" class="hover-cell">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+                 <td>{{data.LookUpCode}}</td>
+                 <td>{{data.PhoneNumber}}</td>
+                 <td>{{data.EmailID}}</td>
+                 <td>{{data.ZIP}}</td>
+                 <td>{{data.City}}-{{data.State}}-{{data.Country}}</td>
+                 <td [ngClass]="getEffectiveDateFlagClass(data.EffectiveDateFlag)" style="text-align: center;">{{data.EffectiveDate}}</td>
+                 <td>{{data.EnteredBy}}</td>
+                 
+                 <!-- <td >
+                  <mat-icon style="color: red; font-size: small;" *ngIf="data.AccountType === 'Prospective'" (click) ="deleteProspectiveAccount(data)">error</mat-icon>
+                  <mat-icon style="color: green; font-size: small;" *ngIf="data.AccountType === 'Client'" (click) ="deleteClientAccount(data)">check_circle</mat-icon>
+                
+                </td> -->
+               
+               
+            
+               </tr>
+             
+           
+             
+            </tbody>
+           
+          </table>
+       
+      </div>
+     
+      </div>
+    
+     
+</div>
+<!-- Loss Run-->
+
+ <!-- submissionTeam1 -->
+
+ <div *ngIf ="showSubmissionTeam">
+  <div class="row p-2 mt-2">
+    
+    <div class="col-sm-4 ">
+     <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"   (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	</div>
+    
+   </div>
+   <div class="col-sm-4">
+   <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+       (ngModelChange)="onLookUpCodeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	</div>
+  </div>
+   
+   <div class="col-sm-4">
+    <div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By City</button>
+		
+	</div>
+   
+  </div>
+  
+
+  </div>
+ 
+  <div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+
+  </div>
+
+  <div *ngIf ="!showSpiner">
+
+  
+    <div class="scrollable-table-body mt-2"  >
+      
+      <table  class="table table-bordered table-hover dt-responsive">
+     
+        <thead>
+          <tr>
+            <th >Account Name</th>
+            <th> Code</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Zip</th>
+            <th>Address</th>
+            <th>Details </th>
+            <th>Entered</th>
+           
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfAllAcountForSubmission | searchFilter: searchCriteria" (dblclick)="openMarketd(data)">
+            <td (click)="openMarketd(data)" >{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+             <td>{{data.LookUpCode}}</td>
+             <td>{{data.PhoneNumber}}</td>
+             <td>{{data.EmailID | lowercase}}</td>
+             <td>{{data.ZIP}}</td>
+             <td>{{data.City}}-{{data.State}}-{{data.Country}}</td>
+             <td>{{data.PolicyType}}-{{data.No_of_Driver}}-{{data.No_of_Unit}}</td>
+             <td>{{data.EnteredBy}}</td>
+           
+             
+ 
+             
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+   
+  </div>
+  </div>
+  
+ 
+</div>
+
+
+<div *ngIf ="bindingTeam">
+  <div class="row p-2 mt-2">
+     <div class="col-sm-4">
+	   <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	    </div>
+      </div>
+       <div class="col-sm-4">
+	   <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+       (ngModelChange)="onLookUpCodeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	    </div>
+      </div>
+      <div class="col-sm-4">
+ <div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By City</button>
+		
+	    </div>
+      </div>
+   
+   <!-- <div class="col-sm-2 ">
+    <select
+class="form-select"
+[(ngModel)]="searchCriteria.accountType"
+(ngModelChange)="onAccountTypeChange($event)"
+aria-label="Search By Account Type"
+>
+<option value="" disabled>Select Account Type</option>
+<option value ='INSURED'>Insured</option>
+<option value ='Client'>Client</option>
+</select>
+  </div> -->
+  
+  
+  <!-- <div class="col-sm-2 ">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.state"
+      (ngModelChange)="onStateChange($event)"
+      placeholder="Search By State"
+      aria-label="Search"
+    />
+  </div> -->
+
+  </div>
+  <div *ngIf ="showSpiner">
+    
+<app-spinner></app-spinner>
+  
+  
+  </div>
+  <div *ngIf ="!showSpiner">
+    <div class="scrollable-table-body mt-2">
+      
+      <table  class="table table-bordered table-hover dt-responsive" >
+     
+        <thead>
+          <tr>
+            
+            <th >Account Name</th>
+            <th> Code</th>
+            <th>Number</th>
+            <th>Email</th>
+            
+            <th>Mailing Address</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfClinetForBunding | searchFilter: searchCriteria" >
+            <td (click)="goToPolicyBySubmissio(data)" class="hover-cell">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+             <td>{{data.LookUpCode}}</td>
+             <td>{{data.PhoneNumber}}</td>
+             <td>{{data.EmailID}}</td>
+            
+             <td>{{data.Description}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+           
+             
+ 
+             
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+   
+  </div>
+  </div>
+  
+</div>
+
+<div *ngIf ="suppoerTeam">
+  <div class="row p-2 mt-2">
+     <div class="col-sm-4">
+	   <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	    </div>
+      </div>
+       <div class="col-sm-4">
+	   <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+       (ngModelChange)="onLookUpCodeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	    </div>
+      </div>
+      <div class="col-sm-4">
+ <div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By City</button>
+		
+	    </div>
+      </div>
+   
+   <!-- <div class="col-sm-2 ">
+    <select
+class="form-select"
+[(ngModel)]="searchCriteria.accountType"
+(ngModelChange)="onAccountTypeChange($event)"
+aria-label="Search By Account Type"
+>
+<option value="" disabled>Select Account Type</option>
+<option value ='INSURED'>Insured</option>
+<option value ='Client'>Client</option>
+</select>
+  </div> -->
+  
+  
+  <!-- <div class="col-sm-2 ">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.state"
+      (ngModelChange)="onStateChange($event)"
+      placeholder="Search By State"
+      aria-label="Search"
+    />
+  </div> -->
+
+  </div>
+  <div *ngIf ="showSpiner">
+    
+<app-spinner></app-spinner>
+  
+  
+  </div>
+  <div *ngIf ="!showSpiner">
+    <div class="scrollable-table-body mt-2">
+      
+      <table  class="table table-bordered table-hover dt-responsive" >
+     
+        <thead>
+          <tr>
+            
+            <th >Account Name</th>
+            <th> Code</th>
+            <th>Number</th>
+            <th>Email</th>
+            
+            <th>Mailing Address</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfClinetForBunding | searchFilter: searchCriteria" >
+            <td (click)="goToSupportTeam(data)" class="hover-cell">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+             <td>{{data.LookUpCode}}</td>
+             <td>{{data.PhoneNumber}}</td>
+             <td>{{data.EmailID}}</td>
+            
+             <td>{{data.Description}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+           
+             
+ 
+             
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+   
+  </div>
+  </div>
+  
+</div>
+<div *ngIf ="showTransactionTeam">
+ 
+  <div class="row p-2">
+    <div class="col-sm-3 ">
+      <div class="container__item">
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>	
+	   </div>
+
+   </div>
+   <div class="col-sm-3 ">
+     <div class="container__item">
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+      (ngModelChange)="onLookUpCodeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+	   </div>
+  </div>
+  
+  <div class="col-sm-3">
+     <div class="container__item">
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By City</button>
+	   </div>
+  
+  </div>
+  <div class="col-sm-3">
+    <div class="container__item">
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.state"
+      (ngModelChange)="onStateChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By State</button>
+	   </div>
+   
+  </div>
+ 
+  </div>
+
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+  <div class="scrollable-table-body mt-2" >
+    
+      <table  class="table table-bordered table-hover dt-responsive">
+     
+        <thead>
+          <tr>
+            <th >Account Name</th>
+            <th> Code</th>
+            <th>Number</th>
+            <th>Email</th>
+           
+            <th>Mailing Address</th>
+            <th>Opening Balance</th>
+           
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfAllAcountForTransaction |  searchFilter: searchCriteria" >
+            <td (click)="addTranshaction(data)">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+             <td>{{data.LookUpCode}}</td>
+             <td>{{data.PhoneNumber}}</td>
+             <td>{{data.EmailID}}</td>
+             <td>{{data.Description}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+             <td style="font-size: medium;">{{data.TotalBalance |  currency:'USD'}}</td>
+           
+             
+ 
+             
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+   
+  </div>
+  </div>
+
+
+
+</div>
+
+<div *ngIf ="showEndrosement">
+   <div class="row mt-3">
+      <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+         (ngModelChange)="onLookUpCodeChange($event)"/>
+		<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.accountType"
+  (ngModelChange)="onAccountTypeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Type</button>
+		
+	</div>
+      </div>
+
+    </div>
+ 
+   
+  
+  <div *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+   </div>
+   <div *ngIf ="!showSpiner">
+    <div class="scrollable-table-body mt-2" style="background-color: white;">
+      
+        <table  class="table table-bordered table-hover dt-responsive">
+       
+          <thead>
+            <tr>
+              <th >Account Name</th>
+              <th> Code</th>
+              <th>Number</th>
+              <th>Email</th>
+             
+              <th>Full Address</th>
+              <th> Balance</th>
+             
+             
+            </tr>
+          </thead>
+          <tbody>
+          
+             <tr  *ngFor ="let data of listOfAllAcountForTransaction |  searchFilter: searchCriteria" (click)="goToEndorsement(data)">
+              <td>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+               <td>{{data.LookUpCode}}</td>
+               <td>{{data.PhoneNumber}}</td>
+               <td>{{data.EmailID}}</td>
+               <td>{{data.Description}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+               <td style="font-size: medium;">{{data.TotalBalance |  currency:'USD'}}</td>
+             
+               
+   
+               
+             </tr>
+           
+         
+           
+          </tbody>
+         
+        </table>
+     
+    </div>
+    </div>
+
+  
+ 
+</div>
+
+
+<div *ngIf ="showClaimTeam" class="mt-3">
+  
+    <div class="row  mt-3">
+      <div class="col-sm-3 ">
+        <!-- <input
+        class="form__field" type="text"
+         [(ngModel)]="searchCriteria.name"
+         (ngModelChange)="onNameChange($event)"
+         placeholder="Search By Name"
+         aria-label="Search"
+       /> -->
+       <input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+     </div>
+  
+     <div class="col-sm-3">
+      
+        <input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"   (ngModelChange)="onLookUpCodeChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+     </div>
+     <div class="col-sm-3">
+     
+       <input type="text" class="form__field"  [(ngModel)]="searchCriteria.city" (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By City</button>
+    </div>
+    <!-- <div class="col-sm-2">
+      <input
+      class="search__input" type="text"
+        [(ngModel)]="searchCriteria.state"
+        (ngModelChange)="onStateChange($event)"
+        placeholder="Search By State"
+        aria-label="Search"
+      />
+    </div> -->
+    <div class="col-sm-3">
+      <!-- <input
+      class="search__input" type="text"
+        [(ngModel)]="searchCriteria.claimNumber"
+        (ngModelChange)="onClaimNumberChange($event)"
+        placeholder="Search By claim"
+        aria-label="Search"
+      /> -->
+         <input type="text" class="form__field"  [(ngModel)]="searchCriteria.claimNumber"  (ngModelChange)="onClaimNumberChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By claim</button>
+    </div>
+   
+   
+    </div>
+  
+  
+    <div  class="scrollable-table-body mt-2" >
+      
+        <table  class="table table-bordered table-hover dt-responsive">
+       
+          <thead>
+            <tr>
+              <th >Account Name</th>
+              <th>Lookup Code</th>
+              <th>Number</th>
+              <th>Email</th>
+              <th>Street Address</th>
+              <th>Address</th>
+             
+             
+            </tr>
+          </thead>
+          <tbody>
+          
+             <tr  *ngFor ="let data of listOfAllAcountForClaim | searchFilter: searchCriteria" (dblclick)="addClaim(data)">
+              <td>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+               <td>{{data.LookUpCode}}</td>
+               <td>{{data.PhoneNumber}}</td>
+               <td>{{data.EmailID}}</td>
+               <td>{{data.Description}} </td>
+               <td>{{data.City}}-{{data.State}}-{{data.Zip}}</td>
+               
+             
+               
+   
+               
+             </tr>
+           
+         
+           
+          </tbody>
+         
+        </table>
+     
+    </div>
+
+  
+ 
+</div>
+
+<div *ngIf ="showAppRegistration">
+  <app-app-registraion></app-app-registraion>
+</div>
+
+
+<div *ngIf ="showRenewableTeam">
+<app-renew-list></app-renew-list>
+</div>
+<div *ngIf ="showGenrateCertificateTeam">
+  <!-- <div class="row p-2 mt-2">
+    <div class="col-sm-2 ">
+      <div class="search__container">
+
+        <input class="search__input" type="text" [(ngModel)]="searchCriteria.name"
+        (ngModelChange)="onNameChange($event)"
+        placeholder="Search By Name"
+        aria-label="Search by name" >
+    </div>
+    
+   </div>
+   <div class="col-sm-2 ">
+    <select
+class="form-select"
+[(ngModel)]="searchCriteria.accountType"
+(ngModelChange)="onAccountTypeChange($event)"
+aria-label="Search By Account Type"
+>
+<option value="" disabled>Select Account Type</option>
+<option value ='INSURED'>Insured</option>
+<option value ='Client'>Client</option>
+</select>
+  </div>
+   <div class="col-sm-3">
+     <input
+     class="search__input" type="text"
+       [(ngModel)]="searchCriteria.lookUpCode"
+       (ngModelChange)="onLookUpCodeChange($event)"
+       placeholder="Search By LookUp Code"
+       aria-label="Search"
+     />
+   </div>
+   <div class="col-sm-2">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"
+      placeholder="Search By City "
+      aria-label="Search"
+    />
+  </div>
+  <div class="col-sm-2 ">
+    <input
+    class="search__input" type="text"
+      [(ngModel)]="searchCriteria.state"
+      (ngModelChange)="onStateChange($event)"
+      placeholder="Search By State"
+      aria-label="Search"
+    />
+  </div>
+
+  </div> -->
+    <div class="row mt-3">
+      <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.name"  (ngModelChange)="onNameChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+	<div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+         (ngModelChange)="onLookUpCodeChange($event)"/>
+		<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Code</button>
+		
+	</div>
+      </div>
+       <div class="col-sm-4">
+		<div class="container__item">
+	
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
+      (ngModelChange)="onCityChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Type</button>
+		
+	</div>
+      </div>
+
+    </div>
+  <div *ngIf ="showSpiner">
+   <app-spinner></app-spinner>
+  </div>
+  <div *ngIf ="!showSpiner">
+    <div class="scrollable-table-body mt-2">
+      
+      <table  class="table table-bordered table-hover dt-responsive">
+     
+        <thead>
+          <tr>
+            
+            <th >Account Name</th>
+            <th>Lookup Code</th>
+            <th>Number</th>
+            <th>Email</th>
+            
+            <th>Mailing Address</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfClinetForBunding | searchFilter: searchCriteria" (click)="certs(data)">
+            <td (click) ="certs(data)" class="hover-color"><p>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></p></td>
+           
+             <td>{{data.LookUpCode}}</td>
+             <td>{{data.PhoneNumber}}</td>
+             <td>{{data.EmailID}}</td>
+            
+             <td>{{data.Description}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+           
+             
+ 
+             
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+   
+  </div>
+  </div>
+  </div>
+
+
+  <div *ngIf ="showAccountTeam">
+   <app-account-team></app-account-team>
+</div>
+
+
+
+
+
+     
+      
+    
+      
+     
+     
+      
+     
+   
+
+     
+
+
+
+
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<div class="container">
+
+ <h3 style="text-align: center;"> Confirm Here to All Value 0</h3>
+ 
+   <!-- <div class="btn-group  gap-2 mt-4 mb-5 ">
+          
+       <button mat-stroked-button class="text-right" color="warn" (click)="onSubmit()" >Delete</button>
+       <button mat-stroked-button class="text-right"  mat-button mat-dialog-close>Clear</button>
+      
+     
+     </div> -->
+     <div class="clearfix mt-2" *ngIf ="messageSuccess">
+       <button type="button" class="cancelbtn"  mat-dialog-close>Cancel</button>
+       <button type="button" class="deletebtn" (click)="getCovertValueToZero()">Convert To Zero</button>
+     </div>
+
+</div>

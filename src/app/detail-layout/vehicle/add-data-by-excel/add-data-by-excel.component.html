@@ -1,0 +1,61 @@
+<div class="container">
+ <div class="card mt-2">
+     <div  class="card-header" style="background-color: #3f51b5; color: white;">
+         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" >  Upload Vehcicle Only</a>  
+       </div>
+ </div>
+ 
+
+    <form [formGroup]="addExcelForm">
+        <div class="row">
+          
+          
+            <div class="col-sm-12 mt-3">
+                <label>Upload Excel File</label>
+              
+                <div class=" file-container center  text-center mt-2" >
+                               
+                 <label>Upload file here</label>
+                 <input
+                 type="file"
+                 class="file"
+                 placeholder="File Name"
+                 multiple
+                 accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+                 
+                 (change)= "onFileUpload($event)"  />
+                 <!-- <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['abc'].errors">FIle is required</div>
+                 </div> -->
+                 <label>Upload file here</label>
+             </div>
+              
+            </div>
+          
+          
+           
+          
+           
+          
+          
+          
+          
+        
+            <div class="text-center mt-5">
+                <div  *ngIf ="showFiv">
+                            
+                    <button style="width: 140px;color: green;" class="learn-more"(click)="onSubmit()">Save</button>
+                    <button style="width: 140px; color: red; margin-left: 10px;" class="learn-more" mat-dialog-close>Cancel</button>
+                                           
+                                               
+                                              
+                                             
+             </div>
+              </div>
+       
+        </div>
+       
+       </form>
+
+
+</div>

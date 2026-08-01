@@ -1,0 +1,535 @@
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+
+
+</div>
+<div  *ngIf ="!showSpiner">
+  <form [formGroup]="addEditTransactionForm">
+
+    <div class="container-fluid">
+  
+
+     <div class="scrolling">
+     
+        <table class="table table-bordered table-hover" style="width:100%">
+          <thead class="table-header">
+            <tr>
+              <th>Select Policy &#9660;</th>
+              <th>CR</th>
+              <th>BR</th>
+              <th> Policy Date </th>
+              <th>Policy Code	</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let data of listOfPolicy ;let idx=index; " [ngClass] = "{'selected-row' : data.MarkedPolicyID == MarkedPolicyID && data.ChildPolicyID == Policy}"   (click)="getServiceId(data);"  #firstRow tabindex="0">
+              <td   *ngIf ="data.StageType !== 'In-Process'"   >{{data.LineName}}/{{data.LineShortName}}</td>
+              <td   *ngIf ="data.StageType !== 'In-Process'">{{data.IssuingCompanyName}}</td>
+              <td   *ngIf ="data.StageType !== 'In-Process'">{{data.BrokerName}}</td>
+              
+              
+              
+              <td  *ngIf ="data.StageType !== 'In-Process'">{{data.Effective | date:'MM/dd/yyyy'}} - {{data.Expiration | date:'MM/dd/yyyy'}}</td>
+              <td *ngIf ="data.StageType !== 'In-Process'">{{data.ChildPolicyName}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+     
+      <input type="text" [(ngModel)]="Policy" formControlName ="Policy" class="form-control" style="display: none;">
+     </div>
+     <div style="text-align: center;">
+      <div *ngIf ="showSpinnerOnLoadEndroesement" class="spinner-border mb-5 mt-5"  role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+     </div>
+    
+    
+    
+     <div *ngIf ="!showSpinnerOnLoadEndroesement" class="container1 mt-1">
+      <div style="margin-left: 1px;margin-right: 1px;margin-top: 1px;">
+<input   #descInput type="text" class="form-control" placeholder="Search By Description" style=" border-color: transparent !important;
+  box-shadow: none !important;"  autocomplete="off">
+      </div>
+     
+        <table class="table table-bordered table-hover mt-1" style="width:100%">
+          <thead class="table-header">
+            <tr>
+              <th>Select No &#9660; </th>
+              <th> Status</th>
+             
+              <th>Stage	</th>
+              <th>Effective</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+           <ng-container *ngIf="listOfEndorsements?.length > 0; else noDataTemplate">
+    <tr *ngFor="let data of listOfEndorsements; let idx = index"
+        [ngClass]="{'selected-row': data.EndorsementID == EndorsementID}"
+        (click)="getIdFromData(data); changeTableRowColor(idx)"  (dblclick)="viewSubmitChangeRequest(data)">
+      <td *ngIf="data.Stage !== null">{{data.IDBasedOnAMC == null ? data.LineName : data.IDBasedOnAMC}}</td>
+      <td *ngIf="data.Stage !== null">{{data.PolicyStatus}}</td>
+      <td *ngIf="data.Stage !== null">{{data.Stage}}</td>
+      <td *ngIf="data.Stage !== null">{{data.EffectiveDate | date:'MM/dd/yyyy'}}</td>
+      <td *ngIf="data.Stage !== null">{{data.Description}}</td>
+    </tr>
+  </ng-container>
+
+  <!-- Template for no data or no selection -->
+  <ng-template #noDataTemplate>
+    <tr>
+     <td colspan="5" style="padding: 60px 0; text-align: center;">
+      <div style="display: inline-block; color: rgba(0, 0, 0, 0.701); font-weight: 500; font-size: 1.1rem;">
+        &#9650; PLEASE SELECT POLICY FIRST
+      </div>
+    </td>
+    </tr>
+  </ng-template>
+
+           
+          </tbody>
+        </table>
+     
+      <!-- <input type="text" [(ngModel)]="Service" formControlName ="Service" class="form-control" style="display: none;"> -->
+     </div>
+
+     <div class="row mt-2">
+      <div class="col-sm-3 ">
+        <label>Code</label>
+       
+        <select class="form-select formControl" formControlName ="TransCode"   aria-label="Default select example"  >
+          <option hidden value="" disabled selected  > Select Code</option>
+         <option value="NEW Policy">NEW Policy</option>
+         <option value="ENDROSEMENT">ENDROSEMENT-ADD-DELET</option>
+         <option value="COMPANY FINANCE">COMPANY FINANCE</option>
+         <option value="CANC-CANCELLATION">CANC - CANCELLATION</option>
+         <option value="AUDIT-ANUAL AUDIT">AUDIT-ANUAL AUDIT</option>
+         <option value="REIN-REINSTATEMENT">REIN REINSTATEMENT</option>
+         <option value="RENB-RENEWAL">RENB-RENEWAL</option>
+         <option value="REWR-REWRITE">REWR -REWRITE</option>
+
+        </select>
+       
+      </div>
+       <div class="col-sm-3 ">
+        <label>Payment Mode</label>
+       
+        <select class="form-select formControl" formControlName ="PaymentMode"   aria-label="Default select example"  >
+          <option hidden value="" disabled selected  > Select Mode</option>
+         <option value="Monthly">Monthly </option>
+       
+
+        </select>
+       
+      </div>
+      
+      <div class="col-sm-3">
+        <label> Amount</label>
+        <input type="number" class="form-control"[(ngModel)]="Amount" formControlName="Amount" >
+     
+      </div>
+
+       <div class="col-sm-3">
+  <label>State </label>
+
+  
+   <select class="form-select formControl" formControlName="State" aria-label="Default select example"(change)="onStateChange($any($event.target).value)">
+    <option hidden value="" disabled selected>Select State</option>
+ <option value="Null">Null</option>
+    <option value="AK">AK</option>
+    <option value="AL">AL</option>
+    <option value="AR">AR</option>
+    <option value="AZ">AZ</option>
+    <option value="CA">CA</option>
+    <option value="CO">CO</option>
+    <option value="CT">CT</option>
+    <option value="DC">DC</option>
+    <option value="DE">DE</option>
+    <option value="FL">FL</option>
+    <option value="GA">GA</option>
+    <option value="HI">HI</option>
+    <option value="IA">IA</option>
+    <option value="ID">ID</option>
+    <option value="IL">IL</option>
+    <option value="IN">IN</option>
+    <option value="KS">KS</option>
+    <option value="KY">KY</option>
+    <option value="LA">LA</option>
+    <option value="MA">MA</option>
+    <option value="MD">MD</option>
+    <option value="ME">ME</option>
+    <option value="MI">MI</option>
+    <option value="MN">MN</option>
+    <option value="MO">MO</option>
+    <option value="MS">MS</option>
+    <option value="MT">MT</option>
+    <option value="NC">NC</option>
+    <option value="ND">ND</option>
+    <option value="NE">NE</option>
+    <option value="NH">NH</option>
+    <option value="NJ">NJ</option>
+    <option value="NM">NM</option>
+    <option value="NV">NV</option>
+    <option value="NY">NY</option>
+    <option value="OH">OH</option>
+    <option value="OK">OK</option>
+    <option value="OR">OR</option>
+    <option value="PA">PA</option>
+    <option value="PR">PR</option>
+    <option value="RI">RI</option>
+    <option value="SC">SC</option>
+    <option value="SD">SD</option>
+    <option value="TN">TN</option>
+    <option value="TX">TX</option>
+    <option value="UT">UT</option>
+    <option value="VA">VA</option>
+    <option value="VI">VI</option>
+    <option value="VT">VT</option>
+    <option value="WA">WA</option>
+    <option value="WI">WI</option>
+    <option value="WV">WV</option>
+    <option value="WY">WY</option>
+  </select>
+</div>
+   
+     
+      <div class="col-sm-3">
+        <label>Policy Fee</label>
+        <input type="number" class="form-control"[(ngModel)]="PolicyFee" formControlName ="PolicyFee">
+       
+      </div>
+      <!-- <div class="col-sm-3">
+        <label>Surplus Tax</label>
+        <input type="number" class="form-control"[(ngModel)]="SurpluxTax" formControlName ="SurpluxTax"(change)="getTotal() ;getOpeningBalance()" >
+      
+      </div> -->
+       <div class="col-sm-3">
+        <label>Surplus Tax</label>
+        <input type="number" class="form-control" formControlName ="SurpluxTax" >
+      
+      </div>
+      <div class="col-sm-3">
+        <label>Company Financed</label>
+        <input type="number" class="form-control" formControlName ="CompanyFinanced" >
+       
+      </div>
+      <div class="col-sm-3">
+        <label>Agency Discount</label>
+        <input type="number" class="form-control" formControlName ="AgencyDiscount" >
+      </div>
+      <div class="col-sm-3">
+        <label>Agency Fees</label>
+        <input type="number" class="form-control" formControlName ="AgencyFees" >
+      </div>
+    
+<!-- <div class="col-sm-3">
+  <label>Tax Rate</label>
+  <input type="number"
+         class="form-control"
+         formControlName="TaxRate"
+         readonly>
+</div> -->
+       <div class="col-sm-3">
+        <label>Stamping Fees </label>
+       
+         <input type="number"
+         class="form-control"
+         formControlName="StamingFee"
+         readonly>
+        
+      
+      </div>
+      <div class="col-sm-3">
+        <label>Change Date </label>
+        <input type="text" class="form-control" [(ngModel)]="EffectiveDate"  formControlName="EffectiveDate" bsDatepicker  >
+        </div>
+        
+    
+      <!-- <input type="number" class="form-control mt-1"[(ngModel)]="Total" formControlName ="Total" style="display:none" > -->
+      <input type="number" class="form-control"[(ngModel)]="OpeningBalance" formControlName ="OpeningBalance" style="display:none" >
+    
+       
+         
+        <input type="text" [(ngModel)]="MarkedPolicyID" formControlName ="MarkedPolicyID" class="form-control" style="display: none;">
+        <div class="col-sm-3">
+          <label class="">Generate Invoice</label>
+          <input type="text" class="form-control "[(ngModel)] ="GenerateInvoice" formControlName="GenerateInvoice" (ngModelChange) = "setArDate()" bsDatepicker   [ngClass]= "{ 'is-invalid': submit && f['GenerateInvoice'].errors }">
+          <div *ngIf ="submit && f['GenerateInvoice'].errors" class="invalid-feedback">
+            <div *ngIf ="f['GenerateInvoice'].errors">GenerateInvoice is required</div>
+        </div> 
+        </div>
+    
+        <div class="col-sm-3">
+          <label>A/R Due </label>
+          <input type="text" class="form-control" [(ngModel)] ="ARDue"  formControlName="ARDue" [ngClass]= "{ 'is-invalid': submit && f['ARDue'].errors }">
+          <div *ngIf ="submit && f['ARDue'].errors" class="invalid-feedback">
+            <div *ngIf ="f['ARDue'].errors">EffectiveDate is required</div>
+        </div> 
+        </div>
+          <div class="col-sm-3 mb-2">
+          <label>Note</label>
+          <textarea class="form-control" rows="3" formControlName="Notes"></textarea>
+         
+         
+        </div>
+        <div class="col-sm-3 mt-4">
+         
+
+          <div  *ngIf ="messageSuccess"  style="margin-top: 25px;">
+             <a *ngIf="HideShowButtoon !== '0'" href="javascript:void(0)"  (click)="onSubmit();"><img src="assets/save_8361323.png" width="40px" height="40px" ></a>
+             <!-- <a href="javascript:void(0)"  style="margin-left: 30px;"  mat-dialog-close><img src="../../../assets/cancel.png" width="40px" height="40px" ></a> -->
+          <!-- <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a> -->
+        
+            <!-- <button type="button" class="btn btn-outline-success " style="width: 120px;height: 30px;font-size: small;" (click)="onSubmit()" > Save</button>
+            <button type="button" class="btn btn-outline-danger " style="width: 120px;margin-left: 10px;height: 30px;font-size: small;" mat-dialog-close>cancel</button>
+               -->
+             
+            
+            </div>
+       
+
+        </div>
+        <!-- <div class="col-sm-3 mt-2">
+          <label>Account month </label>
+          <input type="text" class="form-control mt-1" [(ngModel)] ="AccountMonth" formControlName="AccountMonth"    bsDatepicker [ngClass]= "{ 'is-invalid': submit && f['AccountMonth'].errors }">
+          <div *ngIf ="submit && f['AccountMonth'].errors" class="invalid-feedback">
+            <div *ngIf ="f['AccountMonth'].errors">EffectiveDate is required</div>
+        </div> 
+        </div> -->
+        <!-- <div class="col-sm-3  mt-1">
+          <label>Production month </label>
+          <input type="text" class="form-control mt-1" [(ngModel)] ="ProductionMonth"  formControlName="ProductionMonth"   bsDatepicker  [ngClass]= "{ 'is-invalid': submit && f['ProductionMonth'].errors }">
+          <div *ngIf ="submit && f['ProductionMonth'].errors" class="invalid-feedback">
+            <div *ngIf ="f['ProductionMonth'].errors">ProductionMonth is required</div>
+        </div> 
+        </div> -->
+      
+   
+    
+    
+       
+    
+ 
+   
+  
+   
+    </div>
+   
+ 
+  </div>
+
+  </form>
+</div>
+{{Total}}
+<!-- {{OpeningBalance}} -->
+
+<!-- <div *ngIf ="showSpiner">
+  <app-loader-spinner></app-loader-spinner>
+</div>
+<div  *ngIf ="!showSpiner">
+
+<form [formGroup]="addEditTransactionForm">
+  
+  <div class="container">
+    <div class="card">
+      <div class="card-header" style="background-color: #3f51b5; color: white;">
+        {{TransactionID ==undefined ?'Add':'Edit'}} Transaction
+       </div>
+    </div>
+  <div class=" " formArrayName ="Transactions"  *ngFor ="let data of formArr.controls;let i = index">
+   
+    <div [formGroupName] = "i" class="row mb-2   p-1">
+      <div class="col-sm-12">
+      
+        <div class="card mt-1">
+          <div class="container1">
+            <table class="table table-striped" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Effective</th>
+                  <th>Policy Number	</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor ="let data of listOfPolicy ;let idx=index; let even=even;" [style.background-color]="rowClicked == idx ? '#adb5bd' : ''" [style.background-color] = "MarkedPolicyID == data.MarkedPolicyID  ? '#adb5bd' : ''"   (click)="getServiceId(data)" (click)="changeTableRowColor(idx)" >
+                  <td  *ngIf ="data.StageType !== 'In-Process'">{{data.Type}}</td>
+                  <td  *ngIf ="data.StageType !== 'In-Process'">{{data.Effective | date:'MM/dd/yyyy'}}</td>
+                  <td *ngIf ="data.StageType !== 'In-Process'">{{data.ChildPolicyName}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+      <input type="text" [(ngModel)]="Policy" formControlName ="Policy" class="form-control" style="display: none;">
+     
+       </div>
+  
+      <div class="col-sm-3">
+        <label>Service</label>
+       
+        <select class="form-select formControl mt-2"  formControlName="Service"  aria-label="Default select example" style="margin-top: 28px;" aria-placeholder="select Policy first">
+          <option hidden value="" disabled selected  > Select Policy</option>
+          <ng-container *ngFor="let data of listOfEndorsements ;let i = index">
+            <option *ngIf ="data.Stage !== null && i !== 0"   value="{{data.EndorsementID}}" >
+
+              <span  >{{data.Description}}</span> </option>
+          </ng-container>
+      
+        </select>
+       
+      </div>
+  
+     
+    
+      
+       
+        <div class="col-sm-3 mt-1">
+          <label>Code</label>
+         
+          <select class="form-select formControl mt-1" formControlName ="TransCode"   aria-label="Default select example" style="margin-top: 28px;"  >
+            <option hidden value="" disabled selected  > Select Code</option>
+           <option value="Agency Fees">AGEE -Agency Fees</option>
+           <option value="Company FInanced">CFIN -Agency Fees</option>
+           <option value="Agency Fees">NEWB -New Physical</option>
+           <option value="Renewal">RENB -Renewal</option>
+
+          </select>
+         
+        </div>
+        
+        <div class="col-sm-3 mt-1">
+          <label> Amount</label>
+          <input type="number" class="form-control mt-1" formControlName="Amount" >
+       
+        </div>
+       
+        <div class="col-sm-3 mt-1">
+          <label>Policy Fee</label>
+          <input type="number" class="form-control mt-1" formControlName ="PolicyFee">
+         
+        </div>
+        <div class="col-sm-3 mt-1">
+          <label>Surplus Tax</label>
+          <input type="number" class="form-control mt-1" formControlName ="SurpluxTax" >
+        
+        </div>
+        <div class="col-sm-3 mt-1">
+          <label>Company Financed</label>
+          <input type="number" class="form-control mt-1" formControlName ="CompanyFinanced" >
+         
+        </div>
+        <div class="col-sm-3 mt-1">
+          <label>EffectiveDate</label>
+          <input type="text" class="form-control mt-1" [(ngModel)]="EffectiveDate"  formControlName="EffectiveDate" bsDatepicker  >
+         
+    
+        </div>
+      
+  
+      
+     
+      
+      
+    
+      
+   
+     
+    
+      <div class="col-sm-3 mt-4">
+        <div class="btn-group  gap-2 ">
+        
+            <button class="btn btn-success"  (click)="addnewLineRow()" >+</button>
+            <button  class="btn btn-danger" color="warn" (click)="remove(i)" >-</button>
+           
+        
+        
+        </div>
+     
+                  
+        
+
+      </div>
+  
+     </div>
+  </div>
+    </div>
+  
+
+  
+   <div>
+    
+   </div>
+   <div class="card p-4" style="margin-top: 10px;">
+    <div class="row">
+      <div class="card-header" style="background-color: #3f51b5; color: white;">
+        Billing
+       </div>
+     
+      <input type="text" [(ngModel)]="MarkedPolicyID" formControlName ="MarkedPolicyID" class="form-control" style="display: none;">
+      <div class="col-sm-3 mt-2">
+        <label class="">Generate Invoice</label>
+        <input type="text" class="form-control "[(ngModel)] ="GenerateInvoice" formControlName="GenerateInvoice" (ngModelChange) = "setArDate()" bsDatepicker   [ngClass]= "{ 'is-invalid': submit && f['GenerateInvoice'].errors }">
+        <div *ngIf ="submit && f['GenerateInvoice'].errors" class="invalid-feedback">
+          <div *ngIf ="f['GenerateInvoice'].errors">GenerateInvoice is required</div>
+      </div> 
+      </div>
+  
+      <div class="col-sm-3 mt-2">
+        <label>A/R Due </label>
+        <input type="text" class="form-control mt-1" [(ngModel)] ="ARDue"  formControlName="ARDue" bsDatepicker [ngClass]= "{ 'is-invalid': submit && f['ARDue'].errors }">
+        <div *ngIf ="submit && f['ARDue'].errors" class="invalid-feedback">
+          <div *ngIf ="f['ARDue'].errors">EffectiveDate is required</div>
+      </div> 
+      </div>
+      <div class="col-sm-3 mt-2">
+        <label>Account month </label>
+        <input type="text" class="form-control mt-1" [(ngModel)] ="AccountMonth" formControlName="AccountMonth"    bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM Do YYYY' }" [ngClass]= "{ 'is-invalid': submit && f['AccountMonth'].errors }">
+        <div *ngIf ="submit && f['AccountMonth'].errors" class="invalid-feedback">
+          <div *ngIf ="f['AccountMonth'].errors">EffectiveDate is required</div>
+      </div> 
+      </div>
+      <div class="col-sm-3  mt-1">
+        <label>Production month </label>
+        <input type="text" class="form-control mt-1" [(ngModel)] ="ProductionMonth"  formControlName="ProductionMonth"   bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM Do YYYY' }" [ngClass]= "{ 'is-invalid': submit && f['ProductionMonth'].errors }">
+        <div *ngIf ="submit && f['ProductionMonth'].errors" class="invalid-feedback">
+          <div *ngIf ="f['ProductionMonth'].errors">ProductionMonth is required</div>
+      </div> 
+      </div>
+      <div class="col-sm-3 mt-1">
+        <label>Department</label>
+        <select class="form-select formControl mt-1" formControlName ="Department"  aria-label="Default select example" style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['Department'].errors }" >
+          <option hidden value="" disabled selected  > Select State</option>
+          <option  value="1">COMMERCIAL Line</option>
+         
+          
+         
+        </select>
+        <div *ngIf ="submit && f['Department'].errors" class="invalid-feedback">
+          <div *ngIf ="f['Department'].errors">Department is required</div>
+      </div> 
+  
+      </div>
+    </div>
+  
+   </div>
+    
+  </form>
+
+  
+   <div class="text-center mt-1 mb-2">
+    <div class="btn-group  gap-2  ">
+     
+        <button mat-stroked-button class="text-right" style="background-color: #3f51b5 !important;color:white" (click)="onSubmit()" >{{TransactionID ==undefined ?'Save':'Update'}}</button>
+        <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+       
+      
+      </div>
+</div>
+ -->
+
+

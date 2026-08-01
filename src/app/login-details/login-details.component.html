@@ -1,0 +1,63 @@
+<div class="toolbar">
+  <div class="period-buttons">
+    <button mat-stroked-button (click)="loadData('daily')">Daily</button>
+    <button mat-stroked-button (click)="loadData('weekly')">Weekly</button>
+    <button mat-stroked-button (click)="loadData('monthly')">Monthly</button>
+  </div>
+
+  <mat-form-field appearance="outline" class="search-box">
+    <mat-label>Search user</mat-label>
+    <input matInput [(ngModel)]="searchText" (input)="applyFilter()" />
+  </mat-form-field>
+</div>
+<div class="desktop-view" *ngIf="!showSpinner">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Total Hours</th>
+        <th>Login Count</th>
+        <th>User</th>
+        <th>Login Start</th>
+        <th>Login End</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of listOfData">
+        <td>{{ row.Period }}</td>
+        <td>{{ row.TotalHours }}</td>
+        <td>{{ row.LoginCount }}</td>
+
+        <td colspan="3">
+          <div *ngFor="let d of row.LoginDetails" class="user-row">
+            <span>{{ d.UserName }}</span>
+            <span>{{ formatDate(d.Login_StartDateTime) }}</span>
+            <span>{{ formatDate(d.Login_EndDateTime) }}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="mobile-view" *ngIf="!showSpinner">
+  <mat-card *ngFor="let row of listOfData" class="login-card">
+    <mat-card-title>{{ row.Period }}</mat-card-title>
+
+    <mat-card-content>
+      <div class="meta">
+        <span>Total Hours: {{ row.TotalHours }}</span>
+        <span>Logins: {{ row.LoginCount }}</span>
+      </div>
+
+      <div *ngFor="let d of row.LoginDetails" class="user-card">
+        <strong>{{ d.UserName }}</strong>
+        <div>Start: {{ formatDate(d.Login_StartDateTime) }}</div>
+        <div>End: {{ formatDate(d.Login_EndDateTime) }}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="spinner-wrap" *ngIf="showSpinner">
+  <mat-progress-spinner diameter="40"></mat-progress-spinner>
+</div>

@@ -1,0 +1,253 @@
+
+
+
+
+<div class="container-fluid backgroundPage"   >
+ <h2 style="text-align: center;font-family: sans-serif;"></h2>
+  
+<div  class="mt-4 " >
+ <section class="registration backgroundPage">
+  
+  <form [formGroup]="addEditPolicyForm">
+    <div class="row p-1">
+       <div class="col-sm-4">
+       
+          <div  class="form-floating mb-1">
+            <!-- <select class="form-select" id="floatingMarkedPolicyID" 
+            placeholder="MarkedPolicyID" formControlName="MarkedPolicyID" [(ngModel)]="MarkedPolicyID" (change)="getEffectiveDateAndExpireDateOfMarkedPolicyId()">
+              <option hidden value="" disabled selected>Select Marketed</option>
+              <ng-container *ngIf="listOfMarkedPolicy.length > 0; else noDataFound">
+                <ng-container *ngFor="let dataOfLineName of listOfMarkedPolicy">
+                  <ng-container *ngIf="dataOfLineName.AllFieldsFill; else allFieldsNotFilled">
+                    <option [value]="dataOfLineName.MarkedPolicyID">{{dataOfLineName.LineName}} - {{dataOfLineName.LineShortName}}</option>
+                  </ng-container>
+                  <ng-template #allFieldsNotFilled></ng-template>
+                </ng-container>
+              </ng-container>
+              <ng-template #noDataFound>
+                <option disabled>No data found</option>
+              </ng-template>
+            </select> -->
+           
+            <select class="form-select" id="floatingMarkedPolicyID" 
+    formControlName="MarkedPolicyID" 
+    [(ngModel)]="MarkedPolicyID" 
+    (change)="getEffectiveDateAndExpireDateOfMarkedPolicyId()">
+  
+  <option hidden value="" disabled selected>Select Marketed</option>
+  
+  <ng-container *ngIf="listOfMarkedPolicy.length > 0; else noDataFound">
+    
+    <ng-container *ngFor="let dataOfLineName of listOfMarkedPolicy">
+      
+      <!-- ✅ Disable if Deleted OR AllFieldsFill is false -->
+      <option 
+        [value]="dataOfLineName.MarkedPolicyID"
+        [disabled]="!dataOfLineName.AllFieldsFill || dataOfLineName.DeletedChildPolicy === 'ChildPolicy_Deleted'"
+        [ngClass]="{'text-danger': !dataOfLineName.AllFieldsFill || dataOfLineName.DeletedChildPolicy === 'ChildPolicy_Deleted'}">
+        {{ dataOfLineName.LineName }} - {{ dataOfLineName.LineShortName }} -<span style="color: black;">{{dataOfLineName.Effective | date :'MM-dd-yyy'}} -{{dataOfLineName.Expiration | date :'MM-dd-yyy'}}</span> 
+      </option>
+
+    </ng-container>
+  
+  </ng-container>
+
+  <ng-template #noDataFound>
+    <option disabled>No data found</option>
+  </ng-template>
+
+</select>
+
+        
+            <label for="floatingMarkedPolicyID">Select Marketed</label>
+          </div>
+
+          <!-- loginOnly Hosw add data on edit tiem
+           <div *ngIf ="!hideDrodownOfMarketed" class="form-floating mb-1">
+            <select  class="form-select" id="floatingMarkedPolicyID" 
+            placeholder="MarkedPolicyID"  formControlName="MarkedPolicyID" [(ngModel)]= "MarkedPolicyID"  (change)="getEffectiveDateAndExpireDateOfMarkedPolicyId()">
+             <option hidden value="" disabled selected > Select Marketed H</option>
+             <ng-container *ngFor="let dataOfLineName of listOfMarkedPolicyById">
+              <option [value]="dataOfLineName.MarkedPolicyID">{{dataOfLineName.LineName}} - {{dataOfLineName.LineShortName}}</option>
+            </ng-container>
+          
+           </select>
+           <label for="floatingMarkedPolicyID">Select Marketed</label>
+           </div> -->
+       
+           
+         
+         
+          
+       </div>
+       
+      
+       
+       <div class="col-sm-4 ">
+        <div class="form-floating mb-1">
+          <input type="text" class="form-control"  id="floatingEffective"  formControlName ="Effective" [(ngModel)]="Effective" (ngModelChange)="changeNextDate()">
+          <label for="floatingEffective">Effective Date</label>  
+        </div>
+         
+           <!-- <label>Effective </label> -->
+       </div>
+       <div class="col-sm-4">
+        <div class="form-floating mb-1">
+          <input type="text"class="form-control" id="floatingExpiration" formControlName ="Expiration" [(ngModel)]="Expiration"   >
+          <label for="floatingExpiration">Expiration </label>  
+        </div>
+          
+           
+        
+            
+       </div>
+       <div class="col-sm-4 mt-1">
+        <!-- <div class="form-floating mb-1">
+          <input type="text" class="form-control"id="floatingDescription" placeholder="Description"   formControlName ="Description" >
+          <label for="floatingDescription">Description</label>  
+        </div> -->
+        <div class="form-floating mb-1">
+          <select  class="form-select" placeholder="Description"  formControlName ="Description" >
+            <option hidden value="" disabled >   Select Description</option>
+          <option  value = 'AL' > AL</option>
+            <option  value = 'APD' > APD</option>
+            <option  value = 'MTC' >MTC</option>
+            <option  value = 'GL' >GL</option>
+
+            <option  value = 'Cont.Liability' >Cont. Liability</option>
+            <option  value = 'Cont.Cargo' >Cont. Cargo</option>
+            <option  value = 'XS' >XS</option>
+            <option  value = 'AL-APD-MTC-GL' >AL,APD, MTC, GL</option>
+            <option  value = 'AL-APD-MTC' >AL, APD, MTC</option>
+            <option  value = 'AL-APD' >AL - APD</option>
+            <option  value = 'AL-MTC' >AL - MTC</option>
+            <option  value = 'APD-MTC' >APD - MTC</option>
+            <option  value = 'AL-GL' >AL - GL</option>
+            <option  value = 'NTL' >NTL</option>
+            <option  value = 'NTL-APD' >NTL - APD</option>
+            <option  value = 'MTC-GL' >MTC - GL</option>
+            <option  value = 'Cont.Liability' >Cont. Liability</option>
+            <option  value = 'Cont.XS' >Cont. XS</option>
+            <option  value = 'Umbrella' >Umbrella</option>
+          </select>
+          <label > Description </label>
+  
+          </div>
+       
+       
+        
+    </div>
+       <div class="col-sm-4 mt-1">
+        <div class="form-floating mb-1">
+          <input type="text"class="form-control" id="floatingChildPolicyName"placeholder="Policy"  formControlName ="ChildPolicyName" >
+          <label for="floatingChildPolicyName">Policy</label>  
+        </div>
+       
+      
+     
+         
+    </div>
+    <div class="col-sm-4 mt-1">
+      <div class="form-floating mb-1">
+        <select  class="form-select" id="floatingSource"placeholder="Source"  formControlName ="Source" >
+          <option hidden value="" disabled selected  >   Select Source</option>
+          <option  value = 'Facebook' > Facebook</option>
+          <option  value = 'Newspaper' > Newspaper</option>
+          <option  value = 'Call In' >Call In</option>
+          <option  value = 'TV' >TV</option>
+          
+          
+         
+        </select>
+        <label for="floatingSource"> Source </label>
+
+        </div>
+    
+    
+ </div>
+    <div class="col-sm-4 mt-2">
+      <div class="form-floating mb-1">
+        <select   class="form-select" id="floatingBrokerID" placeholder="Select Broker"  formControlName ="BrokerID"  >
+          <option hidden value="" disabled selected  > Select Broker</option>
+          <option *ngFor ="let data of listOfBroker"  value="{{data.BrokerID}}">{{data.AccountName}}</option>
+        </select>
+        <label for="floatingBrokerID">Select Broker</label>
+      </div>
+  
+  
+ 
+ 
+    </div>
+<div class="col-sm-4 mt-2">
+  <div class="form-floating mb-1">
+    <select class="form-select" id="floatingIssuingCompany" placeholder="Issuing Company"   formControlName ="IssuingCompany"     >
+      <option hidden value="" disabled selected  >   Issue Company</option>
+      <ng-container *ngFor="let data of listOfAllCarrier">
+       <option *ngIf="!data.IsDeleted" [value]="data.ID">
+         {{data.CarrierName}}
+       </option>
+     </ng-container>
+    </select>
+   
+    <label for="floatingBrokerID">Issuing Company</label>
+
+  </div>
+ 
+
+</div>
+<div class="col-sm-4 mt-2">
+  <div class="form-floating mb-1">
+    <select    class="form-select" id="floatingBillType" placeholder="Bill Type"  formControlName ="BillType"    >
+      <option hidden value="" disabled selected  >   Select Bill Type </option>
+      <option   value="Direct Bill"> Direct Bill</option>     
+      <option   value="Agency Bill"> Agency Bill</option>                       
+     
+    </select>
+  <label for="floatingBillType">Bill Type </label>
+  </div>
+
+
+
+</div>
+
+
+    </div>
+   
+    
+    
+  
+    
+  
+     
+     
+     
+
+ 
+     <div class=" mt-5 mb-4" style="text-align: right;">
+
+      <div *ngIf ="messageSuccess">
+        <a href="javascript:void(0)"  (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i>{{ChildPolicyID == '0'? ' Add':'Edit'}} Policy</a>
+        <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+<!--        
+        <button type="button" style="width: 130px;" class="btn btn-outline-success"(click)="onSubmit()">{{ChildPolicyID == '0'? ' Save ':'Update'}}</button>
+        <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
+        
+        -->
+    
+          
+         
+        
+        </div>
+     
+    </div>
+   
+   
+ </form>
+
+ </section>
+</div>
+
+ 
+  
+  
+ </div>

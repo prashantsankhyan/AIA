@@ -1,0 +1,136 @@
+<div class="container">
+
+
+ <div class=" mt-2 mb-2">
+  <form [formGroup]="addEditAdjusterdForm">
+      <div class="row p-1">
+         
+          <div class="col-sm-6 ">
+           <div class="form-floating">
+            <input type="text" class="form-control mt-1"   formControlName ="AdjustName" placeholder="Name"  [ngClass]= "{ 'is-invalid': submit && f['AdjustName'].errors }">
+            <div *ngIf ="submit && f['AdjustName'].errors" class="invalid-feedback">
+             <div *ngIf ="f['AdjustName'].errors">Name is required</div>
+            </div>
+            <label> Name</label> 
+           </div>
+          </div>
+          <div class="col-sm-6 ">
+           <div class="form-floating"> 
+            <input type="text" class="form-control mt-1"  formControlName ="Business" placeholder="Business" [ngClass]= "{ 'is-invalid': submit && f['Business'].errors }">
+            <div *ngIf ="submit && f['Business'].errors" class="invalid-feedback">
+             <div *ngIf ="f['Business'].errors">Business is required</div>
+            </div> 
+            <label>Business </label>
+           </div>
+              
+             
+  
+          </div>
+          <!-- <div class="col-sm-6 mt-2">
+           <div class="form-floating"> 
+            <input type="text" class="form-control mt-1"  formControlName ="City" placeholder="City"  [ngClass]= "{ 'is-invalid': submit && f['City'].errors }">
+              <div *ngIf ="submit && f['City'].errors" class="invalid-feedback">
+               <div *ngIf ="f['City'].errors">City is required</div>
+             </div> 
+             <label> City </label>
+           </div>
+             
+              
+  
+          </div> -->
+          <!-- <div class="col-sm-6 mt-2">
+           <div class="form-floating">
+            <input type="text" class="form-control mt-1"   formControlName ="State" placeholder="State"  [ngClass]= "{ 'is-invalid': submit && f['State'].errors }">
+            <div *ngIf ="submit && f['State'].errors" class="invalid-feedback">
+             <div *ngIf ="f['State'].errors">State is required</div>
+            </div> 
+            <label> State</label>
+           </div>
+              
+             
+          </div> -->
+          <!-- <div class="col-sm-6 mt-2">
+           <div class="form-floating">
+            <input type="text" class="form-control mt-1"   formControlName ="Country" placeholder="Country"  [ngClass]= "{ 'is-invalid': submit && f['Country'].errors }">
+            <div *ngIf ="submit && f['Country'].errors" class="invalid-feedback">
+             <div *ngIf ="f['Country'].errors">Country is required</div>
+            </div> 
+            <label>Country</label>
+           </div>
+              
+              
+            
+          </div> -->
+          <div class="col-sm-6 mt-2">
+           <div class="form-floating">
+            <input type="text" class="form-control mt-1"   formControlName ="Phone" placeholder="Phone"  [ngClass]= "{ 'is-invalid': submit && f['Phone'].errors }">
+            <div *ngIf ="submit && f['Phone'].errors" class="invalid-feedback">
+             <div *ngIf ="f['Phone'].errors">Phone is required</div>
+           </div> 
+           <label>Phone</label>
+           </div>
+              
+             
+          </div>
+        
+         
+          <div class="col-sm-6 mt-2">
+           <div class="form-floating"> 
+            <input type="text" class="form-control mt-1" formControlName ="Email" placeholder="Email" >
+            <label>Email </label>
+           </div>
+              
+              
+              
+  
+          </div>
+         
+        
+          <div class="col-sm-6 mt-2">
+           <div class="form-floating"> 
+            <input type="text" class="form-control"   formControlName ="Fax" placeholder="Fax" >
+            <label>Fax </label>
+             </div>
+              
+           
+            
+          </div>
+  
+          <div class="col-sm-6 mt-2">
+           <div class="form-floating">  
+            <input type="text" class="form-control"   formControlName ="Comments" placeholder="Comments">
+            <label>Comments</label>
+           </div>
+              
+            
+            
+          </div>
+        
+         
+        
+        
+        
+        
+       
+      
+  
+  
+      </div>
+        <div  style="text-align: right;">
+           <div   *ngIf ="messageSuccess">
+         
+            <a href="javascript:void(0)"  (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i>{{AdjustID == undefined? ' Add ADJUSTER':'Update ADJUSTER'}} </a>
+            <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+          
+             
+            
+            </div>
+          </div>
+       
+  
+  </form>
+ </div>
+ 
+ 
+ 
+ </div>

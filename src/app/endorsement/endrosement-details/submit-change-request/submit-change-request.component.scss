@@ -1,0 +1,271 @@
+*{padding:0px; margin:0px;}
+body{ font-family:"Calibri" , Helvetica, sans-serif; font-size:12px; line-height: 20px;}
+#main_div{ width:95%;margin-left: auto; margin-right:auto;}
+.right_div{ float:left;width:50%;}
+.left_div{ float:left;width:50%;}
+.policy{ font-size:24px; font-weight:bold; text-align:center}
+h3{ font-size:24px; font-weight:bold; text-align:left}
+.bordrb{border-bottom: 1px solid #000; /* appears thinner */}
+.bordrr{border-right:1px solid #000;}
+.small_text{padding-left:6px; font-size: 12px; line-height: 25px;}
+.small_textsec{padding-left:6px; font-size: 12px; line-height: 14px; font-weight: bold;}
+.small_textfour{padding-left:6px; font-size: 12px; line-height: 20px; font-weight: bold;}
+.small_textfourcove{padding-left:6px; font-size: 11px; line-height:25px; font-weight: bold;}
+.small_textdrive {
+    padding-left: 6px;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: bold;
+}
+.small_textnormal {
+    font-size: 11px;
+    line-height: 15px;
+    font-weight: normal;
+}
+.small_textfive{padding-left:px; font-size: 12px; line-height: 20px; font-weight: bold;}
+.small_textthird{padding-left:6px; font-size: 12px; line-height: 14px;font-weight: bold;padding-top: 10px; padding-bottom: 10px;}
+.input_text{font-size:14px; font-weight:bold;}
+.checkbox_text{padding-left:3px; font-size: 12px; line-height: 25px;}
+.checkbox{ border-top: 0px !important;}
+h4{font-size: 16px; margin: 0px 0px;}
+table tr td{padding: 0px;}
+h4 span{font-size: 14px;}
+input{border:0px; background:#ffffff;}
+textarea{border:0px;}
+
+input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: rgb(255, 255, 255);
+    width: 25px;
+    height: 25px;
+    border-radius: 0px;
+    border: 1px solid black ;
+    position: relative;
+    }
+   
+input[type="checkbox"]:checked {
+    background: rgb(255, 255, 255);
+}
+input[type="checkbox"]:checked:after {
+    /* Heres your symbol replacement */
+    content: "X";
+    color: rgb(14, 14, 14);
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
+}
+.checkbox{ border-top: 0px !important;}
+.checkboxbottom{ border-top: 0px !important; border-bottom: 0px !important;}
+
+.small_textfour444 {
+  margin-top: 2px;
+  line-height: 1; /* or a tighter value like 1.1 */
+  font-size: 10px;
+    font-family: 'Consolas', monospace;
+      color: #000000;
+      
+}
+.center-span {
+  display: block;
+  text-align: center;
+}
+.no-space-table {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  .tight-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: -1px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .tight-table td,
+  .tight-table th {
+    padding: 0; /* Removes cell padding */
+    margin: 0;   /* Removes cell margin */
+  }
+
+  .tight-table input {
+    margin: 0;   /* Ensures checkbox doesn't add spacing */
+    padding: 0;
+  }
+  .no-space-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .no-space-table tr,
+  .no-space-table td {
+    margin: 0;
+    padding: 0;
+  }
+
+  .extraSpace {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+
+
+/* Ensures no padding/margin in each row */
+
+.page-break {
+	page-break-after: always;
+}
+
+.box {
+      width: 25px;
+      height: 25px;
+      border: 0.5px solid black;
+      display: flex;
+     
+    
+      background-color: white;
+      font-weight:500;
+      font-size: 12px;
+    }
+      .box-group {
+      display: flex;
+      flex-direction: column;
+      // gap: 20px;
+      max-width: 200px;
+    }
+
+    .box-item {
+      display: flex;
+      align-items: center;
+      // gap: 10px;
+    }
+
+.square-box {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+}
+     
+    /* Vertical line with OVERAGES label */
+   .layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    // .left-line {
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   margin-right: 10px;
+    // }
+
+    .v-line {
+     width: 1px;
+  height: 26px;
+  background-color: black;
+  margin-left: 40px;
+  
+    }
+
+    .shift-right {
+  margin-left: 2px;
+}
+    // .right-content {
+    //   display: flex;
+    //   flex-direction: column;
+    //   gap: 10px;
+    // }
+
+
+    .horizontal-box-row {
+      display: flex;
+      gap: 17px;
+     
+    }
+
+    .box-with-label {
+      display: flex;
+      align-items: center;
+    }
+
+    .black-box {
+      width: 25px;
+      height: 25px;
+      // box-shadow: 0 0 0 0.5px #000000; /* solid thin black outline */
+      border: 1px solid black;
+    }
+
+    .label-text {
+      font-size: 10px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: black;
+      font-weight: normal;
+      margin-left: 4px;
+    }
+     .horizontal-box-row1 {
+      display: flex;
+      gap: 17px;
+     
+    }
+
+    .box-with-label1 {
+      display: flex;
+      align-items: center;
+    }
+
+    .black-box1 {
+      width: 25px;
+      height: 25px;
+      border: 1px solid black;
+    
+    }
+
+    .label-text1 {
+      font-size: 10px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: black;
+      font-weight: normal;
+      margin-left: 4px;
+    }
+
+
+    .font {
+      font-family: Arial;
+      color: black;
+      font-size: 9px;
+      
+    }
+    .fontText {
+      font-family: Arial;
+      color: black;
+   
+      
+    }
+
+  .laterFont {
+    font-family: Arial;
+  }
+
+  .bordrb1{
+     box-shadow: 0 0 0 0.5px #000000;
+  }

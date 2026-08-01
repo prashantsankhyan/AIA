@@ -1,0 +1,229 @@
+<div  class="container-fluid">
+  <!-- <strong class="me-auto">VEHICLE INFORMATION</strong>
+ <h2 style="text-align: center;font-family: sans-serif;"> VEHICLE INFORMATION </h2> -->
+
+
+ 
+ 
+ 
+  <div *ngIf ="showHtml">
+    <!-- <h4 mat-dialog-title><span style="color: white;background-color: #1397d5;" >{{VehicleID == undefined? ' Add ':'Edit '}} Vehicle    </span> </h4> -->
+    <mat-dialog-content class="mat-typography">
+      <form [formGroup]="addEditVehicleForm">
+        <div class="row">
+        
+            <div class="col-sm-6 ">
+              <div class="form-floating" >
+                <input type="text" class="form-control " id="floatingYear" #autoFocusInput formControlName ="Year" placeholder="Year"  [ngClass]= "{ 'is-invalid': submit && f['Year'].errors }">
+                <div *ngIf ="submit && f['Year'].errors" class="invalid-feedback">
+                 <div *ngIf ="f['Year'].errors">Year is required</div>
+               </div> 
+               <label for="floatingYear">Enter Year</label>
+              </div>
+              
+            
+          </div>
+          <div class="col-sm-6 ">
+            <div class="form-floating" >
+              <input type="text" class="form-control "   id="floatingSymbol"  #autoFocusInput   formControlName ="Make"  [ngClass]= "{ 'is-invalid': submit && f['Make'].errors }">
+              <div *ngIf ="submit && f['Make'].errors" class="invalid-feedback">
+               <div *ngIf ="f['Make'].errors">Make is required</div>
+             </div>
+             <label for="floatingSymbol">Enter Make</label>
+               </div>
+           
+           
+          </div>
+          <div class="col-sm-6 mt-2">
+            <div class="form-floating" >
+              <input type="text" class="form-control "  id="floatingModel" #autoFocusInput placeholder="Model" [(ngModel)]="Model" formControlName ="Model" [ngClass]= "{ 'is-invalid': submit && f['Model'].errors }">
+              <div *ngIf ="submit && f['Model'].errors" class="invalid-feedback">
+               <div *ngIf ="f['Model'].errors">Model is required</div>
+             </div> 
+             <label for="floatingModel">Enter Model</label>
+            </div>
+            
+          
+        </div>
+        <div class="col-sm-6 mt-2">
+          <div class="form-floating" >
+            <input type="text" class="form-control" id="floatingVIN"[(ngModel)]="VIN" #autoFocusInput  formControlName ="VIN" placeholder="VIN" >
+            <!-- <div *ngIf="submit && f['VIN'].errors" class="invalid-feedback">
+             <div *ngIf="f['VIN'].errors['required']">Username is required</div>
+             <div *ngIf="f['VIN'].errors['minlength']">
+               VIN must be at least 3 characters
+             </div>
+             <div *ngIf="f['VIN'].errors['maxlength']">
+               VIN must not exceed 17 characters
+             </div>
+           </div> -->
+           <label for="floatingVIN">Enter VIN</label>
+             </div>
+         
+        
+      
+      </div>
+     
+      <div class="col-sm-6 mt-2">
+        <div class="form-floating" > 
+        
+            <select class="form-select formControl" #autoFocusInput  id="floatingOwnerShipType" 
+            placeholder="OwnerShipType" [(ngModel)] ="OwnerShipType" formControlName="OwnerShipType" (keydown)="changeOwnerShipType()"  aria-label="Default select example"  >
+              <option hidden value="" disabled selected  ></option>
+              <option  value="leased">leased </option>
+              <option value="Rental">Rental </option>
+              <option value="owner operator">owner operator</option>
+              <option value="company">company </option>
+              <option value="Interchange">Interchange </option>
+
+              
+             
+             
+             
+            </select>
+
+          <label for="floatingOwnerShipType">Enter Owner Ship Type</label>
+        </div>
+
+      </div>
+      <div class="col-sm-6 mt-2">
+        <div class="form-floating" > 
+          <input type ="text"class ="form-control" #autoFocusInput id="floatingOwnerShipTypeChange" placeholder="OwnerShipType"  [(ngModel)] ="OwnerShipType"formControlName="OwnerShipType" >
+          <label for="floatingOwnerShipTypeChange"> If You want than you can do</label>  
+        </div>
+       
+      
+      </div>
+            <div class="col-sm-6 mt-2">
+              <div class="form-floating" > 
+                <select class="form-select formControl " id="floatingVehicleType" placeholder="VehicleType" formControlName ='VehicleType'  aria-label="Default select example"  [ngClass]= "{ 'is-invalid': submit && f['VehicleType'].errors }">
+                  <option hidden value="" disabled selected  > </option>
+                  <option value="COML"  > COML - Commercial Vehicle</option>
+                  <option value="PP"  > PP -Private Passenger </option>
+                  <option value="SPEC"  > SPEC - Specialty Vehicle</option>  
+                </select>
+            
+             <div *ngIf ="submit && f['VehicleType'].errors" class="invalid-feedback">
+              <div *ngIf ="f['VehicleType'].errors">VehicleType is required</div>
+            </div>
+            <label for="floatingVehicleType">Enter Vehicle Type </label> 
+              </div>
+                
+               
+            </div>
+         
+          
+          
+           
+         
+           
+            <div class="col-sm-6 mt-2">
+              <div class="form-floating" >  
+                <select class="form-select formControl " id="floatingBodyType" placeholder="BodyType" formControlName ='BodyType'  aria-label="Default select example"  [ngClass]= "{ 'is-invalid': submit && f['BodyType'].errors }">
+                  <option hidden value="" disabled selected  > </option>
+                  <option value="Tractor"> Tractor</option>
+                  <option value="Dump Truck"> Dump Truck </option>
+                  <option value="Pickup Box Truck"> Pickup Box Truck </option>
+                  <option value="Service Truck"> Service Truck </option>
+                  <option value="Box Truck"> Box Truck </option>
+                  <option value="Flatbed"> Flatbed </option>
+                  <option value="Intermodal"> intermodal </option>
+                  <option value="Dry trailer"> Dry trailer </option>
+                  <option value="Reefer Trailer">Reefer trailer </option>
+                  <option value="Trailer"> Trailer </option>
+                </select>
+                <label for="floatingBodyType">Enter Body Type</label>
+              </div>
+               
+            
+     
+           
+                
+               
+     
+            </div>
+         
+            <div class="col-sm-12 mt-2">
+              <div class="form-floating" >  
+                <input type="text" class="form-control "id="floatingValue"  placeholder="Value" formControlName ="Value" [ngClass]= "{ 'is-invalid': submit && f['Value'].errors }">
+                <div *ngIf ="submit && f['Value'].errors" class="invalid-feedback">
+                 <div *ngIf ="f['Value'].errors">Value is required</div>
+             </div> 
+             <label for="floatingValue">Enter Value</label>
+              </div>
+          </div>
+          <!-- <div class="col-sm-6 mt-2">
+            <div class="form-floating" >  
+              <input type="text" class="form-control" formControlName ="Camera" placeholder ='Camera'>
+               
+           <label >Camera</label>
+            </div>
+        </div> -->
+        <!-- <div class="col-sm-6 mt-2">
+          <div class="form-floating" >  
+            <input type="text" class="form-control" formControlName ="TeleMatic" placeholder="Telematic (ELD)">
+             
+         <label >Telematic (ELD) </label>
+          </div>
+      </div> -->
+    
+         
+
+        </div>
+     
+     </form>
+     </mat-dialog-content>
+     <mat-dialog-actions align="end"  *ngIf ="messageSuccess">
+      <div class="text-center " *ngIf ="messageSuccess" >
+        <!-- <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="checkVehilceIsExistOrNot();">{{VehicleID == undefined? ' Add ':'Update'}} Vehivle</button>
+        <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger"[mat-dialog-close]="true">Cancel</button> -->
+
+        <a href="javascript:void(0)" (click)="checkVehilceIsExistOrNot();" class="d-none d-sm-inline-block btn btn-sm  shadow-sm me-2" style="background-color: #1397d5;color: white;font-family: sans-serif;"><i class="fas fa-check fa-sm text-white-50"></i> {{VehicleID == undefined? ' ADD':'Edit'}} VEHICLE</a>
+        <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" style="background-color: rgb(199, 64, 64);color: white;font-family: sans-serif;" mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+       
+        </div>
+     </mat-dialog-actions>
+    
+  
+  </div>
+  
+
+
+
+  <div *ngIf ="!showHtml">
+    
+     <div *ngFor ="let dat of showAccountDetail" >
+      <div class="alert alert-danger mt-3 mb-3" >
+      This Vehicle is already exist in Account Name:- <strong>{{dat.AccountName}}</strong> and DOT :- {{dat.LookUpCode}} . Are you sure to want to add this account forcefully 
+      
+      </div>
+<div *ngIf ="saveOneClick">
+  <button type="button" style="width: 130px;background-color: #1397d5;color: white;font-family: sans-serif;" class="btn  mb-2" (click)="onSubmit();">{{VehicleID == undefined? ' Save ':'Update'}}</button>
+  <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger mb-2"mat-dialog-close>Cancel</button>
+  
+</div>
+      
+   </div>
+
+  
+  </div>
+  <!-- <div class="text-center  mt-5 mb-5" >
+    <div  *ngIf ="messageSuccess">
+      <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="onSubmit();">{{VehicleID == undefined? ' Save ':'Update'}}</button>
+      <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger "(click)="cancletoSave()">Cancel</button>
+      </div>
+  </div> -->
+
+     <!-- <div class="text-center  mt-5 mb-5"  >
+      <div  *ngIf ="messageSuccess">
+        <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="onSubmit();">{{VehicleID == undefined? ' Save ':'Update'}}</button>
+        <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger"(click)="nextToDriver()">Cancel</button>
+        </div>
+       </div> -->
+  
+
+
+
+
+</div>
+

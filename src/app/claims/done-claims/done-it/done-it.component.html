@@ -1,0 +1,23 @@
+<div class="dialog-content">
+  <form [formGroup]="deleteForm">
+    <mat-form-field appearance="outline" class="small-mat-input full-width">
+      <mat-label>Select Option</mat-label>
+      <mat-select formControlName="Reason" [(value)]="selectedOption">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="btn-row" *ngIf="messageSuccess">
+     <a  href="javascript:void(0)"(click)="onSubmit()"> <img src="assets/save_8361323.png" width="40px" height="40px" ></a>
+    <!-- <button mat-raised-button color="primary" (click)="onSubmit()">
+      <i class="fas fa-check fa-sm text-white-50"></i> Done It
+    </button> -->
+    <!-- <button mat-raised-button color="warn" mat-dialog-close>
+      <i class="fas fa-times fa-sm text-white-50"></i> Cancel
+    </button> -->
+     <a  href="javascript:void(0)"(click)="onSubmit()" mat-dialog-close> <img src="assets/delete.png" width="50px" height="50px" ></a>
+  </div>
+</div>

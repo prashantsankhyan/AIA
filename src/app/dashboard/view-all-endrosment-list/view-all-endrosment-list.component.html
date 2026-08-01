@@ -1,0 +1,64 @@
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+  <div class="container-fluid " >
+    <div class="row">
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="searchCriteria.Name">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Eff (MM/dd/yyyy)" [(ngModel)]="searchCriteria.Effective">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Ex (MM/dd/yyyy)" [(ngModel)]="searchCriteria.Expiration">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Line Name" [(ngModel)]="searchCriteria.LineName">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Line Short Name" [(ngModel)]="searchCriteria.LineShortName">
+      </div>
+      <div class="col-sm-2">
+        <select class="form-control" [(ngModel)]="searchCriteria.IsChildPolicyExist">
+          <option value="">Policy Enter or Not</option>
+          <option [value]="true">True</option>
+          <option [value]="false">False</option>
+        </select>
+      </div>
+       <div class="col-sm-12 " style="text-align: right;">
+        <a href="javascript:void(0)"  class=""  (click)="exportAsExcel()">
+          📊
+        </a>
+
+      </div>
+    </div>
+    <div class="scrolling mt-2" > 
+      <table  class="table table-bordered" style="margin:0 auto;" >
+        <thead>
+          <tr>
+            <th> Name </th>
+            <th> Effective Date</th>
+            <th>Expiration  Date</th>
+            <th>Line Name</th>
+            
+           
+            <th>Policy Add Or Not</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredMarketed()"
+   [ngClass]="{'green-row': item.IsChildPolicyExist === true || item.IsChildPolicyExist === 'yes'}">
+            <td>{{item.AccountName}}</td>
+             <td>{{item.LineShortName}}-{{item.LineName}}</td>
+            <td>{{formatDate(item.Effective)}}</td>
+            <td>{{formatDate(item.Expiration)}}</td>
+         
+            <td>{{item.LineName}}-{{item.LineShortName}}</td>
+            <td>{{item.IsChildPolicyExist}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

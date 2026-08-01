@@ -1,0 +1,825 @@
+<div class="container-fluid scrolling p-1" style="background-color: white;" id="print-section">
+ <div class="row">
+  <div class="col-sm-6">
+   <img  height=80 
+   src="assets/transgard/1.PNG">
+  </div>
+  <div class="col-sm-6 mt-4" style="text-align: right;">
+   <img  height=40 
+   src="assets/transgard/2.PNG">
+  </div>
+  
+ </div>
+ <h4 style="text-align: center;margin-top: 25px;">NAIT ASSOCIATION PROGRAM INSURANCE APPLICATION</h4>
+ 
+  
+ <div class="p-2">
+  <table>
+   <tr>
+    <td style="font-size: small;"> Application Name:</td>
+    <td colspan="3"style="font-size: small;">{{listOfData.AccountName}} </td>
+   
+ </tr>
+   <tr>
+     <td style="font-size: small;">Address:</td>
+     <td colspan="3" style="font-size: small;">{{listOfData.Description + ' ' + listOfData.City + ' ' + listOfData.State  + ' ' + listOfData.ZIP}}</td>
+   </tr>
+   <tr *ngFor="let driver of driverDetails">
+    <ng-container *ngIf="driver?.DriverType === 'Owner Operator'">
+     <td style="font-size: small;">Social Security #:</td>
+     <td></td>
+     <td style="font-size: small;">Date of Birth:</td>
+     <td style="font-size: small;">{{ driver?.DateofBirth | date:'MM/dd/yyyy' }}</td>
+   </ng-container>
+   </tr>
+   <tr *ngFor="let driver of driverDetails">
+    <ng-container *ngIf="driver?.DriverType === 'Owner Operator'">
+     <td style="font-size: small;">CDl # :</td>
+     <td style="font-size: small;">{{driver?.DriverLicenceNo  }}</td>
+     <td style="font-size: small;">Phone:</td>
+     <td style="font-size: small;">{{ listOfData?.PhoneNumber  }}</td>
+   </ng-container>
+    
+   </tr>
+   <tr *ngFor="let driver of driverDetails">
+    <ng-container *ngIf="driver?.DriverType === 'Owner Operator'">
+    <td style="font-size: small;">CDL States:</td>
+    <td colspan="3" style="font-size: small;">{{driver?.StateLicenced}}</td>
+   </ng-container>
+  </tr>
+  <tr >
+  
+    <td style="font-size: small;">Email Address:</td>
+    <td style="font-size: small;">{{listOfData.EmailID}}</td>
+    <td style="font-size: small;">What do you haul?</td>
+    <td style="font-size: small;">{{listOfData.OperationType}}</td>
+ 
+  
+  </tr>
+  <tr>
+   <td colspan="3" style="font-size: small;">
+    You are an/a: <span style="margin-left: 15px;"> ☒ Owner Operator </span>   <span style="margin-left: 15px;"> ☐ Fleet Owner </span> <span style="margin-left: 15px;"> ☐ Fleet Driver </span>   
+   </td>
+  
+   <td ></td>
+  </tr>
+  <tr>
+   <td colspan="2" style="font-size: small;">If Fleet Driver, please identify the fleet owner you drive for:</td>
+  
+   <td colspan="2"style="font-size: small;">{{ listOfData?.AccountPrimaryDetail?.[0]?.Name }}</td>
+  </tr>
+ </table>
+ <p style="font-size: small; color: black;"> Insurance services provided by TransGuard General Agency, Inc. (“TGA”); In California, doing business as TransGuard General Insurance Agency; In Utah, doing business as TransGuard General Insurance Agency, Inc. If you need coverage that is not addressed in this application, please contact TransGuard General Agency, Inc. at (800) 821-8014 for assistance.</p> 
+ </div>
+
+
+
+ <div class="p-2" style="margin-top: -10px;">
+  <p style="font-size: medium;color: black;">OCCUPATIONAL ACCIDENT:</p>
+  <table style="margin-top: -10px;">
+   <tr>
+    <td colspan="4" style="font-size: small;"> Do you want to purchase Occupational Accident coverage for yourself?<span style="margin-left: 10px;"> ☐ Yes</span>  <span style="margin-left: 10px;"> ☐ No</span> </td>
+   
+   
+ </tr>
+   <tr>
+    
+     <td colspan="4" style="font-size: small;">*If yes, please complete the following information:</td>
+   </tr>
+   <tr >
+    
+     <td style="font-size: small;text-decoration: underline;">How is your income reported:</td>
+     <td style="font-size: small;" colspan="3"> <span style="margin-left: 10px;">☐</span> 1099 <span style="margin-left: 10px;">☐</span>W-2 <span style="margin-left: 10px;">☐</span> Other</td>
+    
+   
+   </tr>
+   <tr >
+  
+     <td style="font-size: small;">Weight:</td>
+     <td style="font-size: small;"></td>
+     <td style="font-size: small;">Height:</td>
+     <td style="font-size: small;"></td>
+   
+    
+   </tr>
+ 
+ 
+ </table>
+ <p style="font-size: medium; text-decoration: underline; display: inline;">
+  Please name a beneficiary for the payment of accidental death benefits.
+</p>
+<span style="font-size: small; text-decoration: none; display: inline;">
+  (Accidental death benefits are payable to your surviving spouse or dependent children, subject to the terms and conditions of this coverage. The beneficiary designation requested only applies when benefits are payable and you do not have a spouse or dependent children surviving.)
+</span>
+
+<table class="mt-2">
+  <tr>
+   <td  style="font-size: small;"> Name of Beneficiary </td>
+   <td colspan="2" style="font-size: small;"> Address(Street/City/State/Zip) </td>
+   <td  style="font-size: small;"> Relationship </td>
+  
+</tr>
+  <tr>
+   
+    <td colspan="4" style="font-size: small;"> Have you been injured in a work-related accident during the past 36 months?<span style="margin-left: 10px;"> ☐ Yes</span>  <span style="margin-left: 10px;"> ☐ No</span></td>
+  </tr>
+  <tr >
+   
+    <td style="font-size: small;">Date of Accident/Injury:</td>
+    <td style="font-size: small;" colspan="3"> </td>
+   
+  
+  </tr>
+  <tr >
+   
+   <td style="font-size: small;">Explanation of Accident/Injury:</td>
+   <td style="font-size: small;" colspan="3"> </td>
+  
+ 
+  </tr>
+  <tr >
+
+   <td style="font-size: small;">Treatment Received:</td>
+   <td style="font-size: small;" colspan="3"> </td>
+  </tr>
+  <tr >
+   <td style="font-size: small;" colspan="4">Have you received medical treatment for a health-related condition in the past 36 months?<span style="margin-left: 10px;"> ☐ Yes</span>  <span style="margin-left: 10px;"> ☐ No</span> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;"colspan="2">Describe health related condition and treatment received:</td>
+   <td style="font-size: small;" colspan="2"> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;"colspan="2">Are you presently taking any prescription medications?</td>
+   <td style="font-size: small;" colspan="2"> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;"colspan="2">List medications and what conditions they are used totreat:</td>
+   <td style="font-size: small;" colspan="2"> </td>
+  </tr>
+  <tr >
+   <td style="font-size: small;" colspan="4">Do you have any health restrictions or limitations on the type of work you can perform?<span style="margin-left: 10px;"> ☐ Yes</span>  <span style="margin-left: 10px;"> ☐ No</span> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;"colspan="1">Describe restrictions and limitations:</td>
+   <td style="font-size: small;" colspan="3"> </td>
+  </tr>
+  <tr >
+   <td style="font-size: small;" colspan="4">Do you have a disability rating?<span style="margin-left: 10px;"> ☐ Yes</span>  <span style="margin-left: 10px;"> ☐ No</span> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;"colspan="2">If yes, give percentage:</td>
+   <td style="font-size: small;" colspan="1"> Disabled area:</td>
+   <td style="font-size: small;" colspan="1"> </td>
+  </tr>
+  <tr >
+
+   <td style="font-size: small;">What caused the disability?</td>
+  
+   <td style="font-size: small;" colspan="3"> </td>
+  </tr>
+ 
+
+
+</table>
+<p style="color: black;font-size: small;">When this coverage is provided, you will be insured under the Occupational Accident plan elected by your motor carrier as satisfying their coverage requirements or the plan you elect if billed direct pay. You are also selecting Non- Occupational Accident Coverage with this purchase if your motor carrier requires such coverage on the date of application. If Occupational Accident Coverage for a Helper/Co-driver/Spouse or Partner is needed, a separate supplemental application must be completed. Contact TransGuard General Agency, Inc. for assistance.</p>
+ </div>
+
+ 
+
+
+
+<div class="page-break">
+            
+</div>
+<div class="p-2"style="color: black;"style="margin-top: 9px;">
+  <p style="font-size: medium;">OCCUPATIONAL COMPENSATION:</p>
+
+ </div>
+ <div class="p-2" style="margin-top: -15px;">
+  <table>
+    <tr>
+     <td colspan="4"  style="font-size: small;"> Do you want to purchase coverage for your casuals/helpers? <span>☐</span>  Yes <span>☒</span> No </td>
+   
+    
+  </tr>
+    <tr>
+     
+      <td colspan="2" style="font-size: small;">Do you have any permanent helpers?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒</span>No</td>
+      <td style="font-size: small;">If yes, how many?</td>
+      <td style="font-size: small;" > </td>
+    </tr>
+    <tr>
+     
+      <td colspan="2" style="font-size: small;">Do you have any W-2 paid employees?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+      <td style="font-size: small;">If yes, how many?</td>
+      <td style="font-size: small;" > </td>
+    </tr>
+   
+   
+  
+  
+  </table>
+ </div>
+
+ <div class="p-2">
+  <p style="font-size: medium;">COMMERCIAL BUSINESS AUTO:</p>
+  <table style="margin-top: -10px;">
+    <tr>
+     <td colspan="4"  style="font-size:large;"> Equipment #1:</td>
+   
+    
+  </tr>
+    <tr>
+      <td colspan="2" style="font-size: small;">Do you want to purchase Non-Trucking Liability?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+      <td style="font-size: small;">Limit:</td>
+      <td style="font-size: small;" ><span style="margin-left: 10px;"> ☐ </span> $500,000 <span style="margin-left: 10px;"> ☐ </span>   $1,000,000 </td>
+    </tr>
+    <tr>
+      <td colspan="4" style="font-size: small;">Do you want to purchase Physical Damage Coverage?<span style="margin-left: 10px;"> ☒ </span> Yes <span style="margin-left: 10px;"> ☐ </span>No</td>
+    </tr>
+    <tr>
+      <td colspan="4" style="font-size: small;">Which Comprehensive/Collision Deductible?<span style="margin-left: 10px;"> ☐ </span> $250 <span style="margin-left: 10px;"> ☐ </span>$500 <span style="margin-left: 10px;"> ☐ </span>$1000 <span style="margin-left: 10px;"> ☒ </span>$2500</td>
+    </tr>
+    <!-- <tr *ngFor="let data of vehicleDetails">
+      <td  style="font-size: small;">Stated Amount:</td>
+      <td style="font-size: small;">{{data.data}}</td>
+      <td colspan="2" style="font-size: small;" ><span style="margin-left: 10px;"> ☒ </span> Tractor <span style="margin-left: 10px;"> ☐ </span>   Trailer <span style="margin-left: 10px;"> ☐ </span>   Other </td>
+    </tr> -->
+    <tr *ngFor="let data of vehicleDetails">
+      <ng-container *ngIf="data.BodyType === 'Tractor'">
+        <td style="font-size: small;">Stated Amount:</td>
+        <td style="font-size: small;">{{ data.Value | currency:'USD':'symbol' }}</td>
+        <td colspan="2" style="font-size: small;">
+          <span style="margin-left: 10px;">☒</span> Tractor
+          <span style="margin-left: 10px;">☐</span> Trailer
+          <span style="margin-left: 10px;">☐</span> Other
+        </td>
+      </ng-container>
+    </tr>
+
+    <tr>
+      <td  style="font-size: small;">Year</td>
+      <td colspan="2" style="font-size: small;">Manufacturer/Model/Gross Weight</td>
+      <td  style="font-size: small;" >VIN# </td>
+    </tr>
+    <tr *ngFor="let data of vehicleDetails">
+      <ng-container *ngIf="data.BodyType === 'Tractor'">
+      <td  style="font-size: small;">{{data.Year}}</td>
+      <td colspan="2" style="font-size: small;">{{data.Make}}</td>
+      <td  style="font-size: small;" >{{data.VIN}} </td>
+      </ng-container>
+    </tr>
+    <tr>
+      <td colspan="2"  style="font-size: small;">Loss Payee (lien holder/lessor)</td>
+      <td colspan="2" style="font-size: small;">Loss Payee Address</td>
+     
+    </tr>
+    <tr>
+      <td colspan="4"  style="font-size:large;"> Equipment #2:</td>
+   </tr>
+   <tr>
+    <td colspan="2" style="font-size: small;">Do you want to purchase Non-Trucking Liability?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+    <td style="font-size: small;">Limit:</td>
+    <td style="font-size: small;" ><span style="margin-left: 10px;"> ☐ </span> $500,000 <span style="margin-left: 10px;"> ☐ </span>   $1,000,000 </td>
+  </tr>
+  <tr>
+    <td colspan="4" style="font-size: small;">Do you want to purchase Physical Damage Coverage?<span style="margin-left: 10px;"> ☒ </span> Yes <span style="margin-left: 10px;"> ☐ </span>No</td>
+  </tr>
+  <tr>
+    <td colspan="4" style="font-size: small;">Which Comprehensive/Collision Deductible?<span style="margin-left: 10px;"> ☐ </span> $250 <span style="margin-left: 10px;"> ☐ </span>$500 <span style="margin-left: 10px;"> ☐ </span>$1000 <span style="margin-left: 10px;"> ☐ </span>$2500</td>
+  </tr>
+  <tr *ngFor="let data of vehicleDetails">
+    <ng-container *ngIf="data.BodyType === 'Trailer' ">
+      <td style="font-size: small;">Stated Amount:</td>
+      <td  style="font-size: small;"><span *ngIf="data.VIN?.length === 17">{{ data.Value | currency: 'USD':'symbol' }}</span> </td>
+      <td colspan="2" style="font-size: small;">
+        <span style="margin-left: 10px;">☐</span> Tractor
+        <span style="margin-left: 10px;">☒</span> Trailer
+        <span style="margin-left: 10px;">☐</span> Other
+      </td>
+    </ng-container>
+  </tr>
+
+  <tr>
+    <td  style="font-size: small;">Year</td>
+    <td colspan="2" style="font-size: small;">Manufacturer/Model/Gross Weight</td>
+    <td  style="font-size: small;" >VIN# </td>
+  </tr>
+  <tr *ngFor="let data of vehicleDetails">
+    <ng-container *ngIf="data.BodyType === 'Trailer' ">
+    <td  style="font-size: small;height: 25px;"><span *ngIf="data.VIN?.length === 17"> {{data.Year}} </span></td>
+    <td colspan="2" style="font-size: small;"><span *ngIf="data.VIN?.length === 17"> {{data.Make}} </span></td>
+    <td  style="font-size: small;" ><span *ngIf="data.VIN?.length === 17"> {{data.VIN}} </span> </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td colspan="2"  style="font-size: small;">Loss Payee (lien holder/lessor)</td>
+    <td colspan="2" style="font-size: small;">Loss Payee Address</td>
+   
+  </tr>
+   
+   
+  
+  
+  </table>
+ </div>
+ 
+
+ <div class="p-2"style="color: black;margin-top: -8px;">
+  <p style="font-size: medium;">If you answered yes, to wanting to purchase Non-Trucking Liability or Physical Damage Coverage, please answer the questions below:</p>
+  <table style="margin-top: -15px;">
+    <tr>
+      <td colspan="4" style="font-size: small;">Do you run under your own authority?<span style="margin-left: 10px;"> ☒ </span> Yes <span style="margin-left: 10px;"> ☐  </span>No</td>
+    </tr>
+    <tr>
+      <td colspan="4" style="font-size: small;">Do you use your vehicle for training?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+    </tr>
+    <tr>
+      <td colspan="4" style="font-size: small;">Do you haul for more than one motor carrier?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="font-size: small;">If yes, who are the motor carriers?</td>
+      <td colspan="2" style="font-size: small;"></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="font-size: small;">Do you use your tractor as your primary personal vehicle?<span style="margin-left: 10px;"> ☐ </span> Yes <span style="margin-left: 10px;"> ☒ </span>No</td>
+    </tr>
+   
+  
+  
+  </table>
+  <p style="font-size: medium;">NAIT MEMBERSHIP:</p>
+  <p style="margin-top: -15px;font-size: small;">I understand that I must be a member of the National Association of Independent Truckers (“NAIT”) in order to participate in its insurance programs. If I am not currently a member, I will apply for membership. I may become and remain a member of NAIT without the purchase of NAIT sponsored insurance.</p>
+  <p style="font-size: medium;">POLICY TERMS AND CONDITIONS:</p>
+  <p style="margin-top: -15px;font-size: small;"> Coverage applied for under the NAIT insurance program is subject to all the terms, conditions and limitations of the policy providing the coverage requested.</p>
+  <p style="font-size: medium;">PAYMENT TERMS: I understand that the cost of this insurance is my sole obligation and responsibility,<span style="font-size:small;">and I agree that I will pay upon demand or at any time my account remains unpaid, any amount due and owing. I also understand that if my insurance is canceled my deposit premium will be used to cover my outstanding premium. If the motor carrier to whom I am under contract has agreed to settlement deduction arrangements for the payment of premium, I hereby APPOINT that motor carrier as my agent for receipt of NAIT Program billing notices and AUTHORIZE them to make deductions from my account equal to the cost of NAIT membership dues, benefits and insurance premiums and to remit same as required on my behalf. I also authorize the motor carrier named on page 4 of this application or on my Evidence of Coverage, if changed, to remit any deposit of premium and/ or membership dues required for participation in NAIT’s insurance programs.
+   </span></p>
+ </div>
+
+
+ <div class="p-2"style="color: black;margin-top: -5px;">
+ 
+ </div>
+ 
+
+ <div class="page-break">
+            
+ </div>
+
+ <div class="p-2"style="color: black;">
+  <p style="font-size: medium;">POLICY TERMS AND CONDITIONS (CONTINUED):</p>
+  <p style="font-size: small;">Premium is fully refundable upon termination of coverage if my account is current and in good standing. I understand there is a one-month deposit charge for NAIT membership dues and a one month deposit premium charge for all insurance coverages, except Workers’ Compensation. For Workers’ Compensation, a state mandated minimum charge, per policy, is applicable.</p>
+
+ </div>
+
+ <div class="p-2"style="color: black;">
+  <p style="font-size: medium;">AGREEMENTS:</p>
+  <p style="font-size: small; margin-top: -10px;">I certify that I am DOT qualified and that I have complied with all applicable DOT requirements. I am not now, nor will I become, an employee of any motor carrier while any insurance provided through an NAIT program is in force. I authorize the release to TGA, its affiliated insurers and their representatives, if necessary: 1) all insurance documents related to me and/or my insured equipment; 2) my current Motor Vehicle Report (MVR) and/or my drivers’ MVR, including updates as needed; 3) applicable medical records; 4) any test results in accordance with DOT regulations; 5) a copy of my current equipment lease agreement(s), if any; and 6) a copy of my independent contractor agreement with my motor carrier. I understand this information may be used for purposes of evaluating my application for insurance. I authorize my motor carrier to request cancellation of my coverage whose premium is paid by settlement deduction arrangements when I am no longer under contract to that motor carrier. I understand NAIT, as group policyholder, has authority to execute and cancel all group coverage. I accept and acknowledge that NAIT, as group policyholder, has elected Uninsured Motorist limits of $25,000 per person/$50,000 per occurrence, the minimum established by the state of Illinois, to apply to the group policy when Non- Trucking Liability coverage is elected and accepts that only in the event another state is determined to have jurisdiction, the maximum limits that will apply are the minimum limits (including rejection of coverage) permitted by that state for uninsured motorist, underinsured motorist, personal injury protection and any other no fault insurance required. I knowingly reject statutory Workers’ Compensation coverage when opting for Occupational Accident coverage, if required by state law. I understand Occupational Compensation coverage is not Workers’ Compensation coverage and is not a substitute for statutory Workers’ Compensation coverage.</p>
+
+ </div>
+
+ <div class="p-2" style="color: black;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    Applicable To Occupational Accident coverage only:
+  </p>
+  <span style="font-size: small; text-decoration: none; display: inline;">
+    I further understand and agree that as an independent contractor and in choosing this Occupational Accident coverage, I am not able to file nor otherwise assert any claim for statutory Workers’ Compensation benefits against my motor carrier and/or any insurers or other companies related to such entities. I further agree to indemnify and forever hold harmless NAIT, my motor carrier, and/or any insurers or other companies related to any of the foregoing entities of and from any and all claims that may be made by me or by anyone else on my behalf for statutory Workers’ Compensation benefits.
+  </span>
+  <p style="font-size: small;">A credit report or other investigative report about me may be requested in connection with this application for insurance and subsequent renewals. Any information about me or which I have provided about anyone will be treated confidentially. However, this information, as well as other non-public personal or privileged information subsequently collected, may, under certain circumstances, be disclosed without prior authorization to non-affiliated third parties. Information may be shared with affiliated companies for such purposes as claims handling, servicing, underwriting and insurance marketing. I have the right to see personal information collected about me, and I have the right to correct any information which may be wrong. A description of TGA’s information practices, and my rights regarding information TGA collects may be obtained by contacting TGA.</p>
+
+<p style="font-size: small;">I certify the information that I have provided in this application is true, complete and accurately recorded to the best of my knowledge and belief. I understand this information will be used to apply for insurance coverage on my behalf. If approved, this application will be attached to and made a part of each policy providing the coverage requested. I certify that I have fulfilled all requirements to work legally in the U.S. by 1) being a U.S. citizen and/or 2) being in full compliance with all Federal laws and/or regulations regarding work eligibility.
+  <span style="font-size: larger;">I understand that the giving of any inaccurate, false, or misleading information on this application may result in rejection of this application and the denial of benefits under any and all insurance coverage for which I have applied.</span>
+  I authorize TransGuard General Agency, Inc. and its affiliates to electronically send all insurance documents, account notices, invoices, disclosures, etc., if applicable, to the email address on file. I also agree to notify TransGuard if I change my email address.
+</p>
+
+</div>
+
+
+<div class="p-2"style="color: black;">
+  <p style="font-size: medium;">FRAUD WARNINGS:</p>
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    Fraud Warning applicable to residents of all states except those listed below:
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who knowingly and with intent to defraud any insurance company or other person files an application for insurance or a statement of claim containing any materially false information, or conceals, for the purpose of misleading, information concerning any fact material thereto, commits a fraudulent insurance act, which is a crime and subjects such person to criminal and civil penalties.
+  </span>
+ </div>
+ 
+<div class="page-break">
+            
+</div>
+
+
+<div class="p-2 mt-4" style="color: black;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN AL, AR, DC, LA, MD, NM, RI, WV –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who knowingly (or willfully)* presents a false or fraudulent claim for payment of a loss or benefit or knowingly (or willfully)* presents false information in an application for insurance is guilty of a crime and may be subject to fines and confinement in prison. *Applies in MD Only.
+  </span>
+</div>
+
+
+<div class="p-2" style="color: black;margin-top: -5px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN CA-
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    For your protection California law requires the following to appear on this form: Any person who knowingly presents false or fraudulent claim for the payment of a loss is guilty of a crime and may be subject to fines and confinement in state prison.
+  </span>
+  <p style="font-size: small;">
+    INITIAL/DATE:______________________
+</p>
+</div>
+
+<div class="p-2"style="color: black;margin-top: -14px;">
+  <p style="font-size: medium;">FRAUD WARNINGS(CONTINUED):</p>
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN CO –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    It is unlawful to knowingly provide false, incomplete, or misleading facts or information to an insurance company for the purpose of defrauding or attempting to defraud the company. Penalties may include imprisonment, fines, denial of insurance and civil damages. Any insurance company or agent of an insurance company who knowingly provides false, incomplete, or misleading facts or information to a policyholder or claimant for the purpose of defrauding or attempting to defraud the policyholder or claimant with regard to a settlement or award payable from insurance proceeds shall be reported to the Colorado Division of Insurance within the Department of Regulatory Agencies.
+  </span>
+ </div>
+
+
+<div class="p-2" style="color: black;margin-top: -6px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN FL, OK –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who knowingly and with intent to injure, defraud, or deceive any insurer files a statement of claim or an application containing any false, incomplete, or misleading information is guilty of a felony (of the third degree)*.
+    *Applies in FL Only.
+  </span>
+</div>
+<div class="p-2" style="color: black;margin-top: -6px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN KS –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who, knowingly and with intent to defraud, presents, causes to be presented or prepares withknowledge or belief that it will be presented to or by an insurer, purported insurer, broker or any agent thereof, anywritten statement as part of, or in support of, an application for the issuance of, or the rating of an insurance policy forpersonal or commercial insurance, or a claim for payment or other benefit pursuant to an insurance policy for commercialor personal insurance which such person knows to contain materially false information concerning any fact materialthereto; or conceals, for the purpose of misleading, information concerning any fact material thereto commits a fraudulentinsurance act.
+  </span>
+</div>
+
+<div class="p-2" style="color: black;margin-top: -8px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN KY, NY, OH, PA –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who knowingly and with intent to defraud any insurance company or other person files an application for insurance or statement of claim containing any materially false information or conceals for the purpose of misleading, information concerning any fact material thereto commits a fraudulent insurance act, which is a crime and subjects such person to criminal and civil penalties (not to exceed five thousand dollars and the stated value of the claim for each such violation)*. *Applies in NY Only.
+  </span>
+</div>
+
+<div class="p-2" style="color: black;margin-top: -8px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN ME, TN, VA, WA –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    It is a crime to knowingly provide false, incomplete or misleading information to an insurance company for the purpose of defrauding the company. Penalties (may)* include imprisonment, fines and denial of insurance benefits.
+   <br/> *Applies in ME Only.
+  </span>
+  
+</div>
+
+<div class="p-2" style="color: black;margin-top: 0px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN NJ –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who includes any false or misleading information on an application for an insurance policy is subjectto criminal and civil penalties.
+  </span>
+ 
+</div>
+<div class="p-2" style="color: black;margin-top: -2px;">
+  <p style="font-size: medium; text-decoration: underline; display: inline;">
+    IN OR –
+  </p>
+  <span style=" text-decoration: none; display: inline;font-size: small;">
+    Any person who knowingly and with intent to defraud or solicit another to defraud the insurer by submitting an application containing a false statement as to any material fact may be violating state law.
+  </span>
+  <p style="font-display: 50px;">I UNDERSTAND AND AGREE THAT COVERAGE REQUESTED IN THIS APPLICATION WILL NOT BE AFFORDED UNTIL THIS APPLICATION IS SUBMITTED AND I AM APPROVED. I CERTIFY AND REPRESENT THAT I HAVE READ AND UNDERSTAND THIS APPLICATION USING TRANSLATION SERVICES AS NEEDED AND THAT THE INFORMATION I HAVE PROVIDED AND THE REPRESENTATIONS I HAVE MADE HEREIN ARE TRUE AND CORRECT.</p>
+  <table style="margin-top: -2px;">
+    <tr>
+     <td colspan="2"  style="font-size: small;"> APPLICANT SIGNATURE</td>
+     <td colspan="2"  style="font-size: small;"> DATE</td>
+  </tr>
+  <tr>
+    <td colspan="2"  style="font-size: small;"> MOTOR CARRIER NAME/TERMINAL LOCATION</td>
+    <td colspan="2"  style="font-size: small;"> UNIT NUMBER</td>
+ </tr>
+  </table>
+</div>
+<div class="page-break">
+            
+</div>
+
+
+  <div class="row mt-5">
+    <div class="col-sm-6">
+     <img  height=80 
+     src="assets/transgard/3.PNG">
+    </div>
+    <div class="col-sm-6 mt-4" style="text-align: right;">
+     
+    </div>
+    
+   </div>
+   <div class="p-2">
+    <h4 style="text-align: center;">MEMBERSHIP APPLICATION</h4>
+
+   </div>
+
+   <div class="p-2">
+    <table>
+     <tr>
+      <td style="font-size: small;"> Application Name:</td>
+      <td colspan="3"style="font-size: small;">{{listOfData.AccountName}} </td>
+     
+   </tr>
+     <tr>
+       <td style="font-size: small;">Mailing Address:</td>
+       <td colspan="3" style="font-size: small;">{{listOfData.Description + ' ' + listOfData.City + ' ' + listOfData.State  + ' ' + listOfData.ZIP}}</td>
+     </tr>
+     <tr>
+      <td style="font-size: small;">Physical Address:</td>
+      <td colspan="3" style="font-size: small;"></td>
+    </tr>
+     <tr *ngFor="let driver of driverDetails">
+      <ng-container *ngIf="driver?.DriverType === 'Owner Operator'">
+       <td style="font-size: small;">Phone #:</td>
+       <td  style="font-size: small;">{{ listOfData?.PhoneNumber  }}</td>
+       <td colspan="2" style="font-size: small;">☐ Home ☐ Cell ☐ Other</td>
+       
+      
+     </ng-container>
+     </tr>
+     <tr >
+       <td style="font-size: small;">Phone #:</td>
+       <td  style="font-size: small;"></td>
+       <td colspan="2" style="font-size: small;">☐ Home ☐ Cell ☐ Other</td>
+
+     </tr>
+    
+    
+    <tr >
+    
+      <td style="font-size: small;">Email Address:</td>
+      <td colspan="3" style="font-size: small;">{{listOfData.EmailID}}</td>
+     
+   
+    
+    </tr>
+    <tr>
+     <td colspan="4" style="font-size: small;">
+      Do you own your own company? <span style="margin-left: 15px;"> ☒ </span> Yes   <span style="margin-left: 15px;"> ☐  </span> No   
+     </td>
+    
+     
+    </tr>
+    <tr>
+     <td ><p style="font-size: small;">If “yes”, enter name here:</p></td>
+    
+     <td colspan="3">{{ listOfData?.AccountPrimaryDetail?.[0]?.Name }}</td>
+    </tr>
+   </table>
+   
+   </div>
+   <div class="p-2">
+    <p style="font-display: 50px;">I HEREBY APPLY FOR MEMBERSHIP IN THE NATIONAL ASSOCIATION OF INDEPENDENT TRUCKERS, LLC (“NAIT”) AND AGREE TO PAY MONTHLY MEMBERSHIP DUES DISCLOSED AT <a>www.naitusa.com.</a></p>
+    <p style="font-display: 50px;">I UNDERSTAND MEMBERSHIP IS NONTRANSFERABLE.</p>
+    <p style="font-display: 50px;">SUBMISSION OF THIS APPLICATION FOR MEMBERSHIP AUTHORIZES NAIT AND ITS AFFILIATED BENEFIT PROVIDERS TO CONTACT ME OR MY COMPANY BY MAIL, PHONE, FAX OR E-MAIL REGARDING NAIT MEMBERSHIP AND MEMBER BENEFITS.</p>
+   </div>
+   <div class="p-2">
+    <table>
+      <tr>
+       <td colspan="2"  style="font-size: small; text-align: center;"> Signature</td>
+       <td colspan="2"  style="font-size: small;text-align: center;"> Date</td>
+    </tr>
+    
+    </table>
+    </div>
+    <div class="p-2 " style="color: black; margin-top: 40px;">
+      <p style="font-size: medium; text-decoration: underline; display: inline;">
+        RETURN TO:
+      </p>
+      <div class="row">
+        <div class="col-sm-2">
+          Mail:
+        </div>
+        <div class="col-sm-10">
+          <p style="font-size: small;">PO BOX 901606, KANSAS CITY, MO 64190</p>
+         </div>
+         <div class="col-sm-2">
+          E-MAIL:
+        </div>
+        <div class="col-sm-10">
+          <p style="font-size: small;">{{EmailGrandagrd}}</p>
+         </div>
+         <div class="col-sm-2">
+          FAX:
+        </div>
+        <div class="col-sm-10">
+          <p style="font-size: small;">(816) 713-1333</p>
+         </div>
+         <p style="font-display: 50px;">FOR ADDITIONAL INFORMATION ON YOUR TOTAL BENEFIT PACKAGE VISIT <a>www.naitusa.com.</a>OR CALL (800) 821-8014</p>
+         <p style="font-display: 50px;text-align: center;">Follow us on Twitter: <a></a>naitusa</p>
+      </div>
+      <div class="page-break">
+            
+      </div>
+      <div class="row mt-3">
+       
+        
+          <img  height=100 
+          src="assets/transgard/4.PNG">
+      
+        
+
+      </div>
+      <h4 class="mt-2" style="text-align: center;">High Value Unit Supplemental Questionnaire</h4>
+      
+    
+     
+    </div>
+    <div class="p-2">
+      <table>
+        <tr>
+         <td   style="font-size: small; text-align: center;"> Applicant Name:</td>
+         <td  style="font-size: small;text-align: center;"> {{ listOfData?.AccountPrimaryDetail?.[0]?.Name }}</td>
+         <td  style="font-size: small;text-align: center;">Date of Birth:</td>
+         <td  style="font-size: small;text-align: center;" > <span *ngFor="let driver of driverDetails" >
+
+          <ng-container *ngIf="driver?.DriverType === 'Owner Operator'"> {{driver.DateofBirth |date :'MM/dd/yyyy'}} </ng-container>
+         </span>{{driverDetails?.DateofBirth}}</td>
+      </tr>
+      
+      </table>
+      </div>
+
+    <div class="p-2" style="color: black;">
+      <p style="font-size: medium; text-decoration: underline; display: inline;">
+        CDL EXPERIENCE:
+      </p>
+
+      <table>
+        <tr>
+         <td colspan="2"   style="font-size: small; "> Years of commercial trucking experience:</td>
+         <td colspan="2" style="font-size: small; "><span style="margin-left: 15px;"*ngFor="let driver of driverDetails">{{driver?.Experience}}</span></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"   style="font-size: small; "> Years hauling current trailer type:</td>
+          <td colspan="2" style="font-size: small;"></td>
+         </tr>
+
+         <tr>
+          <td colspan="2"  style="font-size: small; "> Contract date with current motor carrier:</td>
+          <td colspan="2" style="font-size: small;"> </td>
+         </tr>
+      
+      </table>
+      
+    </div>
+    <div class="p-2" style="color: black; margin-top: -5px;">
+      <p style="font-size: medium; text-decoration: underline; display: inline;">
+        MOTOR CARRIER HISTORY:
+      </p>
+      <p>If less than 3 years with current motor carrier, list prior motor carriers over the past 3 years. If additional space is needed, please use separate sheet.</p>
+
+      <table style="margin-top: -5px;">
+        <tr>
+         <td   style="font-size: small; "> Motor Carrier Name:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">DOT#:</td>
+         <td  style="font-size: small;"></td>
+        </tr>
+
+        <tr>
+          <td   style="font-size: small; ">Dates Worked:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Trailer Type Hauled:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+
+         <tr>
+          <td colspan="4"  style="font-size: small; ">Safety Manager Name:</td>
+         
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Safety Phone:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Safety Manager Email:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Motor Carrier Name:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">DOT#:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+
+         <tr>
+          <td   style="font-size: small; ">Dates Worked:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Trailer Type Hauled:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         <tr>
+          <td colspan="4"  style="font-size: small; ">Safety Manager Name:</td>
+         
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Safety Phone:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Safety Manager Email:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Motor Carrier Name:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">DOT#:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Dates Worked:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Trailer Type Hauled</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         <tr>
+          <td colspan="4"  style="font-size: small; ">Safety Manager Name:</td>
+         
+         </tr>
+         <tr>
+          <td   style="font-size: small; ">Safety Phone:</td>
+         <td  style="font-size: small;"></td>
+         <td  style="font-size: small;">Safety Manager Email:</td>
+         <td  style="font-size: small;"></td>
+         </tr>
+         
+      
+      </table>
+      
+    
+      <p style="font-size: medium; text-decoration: underline; display: inline;">
+        MOTOR VEHICLE RECORD:
+      </p>
+      <p>If less than 3 years with current motor carrier, list prior motor carriers over the past 3 years. If additional space is needed, please use separate sheetPlease list any accidents within the past 3 years. If additional space is needed, please use separate sheet.</p>
+
+      <table>
+        <tr>
+         <td   style="font-size: small; ">Date of Accident:</td>
+         <td  style="font-size: small;"></td>
+         <td colspan="2" style="font-size: small;">Received Citation? <span>☐</span>  Yes  <span>☐</span> No</td>
+       
+        </tr>
+
+     
+         <tr>
+          <td colspan="4"  style="font-size: small; ">Description:</td>
+         
+         </tr>
+        
+         <tr>
+          <td   style="font-size: small; ">Date of Accident:</td>
+          <td  style="font-size: small;"></td>
+          <td colspan="2" style="font-size: small;">Received Citation? <span>☐</span>  Yes  <span>☐</span> No</td>
+        
+         </tr>
+         <tr>
+          <td colspan="4"  style="font-size: small; ">Description:</td>
+         
+         </tr>
+      
+      </table>
+      <p>If less than 3 years with current motor carrier, list prior motor carriers over the past 3 years. If additional space is needed, please use separate sheetPlease list any accidents within the past 3 years. If additional space is needed, please use separate sheet.</p>
+      <table>
+        <tr>
+          <td colspan="2"  style="font-size: small;text-align: center; ">Signature</td>
+          
+          <td colspan="2" style="font-size: small;text-align: center; ">Date</td>
+        
+         </tr>
+      </table>
+      
+
+       <p class="mt-3" style="text-align: center;font-size: small;">Mail: TransGuard /NAIT Association Program, PO Box 901606, Kansas City, MO 64190-1555 <br/>
+        <a>{{emailOfStatick}} Fax: (816) 713-1333 Phone: (800) 821-8014</a>
+      </p>
+    
+    </div>
+
+</div>
+
+
+
+<div  style ="text-align: center;margin-top: 5px;">
+ <!-- <button style="width: 300px;color: green;" class="learn-more" (click)="generatePDF()">Download PDF</button> -->
+ <button [useExistingCss]="true" printSectionId="print-section"printTitle="Truckes"  ngxPrint>Save And convert PDF</button> 
+ </div>

@@ -1,0 +1,297 @@
+<div class="container-fluid">
+    <!-- <h2 style="text-align: center;font-family: sans-serif;"> DRIVER INFORMATION </h2> -->
+    
+ <div  *ngIf ="showHtml">
+    
+    <!-- <h4 mat-dialog-title><span style="color: white;background-color: #1397d5;" >{{DriverID == undefined? ' Add ':'Edit '}} Driver    </span> </h4> -->
+    <mat-dialog-content class="mat-typography">
+         <div class="card mt-1">
+     <div  class="card-header" style="background-color: #1397d5; color: white;">
+         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" >  ENTER  DRIVER DETAILS</a>  
+       </div>
+ </div>
+         <form [formGroup]="addEditMarkedForm">
+             <div class="row mt-2">
+                 
+                 <div class="col-sm-6 ">   
+                     <div class="" style="border: 1px solid rgba(0, 0, 0, 0.093);">
+                         <div class="row" style="margin-left:18px;">
+                             <div class="col-sm-6 p-2 mt-2 mb-2">
+                                 <input class="form-check-input"type="radio" value="authorize" [(ngModel)] ="AuthType"  formControlName="AuthType"  [checked]='true' >
+                                 <label class="form-check-label"  style="margin-left:5px;">
+                                     Authorize
+                                 </label>
+                             </div>
+                             <div class="col-sm-6 p-2 mt-2 mb-2">
+                                 <input class="form-check-input" type="radio" value="non-authorize" [(ngModel)] ="AuthType" formControlName="AuthType" value="non-authorize">
+                                 <label class="form-check-label"  style="margin-left:5px;">
+                                     Non-Authorize
+                                 </label>
+                             </div>
+                            
+                         </div>
+  
+                     </div>
+                  
+              
+                 </div>
+                 <div class="col-sm-6 ">
+                    <div class="form-floating ">
+                        <input type="text" class="form-control" id="floatingDriverName" placeholder="DriverName"[(ngModel)]="DriverName" formControlName ="DriverName"  [ngClass]= "{ 'is-invalid': submit && f['DriverName'].errors }">
+                        <div *ngIf ="submit && f['DriverName'].errors" class="invalid-feedback">
+                         <div *ngIf ="f['DriverName'].errors">DriverName is required</div>
+                     </div>
+                     <label for ="floatingDriverName">Driver Name</label>
+                    </div>
+                 </div>
+                
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating ">
+                        <select class="form-select formControl mt-1"id="floatingDriverType" formControlName ="DriverType"    style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['DriverType'].errors }" >
+                            <option hidden value="" disabled selected  > </option>
+                            <option value="Employee">Employee</option>
+                            <option  value="Owner Operator"> Owner Operator</option>
+                            <option  value="Contractual"> Contractual</option>
+                            
+                            
+                           
+                          </select>
+                          <label for ="floatingDriverType"> Driver Type </label>
+                    </div>
+                   
+                    
+                     
+         
+                 </div>
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating">
+                        <select class="form-select formControl mt-1"  [(ngModel)]="DriverStage"  id="floatingDriverStage" (change)="changeDate($event)"
+                            formControlName="DriverStage" style="margin-top: 28px;">
+                            <option hidden value="" disabled></option>
+                            <option value="MM/dd/yyyy">Enter Date</option>
+                            <option value="Appointed">Appointed</option>
+                            
+                            
+                            <option value="Excluded">Excluded</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                        <label for="floatingDriverStage">Driver Stage</label>
+                    </div>
+                </div>
+                
+                <!-- Input box to display & edit selected value -->
+
+                
+                <div class="col-sm-6 mt-2" *ngIf ="hideDateOfHire">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="DriverStage" 
+                           formControlName="DriverStage"bsDatepicker
+                           (blur)="autoFDriverStage(f['DriverStage'].value)" > 
+                        <label >Date to Hired </label>
+                    </div>
+                </div>
+                
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating">
+                        <input type="text" class="form-control mt-1"id="floatingDateofBirth" formControlName ="DateofBirth" bsDatepicker [ngClass]= "{ 'is-invalid': submit && f['DateofBirth'].errors }"
+                        (blur)="autoDateOfBirth(f['DateofBirth'].value)"
+                        >
+                        <div *ngIf ="submit && f['DateofBirth'].errors" class="invalid-feedback">
+                         <div *ngIf ="f['DateofBirth'].errors">DateofBirth is required</div>
+                     </div> 
+                     <label for ="floatingDateofBirth">Date Of  Birth</label>
+                    </div>
+                    
+                   
+                 </div>
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating "> 
+                        <input type="text" class="form-control mt-1" id ="floatingDriverLicenceNo"[(ngModel)]="DriverLicenceNo" formControlName ="DriverLicenceNo"  [ngClass]= "{ 'is-invalid': submit && f['DriverLicenceNo'].errors }">
+                        <div *ngIf ="submit && f['DriverLicenceNo'].errors" class="invalid-feedback">
+                         <div *ngIf ="f['DriverLicenceNo'].errors">DriverLicenceNo is required</div>
+                     </div> 
+                     <label for ="floatingDriverLicenceNo">Driver License No</label>
+                    </div>
+                    
+                    
+                   
+                 </div>
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating ">  
+                        <input
+                        type="text"
+                        class="form-control mt-1"
+                        id ="floatingYearofLicenceIssued"
+                        formControlName="YearofLicenceIssued"
+                        bsDatepicker
+                        [ngClass]="{ 'is-invalid': submit && f['YearofLicenceIssued'].errors }"
+                        (blur)="autoFillYearOfLicenceIssuedDate(f['YearofLicenceIssued'].value)"
+                        >
+                      <div *ngIf="submit && f['YearofLicenceIssued'].errors" class="invalid-feedback">
+                       <div *ngIf="f['YearofLicenceIssued'].errors['required']">Year of Licence Issued is required</div>
+                       <div *ngIf="f['YearofLicenceIssued'].errors['invalidDate']">Year of Licence Issued must be in MM/dd/YYYY format</div>
+                      </div>
+                      <label for ="floatingYearofLicenceIssued">Year of License issued </label>
+                    </div>
+                     
+                    
+                
+                 </div>
+               
+                
+                 <div class="col-sm-6 mt-2">
+                    <div class="form-floating ">
+                        <select class="form-select formControl mt-1" id ="floatingStateLicenced" formControlName ="StateLicenced"   style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['StateLicenced'].errors }" >
+                            <option hidden value="" disabled selected  > </option>
+                            <option  value="AL">AL</option>
+                            <option value="Ak">Ak</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+            
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC"> NC</option>
+            
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+
+                            
+                           
+                          </select>
+                          <div *ngIf ="submit && f['StateLicenced'].errors" class="invalid-feedback">
+                            <div *ngIf ="f['StateLicenced'].errors">StateLicenced is required</div>
+                        </div> 
+                        <label for ="floatingStateLicenced">State Licensed </label>
+                    </div>
+                     
+                   
+         
+                 </div>
+                
+               
+                 
+         
+                
+                 <!-- <div class="col-sm-6 mt-2">
+                     <label>Description</label>
+                    <input type="text" class="form-control" formControlName ="Description" >
+                    
+                 </div> -->
+                 <!-- <div class="col-sm-6 mt-3">
+                     <label>Action</label>
+                    <input type="text" class="form-control" formControlName ="Action"  [ngClass]= "{ 'is-invalid': submit && f['Action'].errors }" >
+                    <div *ngIf ="submit && f['Action'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['Action'].errors">Action is required</div>
+                 </div> 
+                 </div> -->
+               
+               
+               
+               
+                 <!-- <div class="text-center mt-5">
+                     <div class="btn-group  gap-2  " *ngIf ="messageSuccess">
+                        
+                         <button mat-stroked-button class="text-right" (click)="onSubmit()" >{{DriverID ==undefined ?'Save':'Update'}}</button>
+                         <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+                        
+                       
+                       </div>
+                 </div> -->
+             
+              
+                   
+                 
+         
+             </div>
+         
+         </form>
+</mat-dialog-content>
+         <mat-dialog-actions align="end"  *ngIf ="messageSuccess">
+         <div class="text-center"  *ngIf ="messageSuccess">
+           
+              <a href="javascript:void(0)" style="background-color: #1397d5; color: white;"  (click)="checkVehilceIsExistOrNot();" class="d-none d-sm-inline-block btn btn-sm   me-2"><i class="fas fa-check fa-sm text-white-50"></i>{{DriverID == undefined? ' Add':'Edit'}} Driver</a>
+              <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+             
+           
+            </div>
+          </mat-dialog-actions>
+     
+ </div>
+ <div *ngIf ="!showHtml">
+    
+    <div *ngFor ="let dat of showAccountDetail" >
+        <div *ngIf ="messageSuccess">
+
+       
+     <div class="alert alert-danger mt-2 mb-2" >
+     This Driver is already exist in Account Name:- <strong>{{dat.AccountName}}</strong> and DOT :- {{dat.LookUpCode}} . Are you sure to want to add this account forcefully 
+     </div>
+     <button type="button" style="width: 130px;background-color: #1397d5; color: white;" class="btn btn-outline-success mb-3" (click)="onSubmit();">{{DriverID == undefined? ' Save':'Update'}}</button>
+     <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger mb-3"mat-dialog-close>cancel</button>
+  </div>
+  </div>
+
+ 
+ </div>
+ <!-- <div class="text-center  mt-5 mb-5"  *ngIf ="showButtonOnTimer">
+   <div  *ngIf ="messageSuccess">
+     <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="onSubmit();">{{DriverID == undefined? ' Save':'Update'}}</button>
+     <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger "(click)="cancletoSave()">cancel</button>
+     </div>
+ </div> -->
+
+    <!-- <div class="text-center  mt-5 mb-5"  *ngIf ="showButtonOnUpdateTime">
+     <div  *ngIf ="messageSuccess">
+       <button type="button" style="width: 130px;" class="btn btn-outline-success" (click)="onSubmit();">{{DriverID == undefined? ' Save2':'Update'}}</button>
+       <button type="button" style="width: 130px; margin-left: 10px;" class="btn btn-outline-danger "(click)="nextToRemarks()">cancel</button>
+       </div>
+      </div> -->
+
+
+
+
+</div>

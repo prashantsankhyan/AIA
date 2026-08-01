@@ -1,0 +1,290 @@
+
+
+<div class="container">
+  <div *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+
+  </div>
+    <div *ngIf ="!showSpiner">
+      <form [formGroup]="addEditClaimForm">
+        <div class="mt-2">
+          <div class="row p-1 mt-1">
+            <div class="col-sm-3"> 
+             <label>Date Of Loss </label>
+             <input type ="text" class="form-control" [(ngModel)]= "MarkedPolicyId" formControlName ='MarkedPolicyID' style="display: none;">
+             <input type ="text" class="form-control" [(ngModel)]= "DateofLoss" formControlName ='DateofLoss'  aria-label="Default select example" bsDatepicker  [ngClass]= "{ 'is-invalid': submit && f['DateofLoss'].errors }">
+            </div>
+            <div class="col-sm-3">
+             <label>Date Reported </label>
+             <input type ="text" class="form-control"[(ngModel)]= "DateReported" formControlName ='DateReported' >
+            </div>
+         
+            <div class="col-sm-3">
+             <label>Reported By</label>
+             <select class="form-select formControl mt-1"  formControlName ='ReportedBy'  aria-label="Default select example" style="margin-top: 28px;" >
+              <option hidden value="" disabled selected  > Select Claim  Type</option>
+              <option  value="Insured">Insured</option>
+              <option  value="Other Party">Other Party</option>
+            
+              
+             
+            </select>
+          
+            </div>
+            <div class="col-sm-3 ">
+             <label>Select Carrier</label>
+             <select class="form-select formControl mt-2" [(ngModel)]="ReportedTo" aria-label="Default select example"formControlName="ReportedTo"  >
+              <option hidden value="" disabled selected  > Select Carrier</option>
+              
+              
+                <option *ngFor="let data of listOfCarrier" [value]="data.CarrierName">
+                    {{data.CarrierName}}
+                </option>
+            
+          
+            </select>
+           
+            </div>
+            <div class="col-sm-3  mt-1">
+              <label>Reporter To</label>
+              <input type ="text" class="form-control" [(ngModel)]= "ReportedTo" formControlName ='ReportedTo' >
+            </div>
+            
+            
+            <div class="col-sm-3 mt-1">
+              <label>Claim Number</label>
+              <input type ="text" class="form-control" formControlName ='ClaimNumber'>
+             </div>
+            <!-- <div class="col-sm-3 mt-1">
+             <label>Claim Description</label>
+             <textarea type ="text" formControlName ='ClaimDescription' class="form-control" rows ="3"></textarea> 
+            </div> -->
+            <div class="col-sm-3 mt-1">
+             <label>Estimate Amount</label>
+             <input type ="text" class="form-control" formControlName ='EstimateAmount'>
+            </div>
+    
+            <div class="col-sm-3 mt-1">
+              <label>Claim  Type</label>
+             
+              <select class="form-select formControl"[(ngModel)]="ClaimType"  formControlName ='ClaimType' (change)="changePolicyType()"  >
+                  <option hidden value="" disabled selected  > Select Claim  Type</option>
+                  <option  value="Running">Running Policy </option>
+                  <option  value="Expire Policy">Expire Policy </option>
+                
+                  
+                 
+                </select>
+             </div>
+           
+            </div>
+        </div>
+        
+       
+          
+          <div class="col-sm-12 mt-1">
+      
+            <label class="mt-2">Select Policy</label>
+            <div *ngIf ="showSpiner">
+            <div class="container1 ">
+              <h3 class="text-center"> No Data Found</h3>
+      
+            </div>
+            </div>
+            <div *ngIf ="!showSpiner">
+              <div class="scrolling" > 
+                <input type ="text" class="form-control" [(ngModel)]="ChildPolicyID" formControlName ='ChildPolicyID' style="display: none;">
+                  <table id="example" class="table table-bordered" style="width:100%">
+                      <thead  class="" >
+                        <tr>
+                         
+                          <th>Policy Name </th>
+                          <th>Effective Date</th>
+                          <th>Exp Date</th>
+                          <th>Entered By</th>
+                          <th>Updated dBy</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr  *ngFor ="let data of listOfPolicy" [ngClass] = "{'highlight' : data.MarkedPolicyID == MarkedPolicyId && data.ChildPolicyID == ChildPolicyID}" (click) ="getMarkedPolicyId(data)">
+                       
+                         <!-- <td *ngIf ="data.StageType !== 'In-Process'">{{data.LineName}}/{{data.LineShortName}}</td> -->
+                         <td *ngIf ="data.StageType !== 'In-Process'">{{data.LineName}}-{{data.LineShortName}}</td>
+                       
+                         <td *ngIf ="data.StageType !== 'In-Process'">{{data.Effective | date: 'dd/MM/yyyy'}} </td>
+                         <td *ngIf ="data.StageType !== 'In-Process'">{{data.Expiration | date: 'dd/MM/yyyy'}}</td>
+                        
+                         <td *ngIf ="data.StageType !== 'In-Process'">{{data.EnteredBy}}</td>
+                         <td *ngIf ="data.StageType !== 'In-Process'">{{data.UpdatedBy}}</td>
+                        
+                         
+                       
+                        </tr>
+                        
+                      
+                      
+                       
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+            
+           </div>
+    
+           
+           <div class="container">
+            <section class="example-section">
+              <mat-slide-toggle
+              class="example-margin"
+              [(ngModel)]="checked"
+              [ngModelOptions]="{standalone: true}"> 
+               <!-- Two-way binding -->
+               {{ checked ? 'Internal Detail Add' : 'Extranal Detail Add!' }}
+            </mat-slide-toggle>
+            </section>
+        
+          </div>
+         
+        
+          <div *ngIf="checked" class="row p-2">
+      
+            <div class="col-sm-3 " >
+              <label>Driver</label>
+                
+              <!-- <select class="form-select formControl mt-2"   aria-label="Default select example" formControlName="DriverID" style="margin-top: 28px;" >
+                <option hidden value="" disabled selected  > Select Drive</option>
+               <option *ngFor ="let data of allDriverList" value="{{data.DriverID}}">{{data.DriverName}}</option>
+               
+                
+               
+              </select> -->
+              <select class="form-select formControl mt-2" aria-label="Default select example" formControlName="DriverID" style="margin-top: 28px;">
+                <option hidden value="" disabled selected>Select Drive</option>
+                <ng-container *ngIf="allDriverList && allDriverList.length > 0; else noData">
+                    <option *ngFor="let data of allDriverList" value="{{data.DriverID}}">{{data.DriverName}}</option>
+                </ng-container>
+                <ng-template #noData>
+                    <option disabled>No data found</option>
+                </ng-template>
+            </select>
+               
+            
+            </div>
+            
+            <div class="col-sm-3" >
+              <label>Truck</label>
+              <select class="form-select formControl mt-2"   aria-label="Default select example"formControlName="TruckID" style="margin-top: 28px;" >
+                <option hidden value="" disabled selected  > Select Truck</option>
+                
+                <ng-container *ngIf="trucks && trucks.length > 0; else noTruckData">
+                  <option *ngFor="let data of trucks" 
+                          [value]="data.VehicleID" 
+                          [hidden]="data.BodyType == 'Trailer'">
+                      {{data.VIN}}
+                  </option>
+              </ng-container>
+              <ng-template #noTruckData>
+                  <option disabled>No data found</option>
+              </ng-template>
+              </select>
+                
+              
+              
+            </div>
+            
+            <div class="col-sm-3" >
+              <label>Trailer</label>
+            
+              <select class="form-select formControl mt-1" aria-label="Default select example" formControlName="TrailerID" style="margin-top: 28px;">
+                <option hidden value="" disabled selected> Select Trailer</option>
+                <ng-container *ngIf="trailers && trailers.length > 0; else noTrailerData">
+                  <ng-container *ngFor="let data of trailers">
+                    <option *ngIf="data.BodyType === 'Trailer'" [value]="data.VehicleID">
+                      {{ data.Model }}
+                    </option>
+                  </ng-container>
+                </ng-container>
+                <ng-template #noTrailerData>
+                  <option disabled>No data found</option>
+                </ng-template>
+              </select>
+                
+              
+              
+            </div>
+            <div class="col-sm-3 ">
+              <label>Information Received By</label>
+             
+              <select class="form-select formControl mt-2"  >
+                  <option hidden value="" disabled selected  > Select Claim  Type</option>
+                  <option  value="By Email">By Email</option>
+                  <option  value="By Call">By Call</option>
+                
+                  
+                 
+                </select>
+             </div>
+          </div>
+        
+        <div *ngIf="!checked" class="row">
+          <div class="col-sm-3 mt-1">
+            <label>Driver</label>
+            <input type ="text" class="form-control" formControlName ='Driver'>
+           </div>
+          <div class="col-sm-3 mt-1">
+           <label>Truck</label>
+           <input type ="text" formControlName ='Truck' class="form-control" > 
+          </div>
+          <div class="col-sm-3 mt-1">
+           <label>Trailer</label>
+           <input type ="text" class="form-control" formControlName ='Trailer'>
+          </div>
+          <div class="col-sm-3 mt-1">
+            <label>Information Received By</label>
+           
+            <select class="form-select formControl"  >
+                <option hidden value="" disabled selected  > Select Claim  Type</option>
+                <option  value="By Email">By Email</option>
+                <option  value="By Call">By Call</option>
+              
+                
+               
+              </select>
+           </div>
+        </div>
+       
+       
+      
+      
+       </form>
+
+       <div class="text-center mt-5 mb-5">
+        <div class="mt-5"  *ngIf ="messageSuccess">
+          <button type="button" class="btn btn-outline-success btn-sm" style="width: 120px;" (click)="onSubmit()" > {{ClaimID ==undefined ?'Save':'Update'}}</button>
+          <button type="button" class="btn btn-outline-danger btn-sm" style="width: 120px;margin-left: 10px;" mat-dialog-close>Cancel</button>
+            
+           
+          
+          </div>
+      </div>
+    </div>
+ 
+   
+  </div>
+     
+      
+  
+   
+     <!-- <div class="text-center mt-5 ">
+      <div class="btn-group  gap-2  ">
+       
+          <button mat-stroked-button class="text-right"  style="background-color: #3f51b5 !important;color:white"(click)="onSubmit()" >{{ClaimID ==undefined ?'Save':'Update'}}</button>
+          <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+         
+        
+        </div>
+  </div> -->
+  
+  
+  
+  

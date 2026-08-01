@@ -1,0 +1,82 @@
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+ <div *ngIf ="!showSpiner">
+
+
+ <h4 class="mt-4" style="text-align: center;">Account Details</h4>
+
+
+
+<div class="scrollable-table-body mt-4">
+   
+<table  class="table table-striped">
+
+ <thead>
+   <tr>
+     
+     <th>Account</th>
+     <th>DOT</th>
+     <th>Phone</th>
+     <th>EmailID</th>
+     <th>Address</th>
+     <th>City</th>
+     <th>State</th>
+     <th>Zip </th>
+     <th>MC</th>
+     <th>CA</th>
+     <th>EnteredBy</th>
+  
+    
+   </tr>
+ </thead>
+ <tbody>
+ 
+    <tr *ngFor = "let account of listOfDataById" (click)="completeNextStep(account)">
+     <td>{{ account.AccountName }}</td>
+     <td>{{ account.LookUpCode }}</td>
+     <td>{{ account.PhoneNumber }}</td>
+     <td>{{ account.EmailID }}</td>
+     <td>{{ account.Description }}</td>
+     <td>{{ account.City }}</td>
+     <td>{{ account.State }}</td>
+     <td>{{ account.ZIP }}</td>
+     <td>{{ account.MC }}</td>
+     <td>{{ account.CA }}</td>
+
+     <td>{{ account.EnteredBy }}</td>
+      
+      
+    </tr>
+
+   
+  <!-- <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of accountPrimaryDetail">
+        <td>{{ contact.Name }}</td>
+        <td>{{ contact.Designation }}</td>
+        <td>{{ contact.PhoneNo }}</td>
+        <td>{{ contact.EmailID }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+  
+
+  
+ </tbody>
+
+</table>
+
+</div>
+
+</div>

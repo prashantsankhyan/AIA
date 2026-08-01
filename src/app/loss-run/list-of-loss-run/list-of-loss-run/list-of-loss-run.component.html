@@ -1,0 +1,76 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div class="container-fluid" >
+ <div *ngIf ="!showSpiner">
+
+
+<div class="card mt-2">
+  <div class="row p-1">
+    
+     <div class="col-sm-2 mt-1 mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" placeholder="Search By Date">
+     </div>
+     <div class="col-sm-2 mt-1 mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.PolicyType" (ngModelChange)="onPolicyTypeChange($event)"  placeholder="Search By Policy Name">
+     </div>
+     <div class="col-sm-2 mt-1 mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)"  placeholder="Search By Name">
+     </div>
+     <div class="col-sm-2">
+
+     </div>
+
+     <div class="col-sm-4 mt-1 mb-1" style="text-align: right;">
+      <a href="javascript:void(0)" (click) ="goToCheckRenwPage()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm " style="margin-right: 10px;"><i class="fas fa-check fa-sm text-white-50"></i> List Of Renew  </a>
+      <a href="javascript:void(0)" (click) ="addEditAttachement($event)" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm " style="margin-right: 10px;"><i class="fas fa-check fa-sm text-white-50"></i> Add Loss Run Here </a>
+
+     </div>
+
+  </div>
+</div>
+ 
+  
+ 
+  
+   
+    
+   
+
+   
+      <div class="scrollable-table-body mt-2" style="background-color: rgba(0, 0, 0, 0);">
+        
+       <table  class="table ">
+             <thead >
+               <tr>
+                 <th >File Path</th>
+                
+                 <th >Policy Type </th>
+                 <th >Date </th>
+                 <th>Policy Status</th>
+                 <th >Description</th>
+                 <th >Enter By </th>
+                
+                
+                
+               </tr>
+             </thead>
+             <tbody>
+              <tr *ngFor ="let data of listOfAllFatchData |  searchLossRun: searchCriteria  " (dblclick)="onRowClick(data)">
+              
+                <td >{{data.FileName}}</td>
+                <td >{{data.PolicyType}}</td>
+                <td >{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+               <td>{{data.AttachedBy}}</td>
+               <td >{{data.Description}}</td>
+               <td >{{data.EnteredBy}}</td>
+              
+            
+              </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+</div>
+</div>

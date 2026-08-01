@@ -1,0 +1,82 @@
+
+ <div *ngIf ="showSpiner">
+   <app-spinner></app-spinner>
+  </div>
+  <div *ngIf ="!showSpiner">
+   <div class="card mt-3">
+    <div class="row p-2">
+      <div class="col-sm-3 ">
+       <input
+  type="text"
+  class="form-control"
+  placeholder="Search carrier"
+ 
+  [(ngModel)]="searchText"
+/>
+       
+     </div>
+   
+     <div class="col-sm-2">
+      
+     </div>
+     <div class="col-sm-2">
+     
+    </div>
+    <div class="col-sm-2 ">
+      
+    </div>
+    <div class="col-sm-3" style="text-align: right;">
+
+     
+        <button class="btn" style="background-color: #1397d5;color: white;" (click)="addEditCarrier($event)" ><span style="margin-left: 15px;margin-right: 15px;"> ADD CARRIER </span></button>
+    </div>
+    </div>
+  </div>
+   <div class="scrollable-table-body mt-3" >
+     
+       <table  class="table table-bordered table-hover dt-responsive">
+      
+         <thead>
+           <tr>
+             <th >Carrier Name</th>
+             <th>Phone</th>
+             
+            
+             <th>Address </th>
+            
+            <th></th>
+            <th>
+
+            </th>
+            
+           </tr>
+         </thead>
+         <tbody>
+         
+          <ng-container *ngFor="let data of filteredCarrier">
+           <tr *ngIf="!data.IsDeleted" (click)="goToAttachment(data)">
+             <td>{{data.CarrierName}}</td>
+             <td>{{data.Phone}}</td>
+             <td>{{data.Address}} {{data.City}} {{data.State}} {{data.ZIP}}</td>
+             <td>
+               <a style="color: red;" (click)="deleteCarrier(data)">
+                 <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+               </a>
+             </td>
+             <td>
+               <a style="color: green;"(click)="addEditCarrier(data)">
+                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+               </a>
+             </td>
+           </tr>
+         </ng-container>
+          
+        
+          
+         </tbody>
+        
+       </table>
+    
+   </div>
+   </div>
+

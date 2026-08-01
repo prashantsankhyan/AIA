@@ -1,0 +1,65 @@
+<div class="container">
+ <div class="card mt-2">
+     <div  class="card-header" style="background-color: #3f51b5; color: white;">
+         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" >  Replace Driver </a>  
+       </div>
+ </div>
+  <div *ngIf ="displayError">
+<div class="alert alert-danger" role="alert">
+  {{displayExcellError}}
+</div>
+ </div>
+
+    <form [formGroup]="addExcelForm">
+        <div class="row">
+          
+          
+            <div class="col-sm-12 mt-3">
+                <label>Upload Excel File</label>
+              
+                <div class=" file-container center  text-center mt-2" >
+                               
+                 <label>Upload file here</label>
+                 <input
+                 type="file"
+                 class="file"
+                 placeholder="File Name"
+                 multiple
+                 accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+                 
+                 (change)= "onFileUpload($event)"  />
+                 <!-- <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                     <div *ngIf ="f['abc'].errors">FIle is required</div>
+                 </div> -->
+                 <label>Upload file here</label>
+             </div>
+              
+            </div>
+          
+          
+           
+          
+           
+          
+          
+          
+          
+        <h4 class="mt-2">upload file name is <span style="color: rgba(0, 0, 255, 0.704);">{{detail}}</span> </h4>
+            <div class="text-center mt-3">
+                <div  *ngIf ="showFiv">
+                            
+                    <button style="width: 140px;color: green;" class="learn-more"(click)="onSubmit()">Save</button>
+                    <button style="width: 140px; color: red; margin-left: 10px;" class="learn-more" mat-dialog-close>cancel</button>
+                                           
+                                               
+                                              
+                                             
+             </div>
+              </div>
+       
+        </div>
+       
+       </form>
+
+
+</div>

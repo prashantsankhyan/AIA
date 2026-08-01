@@ -1,0 +1,136 @@
+<div class="container-fluid page-background"  >
+ <div class="row mt-4">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="container__item">
+	
+			<input type="text" class="form__field" [(ngModel)]="searchCriteria.HoldingDetails" (ngModelChange)="onHoldingDetailsChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Holder</button>
+		
+	</div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+       <div class="container__item">
+	
+			<input type="text" class="form__field"[(ngModel)]="searchCriteria.HoldingID" (ngModelChange)="onHoldingIDChange($event)"  />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Number</button>
+		
+	</div>
+      </div>
+   <div class="col-xl-3 col-sm-6 col-12">
+       <div class="container__item">
+	
+			<input type="text" class="form__field" [(ngModel)]="searchCriteria.EnteredDateTime" (ngModelChange)="onEnteredDateTimeChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Date</button>
+		
+	</div>
+      </div>
+      
+      <div class="col-xl-3 col-sm-6 col-12"  style="text-align: right;">
+         <div class="container__item">
+	
+			<input type="text" class="form__field"  [(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Name</button>
+		
+	</div>
+  
+  
+      
+      
+      
+        
+      </div>
+     
+    </div>
+    <div class="row">
+    <div class="col-sm-4">
+ <a (click) ="goingToAttachemnt($event)" >
+          <div  >
+                
+                
+                <div >
+                   <img src="../../../assets/viewNote.png" width="50px" height="50px"class="mt-3" >
+                  
+                </div>
+              </div>
+        </a>
+    </div>
+
+     <div class="col-sm-4" style="text-align: center; margin-top: 40px;">
+ <a (click) ="viewOfPolcy($event)" >
+          <div  >
+                
+                
+                <div >
+                  🛡️ Policy
+                  
+                </div>
+              </div>
+        </a>
+    </div>
+    
+    <div class="col-sm-4" style="text-align: right;">
+  <a href="javascript:void(0)" >
+          <div  >
+                
+                
+                <div >
+                   <img src="assets/user_6639600.png" width="50px" height="50px"class="mt-3" (click)="addEditHolder($event)">
+                  
+                </div>
+              </div>
+        </a>
+    </div>
+
+  </div>
+ <div *ngIf="showSpiner">
+  <app-spinner></app-spinner>
+
+ </div>
+  
+  
+
+<div *ngIf="!showSpiner" class="scrollable-table-body mt-2" style="background-color: white;">
+ <table class="table table-bordered table-hover dt-responsive" style="margin: 0; padding: 0; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="background-color: rgba(0, 0, 0, 0.024);">List Of Holder Details</th>
+      <th style="background-color: rgba(0, 0, 0, 0.024);">	CERTIFICATE NUMBER</th>
+       <th style="background-color: rgba(0, 0, 0, 0.024);">Enter Date</th>
+        <th style="background-color: rgba(0, 0, 0, 0.024);">Enter By</th>
+      
+      <th style="background-color: rgba(0, 0, 0, 0.024); width: 20px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor ="let data of listOFHolderDetails|searchHolder:searchCriteria">
+      <td (click)="addEditAttachement(data)"> {{data.HoldingDetails}}</td>
+      <td > {{data.HoldingID}}</td>
+      <td > {{data.EnteredDateTime | date:'MM/dd/yyyy'}}</td>
+      
+      <td [ngClass]="{ 'attachment-exists': data.HoldingAttachmentExists }"> {{data.EnteredBy}}</td>
+     
+      <td><a href="javascript:void(0)" [matMenuTriggerFor]="menu" style="text-align: center;font-size: small;">
+       <i class="fa fa-cog" aria-hidden="true"></i>
+   </a>
+   <mat-menu #menu="matMenu">
+       <button mat-menu-item (click)="getCertificate(data)">Genrate certificate</button>
+        <button mat-menu-item (click)="extraVehicleDetails(data)">Add Vehicle Manual</button>
+         <button mat-menu-item (click)="extraVehicleDetailsByXecel(data)">Add Vehicle Excel</button>
+       <button mat-menu-item (click)="addEditHolder(data)">Edit Holder Details</button>
+        <button mat-menu-item (click)="nwCertsPdfConverterComponent(data)">New</button>
+       
+       
+       <!-- <button mat-menu-item  style="color: red;">Delete Marketed</button> -->
+   </mat-menu></td>
+    </tr>
+  
+  </tbody>
+ </table>
+</div>
+
+
+ 
+
+ 
+
+</div>

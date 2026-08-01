@@ -1,0 +1,69 @@
+
+
+
+
+<div class="container">
+ <div class="card mt-2">
+     <div  class="card-header" style="background-color: #17a0bc; color: white;">
+         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" > Update StageType </a>  
+       </div>
+ </div>
+
+<div class="  ">
+ <form [formGroup]="updateForm">
+     <div class="row p-1">
+       
+       
+       
+        
+         <div class="col-sm-12 mt-2 ">
+             <label>Select Stage</label>
+             <select class="form-select formControl mt-1" formControlName ="StageType"  aria-label="Default select example" style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['StageType'].errors }" >
+                 <option hidden value="" disabled selected  > Select Stage</option>
+                 <option  value="Issue">Issue</option>
+                 <option  value="Not Issue">Not Issue</option>
+               
+                 
+                
+               </select>
+               <div *ngIf ="submit && f['StageType'].errors" class="invalid-feedback">
+                 <div *ngIf ="f['StageType'].errors">StageType is required</div>
+             </div> 
+ 
+         </div>
+      
+      
+      
+       
+       
+       
+       
+         <!-- <div class="text-center mt-5">
+             <div class="btn-group  gap-2  " *ngIf ="messageSuccess">
+                
+                 <button mat-stroked-button class="text-right" (click)="onSubmit()" >Save</button>
+                 <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+                
+               
+               </div>
+         </div> -->
+     
+ 
+ 
+     </div>
+ 
+ </form>
+</div>
+<div class="text-center mt-5">
+ <div  *ngIf ="messageSuccess">
+  <button type="button" style="width: 130px;" class="btn btn-outline-success"(click)="onSubmit()">Update Stage</button>
+  <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
+  
+ 
+
+    
+   
+   </div>
+</div>
+
+</div>

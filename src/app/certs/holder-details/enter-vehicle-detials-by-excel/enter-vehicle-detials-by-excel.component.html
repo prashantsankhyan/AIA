@@ -1,0 +1,29 @@
+<div class="container-fluid">
+ <div class="col-sm-12 mt-3">
+                     <label>Upload file here</label>
+                     <div class=" file-container center  text-center" >
+                         
+                         <label>Upload file here</label>
+                         <input
+                         type="file"
+                         class="file"
+                         placeholder="File Name"
+                         multiple
+                         accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav"
+                         
+                         (change)= "onFileUpload($event)"  [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+                         <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                             <div *ngIf ="f['abc'].errors">FIle is required</div>
+                         </div>
+                         <label>Upload file here</label>
+                     </div>
+                 </div>
+                 <mat-dialog-actions align="end">
+   <a  href="javascript:void(0)"> <img src="assets/save_8361323.png" width="50px" height="50px" ></a>
+ 
+   
+   
+</mat-dialog-actions>
+   
+</div>
+

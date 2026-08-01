@@ -1,0 +1,123 @@
+
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+  <div class="container-fluid">
+   <div *ngIf ="!showSpiner">
+    
+        <div class="row">
+          <div class="col-sm-2 mt-2 mb-1">
+            <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.InspectionDate" (ngModelChange)="InspectionDateChange($event)" style="font-size: small;" placeholder="Search By Date">
+          </div>
+          <div class="col-sm-2 mt-2 mb-1">
+            <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.UnitLicenseState" (ngModelChange)="onUnitLicenseStateChange($event)" style="font-size: small;"placeholder="Search By State">
+          </div>
+          <div class="col-sm-2 mt-2 mb-1">
+            <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.VIN" (ngModelChange)="onVINChange($event)" style="font-size: small;" placeholder="Search By  VIN">
+          </div>
+          <div class="col-sm-2 mt-2 mb-1">
+           <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.TotalViolations" (ngModelChange)="onTotalViolationsChange($event)" style="font-size: small;" placeholder="Total Violations">
+         </div>
+        
+        
+         
+            <div class="col-sm-4 mt-2" style="text-align: right;" *ngIf="showSaveButtion">
+
+               
+                <a *ngIf="!showAllInfo" (click) = "changeLocation()"  style="margin-right: 10px; color: #1397d5;" >Click For  All </a>
+                <a *ngIf="showAllInfo" (click) = "AllViewOnCondtion()" style="margin-right: 10px;color: #1397d5;" >Click For Unique </a>		
+                 <a href="javascript:void(0)" style="color: #1397d5;"(click)="exportToExcel()">
+          <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+        </a>
+               
+            </div>
+        </div>
+       
+         
+
+             
+        
+  
+   
+     
+
+  
+   
+   
+     
+
+
+   
+      <div  class="scrollable-table-body " >
+        
+          <table  class="table table-bordered" style="background-color: white;">
+         
+            <thead>
+              <tr>
+                <th >#</th>
+                <th> Year</th>
+                <th >VIN</th>
+                <!-- <th>Number</th> -->
+                <th>Unit</th>
+                <th>Make</th>
+                <th>License</th>
+                <th>State</th>
+                <th>ShipperName</th>
+                <th>Inspection</th>
+                
+                <th>Violations</th>
+                <th>OutOfService</th>
+                <th>BasicType</th>
+                <th>ViolationDescription</th>
+                <th></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            
+               <tr  *ngFor ="let data of listOfInfo|info:searchCriteria;let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{data?.VIN | vinYear}}</td>
+                 <td>{{data?.VIN}}</td>
+                 <!-- <td>{{data?.UnitNumber}}</td> -->
+                 <td>{{data?.UnitType}}</td>
+                 <td>{{data?.UnitMake}}</td>
+                 <td>{{data?.UnitLicense}}</td>
+                
+                 <td>{{data?.UnitLicenseState}}</td>
+                 <td>{{ (data?.ShipperName && data.ShipperName.trim().toLowerCase() !== 'n/a') ? data.ShipperName : 'No' }}</td>
+                 <td>{{formatDate(data?.InspectionDate)}}</td>
+                 
+                 <td>{{ data?.TotalViolations === 0 ? 'No' : data.TotalViolations }}</td>
+                 <td>{{data?.TotalVehicleOutOfService}}</td>
+                 <td>{{data?.BasicType == null ? "N/A":data?.BasicType}}</td>
+                 <td>{{ data?.ViolationDescription ? data.ViolationDescription : 'N/A' }}</td>
+                 <th><a (click)="addVehicleInfo(data)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></th>
+              
+                 
+                 
+                 
+               
+     
+               </tr>
+             
+           
+             
+            </tbody>
+           
+          </table>
+       
+      </div>
+     </div>
+    
+  
+    
+  
+  </div>
+ 
+
+
+
+

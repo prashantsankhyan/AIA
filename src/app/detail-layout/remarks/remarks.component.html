@@ -1,0 +1,279 @@
+
+<form [formGroup]="addEditRemarksForm">
+  <div class="container-fluid scrolling" >
+    <div *ngIf ="showSpinner" >
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngIf ="!showSpinner">
+      <h4 style="color: #1397d5;margin-top: 3px;">Auto Liability (A L)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="AutoLiability"></textarea>
+            <label>Limit</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="AL_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+         <div class="col-6 mt-2">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="UninsuredMotorist"></textarea>
+            <label>Uninsured Motorist</label>
+          </div>
+        </div>
+        <div class="col-6 mt-2">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="UnderinsuredMotorist"></textarea>
+            <label>Underinsured Motorist</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 3px;">PHYSICAL DAMAGE (APD)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="PhysicalDamage"></textarea>
+            <label>Comprehensive Deductible</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="PhyDamage_Deductible"></textarea>
+            <label>Collision Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 3px;">Moter Truck Cargo (MTC)</h4>
+      <div class="row">
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="MTC"></textarea>
+            <label>Limit</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="MTC_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="MTC_Refer_Breakdown"></textarea>
+            <label>Reefer Breakdown Deductible</label>
+          </div>
+        </div>
+          <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control"  formControlName="MTC_Theft_of_Electronic"></textarea>
+            <label>theft of electronic</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">TRAILER INTERCHANGE</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="TrailerInterchange"></textarea>
+            <label>Number Of Trailer</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Trailer_limit"></textarea>
+            <label>Limit</label>
+          </div>
+        </div>
+         <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Trailer_Interchange_Deductible"></textarea>
+            <label>Trailer Interchange Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">GENERAL LIABILITY COVERAGE(GL)</h4>
+      <div class="row">
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_occurence"></textarea>
+            <label>EACH OCCURRENCE</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_DamageToRented"></textarea>
+            <label>DAMAGE TO RENTED</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_MedExp"></textarea>
+            <label>MED EXP</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_PersonalAdv"></textarea>
+            <label>PERSONAL & ADV INJURY</label>
+          </div>
+        </div>
+        <div class="col-3 mt-1">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_GeneralAgg"></textarea>
+            <label>GENERAL AGGREGATE</label>
+          </div>
+        </div>
+        <div class="col-3 mt-1">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_Productcomp"></textarea>
+            <label>PRODUCTS-COMP</label>
+          </div>
+        </div>
+        <div class="col-3 mt-1">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="GLC_Others"></textarea>
+            <label>Others</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Umbrella</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Umbrella_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Umbrella_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Contingent Cargo(C C)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Contingent_CargoLimit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Contingent_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Contingent Liability(CL)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="ContingentLiability_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="ContingentLiability_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Contingent Excess (CONT.XS)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Contingent_XS_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="Contingent_XS_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Excess Liability (XS)</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="ExcessLiability_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="ExcessLiablity_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Non Trucking Liability NTL</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="NonTrucking_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="NonTrucking_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #1397d5;margin-top: 5px;">Towing Limit & Storage</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="TowingLimit_Limit"></textarea>
+            <label>Limit:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control" formControlName="TowingLimit_Deductible"></textarea>
+            <label>Deductible</label>
+          </div>
+        </div>
+      </div>
+       <h4 style="color: #1397d5;margin-top: 5px;">TIV</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-floating">
+            <textarea class="form-control"  [value]="addEditRemarksForm.get('TIV')?.value | currency"></textarea>
+            <label>TIV</label>
+          </div>
+        </div>
+       
+      </div>
+      <div style="text-align: right;margin-top: 10px;margin-bottom: 10px;" *ngIf ="showSaveButtion">
+<a href="javascript:void(0)"  (click)="saveRemarks();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2" style="font-family: sans-serif;">ADD REMARKS</a>
+      </div>
+        
+    </div>
+  
+  </div>
+</form>
+
+
+

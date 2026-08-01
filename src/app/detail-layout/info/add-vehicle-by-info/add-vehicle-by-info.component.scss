@@ -1,0 +1,58 @@
+.form-control {
+  display: block;
+  width: 100%;
+  /* padding: 0.375rem 0.75rem; */
+  font-size: 11px;
+  font-weight: 100;
+  line-height: 1.5;
+  color: #212529fa !important;;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: 30px;
+ }
+ .form-select {
+  display: block;
+  width: 100%;
+  /* padding: 0.375rem 0.75rem; */
+  font-size: smaller;
+  font-weight: 100;
+  line-height: 1.5;
+  color: #212529fa !important;;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: 26px;
+ }
+
+ tr {
+  border-color: bisque;
+  border-style: hidden;
+  border-width: 0;
+}
+
+
+label {
+  display: inline-flex;
+  font-size: smaller;
+  color: rgb(33 37 41 / 53%) !important;;
+  
+}
+
+
+.form-floating-group input {
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+  font-size: smaller;
+}
+

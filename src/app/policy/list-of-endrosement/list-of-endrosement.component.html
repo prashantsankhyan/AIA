@@ -1,0 +1,99 @@
+
+ <!-- <h5 style="text-align: center;margin-top: 20px;">Endrosement List</h5> -->
+
+   <div *ngIf ="showEndrosementList">
+     show list
+
+   </div>
+   <div *ngIf ="!showEndrosementList">
+   
+   
+      <div class="card-header">
+        <div class="row">
+          <div class="col-sm-3">
+           
+          </div>
+          <div class="col-sm-3">
+      
+          </div>
+          <div class="col-sm-3">
+      
+          </div>
+          <div class="col-sm-3" style="text-align: right;">
+            <a href="javascript:void(0)"   style="margin-right: 10px;color: #1397d5;text-decoration: none;"> {{LineShortName}} </a>
+            
+      
+          </div>
+      
+        </div>
+      
+      </div>
+    
+     <div class="scrollable-table-body mt-3">
+      <table  class="table" >
+ 
+        <thead>
+          <tr>
+            <th>EnterNo</th>
+            <th> Entered </th>
+            <th>Endorsement</th>
+            
+            <!-- <th>Active </th> -->
+            <th>Description</th>
+            
+            <th>Effective - Changes</th>
+            <th>Stage</th>
+          
+            <th>Changed-Entered By</th>
+           
+            
+            <th> </th>
+            
+          
+           
+            
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container >
+            <tr *ngFor ="let data of listOfEndorsements; let i = index"(dblclick) ='goToChickOrVistEndroseemtLine(data)' style="height: 40px;">
+              <td>{{data.IDBasedOnAMC == null? 'Policy Detail':data.IDBasedOnAMC}}</td>
+              <td>{{data.Entered | date:'dd/MM/yyyy'}}</td>
+             
+              <td>{{data.EndorsementType}}</td>
+              <td>{{data.Description}}</td>
+              
+              <td>{{data.EffectiveDate | date:'dd/MM/yyyy'}} -{{data.StageChange | date:'dd/MM/yyyy'}}</td>
+              <td>{{data.Stage}}</td>
+             
+              <td>{{data.UpdatedBy}}-{{data.EnteredBy}}</td>
+             
+           <td>
+              <button  mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menu="matMenu">
+               <button mat-menu-item   >View Data </button>
+               <button mat-menu-item  (click) ="addStageInEndrosement(data)"> Add Stage</button>
+ 
+             
+              <button mat-menu-item  (click) ="addEditEndrocement(data)"  > Update Endrosement</button>
+              <button mat-menu-item  > PDF </button>
+            
+            </mat-menu>
+          </td>
+            
+            </tr>
+          </ng-container>
+         
+          
+          
+         
+        
+        </tbody>
+       
+      </table>
+     </div>
+     
+   
+   </div>
+   
+ 

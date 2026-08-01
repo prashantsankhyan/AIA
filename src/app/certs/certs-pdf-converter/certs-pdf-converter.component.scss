@@ -1,0 +1,269 @@
+*{padding:0px; margin:0px;}
+body{ font-family:"Calibri" , Helvetica, sans-serif; font-size:12px; line-height: 20px;}
+#main_div{ width:90%;margin-left: auto; margin-right:auto;}
+.right_div{ float:left;width:50%;}
+.left_div{ float:left;width:50%;}
+.policy{ font-size:24px; font-weight:bold; text-align:center}
+h3{ font-size:24px; font-weight:bold; text-align:left}
+.bordrb{border-bottom:1px solid #000;}
+.bordrr{border-right:1px solid #000;}
+.bordrbotom{border-bottom:0px solid #000;}
+h4{font-size: 16px; margin: 0px 0px;}
+table tr td{padding: 0px;}
+h4 span{font-size: 14px;}
+input{border:0px; background:#ffffff;}
+textarea{border:0px;}
+
+input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: rgb(255, 255, 255);
+    width: 25px;
+    height: 25px;
+    border-radius: 0px;
+    border: 0.5px solid #000;
+    position: relative;
+    }
+   
+   
+input[type="checkbox"]:checked {
+    background: rgb(255, 255, 255);
+}
+input[type="checkbox"]:checked:after {
+    /* Heres your symbol replacement */
+    content: "X";
+    color: rgb(14, 14, 14);
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
+}
+.checkbox{ border-top: 0px !important;}
+.checkboxbottom{ border-top: 0px !important; border-bottom: 0px !important;}
+.checkbox_text{padding-left:3px; font-size: 12px; line-height: 25px;}
+.checkbox-cell {
+    vertical-align: middle;
+    padding: 2px 0;
+    height: 22px;
+}
+
+.acord-checkbox {
+    margin: 0 !important;
+    position: relative;
+    top: -1px;   /* adjust -1, 0, 1 until perfect */
+}
+.small_top{padding-left:0px;  line-height: 18px; font-weight: 500;}
+.small_top1{padding-left: 0px;
+  font-weight: 500;}
+.small_topsec{padding-left:0px;    font-weight: 500; }
+.small_product{ font-size: 12px; line-height: 14px; font-weight: 500; }
+.small_contact{padding-left:6px; font-size: 11px; line-height: 10px; font-weight: 500;}
+.small_conver{padding-left:6px; font-size: 12px; line-height: 20px; font-weight: bold;}
+.small_conver22{padding-left:6px; font-size: 11px; line-height: 15px; font-weight: normal;}
+.ins_text{font-size: 13px; font-weight:500;text-align: center;line-height: 10px;}
+.ins_textsec{font-size: 10px; font-weight:normal;text-align: left;line-height: 10px;}
+textarea {
+    border: 0px;
+    font-size: 15px; height: 79px; 
+}
+
+
+
+.bordrb {
+  border-bottom: 1px solid black !important;
+}
+.page-break {
+  page-break-before: always;
+  margin-top: 20px;
+}
+
+
+.manual-note-box {
+  min-height: 1000px;
+  max-height: 1000px;
+  overflow: hidden;
+
+  font-size: 16px;
+  
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  outline: none;
+}
+
+.vehicle-page {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+ 
+}
+.manual-note-box {
+  min-height: 900px;
+  max-height: 900px;
+  overflow: auto;
+  outline: none;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 20px;
+  direction: ltr;
+}
+
+.vehicle-page {
+  border: 1px solid black;
+  margin: 10px 0;
+  min-height: 1122px; /* A4 full height in pixels at 96dpi */
+  padding: 15px;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* content at top */
+  box-sizing: border-box;
+  page-break-inside: avoid;
+}
+
+.copy-box {
+  background: #fdfdfd;
+  user-select: text;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .vehicle-page {
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+}
+
+
+.policy-tile {
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.policy-tile:hover {
+  background-color: #e2e6ea;
+}
+
+.policy-tile.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.policy-tile.clicked-red {
+  background-color: #dc3545; /* Bootstrap red */
+  color: white;
+  border-color: #b02a37;
+}
+
+
+
+
+
+.endorsement-table-wrapper{
+    max-height:350px;
+    overflow-y:auto;
+    border:1px solid #d9e2ef;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.endorsement-table{
+    margin:0;
+    border-collapse:separate;
+    border-spacing:0;
+}
+
+.endorsement-table thead th{
+    position:sticky;
+    top:0;
+    z-index:5;
+
+    background:#1f6feb;
+    color:#fff;
+
+    padding:12px;
+    font-size:15px;
+    font-weight:600;
+
+    border:none;
+}
+
+.endorsement-table tbody td{
+    padding:10px 12px;
+    vertical-align:middle;
+    border-bottom:1px solid #edf1f7;
+}
+
+.endorsement-table tbody tr:nth-child(even){
+    background:#f8fbff;
+}
+
+.endorsement-row{
+    transition:.25s;
+    cursor:pointer;
+}
+
+.endorsement-row:hover{
+    background:#dbeeff !important;
+    transform:scale(1.005);
+    box-shadow:inset 4px 0 0 #1f6feb;
+}
+
+.endorsement-row:active{
+    background:#bfdfff !important;
+}
+
+.scrolling {
+ height:300px;  
+ overflow:scroll;
+}
+
+
+
+.sticky-top-panel {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.vehicle-scroll {
+    height: calc(100vh - 220px); /* Adjust according to your header height */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.checkbox-cell {
+    border-top: none !important;
+    border-bottom: none !important;
+}

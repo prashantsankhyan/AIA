@@ -1,0 +1,89 @@
+
+
+<div class="container mt-1 mb-3">
+ <div class="card" style="background-color: #17a0bc;">
+
+ 
+ <div class="text-center mt-1 mb-1">
+  <div class="dropdown-center">
+   <button class="btn btn-primaray dropdown-toggle" style="color: white;" mat-button [matMenuTriggerFor]="menu"  data-bs-toggle="dropdown" >
+     Please select your tempalte here
+   </button>
+   <mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink ="amTrust">
+    <mat-icon>get_app</mat-icon>
+    <span>Am trust</span>
+  </button>
+ 
+  <button mat-menu-item routerLink ="small">
+    <mat-icon>get_app</mat-icon>
+    <span>Small Account</span>
+  </button>
+  
+  <button mat-menu-item routerLink ="generic">
+    <mat-icon>get_app</mat-icon>
+    <span>Generic</span>
+  </button>
+
+
+  <button mat-menu-item routerLink ="trucker">
+    <mat-icon>get_app</mat-icon>
+    <span>TRUCKERS GENERAL </span>
+  </button>
+  <button mat-menu-item routerLink ="transgard">
+    <mat-icon>get_app</mat-icon>
+    <span>Trans Guard</span>
+  </button>
+    <button mat-menu-item routerLink ="knight">
+    <mat-icon>get_app</mat-icon>
+    <span>knight</span>
+  </button>
+
+   <button mat-menu-item routerLink ="db">
+    <mat-icon>get_app</mat-icon>
+    <span>db</span>
+  </button>
+
+
+  
+  <button mat-menu-item routerLink ="listOfData">
+    <mat-icon>get_app</mat-icon>
+    <span>List Of Data </span>
+  </button>
+
+
+ 
+</mat-menu>
+   
+ </div>
+ 
+
+ </div>
+</div>
+
+</div>
+
+<!-- <div class="container-fluid">
+ <div class="row">
+  <div class="col-sm-2">
+   
+   <button type="button" class="btn btn-outline-secondary" routerLink ="amTrust">Am trust</button>
+  </div>
+  <div class="col-sm-2">
+   
+   <button type="button" class="btn btn-outline-secondary" routerLink ="aig">AIG</button>
+  </div>
+  <div class="col-sm-2">
+   <button type="button" class="btn btn-outline-secondary" routerLink ="alMtrust">Alas</button>
+  </div>
+  <div class="col-sm-2">
+   <button type="button" class="btn btn-outline-secondary" routerLink ="small">Small Account</button>
+  </div>
+  <div class="col-sm-2">
+   <button type="button" class="btn btn-outline-secondary" routerLink ="teamManger">Team Managers</button>
+  </div>
+
+ </div>
+
+</div> -->
+<router-outlet></router-outlet>

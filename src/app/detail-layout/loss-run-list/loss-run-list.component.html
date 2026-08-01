@@ -1,0 +1,65 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div class="container-fluid" style="background-color: white;">
+ <div *ngIf ="!showSpiner">
+
+
+<div class="card mt-2">
+  <div class="row p-1">
+   
+     <div class="col-sm-3 mt- mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="border-radius: 35px;font-size: xx-small;"placeholder="Search By Date">
+     </div>
+     <div class="col-sm-3 mt- mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.PolicyType" (ngModelChange)="onPolicyTypeChange($event)" style="border-radius: 35px;font-size: xx-small;" placeholder="Search By Policy Name">
+     </div>
+     <div class="col-sm-3 mt- mb-1">
+       <input type="text" name="search"class="form-control"[(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)" style="border-radius: 35px;font-size: xx-small;" placeholder="Search By Name">
+     </div>
+
+  </div>
+</div>
+ 
+  
+ 
+  
+   
+    
+   
+
+   
+      <div class="card mt-2 scrolling" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+        
+       <table  class="table table-bordered table-hover dt-responsive">
+             <thead >
+               <tr>
+                 <th >File Path</th>
+                
+                 <th >Policy Type </th>
+                 <th >Date </th>
+                 <th>Policy Status</th>
+                 <th >Description</th>
+                 <th >Enter By </th>
+                 <th ></th>
+                
+               </tr>
+             </thead>
+             <tbody>
+              <tr *ngFor ="let data of listOfAllFatchData |  searchLossRun: searchCriteria  " (click)="onRowClick(data)">
+              
+                <td >{{data.FileName}}</td>
+                <td >{{data.PolicyType}}</td>
+                <td >{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+               <td>{{data.AttachedBy}}</td>
+               <td >{{data.Description}}</td>
+               <td >{{data.EnteredBy}}</td>
+               <td> <a href="javascript:void(0)"><mat-icon>visibility</mat-icon> </a></td>
+            
+              </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+</div>

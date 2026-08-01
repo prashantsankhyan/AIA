@@ -1,0 +1,115 @@
+
+<div class="container">
+  <h4 style="text-align: center;"> Account Name - {{nameOfAccount}}</h4>
+  <div class="content" >
+
+    <div class="row p-2">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-7">
+        <audio #audioPlayer controls style="margin: 10px;"></audio>
+      </div>
+      
+      <div class="col-sm-3">
+        <div class="mt-3">
+          <button title="Click here to start recording action" class="btn btn-outline-secondary" (click)="startRecording()"
+            *ngIf="!isRecording" style="margin-right: 3px;">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+          </button>
+          <button title="Click here to stop recording" class="btn btn-outline-secondary" (click)="stopRecording()" *ngIf="isRecording"
+            style="margin-right: 3px;">
+            <i class="fa fa-ban" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+     
+  
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <a *ngIf="audioURL" [href]="audioURL"   download="recorded_audio.wav">Download last reecorded Audio and upload it</a>
+      </div>
+    </div>
+  
+   
+    
+   
+  </div>
+  
+  <div class="container">
+    <div *ngIf ="!showFiv">
+        <h5>File Size is  Big sow it will take some time to Upload</h5>
+       
+      </div>
+    
+      <div class="card mt-2">
+       <div class="container-fluid " *ngIf ="showFiv">
+       
+    
+          
+            <form [formGroup] ="addEditAttachmentForm"> 
+                <div class="row ">
+               
+                    
+                    <div class="col-sm-12 mt-3">
+                        <label>Upload file here</label>
+                        <div class=" file-container center  text-center mt-2" >
+                            
+                            <label>Upload file here</label>
+                            <input
+                            type="file"
+                            class="file"
+                            placeholder="File Name"
+                            multiple
+                            accept=".wav"
+                            
+                            (change)= "onFileUpload($event)"  [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+                            <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                                <div *ngIf ="f['abc'].errors">FIle is required</div>
+                            </div>
+                            <label>Upload file here</label>
+                        </div>
+                    </div>
+                     
+                       
+                <div *ngIf ="files">
+                    {{files.name}}
+                 
+                </div>
+              
+                        
+                  
+                </div>
+            
+               
+            </form>
+         
+       
+           <div class="text-center mt-4 mb-4">
+            <div >
+              <button type="button" class="btn btn-outline-success btn-lg" style="width: 120px;" (click)="onSubmit()" > Save</button>
+              <button type="button" class="btn btn-outline-danger btn-lg" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+                
+               
+              
+              </div>
+          </div>
+        
+            <!-- <div class="text-center mt-5 mb-5">
+                <div class="btn-group  gap-2  " >
+                   
+                    <button mat-stroked-button class="text-right" (click)="onSubmit()">Save</button>
+                    <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+                   
+                  
+                  </div>
+            </div> -->
+        
+        </div>
+      </div>
+   
+   </div>
+</div>
+
+

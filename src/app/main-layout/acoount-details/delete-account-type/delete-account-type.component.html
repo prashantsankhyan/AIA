@@ -1,0 +1,30 @@
+<div class="container">
+ <form [formGroup]="deleteForm">
+  <h2 class="text-center">Are you  Sure ?</h2>
+  
+  <div class="form-floating ">
+  
+   <select class="form-select formControl mt-1" id="floatingDeletedReason"  formControlName="DeletedReason"   aria-label="Default select example" style="margin-top: 28px;" >
+    <option hidden value="" disabled selected  > </option>
+    <option  value="Enter By Mistake">Enter By Mistake</option>
+    <option  value="Not Respose">Not Respose</option>
+    <!-- <option  value="left Job">left Job </option>
+    <option  value="Retired">Retired</option> -->
+    
+  
+    
+   
+  </select>
+  <label for="floatingDeletedReason">Please select reason to delete It</label>
+   
+   </div>
+  
+</form>
+
+
+    <div class="clearfix mt-2" *ngIf ="messageSuccess">
+      <button type="button" class="cancelbtn"  mat-dialog-close>Cancel</button>
+      <button type="button" class="deletebtn" (click)="deleteRecord()">Delete</button>
+    </div>
+
+</div>

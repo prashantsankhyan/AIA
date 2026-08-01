@@ -1,0 +1,64 @@
+<div *ngIf="showSpiner">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="container-fluid"  *ngIf="!showSpiner">
+  
+    <div class="row p-1">
+      <div class="col-sm-3 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.FileName"
+               (ngModelChange)="onFileNameChange($event)" style="font-size: small;font-family: sans-serif;" 
+               placeholder="Search By File Name" />
+      </div>
+      <div class="col-sm-3 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.Description"
+               (ngModelChange)="onDescriptionChange($event)" style="font-size: small;font-family: sans-serif;" 
+               placeholder="Search By Description" />
+      </div>
+      <div class="col-sm-3 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.AttachmentDate"
+               (ngModelChange)="onAttachmentDateChange($event)" style="font-size: small;font-family: sans-serif;" 
+               placeholder="Search By Date" />
+      </div>
+      <div class="col-sm-3 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.EnteredBy"
+               (ngModelChange)="onEnteredByChange($event)" style="font-size: small;font-family: sans-serif;" 
+               placeholder="Search By Entered By" />
+      </div>
+    </div>
+  
+
+  <div class=" mt-3 scrolling" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <table class="table table-bordered table-hover dt-responsive">
+      <thead>
+        <tr>
+          <th style="width: 200px;">File Path</th>
+          <th style="width: 150px;">Date</th>
+          <th style="width: 500px;">Description</th>
+          <th style="width: 150px;">Attached By</th>
+          <th style="width: 20px;"></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="(listOfAllFatchData | srachSaleAttachemnt:searchCriteria) as filteredData">
+      <tr *ngIf="filteredData.length === 0" style="height: 250px;">
+  <td colspan="5" class="text-center text-danger align-middle" style="vertical-align: middle;">
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+      No data found
+    </div>
+  </td>
+</tr>
+        <tr *ngFor="let data of filteredData">
+          <td style="width: 350px;">{{ data.FileName }}</td>
+          <td style="width: 150px;">{{ data.AttachmentDate | date:'MM/dd/yyyy' }}</td>
+          <td style="width: 500px;">{{ data.Description }}</td>
+          <td style="width: 150px;">{{ data.EnteredBy }}</td>
+          <td>
+            <a *ngIf="data.FileUrl" (click)="onRowClick1(data)" style="cursor: pointer;">
+              <mat-icon>visibility</mat-icon>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

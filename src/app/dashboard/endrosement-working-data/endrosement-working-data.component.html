@@ -1,0 +1,213 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid page-background" >
+  
+
+  
+  <div class=" py-3"  style="border-top: 1px solid rgba(0, 0, 0, 0.085);">
+    <div>
+  <button mat-button color="primary" (click)="showVehicles()" [disabled]="dataType==='Vehicle'">Vehicle</button>
+  <button mat-button color="accent" (click)="showDrivers()" [disabled]="dataType==='Driver'">Driver</button>
+    <div style="text-align: right;">
+  <ng-container *ngIf="dataType === 'Vehicle'">
+    <input
+      type="number"
+      min="1"
+      class="form__field"
+      [max]="filteredVehicles.length"
+      [(ngModel)]="exportCount"
+      placeholder="Enter Row"
+      style="width: 140px; margin-right: 8px;"
+    />
+    <button mat-raised-button style="background-color: #1397d5;color: white;" (click)="exportToExcel('Vehicle', exportCount ?? undefined)">
+      Export Vehicles to Excel
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="dataType === 'Driver'">
+    <input
+      type="number"
+      class="form__field"
+      min="1"
+      [max]="filteredDrivers.length"
+      [(ngModel)]="exportCount"
+      placeholder="Rows to export (e.g., 100)"
+      style="width: 140px; margin-right: 8px;"
+    />
+    <button mat-raised-button style="background-color: #1397d5;color: white;" (click)="exportToExcel('Driver', exportCount ?? undefined)">
+      Export Drivers to Excel
+    </button>
+  </ng-container>
+</div>
+</div>
+
+
+
+    <div class ="row p-1" *ngIf="dataType === 'Vehicle'">
+   
+
+       
+       <div class="col-sm-3">
+         <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.Year" (ngModelChange)="filterVehicles()" placeholder="Year"/>
+		   
+	     </div>
+      </div>
+      <div class="col-sm-3">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.Model" (ngModelChange)="filterVehicles()"placeholder="Model"/>
+		   
+	     </div>
+        
+      </div>
+          <div class="col-sm-3">
+        <div class="container__item">
+			  <input type="text" class="form__field"[(ngModel)]="searchCriteria.VIN" (ngModelChange)="filterVehicles()" placeholder="Vin" />
+		   
+	     </div>
+        
+       </div>
+    
+       <div class="col-sm-3">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.AccountName" (ngModelChange)="filterVehicles()" placeholder="Account Name"/>
+		   
+	     </div>
+        
+      </div>
+<!-- 
+       <div class="col-sm-3 mt-2">
+           
+                <button type="button" class="btn btn--primary  uppercase"   style="margin-right: 2px;background-color: #fd7e14;">💡 All CLaims </button>
+                <button type="button" class="btn btn--primary  uppercase "  style="background-color: #198754;color: white;">👩‍✈️ Confirm </button>
+       
+  
+  
+  
+
+        
+      </div> -->
+      
+
+    </div>
+    <div *ngIf="dataType === 'Driver'" class="row p-1">
+  <div class="col-sm-3">
+    <input type="text" class="form__field" placeholder="Search Driver Name" [(ngModel)]="searchCriteriaDriver.DriverName" (ngModelChange)="filterDrivers()" />
+  </div>
+  <!-- <div class="col-sm-3">
+    <input type="text" class="form__field" placeholder="Search Date of Birth (MM/DD/YYYY)" [(ngModel)]="searchCriteriaDriver.DateofBirth" (ngModelChange)="filterDrivers()" />
+  </div> -->
+  <div class="col-sm-3">
+    <input type="text" class="form__field" placeholder="Search Licence Number" [(ngModel)]="searchCriteriaDriver.DriverLicenceNo" (ngModelChange)="filterDrivers()" />
+  </div>
+  <div class="col-sm-3">
+    <input type="text" class="form__field" placeholder="Search Account Name" [(ngModel)]="searchCriteriaDriver.AccountName" (ngModelChange)="filterDrivers()" />
+  </div>
+  <div class="col-sm-3">
+    <input type="text" class="form__field" placeholder="Search Lookup Code" [(ngModel)]="searchCriteriaDriver.LookUpcode" (ngModelChange)="filterDrivers()" />
+  </div>
+</div>
+
+    <div style="text-align: right;">
+         <div class="col-sm-12 " style="text-align: right;">
+        <!-- <a href="javascript:void(0)"  class="" (click)="exportToExcel()">
+          📊
+        </a> -->
+
+      </div>
+
+    </div>
+  
+
+  
+
+</div>
+  
+     <div class="scrolling" > 
+     
+      <table class="table table-bordered" style="margin:0 auto;">
+  <thead>
+    <tr *ngIf="dataType === 'Vehicle'">
+      <th >Year</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>VIN</th>
+      <th>Value</th>
+      <th>Body Type</th>
+     
+      <th>AccountName</th>
+      <th>LookUpcode</th>
+      <th>Policy Name</th>
+    </tr>
+    <tr *ngIf="dataType === 'Driver'">
+        <th>AuthType</th>
+      <th>Name</th>
+      <th>BirthDate</th>
+      <th>IssueYear</th>
+      
+     
+      <th>Licence No</th>
+      <th>Driver Details</th>
+     
+      <th>AccountName</th>
+      <th>LookUpcode</th>
+      <th>Policy Details </th>
+     
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Vehicle Rows -->
+    <ng-container *ngIf="dataType === 'Vehicle'">
+      <tr *ngFor="let vehicle of filteredVehicles">
+        <td [class.text-red]="vehicle.IsDeleted">{{ vehicle.Year }}</td>
+        <td>{{ vehicle.Make }}</td>
+        <td>{{ vehicle.Model }}</td>
+        <td>{{ vehicle.VIN }}</td>
+         <td>{{ vehicle.Value | currency:'USD'}}</td>
+        <td>{{ vehicle.BodyType }}  <br> <span style="color: rgba(0, 0, 255, 0.449);"> {{vehicle.EnteredDateTime | date:'MM/dd/yyyy'}}</span> </td>
+        
+         <td>{{ vehicle.AccountName }}</td>
+          <td>{{ vehicle.LookUpcode }}</td>
+          <td> <span style="color: red;"> {{vehicle.ChildPolicyName}} </span> <br/><span style="color: green;">{{vehicle.Effective | date:'MM/dd/yyyy'}}-{{vehicle.Expiration | date:'MM/dd/yyyy'}} </span> <br/> {{ vehicle.LineShortName && vehicle.LineShortName.trim() !== '' ? vehicle.LineShortName : vehicle.Description }}</td>
+      </tr>
+      <tr *ngIf="!vehicles || vehicles.length === 0">
+        <td colspan="5" class="text-center">No vehicle data found.</td>
+      </tr>
+    </ng-container>
+
+    <!-- Driver Rows -->
+    <ng-container *ngIf="dataType === 'Driver'">
+      <tr *ngFor="let driver of filteredDrivers">
+        <td [class.text-red]="driver.IsDeleted">{{ driver.AuthType | uppercase  }} <br/>
+           {{driver.EnteredDateTime | date:'MM/dd/yyyy'}}
+         </td>
+        <td>{{ driver.DriverName }}</td>
+        <td>{{ driver.DateofBirth | date:'MM/dd/yyyy' }}</td>
+        <td>{{ driver.YearofLicenceIssued | date:'MM/dd/yyyy' }}</td>
+       
+      
+         <td>{{ driver.DriverLicenceNo }}</td>
+          <td>{{ driver.DriverType }}- {{ driver.DriverStage }}- <span style="color:blue;">{{ driver.StateLicenced }}</span></td>
+           
+         <td>{{ driver.AccountName }}</td>
+          <td>{{ driver.LookUpcode }}</td>
+          <td><span style="color: green;">{{driver.ChildPolicyName}} </span> <br/><span style="color: red;">{{driver.Effective | date:'MM/dd/yyyy'}} - {{driver.Expiration | date:'MM/dd/yyyy'}}</span><br/>{{ driver.LineShortName && driver.LineShortName.trim() !== '' ? driver.LineShortName : driver.Description }}</td>
+         
+      </tr>
+      <tr *ngIf="!drivers || drivers.length === 0">
+        <td colspan="4" class="text-center">No driver data found.</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+   </div>
+   
+ 
+</div>
+</div>

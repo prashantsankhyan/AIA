@@ -1,0 +1,1786 @@
+
+
+
+  <div class="scrolling"  >
+    <div class="container-fluid" id="print-section">
+      <div class="container-fluid " >
+
+   
+
+ 
+        <h5 class="mb-4" style="text-align: center; color: black;margin-top: 35px;font-size: x-large;font-family:calibri;">TRUCKERS GENERAL LIABILITY APPLICATION</h5>
+       
+        <div class="row" >
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label ><strong style="margin-left: 10px;"> APPLICANT’S NAME:</strong></label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;font-weight: 600;height: 25px;" [value]="listOfData.AccountName" />
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-3" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked">
+           <span class="checkmark">{{ isChecked ? '☒' : '☐' }} <span style="font-size: 12px;">Individual</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-3" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked1">
+           <span class="checkmark">{{ isChecked1 ? '☒' : '☐' }} <span style="font-size: 12px;">Corporation</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-3" style="text-align: center;">
+          <div class="form-check form-check-inline checkbox-item">
+           <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="isChecked2">
+            <span class="checkmark">{{ isChecked2 ? '☒' : '☐' }} <span style="font-size: 12px;">LLC</span></span>
+           
+          </label>
+         </div>
+         </div>
+         <div class="col-sm-3" style="text-align: center;">
+          <div class="form-check form-check-inline checkbox-item">
+           <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="isChecked3">
+            <span class="checkmark">{{ isChecked3 ? '☒' : '☐' }} <span style="font-size: 12px;">Partnership</span></span>
+           
+          </label>
+         </div>
+         </div>
+       
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-6 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;">Applicant’s Phone:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;"[value]="listOfData.PhoneNumber" />
+         
+         </div>
+         <div class="col-sm-6 d-flex align-items-center Fax  p-0" >
+          <label style="margin-left: 10px;" >Applicant’s Fax:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+         </div>
+        
+       
+        </div>
+       
+        <div class="row checkbox-row">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label ><strong style="margin-left: 10px;">MAILING ADDRESS:</strong></label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;font-weight: 600;height: 25px;"[value]="listOfData.Description + ' ' + listOfData.City + ' ' + listOfData.State  + ' ' + listOfData.ZIP" />
+        </div>
+        </div>
+       
+        <div class="row checkbox-row">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;"> County:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+        </div>
+        </div>
+       <div class="row  mt-2">
+         <table >
+           <tr>
+             <th style="text-align: center;width: 6%;"> Location</th>
+             <th style="text-align: center;width: 40%;">Address</th>
+             <th style="text-align: center;width: 10%;">City</th>
+             <th style="text-align: center;width: 6%;">State</th>
+             <th style="text-align: center;width: 6%;">Zip Code</th>
+             <th style="text-align: center;width: 30%;">Location Payroll</th>
+           </tr>
+           <tr>
+             <td ><input 
+               type="text" 
+               id="applicantName" 
+                class="form-control custom-input"  value="1"/></td>
+             <td style="font-size: 15px;">
+               <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control custom-input" 
+               [value]="listOfData.GaragingAddress"/> </td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control custom-input"  [value]="listOfData.GaragingCity"/></td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+                class="form-control custom-input"  [value]="listOfData.GaragingState"/></td>
+             <td ><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control custom-input"  [value]="listOfData.GaragingPinCode"/></td>
+             <td ><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control custom-input"  value="$ 38000"/></td>
+           </tr>
+           <tr>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; flex: 1;" /></td>
+            <td >
+              <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /> </td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;"/></td>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+          </tr>
+          <tr>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; flex: 1;" /></td>
+            <td >
+              <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /> </td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;"/></td>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+            <td ><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;text-align: center;" /></td>
+          </tr>
+          
+         </table>
+       </div>
+       
+       <div class="row mt-2">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class=""><strong style="margin-left: 10px;"> 1. DESCRIPTION OF OPERATION</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          
+          <textarea 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;" rows="2"  >For Hire</textarea>
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         
+         <div class="   p-0" >
+          <label style="margin-left: 10px;" class="mt-1 mb-1" > a) Types of Commodities Hauled:</label>
+         
+         </div>
+        
+       
+        </div>
+        <div class="row checkbox-row">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          
+         <textarea
+  style="background-color: #f5f5f5; width: auto; flex: 1; text-align: center;"
+  rows="2"
+  readonly>{{ formattedTypes }}</textarea>
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;"> b) Number of Power Units Operated:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;" [value]="listOfData?.Detail?.TotalVehiclesTractor"/>
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+           <div class="col-sm-4">
+             <div class="  w-100 p-0">
+               <label class="mt-1 mb-1"> c) Do you operate a freight brokerage:</label>
+              </div>
+           </div>
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked4">
+             <span class="checkmark">{{ isChecked4 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked5">
+             <span class="checkmark">{{ isChecked5 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-12 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;">If yes, provide the previous years Gross Revenues: $</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;" />
+         
+         </div>
+        
+         <div class="col-sm-12 d-flex align-items-center   p-0 mt-1" >
+          <label style="margin-left: 170px;" >Projected Gross Revenues: $</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;" />
+         </div>
+        
+       
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+           <div class="col-sm-12">
+             <div class="  w-100 p-0">
+               <label class="mt-1 mb-1"> d) If operation is WATER TRUCK, are ALL water trucks licensed for road use and insured for Auto</label>
+              </div>
+           </div>
+           <div class="col-sm-1">
+             <label class="mt-1">Liability:</label>
+       
+           </div>
+        
+           <div class="col-sm-1 mt-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked4">
+             <span class="checkmark">{{ isChecked4 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1 mt-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked5">
+             <span class="checkmark">{{ isChecked5 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-9">
+             <div class="d-flex align-items-center gap-2   w-100 p-0">
+               <label style="margin-left: 5px;"> NO explain:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+         
+        </div>
+        </div>
+       
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label ><strong style="margin-left: 10px;"> 2. WHAT IS THE APPLICANT’S INTEREST IN THE ABOVE ADDRESS?</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-2" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked5">
+           <span class="checkmark">{{ isChecked5 ? '☒' : '☐' }} <span style="font-size: 12px;">Owner</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-2" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked6">
+           <span class="checkmark">{{ isChecked6 ? '☒' : '☐' }} <span style="font-size: 12px;">Tenant</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-3" style="text-align: center;">
+          <div class="form-check form-check-inline checkbox-item">
+           <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="isChecked7">
+            <span class="checkmark">{{ isChecked7 ? '☒' : '☐' }} <span style="font-size: 12px;">Lessor</span></span>
+           
+          </label>
+         </div>
+         </div>
+         <div class="col-sm-5 d-flex align-items-center Fax  p-0" >
+           <label style="margin-left: 10px;" >Is this your residence?</label>
+           <div class="form-check form-check-inline checkbox-item">
+             <label class="checkbox-container">
+              <input type="checkbox" [(ngModel)]="isChecked8">
+              <span class="checkmark">{{ isChecked8 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+             
+            </label>
+           </div>
+           <div class="form-check form-check-inline checkbox-item">
+             <label class="checkbox-container">
+              <input type="checkbox" [(ngModel)]="isChecked9">
+              <span class="checkmark">{{ isChecked9 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+             
+            </label>
+           </div>
+        
+          </div>
+        
+       
+        </div>
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class=""><strong style="margin-left: 10px;"> 3.WHAT IS THE APPROXIMATE SQUARE FOOTAGE:</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-3 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;"> Office:</label>
+         
+         
+         </div>
+       
+         <div class="col-sm-2">
+           <input 
+           type="text" 
+           id="applicantName" 
+           class="form-control border-0 shadow-none Fax" 
+           style="background-color: #f5f5f5;height: 25px;" />
+           
+       
+         </div>
+         <div class="col-sm-1" style="color: black;">
+           sqft
+         </div>
+       
+         <div class="col-sm-3 d-flex align-items-center p-0 Fax" >
+           <label   style="margin-left: 10px;"> Warehouse/Terminal:</label>
+          
+          
+          </div>
+        
+          <div class="col-sm-2">
+            <input 
+            type="text" 
+            id="applicantName" 
+            class="form-control border-0 shadow-none Fax" 
+            style="background-color: #f5f5f5;height: 25px;" />
+            
+        
+          </div>
+          <div class="col-sm-1"style="color: black;">
+            sqft
+          </div>
+        
+       
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-3 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;"> Repair Shop::</label>
+         
+         
+         </div>
+       
+         <div class="col-sm-2">
+           <input 
+           type="text" 
+           id="applicantName" 
+           class="form-control border-0 shadow-none Fax" 
+           style="background-color: #f5f5f5;height: 25px;" />
+           
+       
+         </div>
+         <div class="col-sm-1"style="color: black;">
+           sqft
+         </div>
+       
+         <div class="col-sm-3 d-flex align-items-center p-0 Fax" >
+           <label   style="margin-left: 10px;"> Open Parking/Yard:</label>
+          
+          
+          </div>
+        
+          <div class="col-sm-2">
+            <input 
+            type="text" 
+            id="applicantName" 
+            class="form-control border-0 shadow-none Fax" 
+            style="background-color: #f5f5f5;height: 25px;" />
+            
+        
+          </div>
+          <div class="col-sm-1">
+            sqft
+          </div>
+        
+       
+        </div>
+       
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label ><strong style="margin-left: 10px;"> 4.DOES THE APPLICANT OWN OR LEASE ANY OTHER PROPERTY (IES) NOT LISTED ABOVE?</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+          
+           
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked10">
+             <span class="checkmark">{{ isChecked10 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked11">
+             <span class="checkmark">{{ isChecked11 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-9">
+             <div class="d-flex align-items-center gap-2 Fax  w-100 p-0">
+               <label style="margin-left: 5px;"> If yes, list address:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+         
+        </div>
+        </div>
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class=""><strong style="margin-left: 10px;"> 5.WHAT IS THE APPLICANT’S INTEREST IN ABOVE PROPERTY?</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-2" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked12">
+           <span class="checkmark">{{ isChecked12 ? '☒' : '☐' }} <span style="font-size: 12px;">Owner</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-2" style="text-align: center;">
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked13">
+           <span class="checkmark">{{ isChecked13 ? '☒' : '☐' }} <span style="font-size: 12px;">Tenant</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-3" style="text-align: center;">
+          <div class="form-check form-check-inline checkbox-item">
+           <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="isChecked14">
+            <span class="checkmark">{{ isChecked14 ? '☒' : '☐' }} <span style="font-size: 12px;">Lessor</span></span>
+           
+          </label>
+         </div>
+         </div>
+         <div class="col-sm-5 d-flex align-items-center Fax  p-0" >
+           <label style="margin-left: 10px;" >Is this your residence?</label>
+           <div class="form-check form-check-inline checkbox-item">
+             <label class="checkbox-container">
+              <input type="checkbox" [(ngModel)]="isChecked15">
+              <span class="checkmark">{{ isChecked15 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+             
+            </label>
+           </div>
+           <div class="form-check form-check-inline checkbox-item">
+             <label class="checkbox-container">
+              <input type="checkbox" [(ngModel)]="isChecked16">
+              <span class="checkmark">{{ isChecked16 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+             
+            </label>
+           </div>
+        
+          </div>
+        
+       
+        </div>
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class=""><strong style="margin-left: 10px;"> 6.DOES APPLICANT PERFORM ANY REPAIR WORK ON ANY VEHICLES?</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row ">
+         <div class="row ">
+          
+           
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked17">
+             <span class="checkmark">{{ isChecked17 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked18">
+             <span class="checkmark">{{ isChecked18 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-9">
+             <div class="d-flex align-items-center gap-2 Fax  w-100 p-0">
+               <label style="margin-left: 5px;"> If yes, list address:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+         
+        </div>
+        </div>
+        <div class="page-break">
+            
+        </div>
+        <h5 class="mb-3" style="text-align: center; color: black;margin-top: 20px;font-size: x-large;font-family:calibri; ">TRUCKERS GENERAL LIABILITY APPLICATION</h5>
+        <div class="row mt-3">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class="mt-1 mb-1"><strong style="margin-left: 10px;"> 7.DOES APPLICANT OWN OR OPERATE ANY MOBILE EQUIPMENT:</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+          
+           
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked19">
+             <span class="checkmark">{{ isChecked19 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked20">
+             <span class="checkmark">{{ isChecked20 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-9">
+             <div class="d-flex align-items-center gap-2 Fax  w-100 p-0">
+               <label style="margin-left: 5px;"> If yes, what kind:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+           <div class="col-sm-2">
+             <label style="margin-left: 5px; font-size: small;"> ANY FORKLIFTS?</label>
+           </div>
+          
+           
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked21">
+             <span class="checkmark">{{ isChecked21 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked22">
+             <span class="checkmark">{{ isChecked22 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-4">
+             <div class="d-flex align-items-center gap-2 Fax  w-100 p-0">
+               <label style="margin-left: 5px;"> How many operated?</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+           <div class="col-sm-3">
+             <div class="d-flex align-items-center gap-2 Fax">
+               <label style="margin-left: 10px;"> Gross Weight Capacity:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+           <div class="col-sm-1">
+             <label style="margin-left: 5px;"> lbs</label>
+           </div>
+         
+        </div>
+        </div>
+       
+     
+        <div class="row mt-2">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class="mt-1 mb-1"><strong style="margin-left: 10px;"> 9.DOES APPLICANT STORE ANY GOODS OF OTHERS?</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="row ">
+          
+           
+        
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked66">
+             <span class="checkmark">{{ isChecked66 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked67">
+             <span class="checkmark">{{ isChecked67 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-9">
+             <div class="d-flex align-items-center gap-2 Fax  w-100 p-0">
+               <label style="margin-left: 5px;"> If yes, explain:</label>
+               <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+             </div>
+       
+           </div>
+       
+           
+         
+        </div>
+        </div>
+        <div class="row checkbox-row">
+         <div class="col-sm-12 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;">If yes, provide the previous years Gross Revenues: $</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+         
+         </div>
+        
+         <div class="col-sm-12 d-flex align-items-center   p-0 mt-1" >
+          <label style="margin-left: 170px;" >Projected Gross Revenues: $</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 25px;" />
+         </div>
+        
+       
+        </div>
+       
+        <div class="row mt-1">
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label class="mt-1 mb-1"><strong style="margin-left: 10px;"> 10.LIST ANY ADDITIONAL INSURED REQUIREMENTS:</strong></label>
+         
+        </div>
+        </div>
+        <div class="row" >
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label style="margin-left: 10px;" >Name:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 200px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Address:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 180px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >City, State, Zip Code:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 102px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+           <label style="margin-left: 10px;margin-top: 22px;" ></label>
+          
+         </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Name:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 200px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Address:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 180px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >City, State, Zip Code:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 102px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+           <label style="margin-left: 10px;margin-top: 25px;" ></label>
+          
+         </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Name:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 200px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Address:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 180px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >City, State, Zip Code:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 102px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label ><strong style="margin-left: 10px; font-size: small;"> BLANKET ADDITIONAL INSURED REQUIREMENT:</strong> </label>
+          <div class="col-sm-1" >
+           <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="isChecked23">
+            <span class="checkmark">{{ isChecked23 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+           
+          </label>
+          </div>
+        </div>
+        </div>
+       
+       
+        <div class="row" style="margin-top: 10px;">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class="mt-1 mb-1"><strong style="margin-left: 10px;"> 10.LIST ANY WAIVER OF SUBROGATION REQUIREMENTS:</strong></label>
+         
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Name:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 200px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Address:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 180px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >City, State, Zip Code:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 102px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+           <label style="margin-left: 10px;margin-top: 25px;" ></label>
+          
+         </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Name:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 200px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >Address:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 180px;height: 25px;" />
+        </div>
+        </div>
+        <div class="row checkbox-row" >
+         <div class="d-flex align-items-center gap-2   w-100 p-0">
+          <label style="margin-left: 10px;" >City, State, Zip Code:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;margin-left: 102px;height: 25px;" />
+        </div>
+        </div>
+       
+       
+        <div class="row " style="margin-top: 10px;">
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0">
+          <label class="mt-1 mb-1"><strong style="margin-left: 10px;">12.LOSS EXPERIENCE WHETHER INSURED OR NOT, FOR THE PAST 5 YEARS ON ALL RISKS, BROADFORM BASIS:</strong></label>
+         
+        </div>
+        </div>
+        <div class="row   " style="margin-top: 10px;">
+         <table style="width:100%">
+           <tr>
+             <th  style="padding-left: 13px"> YEAR</th>
+             <th style="text-align: center;">PAID</th>
+             <th style="text-align: center;">OUTSTANDING</th>
+             <th style="text-align: center;">WHAT HAPPENED?</th>
+            
+           </tr>
+           <tr>
+             <td style="padding-left: 13px"><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;height: 25px;" value="2019"/></td>
+             <td >
+               <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" value=""/> </td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" value=""/></td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" value=""/></td>
+           
+            
+           </tr>
+           <tr>
+             <td style="padding-left: 13px"><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;"value="2018" /></td>
+             <td >
+               <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /> </td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+           
+            
+           </tr>
+           <tr>
+             <td style="padding-left: 13px"><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;" value="2017" /></td>
+             <td >
+               <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /> </td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+           
+            
+           </tr>
+           <tr>
+             <td style="padding-left: 13px"><input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;"value="2016" /></td>
+             <td >
+               <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /> </td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+             <td > <input 
+               type="text" 
+               id="applicantName" 
+               class="form-control border-0 shadow-none" 
+               style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+           
+            
+           </tr>
+
+           <tr>
+            <td style="padding-left: 13px"><input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;"value="2015" /></td>
+            <td >
+              <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /> </td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+            <td > <input 
+              type="text" 
+              id="applicantName" 
+              class="form-control border-0 shadow-none" 
+              style="background-color: #f5f5f5;  flex: 1;text-align: center;height: 20px;" /></td>
+          
+           
+          </tr>
+          
+          
+         </table>
+       </div>
+       
+       <div class="page-break">
+            
+       </div>
+       <h5 class="mb-3" style="text-align: center; color: black;margin-top: 20px;font-size: x-large;font-family:calibri; ">TRUCKERS GENERAL LIABILITY APPLICATION</h5>
+       <div class="row " >
+         <div class="d-flex align-items-center gap-2 border  w-100 p-0 mt-3">
+          <label class=""><strong style="margin-left: 10px;">13.ADDITIONAL QUESTIONS: </strong></label>
+         
+        </div>
+        </div>
+       
+         <div class="row checkbox-row">
+           <div class="col-sm-10">
+             <div class="  w-100 p-0">
+               <label class=""> 1.Are functioning and operational fire extinguishers readily available?</label>
+              </div>
+           </div>
+        
+           <div class="col-sm-1 Fax" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked24">
+             <span class="checkmark">{{ isChecked24 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+            
+           </label>
+           </div>
+           <div class="col-sm-1" >
+            <label class="checkbox-container">
+             <input type="checkbox" [(ngModel)]="isChecked25">
+             <span class="checkmark">{{ isChecked25 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+            
+           </label>
+           </div>
+         
+        </div>
+       
+       
+        <div class="row checkbox-row">
+         <div class="col-sm-10 d-flex align-items-center p-0" >
+          <label   style="margin-left: 10px;">2.Has any policy or coverage been declined, cancelled or non-renewed during the prior three (3)</label>
+          
+         
+         </div>
+         <div class="col-sm-2 Fax">
+       
+         </div>
+        
+         <div class="col-sm-10 d-flex align-items-center   p-0" >
+          <label style="margin-left: 15px;" >years? If yes, Details:</label>
+          <input 
+         type="text" 
+         id="applicantName" 
+         class="form-control border-0 shadow-none" 
+         style="background-color: #f5f5f5; width: auto; flex: 1;height: 20px;" />
+        
+       
+        </div>
+        <div class="col-sm-1 Fax" >
+         <label class="checkbox-container">
+          <input type="checkbox" [(ngModel)]="isChecked26">
+          <span class="checkmark">{{ isChecked26 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+         
+        </label>
+        </div>
+        <div class="col-sm-1" >
+         <label class="checkbox-container">
+          <input type="checkbox" [(ngModel)]="isChecked27">
+          <span class="checkmark">{{ isChecked27 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+         
+        </label>
+        </div>
+       
+        
+        
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="" >3. Any past pending or planned bankruptcy or judgment for unpaid taxes against the named insuredor any officer, partner, member or owner of the application individually within the past five years?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked68">
+           <span class="checkmark">{{ isChecked68 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked28">
+           <span class="checkmark">{{ isChecked28 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">4.Does the applicant own or operate any other business?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked29">
+           <span class="checkmark">{{ isChecked29 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked30">
+           <span class="checkmark">{{ isChecked30 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">5.Does the applicant handle any infectious waste or hazardous material?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked31">
+           <span class="checkmark">{{ isChecked31 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked32">
+           <span class="checkmark">{{ isChecked32 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">6.Does the applicant have any operations involving rigging work or the use of cranes?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked33">
+           <span class="checkmark">{{ isChecked33 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked34">
+           <span class="checkmark">{{ isChecked34 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">7.Does the applicant/named insured provide ambulance services?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked35">
+           <span class="checkmark">{{ isChecked35 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked36">
+           <span class="checkmark">{{ isChecked36 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">8.Does the applicant/named insured provide armored car services?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked37">
+           <span class="checkmark">{{ isChecked37 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked38">
+           <span class="checkmark">{{ isChecked38 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">9.Does the applicant/named insured transport people?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked39">
+           <span class="checkmark">{{ isChecked39 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked40">
+           <span class="checkmark">{{ isChecked40 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">10.Does the applicant rent or loan equipment or tools to others (including vehicles)?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked41">
+           <span class="checkmark">{{ isChecked41 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked42">
+           <span class="checkmark">{{ isChecked42 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">11.Does the applicant perform any operations other than for hire hauling and repair or maintenanceof their own vehicles?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked43">
+           <span class="checkmark">{{ isChecked43 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked44">
+           <span class="checkmark">{{ isChecked44 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">12.Does the applicant have any appliances delivery or installation service?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked45">
+           <span class="checkmark">{{ isChecked45 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked46">
+           <span class="checkmark">{{ isChecked46 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">13.Does the applicant perform any residential or commercial moving operations?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked47">
+           <span class="checkmark">{{ isChecked47 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked48">
+           <span class="checkmark">{{ isChecked48 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">14.Does the applicant perform any residential or commercial moving operations?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked49">
+           <span class="checkmark">{{ isChecked49 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked50">
+           <span class="checkmark">{{ isChecked50 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">15.Does the applicant perform any hauling of mix-in-transit, hot mix, bulk sealant or bulk drycement?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked51">
+           <span class="checkmark">{{ isChecked51 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked52">
+           <span class="checkmark">{{ isChecked52 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">16.Does the applicant have any ownership in any mines, quarries or pits?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked52">
+           <span class="checkmark">{{ isChecked52 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked53">
+           <span class="checkmark">{{ isChecked53 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">17.Does the applicant warehouse goods of others?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked54">
+           <span class="checkmark">{{ isChecked54 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked55">
+           <span class="checkmark">{{ isChecked55 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">18.Other than to dealerships or auctions, does the applicant have any towing operations includingflatbed towing?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked54">
+           <span class="checkmark">{{ isChecked54 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked55">
+           <span class="checkmark">{{ isChecked55 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">19.Does the applicant provide any ice/snow treatment or removal services?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked56">
+           <span class="checkmark">{{ isChecked56 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked57">
+           <span class="checkmark">{{ isChecked57 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="">20.Does the applicant perform any street cleaning or debris removal operations?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked58">
+           <span class="checkmark">{{ isChecked58 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked59">
+           <span class="checkmark">{{ isChecked59 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="mt-1 mb-1">21.Is the applicant an ice cream or food truck?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked60">
+           <span class="checkmark">{{ isChecked60 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked61">
+           <span class="checkmark">{{ isChecked61 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       
+       <div class="row checkbox-row">
+         <div class="col-sm-10">
+           <div class="  w-100 p-0">
+             <label class="" style="font-size: x-small;">22.Is the applicant operating as a freight forwarder?</label>
+            </div>
+         </div>
+       
+         <div class="col-sm-1 Fax " >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked62">
+           <span class="checkmark">{{ isChecked62 ? '☒' : '☐' }} <span style="font-size: 12px;">Yes</span></span>
+          
+         </label>
+         </div>
+         <div class="col-sm-1" >
+          <label class="checkbox-container">
+           <input type="checkbox" [(ngModel)]="isChecked63">
+           <span class="checkmark">{{ isChecked63 ? '☒' : '☐' }} <span style="font-size: 12px;">No</span></span>
+          
+         </label>
+         </div>
+       
+       </div>
+       <div class="page-break">
+            
+       </div>
+       <h5 class="mb-3" style="text-align: center; color: black;margin-top: 20px;font-size: x-large;font-family:calibri; ">TRUCKERS GENERAL LIABILITY APPLICATION</h5>
+       <p style="margin-top: 0px;">This application shall not be binding unless and until a policy is issued and payment made and then only as of the 
+         inception date of said policy and in accordance with all terms hereof, 
+         and the said Applicant hereby covenants and agrees that the foregoing statements
+          and answers are a just, full and true exposition of all the facts and circumstances 
+          with regard to the risk to be insured. Insofar as same are known to the Applicant; 
+          and the same are hereby made the basis and a condition of the Insurance, and a warranty on
+           the part of the insured.</p>
+       
+       
+           <p style="margin-top: -12px;">DECLARATION: I/We declare that the statements given on 
+             this form are true to the best of my/our knowledge and belief and that I/We agree that if a policy is issued, this form shall be the basis of the contract and that any change of my/our trade or trade practices shall be advised to underwriters who may at their discretion vary the terms and conditions of the contract. 
+             All statements on this application will become warranties to the policy.</p>
+       
+             <p style="margin-top: -12px;">Any person who knowingly and with intent to defraud any insurance company, or other person, files an application for insurance containing any false information, or conceals for the purpose of misleading information concerning any fact material thereto, 
+               commits a fraudulent insurance act, which is a crime.</p>
+       
+               <p style="margin-top: -12px;">
+                 It is mutually understood and agreed between the Company and the applicant that any inspection of premises, operations, or any matter pertaining to insurance afforded by the Company, is made for the use and benefit of the Company only, and is not to be relied upon by the applicant in any respect.
+       
+               </p>
+               <p class="underline-input"></p>
+       
+       
+               <div class="row ">
+                 <div class="col-sm-2">
+       
+                 </div>
+                 <div class="col-sm-3">
+                   <p class="underline-input1 mt-1"></p>
+                   Applicant Signature
+       
+                 </div>
+                 <div class="col-sm-2">
+       
+                 </div>
+                 <div class="col-sm-3">
+       
+                   <input 
+                   type="text" 
+                   id="applicantName" 
+                   class="form-control border-0 shadow-none col-sm-3" 
+                   style="background-color: #f5f5f5; flex: 1;" [value]="today | date:'MM/dd/yyyy'"/>
+                  <label style="margin-left: 20px;">Date</label> 
+       
+                 </div>
+                 <div class = "col-sm-1">
+       
+                 </div>
+       
+                 <div class="col-sm-2 mt-2">
+       
+                 </div>
+                 <div class="col-sm-10 ">
+                   <div class="col-sm-10 d-flex align-items-center p-0" >
+                     <label   >Producer’s Name:</label>
+                     <input 
+                    type="text" 
+                    id="applicantName" 
+                    class="form-control border-0 shadow-none" 
+                    style="background-color: #f5f5f5; width: auto; flex: 1;"value="Parmjit Dhami " />
+                    
+                    </div>
+                 </div>
+       
+       
+                 <div class="col-sm-2 mt-1">
+       
+                 </div>
+                 <div class="col-sm-10 mt-1">
+                   <div class="col-sm-10 d-flex align-items-center p-0" >
+                     <label   >Address:</label>
+                     <input 
+                    type="text" 
+                    id="applicantName" 
+                    class="form-control border-0 shadow-none" 
+                    style="background-color: #f5f5f5; width: auto; flex: 1;" />
+                    
+                    </div>
+                 </div>
+       
+                 <div class="col-sm-2 mt-1">
+       
+                 </div>
+                 <div class="col-sm-10 mt-1">
+                   <div class="col-sm-10 d-flex align-items-center p-0" >
+                     <label   >Proposed Effective Date:</label>
+                     <input 
+                    type="text" 
+                    id="applicantName" 
+                    class="form-control border-0 shadow-none" 
+                    style="background-color: #f5f5f5; width: auto; flex: 1;"[value]="today | date:'MM/dd/yyyy'" />
+                    
+                    </div>
+                 </div>
+       
+               </div>
+       
+       
+       
+        
+       
+       
+       </div>
+    </div>
+  
+</div>
+<div  style ="text-align: center;margin-top: 5px;">
+  <!-- <button style="width: 300px;color: green;" class="learn-more" (click)="generatePDF()">Download PDF</button> -->
+  <button [useExistingCss]="true" printSectionId="print-section"printTitle="Truckes"  ngxPrint>Save And convert PDF</button> 
+  </div>
+
+
+
+  

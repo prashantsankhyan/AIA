@@ -1,0 +1,24 @@
+<!-- <div class="main">
+ <h2 class="text-center">Are you  Sure ?</h2>
+  <div class="btn-group text-center  gap-2 mt-4 mb-5 ">
+         
+      <button mat-stroked-button  color="warn" (click)="deleteData()" >Delete</button>
+      <button mat-stroked-button   mat-button mat-dialog-close>Clear</button>
+     
+    
+    </div>
+
+</div> -->
+
+
+<div class="" >
+ <div class="container">
+   <h1>Delete Data</h1>
+   <p>Are you sure you want to delete your Marketed?</p>
+
+   <div class="clearfix" >
+     <button type="button" class="cancelbtn"(click)="onNoClick()">Cancel</button>
+     <button *ngIf ="hideSaveButton" type="button"  class="deletebtn" (click)="deleteData()">Delete</button>
+   </div>
+ </div>
+</div>

@@ -1,0 +1,46 @@
+@media screen and (min-width: 1200px) and (max-width: 1340px) {
+ .scrolling{
+  height:620px;  
+  overflow:scroll;
+ }
+ 
+}
+@media screen and (min-width: 1340px) and (max-width: 1540px) {
+ .scrolling{
+  height:620px;  
+  overflow:scroll;
+ }
+}
+@media screen and (min-width: 1569px) and (max-width: 1800px) {
+ .scrolling{
+ height:700px;  
+ overflow:scroll;
+}
+}
+@media screen and (min-width: 1800px) and (max-width: 2200px) {
+ .scrolling{
+  height:820px;  
+  overflow:scroll;
+ }
+ label{
+  font-size: small;
+ }
+ .form-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-size: x-small;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  appearance: none;
+  height: 26px;
+ }
+}

@@ -1,0 +1,173 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid" style="background-color: rgba(255, 255, 255, 0.529);">
+
+   <div class=" py-3"  style="border-top: 1px solid rgba(0, 0, 0, 0.085);">
+   <div class="card-header" >
+    <div class ="row" >
+      <div class="col-sm-2">
+       <input type="text" class="form-control"[(ngModel)]="searchCriteriaDrvier.DriverName" (ngModelChange)="onDriverNameChange($event)" placeholder="Search Driver By Name">
+      </div>
+      <div class="col-sm-2">
+       <input type="text" class="form-control"[(ngModel)]="searchCriteriaDrvier.DriverLicenceNo" (ngModelChange)="onDriverLicenceNoChange($event)" placeholder="Search By Licence">
+      </div>
+      <div class="col-sm-2" style="text-align: right;">
+       <input type="text" class="form-control"[(ngModel)]="searchCriteriaDrvier.StateLicenced" (ngModelChange)="onStateLicencedChange($event)" placeholder="Search By State">
+      </div>
+      <div class="col-sm-6" style="text-align: right;">
+       <a href="javascript:void(0)" (click)="cancleModel()" style="color: red;"><i class="fa fa-times-circle" aria-hidden="true"></i> </a>
+      
+      </div>
+
+    </div>
+   </div>
+    
+     <div  class="scrollable-table-body mt-2" >
+      
+        <table   class="table" style="background-color: white;">
+          <thead>
+            <tr>
+              <th>#</th>
+             <th>Driver Name</th>
+              <th>Driver Stage</th>
+              <th>Date Of Birth</th>
+              <th>Issued Year</th>
+              <th>State </th>
+              <th>Licence No</th>  
+              <th>Age</th> 
+              <th>Experience</th>
+              <th>Enter By</th>
+              <th >Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>    
+             <tr  *ngFor ="let data of listOfAllDriver|searchDriver:searchCriteriaDrvier;let i = index">
+               <td>{{i + 1}}</td>
+               <td>{{data?.DriverName}}</td>
+              
+               <td>{{data?.DriverStage}}</td>
+               <td>{{data?.DateofBirth |date: 'MM/dd/yyyy'}}</td>
+               <td>{{data?.YearofLicenceIssued |date: 'MM/dd/yyyy'}}</td>
+               <td>{{data?.StateLicenced}}</td>
+               <td>{{data?.DriverLicenceNo}}</td>
+               <td>{{data?.Age}}</td>
+               <td>{{data?.Experience}}</td>
+               <td>{{ data?.EnteredBy === '' || data?.EnteredBy == null ? data.UpdatedBy + ' (Updated)' : data.EnteredBy }}</td>
+               <td>{{data.RenewalStatus =="Fresh" ?'NEW':'RENEW'}}</td>
+
+              
+             </tr>
+           
+         
+           
+          </tbody>
+         
+        </table>
+     
+   
+     </div>
+
+   
+ 
+</div>
+
+<div class=""  style="border-top: 1px solid rgba(0, 0, 0, 0.085); margin-top: 150px;">
+  <div class="card-header" >
+   <div class ="row" >
+     <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteriaVehicle.Year" (ngModelChange)="onYearChange($event)" placeholder="Search By year">
+     </div>
+     <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteriaVehicle.Model" (ngModelChange)="onModelChange($event)" placeholder="Search By Model">
+     </div>
+     <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteriaVehicle.VIN" (ngModelChange)="onVINChange($event)" placeholder="Search By VIN">
+     </div>
+     <div class="col-sm-6" style="text-align: right;">
+      <a href="javascript:void(0)" (click)="cancleModel()" style="color: red;"><i class="fa fa-times-circle" aria-hidden="true"></i> </a>
+     
+     </div>
+
+   </div>
+  </div>
+   
+    <div  class="scrollable-table-body1 mt-2" >
+     
+      <table  class="table" style="background-color: white;">
+         
+        <thead>
+          <tr>
+            <th >#</th>
+            <th >Year</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>VIN</th>
+            <th>OwnerShipType</th>
+            <th>Vehicle Type</th>
+            <th>BodyType</th>
+            <th>Value</th>
+            <th>EnteredBy</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+           <tr  *ngFor ="let data of listOfAllVehicle|searchVehicle:searchCriteriaVehicle;let i = index">
+            <td>{{i + 1}}</td>
+             <td>{{data?.Year}}</td>
+             <td>{{data?.Make}}</td>
+             <td>{{data?.Model}}</td>
+             <td>{{data?.VIN}}</td>
+             <td>{{data?.OwnerShipType}}</td>
+             <td>{{data?.VehicleType}}</td>
+             <td>{{data?.BodyType}}</td>
+             <td>{{data?.Value | currency:'USD':'symbol'}}</td>
+             <td>
+
+              <ng-container *ngIf="data?.UpdatedBy; else enteredByOnly">
+                {{ data?.UpdatedBy }} (Updated by {{ data?.EnteredBy }})
+              </ng-container>
+              <ng-template #enteredByOnly>
+                {{ data?.EnteredBy }}
+              </ng-template>
+             </td>
+           
+ 
+           
+           </tr>
+         
+       
+         
+        </tbody>
+       
+      </table>
+    
+  
+    </div>
+
+  
+
+</div>
+
+
+
+
+   
+  
+
+
+
+
+
+
+
+
+
+
+       
+       </div>
+</div>
+

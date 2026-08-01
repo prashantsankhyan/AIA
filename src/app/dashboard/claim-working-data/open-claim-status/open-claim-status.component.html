@@ -1,0 +1,58 @@
+<div class="container">
+ <div class="card">
+     <div  class="card-header" style="background-color: #3f51b5; color: white;">
+         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" > Enter  Stage </a>  
+       </div>
+ </div>
+ 
+
+ <form [formGroup]="updateForm">
+ <div class="row">
+   
+   
+    
+    
+   
+    
+     <div class="col-sm-12 mt-3">
+         <label>Select Stage</label>
+         <select class="form-select formControl mt-1" formControlName ="claimStatus"  aria-label="Default select example" style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['claimStatus'].errors }" >
+             <option hidden value="" disabled selected  > Select Stage</option>
+             <option  value="Slow Running">Slow Running</option>
+             <option  value="Information Panding">Information Panding</option>
+             <option  value="Unauthorised">Unauthorised</option>
+             <option  value="Under Review">Under Review</option>
+             <option  value="Pending From Team">Pending  From Team</option>
+             <option  value="Done">Done</option>
+           
+             
+            
+           </select>
+           <div *ngIf ="submit && f['claimStatus'].errors" class="invalid-feedback">
+             <div *ngIf ="f['claimStatus'].errors">Status is required</div>
+         </div> 
+
+     </div>
+  
+  
+  
+   
+   
+   
+   
+     <div class="text-center mt-5">
+         <div class="btn-group  gap-2  " *ngIf ="messageSuccess">
+            
+             <button mat-stroked-button class="text-right" (click)="onSubmit()" >Save</button>
+             <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+            
+           
+           </div>
+     </div>
+ 
+
+
+ </div>
+
+</form>
+</div>

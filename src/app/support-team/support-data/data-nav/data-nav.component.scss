@@ -1,0 +1,649 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//1 //
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+
+
+
+
+
+
+// $card-max-width: 960px;
+$card-max-width: 100%;
+
+// $table-concept-max-height: 480px;
+$table-concept-max-height: 100%;
+
+$table-background-color: #ffffff;
+$table-hover-background-color: darken($table-background-color, 8%);
+$table-even-background-color: darken($table-background-color, 4%);
+$table-header-color: #ffffff;
+$table-header-background-color: #8f8f8f;
+
+$pagination-background-color: #8f8f8f;
+
+$pagination-label-color: #ffffff;
+$pagination-label-background-color: $pagination-background-color;
+$pagination-label-active-color: #ffffff;
+$pagination-label-active-background-color:
+  darken($pagination-background-color, 15%);
+$pagination-label-disabled-color: #ffffff;
+$pagination-label-disabled-background-color:
+  lighten($pagination-background-color, 15%);
+
+$table-title-color: #ffffff;
+$table-title-background-color: #2f2f2f;
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+
+@mixin button($background-color) {
+  background-color: $background-color;
+  &:hover {
+    background-color: lighten($background-color, 10%);
+  }
+  &:active {
+    background-color: darken($background-color, 10%);
+  }
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e4e4e4;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+//** variables
+$background: #f5f6fa;
+$text: #9c9c9c;
+$input-bg-color: #fff;
+$input-text-color: #a3a3a3;
+$button-bg-color: #7f8ff4;
+$button-text-color: #fff;
+
+//** root
+:root {
+	background: $background;
+	color: $text;
+	font: 1rem "PT Sans", sans-serif;
+}
+
+html,
+body,
+.container {
+	height: 100%;
+}
+
+a {
+	color: inherit;
+	
+	&:hover {
+		color: $button-bg-color;
+	}
+}
+
+//** helper
+
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+
+
+
+
+
+
+@media (min-height: 400px) and (max-height: 600px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: small;
+ 
+}
+
+
+td {
+    color: rgba(15, 15, 15, 0.542);
+    font-family: sans-serif;
+    font-size: small;
+      font-weight: 600;
+    
+}
+.scrolling {
+ height:280px;  
+ overflow:scroll;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 90%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 18px;
+	}
+}
+ 
+}
+@media (min-height: 601px) and (max-height: 700px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 20vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: small;
+ 
+}
+
+
+td {
+    color: rgba(15, 15, 15, 0.542);
+    font-family: sans-serif;
+    font-size: small;
+      font-weight: 600;
+    
+}
+.scrolling {
+ height:370px;  
+ overflow:scroll;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 90%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 18px;
+	}
+}
+ 
+}
+
+@media (min-height: 701px) and (max-height: 740px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+    
+    font-family: sans-serif;
+    font-size: small;
+    font-weight: 600;
+    
+}
+.scrolling {
+ height:452px;  
+ overflow:scroll;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 90%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 18px;
+	}
+}
+ 
+}
+@media (min-height: 741px) and (max-height: 800px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+    
+    font-family: sans-serif;
+    font-size: small;
+    font-weight: 600;
+    
+}
+.scrolling {
+ height:540px;  
+ overflow:scroll;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 90%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 18px;
+	}
+}
+ 
+}
+
+@media (min-height: 801px) and (max-height: 900px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: larger;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family:sans-serif;
+    font-size: larger;
+    font-weight: 600;
+
+    
+}
+.scrolling {
+ height:620px;  
+ overflow:scroll;
+}
+.bHeight {
+  height: 40px !important;
+    font-size: medium !important;
+    background-color: #1397d5 !important;
+    color: white;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+  height: 35px;
+  font-size: medium;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 94%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 13px 21px;
+	}
+}
+ 
+}
+
+@media (min-height: 901px) and (max-height: 1000px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: larger;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family:sans-serif;
+    font-size: larger;
+    font-weight: 600;
+
+    
+}
+.scrolling {
+ height:640px;  
+ overflow:scroll;
+}
+.bHeight {
+  height: 40px !important;
+    font-size: medium !important;
+    background-color: #1397d5 !important;
+    color: white;
+}
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+  height: 35px;
+  font-size: medium;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 94%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 13px 21px;
+	}
+}
+ 
+}
+
+
+
+
+.body-type-pill {
+  background: #e3f2fd;
+  color: #0d6efd;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.body-type-pill:hover {
+  background-color: #d0e7fb;
+  transform: translateY(-2px);
+}
+
+.body-type-pill .icon {
+  font-size: 20px;
+  margin-right: 8px;
+  color: #0d6efd;
+}
+
+.body-type-pill .text {
+  font-size: 14px;
+}
+
+

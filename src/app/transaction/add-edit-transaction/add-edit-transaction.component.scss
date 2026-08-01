@@ -1,0 +1,1059 @@
+// .form-control {
+//  display: block;
+//  width: 100%;
+
+//  font-size: 11px;
+//  font-weight: 100;
+//  line-height: 1.5;
+//  color: #212529;
+//  background-color: #fff;
+//  background-clip: padding-box;
+//  border: 1px solid #ced4da;
+//  appearance: none;
+//  border-radius: 0.25rem;
+//  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+//  height: 29px;
+// }
+
+tr {
+ border-color: bisque;
+ border-style: hidden;
+ border-width: 0;
+}
+
+
+label {
+ display: inline-flex;
+ font-size: smaller;
+ 
+}
+
+
+
+// .form-select {
+//  display: block;
+//  width: 100%;
+
+//  font-size: 11px;
+//  font-weight: 100;
+//  line-height: 1.5;
+//  color: #212529;
+//  background-color: #fff;
+//  background-clip: padding-box;
+//  border: 1px solid #ced4da;
+//  appearance: none;
+//  border-radius: 0.25rem;
+//  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+//  height: 29px;
+// }
+
+
+.scrollingMarketd{
+ height:280px;  
+ overflow:scroll;
+}
+.scrollingPolicy{
+ height:270px;  
+ overflow:scroll;
+}
+.scrolling {
+ height:200px;  
+ overflow:scroll;
+   background-color: white;
+ 
+  border-radius: 1rem !important;
+  animation: colorShift 6s infinite;
+  // box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  border: 1px dashed #00000067;
+  
+  
+}
+.container1 {
+ height:250px;  
+ overflow:scroll;
+ border-radius: 0.5rem !important;
+  border: 1px dashed #00000067;
+  
+
+ 
+}
+
+
+h2 {
+ text-align: center;
+ padding: 20px 0;
+}
+
+table caption {
+ padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+ white-space: nowrap;
+}
+
+.p {
+ text-align: center;
+ padding-top: 140px;
+
+}
+th{
+ color: rgba(0, 0, 0, 0.578);
+ 
+}
+
+td {
+ color: rgba(0, 0, 0, 0.522);
+ 
+
+ 
+}
+
+// .form-control {
+//  display: block;
+//  width: 100%;
+//  padding: 0.375rem 0.75rem;
+//  font-size: 10px;
+//  font-weight: 100;
+//  line-height: 1.5;
+//  color: #212529;
+//  background-color: #fff;
+//  background-clip: padding-box;
+//  border: 1px solid #ced4da;
+//  appearance: none;
+//  border-radius: 0.25rem;
+//  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+//  height: 26px;
+// }
+table tr.highlight {
+ background-color: #bdeff9 !important;
+ color: white !important;
+}
+
+tr:hover {
+ background: #f2f3ff;
+ outline: none;
+ cursor: pointer;
+}
+
+table td.hover {
+ color: white !important;
+}
+
+
+
+
+tr:hover {
+  background-color: #f0f0f0; /* Light grey for hover */
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: #cce5ff !important; /* Light blue for selected row */
+}
+
+table tr.highlight {
+  background-color: #bdeff9 !important;
+  color: red !important;
+}
+
+.selected-row {
+  background-color: #d1ecf1; /* light blue highlight */
+  font-weight: 500 !important; 
+  border-left: 4px solid green;
+  
+  
+}
+
+.custom-input {
+  margin: 0 5px;                    /* Outer space left/right */
+  padding-left: 12px !important;   /* Inner space before text */
+  padding-right: 12px !important;  /* Inner space after text */
+  border-radius: 50px;
+}
+
+
+
+//asdasdasd////
+
+.scrolling {
+ height:450px;  
+ overflow:scroll;
+}
+
+
+
+body { 
+ font-size: 140%; 
+}
+
+.scrollingMarketd{
+ height:280px;  
+ overflow:scroll;
+}
+.scrollingPolicy{
+ height:340px;  
+ overflow:scroll;
+}
+
+
+h2 {
+ text-align: center;
+ padding: 20px 0;
+}
+
+table caption {
+ padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+ white-space: nowrap;
+}
+
+.p {
+ text-align: center;
+ padding-top: 140px;
+ font-size: 14px;
+}
+th{
+ color: rgba(0, 0, 0, 0.728);
+ font-size:x-small
+}
+
+td {
+ color: rgba(0, 0, 0, 0.753);
+ font-size:x-small
+}
+
+
+
+
+
+
+
+
+
+
+@import url(../../../css/sb-admin-2.css);
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+  // Import Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+// Import external stylesheets
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css');
+
+
+// Your custom SCSS
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card {
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    .icon-direction {
+      transform: scale(1.2) rotate(15deg);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+body { 
+ font-size: 140%; 
+}
+.hover-color:hover {
+  color: #007BFF; /* Change to any color you like */
+  cursor: pointer;
+}
+h2 {
+ text-align: center;
+ padding: 20px 0;
+}
+
+table caption {
+ padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+ white-space: nowrap;
+}
+
+.p {
+ text-align: center;
+ padding-top: 140px;
+ font-size: 14px;
+}
+th{
+  color: black;
+  font-size: medium;
+  font-weight: 500;
+}
+
+
+td {
+color: black;
+   
+    font-weight: 600;
+    font-family: math;
+    font-size: small;
+    padding: 15px;
+}
+.scrollable-table-body {
+  overflow-y: auto;
+  // border: 1px solid #ddd;
+}
+
+@media (min-height: 500px) and (max-height: 600px){
+ .scrolling {
+ height:200px;  
+ overflow:scroll;
+}
+
+  .search__input {
+    width: 100%;
+    padding: 1px 4px !important;
+   
+    font-size: 1px !important;
+    line-height: 18px;
+  
+}
+   th{
+  color: black;
+  font-size: xx-small;
+  font-weight: 500;
+}
+
+
+td {
+color: hsla(0, 0%, 0%, 0.655);
+
+    font-family: sans-serif;
+    font-size: xx-small;
+    
+}
+}
+
+@media (min-height: 600px) and (max-height: 700px) {
+    th{
+  color: black;
+ font-size: small !important;
+  
+  
+}
+
+
+td {
+color: #000000f0;
+   font-weight: 600;
+    font-family: sans-serif !important;
+    font-size: xx-small !important;
+    
+}
+.scrolling {
+ height:155px;  
+ overflow:scroll;
+}
+}
+@media (min-height: 701px) and (max-height: 750px) {
+  .scrollable-table-body {
+    max-height: 520px; /* Medium screens */
+    
+  }
+     th{
+  color: black;
+ font-size: small !important;
+  
+  
+}
+
+
+td {
+color: #000000f0;
+   
+   font-weight: 600;
+    font-family: sans-serif !important;
+    font-size: x-small !important;
+    
+}
+.scrolling {
+ height:210px;  
+ overflow:scroll;
+}
+}
+
+@media (min-height: 751px) and (max-height: 800px) {
+  .scrollable-table-body {
+    max-height: 520px; /* Medium screens */
+    
+  }
+     th{
+  color: black;
+  font-size: medium;
+  font-weight: 600;
+}
+
+
+td {
+color: #000000f0;
+   
+    font-weight: 500;
+    font-family: math;
+    font-size: small;
+    padding: 10px;
+}
+.scrolling {
+ height:280px;  
+ overflow:scroll;
+}
+}
+@media (min-height: 800px) and (max-height: 900px) {
+  .scrollable-table-body {
+    max-height: 580px; /* Medium screens */
+  }
+  .scrolling {
+ height:280px;  
+ overflow:scroll;
+}
+}
+
+
+@media (min-height: 901px) {
+  .scrolling {
+ height:280px;  
+ overflow:scroll;
+}
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background: #fff; /* Adjust background color */
+  z-index: 1;
+}
+
+
+.mat-icon {
+
+ user-select: none;
+ background-repeat: no-repeat;
+ display: inline-block;
+ fill: currentColor;
+ height: 12px;
+ width: 24px;
+ 
+}
+#stopButton {
+ display: none; /* Initially hide the stop button */
+ 
+
+ border-radius: 4px;
+ cursor: pointer;
+ margin-top: 10px;
+}
+
+#playButton {
+ /* Initially hide the stop button */
+
+
+ border-radius: 4px;
+ cursor: pointer;
+ margin-top: 10px;
+}
+.btn-hover:hover {
+ background-color: #28a745; /* Change background color on hover */
+ color: #fff; /* Change text color on hover */
+}
+
+
+.going-to-expire {
+ background-color: green; /* Adjust color as needed */
+  color: white; /* Ensure text is readable */
+ 
+}
+
+.equal-to-today {
+ background-color: yellow;
+ color: rgba(0, 0, 0, 0.879);
+}
+
+.expired {
+ background-color: red;
+ color: white;
+}
+
+
+.table tbody tr {
+  cursor: pointer;
+}
+
+/* Optional: Adding a hover effect for better visual indication */
+.table tbody tr:hover {
+  background-color: #f1f1f1; /* Change background color on hover */
+}
+
+
+
+.form-select:hover {
+  background-color: white; /* Subtle background color change on hover */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Slight shadow on hover */
+}
+
+.form-select:focus {
+  border-color: #80bdff; /* Border color when the element is focused */
+  outline: 0;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Slight shadow on focus */
+}
+
+/* Style the dropdown arrow */
+.form-select::after {
+  content: '\25BC'; /* Unicode character for a down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #495057;
+}
+
+/* Add container for the relative positioning */
+.form-select-container {
+  position: relative;
+  width: 100%;
+}
+
+
+//1 //
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+
+/* Base styling */
+
+body {
+    width: 430px;
+    margin: 0 auto;
+    background-color: #F7CAC9;
+    font-family: 'Raleway', sans-serif;
+}
+
+.search {
+   
+    
+    // &__title {
+    //     font-size: 22px;
+    //     font-weight: 900;
+    //     text-align: center;
+    //     color: #ff8b88;
+    // }
+    
+    &__input {
+        width: 100%;
+        padding: 6px 12px;
+
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 10px;
+        line-height: 18px;
+        
+        color: #575756;
+        background-color: transparent;
+/*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
+ 
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #57565670;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        
+        &::placeholder {
+            color: color(#575756 a(0.8));
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        &:hover,
+        &:focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+    }
+}
+
+.credits {
+    &__container {
+        margin-top: 24px;
+    }
+    
+    &__text {
+        text-align: center;
+        font-size: 10px;
+        line-height: 18px;
+    }
+    
+    &__link {
+        color: #ff8b88;
+        text-decoration: none;
+        transition: color 250ms ease-in;
+        
+        &:hover,
+        &:focus {
+            color: color(#ff8b88 blackness(+25%));
+        }
+    }
+}
+
+
+.hover-row:hover {
+  background-color: #f0f8ff; /* light blue background on hover */
+  cursor: pointer;
+}
+
+.hover-cell:hover {
+  color: #007bff; /* changes text color on hover */
+  font-weight: 600;
+}
+.hover-cell {
+  font-weight: bold;
+  color: #000; /* Optional: keep the text color black or change it */
+}
+
+
+// $card-max-width: 960px;
+$card-max-width: 100%;
+
+// $table-concept-max-height: 480px;
+$table-concept-max-height: 100%;
+
+$table-background-color: #ffffff;
+$table-hover-background-color: darken($table-background-color, 8%);
+$table-even-background-color: darken($table-background-color, 4%);
+$table-header-color: #ffffff;
+$table-header-background-color: #8f8f8f;
+
+$pagination-background-color: #8f8f8f;
+
+$pagination-label-color: #ffffff;
+$pagination-label-background-color: $pagination-background-color;
+$pagination-label-active-color: #ffffff;
+$pagination-label-active-background-color:
+  darken($pagination-background-color, 15%);
+$pagination-label-disabled-color: #ffffff;
+$pagination-label-disabled-background-color:
+  lighten($pagination-background-color, 15%);
+
+$table-title-color: #ffffff;
+$table-title-background-color: #2f2f2f;
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+
+@mixin button($background-color) {
+  background-color: $background-color;
+  &:hover {
+    background-color: lighten($background-color, 10%);
+  }
+  &:active {
+    background-color: darken($background-color, 10%);
+  }
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e4e4e4;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card1 {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: $card-max-width;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 35px rgba(#000000, 0.5);
+}
+
+.table-concept {
+  width: 100%;
+  height: 100%;
+  max-height: $table-concept-max-height;
+  overflow: auto;
+  box-sizing: border-box;
+  .table-radio {
+    display: none;
+    &:checked + .table-display {
+      display: block;
+    }
+    &:checked + .table-display + table {
+      width: 100%;
+      display: table;
+    }
+    &:checked + .table-display + table + .pagination {
+      display: flex;
+      & > label.active {
+        color: $pagination-label-active-color;
+        background-color: $pagination-label-active-background-color;
+        cursor: default;
+      }
+      & > label.disabled {
+        color: $pagination-label-disabled-color;
+        background-color: $pagination-label-disabled-background-color;
+        cursor: default;
+      }
+    }
+  }
+  .table-display {
+    background-color: #e2e2e2;
+    text-align: right;
+    padding: 10px;
+    display: none;
+    position: sticky;
+    left: 0;
+  }
+  table {
+    background-color: $table-background-color;
+    font-size: 16px;
+    border-collapse: collapse;
+    display: none;
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 15px;
+        box-sizing: border-box;
+      }
+      th {
+        color: $table-header-color;
+        font-weight: normal;
+        background-color: $table-header-background-color;
+        border-bottom: solid 2px #d8d8d8;
+        position: sticky;
+        top: 0;
+      }
+      td {
+        border: solid 1px #d8d8d8;
+        border-left: 0;
+        border-right: 0;
+        white-space: nowrap;
+      }
+    }
+    tbody tr {
+      transition: background-color 150ms ease-out;
+      &:nth-child(2n) {
+        background-color: $table-even-background-color;
+      }
+      &:hover {
+        background-color: $table-hover-background-color;
+      }
+    }
+  }
+  .pagination {
+    background-color: $pagination-background-color;
+    width: 100%;
+    display: none;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    & > label {
+      @include button($pagination-label-background-color);
+      color: $pagination-label-color;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.table-title {
+  color: $table-title-color;
+  background-color: $table-title-background-color;
+  padding: 15px;
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.button-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  span {
+    color: #8f8f8f;
+    text-align: right;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    border-radius: 0;
+    transition: background-color 225ms ease-out;
+    &.primary {
+      $background-color: #147eff;
+      background-color: $background-color;
+      &:hover {
+        background-color: lighten($background-color, 10%);
+      }
+      &:active {
+        background-color: darken($background-color, 10%);
+      }
+    }
+    &.primary {
+      @include button(#147eff);
+    }
+    &.danger {
+      @include button(#d11800);
+    }
+    svg {
+      fill: #ffffff;
+      vertical-align: middle;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+
+
+//** variables
+$background: #f5f6fa;
+$text: #9c9c9c;
+$input-bg-color: #fff;
+$input-text-color: #a3a3a3;
+$button-bg-color: #7f8ff4;
+$button-text-color: #fff;
+
+//** root
+:root {
+	background: $background;
+	color: $text;
+	font: 1rem "PT Sans", sans-serif;
+}
+
+html,
+body,
+.container {
+	height: 100%;
+}
+
+a {
+	color: inherit;
+	
+	&:hover {
+		color: $button-bg-color;
+	}
+}
+
+//** helper
+
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+//** button
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+	&--primary {
+		background: #1397d5;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 4px 4px;
+		
+		&:hover {
+			background: darken($button-bg-color, 4%);
+		}
+		
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+	
+	&--inside {
+		margin-left: -80px;
+	}
+}
+
+//** form
+.form {	
+	&__field {
+		width: 90%;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 18px;
+	}
+}
+
+.background-video1 {
+  width: 80vw;         /* 30% of the viewport width */
+  height: 30vw;        /* Auto height to maintain aspect ratio */
+  max-width: 90vw;     /* Optional: limit size on big screens */
+  object-fit: cover;
+ 
+ 
+}
+
+
+
+@media (min-height: 601px) and (max-height: 700px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 88vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    
+}
+ 
+}
+
+@media (min-height: 701px) and (max-height: 800px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    
+}
+
+ 
+}
+@media (min-height: 801px) and (max-height: 1000px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 92vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    
+}
+ 
+}
+
+@media (min-height: 1001px) and (max-height: 1200px) {
+ .page-background {
+  background-color: #f0f2f5 !important;
+  min-height: 93vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+ th{
+  color: rgba(0, 0, 0, 0.792);
+  font-size: medium;
+ 
+}
+
+
+td {
+color: rgba(15, 15, 15, 0.542);
+   
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    
+}
+ 
+}
+
+

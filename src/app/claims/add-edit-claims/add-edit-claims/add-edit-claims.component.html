@@ -1,0 +1,309 @@
+
+
+<div class="container">
+ <div *ngIf ="showSpiner">
+  <div class="fullscreen-spinner">
+ <app-spinner></app-spinner>
+  </div>
+  
+
+ </div>
+   <div *ngIf ="!showSpiner">
+    <mat-dialog-content class="mat-typography">
+      <form [formGroup]="addEditClaimForm">
+        <div class="mt-2">
+          <div class="row p-1 mt-1">
+            <div class="col-sm-3">
+             <div class="form-floating mb-3">
+              <input type ="text" class="form-control" [(ngModel)]= "MarkedPolicyId" formControlName ='MarkedPolicyID' style="display: none;">
+              <input type ="text" class="form-control"  formControlName ='DateofLoss'  aria-label="Default select example" bsDatepicker  [ngClass]= "{ 'is-invalid': submit && f['DateofLoss'].errors }">
+              <label>Date Of Loss </label>
+             </div> 
+            
+            
+            </div>
+            <div class="col-sm-3">
+             <div class="form-floating mb-3">
+              <input type ="text" class="form-control"[(ngModel)]= "DateReported" formControlName ='DateReported' >
+              <label>Date Reported </label>
+             </div>
+             
+            
+            </div>
+         
+            <div class="col-sm-3">
+             <div class="form-floating mb-3"> 
+              <select class="form-select formControl mt-1"  formControlName ='ReportedBy'  aria-label="Default select example" style="margin-top: 28px;" >
+               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option  value="Insured">Insured</option>
+               <option  value="Other Party">Other Party</option>
+             </select>
+             <label>Reported By</label>
+             </div>
+            </div>
+         
+ 
+            <div class="col-sm-3  mt-1">
+             <div class="form-floating mb-3">
+              <input type ="text" class="form-control" [(ngModel)]= "ReportedTo" formControlName ='ReportedTo' >
+              <label>Reporter To</label>
+             </div>
+             
+              
+            </div>
+            
+            
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3">
+              <input type ="text" class="form-control" formControlName ='ClaimNumber'>
+              <label>Claim Number</label>
+             </div>
+              
+              
+             </div>
+            <!-- <div class="col-sm-3 mt-1">
+             <label>Claim Description</label>
+             <textarea type ="text" formControlName ='ClaimDescription' class="form-control" rows ="3"></textarea> 
+            </div> -->
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3">
+              <input type ="text" class="form-control" formControlName ='EstimateAmount'>
+              <label>Estimate Amount</label>
+             </div>
+             
+             
+            </div>
+    
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3">
+              <select class="form-select formControl"[(ngModel)]="ClaimType"  formControlName ='ClaimType' (change)="changePolicyType()"  >
+               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option value="Running">🚗 Running Policy</option>
+                <option value="Expire Policy">⏳ Expire Policy</option>
+             </select>
+             <label >Select Claim  Type</label>
+             </div>
+ 
+              
+             
+             
+             </div>
+ 
+             <div class="col-sm-3 ">
+               <div class="form-floating mb-3">  
+                 <textarea class="form-control" formControlName ='ClaimDescription' style="height: 100px"></textarea>
+                 
+               
+               <label>Description</label>
+               </div>
+              </div>
+           
+            </div>
+        </div>
+        
+       
+          
+          <div class="col-sm-12 mt-1">
+      
+            
+            <div *ngIf ="showSpiner">
+            <div class="container1 ">
+              <h3 class="text-center"> No Data Found</h3>
+      
+            </div>
+            </div>
+            <div *ngIf ="!showSpiner">
+           <div class="scrolling">
+  <input type="text" class="form-control" [(ngModel)]="ChildPolicyID" formControlName="ChildPolicyID" style="display: none;">
+
+  <!-- No Data Message -->
+  <div *ngIf="!listOfPolicy || listOfPolicy.length === 0" style="text-align: center; border-radius: 1rem;
+  font-size: 1.2rem;
+  animation: colorShift 6s infinite;
+  transition: all 0.5s ease-in-out;" >
+    <i class="fas fa-info-circle info-icon mt-5"></i>
+    <p class="mt-1">No Policy Selected (No Data Found)</p>
+    
+  </div>
+
+  <!-- Styled Table -->
+  <div *ngIf="listOfPolicy && listOfPolicy.length > 0" class="policy-table-container no-data-message1 padding: 0;">
+   <p *ngIf="spinnerForPolicyShow" style="text-align: center;"> <video width="10%" height="auto" autoplay muted loop playsinline class="video-style">
+  <source src="assets/videos/clock.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video></p>
+<div *ngIf="!spinnerForPolicyShow">
+ <table id="example" class="table table-bordered table-hover" style="margin-top: -8px;">
+      <thead class="table-header">
+        <tr>
+          <th>Policy Name</th>
+          <th>Policy No</th>
+          <th>Effective Date</th>
+          <th>Exp Date</th>
+          <th>Entered By</th>
+          <th>Updated By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of listOfPolicy"
+           [ngClass]="{'selected-row': data.MarkedPolicyID == MarkedPolicyId && data.ChildPolicyID == ChildPolicyID}"
+            (click)="getMarkedPolicyId(data)">
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.LineName}} - {{data.LineShortName}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.ChildPolicyName}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.Effective | date:'MM/dd/yyyy'}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.Expiration | date:'MM/dd/yyyy'}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.EnteredBy}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'">{{data.UpdatedBy}}</td>
+           <td *ngIf="data.StageType !== 'In-Process'"
+      (click)="viewRemkarsByChiledPolciy($event, data)">
+    View
+  </td>
+         
+
+        </tr>
+      </tbody>
+    </table>
+</div>
+   
+  </div>
+</div>
+
+
+            </div>
+            
+           </div>
+    
+           
+          
+         
+        
+          <div class="row p-2">
+      
+            <div class="col-sm-3 " >
+             <div class="form-floating mb-3"> 
+              <select class="form-select formControl mt-2"  formControlName="DriverID" style="margin-top: 28px;" (change)="onDriverChange($event)">
+               <option hidden value="" disabled >Select Drive</option>
+               <option value="">None</option>
+               <ng-container *ngIf="allDriverList && allDriverList.length > 0; else noData">
+                   <option *ngFor="let data of allDriverList" value="{{data.DriverID}}"> 👤 {{ data.DriverName }} | 🪪 {{ data.DriverLicenceNo }}</option>
+               </ng-container>
+               <ng-template #noData>
+                   <option disabled>No data found</option>
+               </ng-template>
+           </select>
+           <label>Driver</label>
+             </div>
+            </div>
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3"> 
+              <input type ="text" class="form-control" formControlName ='Driver' [readonly]="isDriverReadOnly">
+              <label>Driver Unreported</label>
+             </div>
+   
+             </div>
+            
+            <div class="col-sm-3" >
+             <div class="form-floating mb-3">
+              <select class="form-select formControl mt-2"   aria-label="Default select example"formControlName="TruckID" style="margin-top: 28px;" (change)="onTruckChange($event)">
+               <option hidden value="" disabled selected  > Select Truck</option>
+               <option value="">None</option>
+               <ng-container *ngIf="trucks && trucks.length > 0; else noTruckData">
+                 <option *ngFor="let data of trucks" 
+                         [value]="data.VehicleID" 
+                         [hidden]="data.BodyType == 'Trailer'">
+               🚗 VIN - ({{ data.VIN }}) | 🚘 Type - ({{ data.VehicleType }})
+                 </option>
+             </ng-container>
+             <ng-template #noTruckData>
+                 <option disabled>No data found</option>
+             </ng-template>
+             </select>
+             <label>Truck </label>
+             </div>
+             
+              
+                
+              
+              
+            </div>
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3">  
+              <input type ="text" formControlName ='Truck' class="form-control" [readonly]="isTruckReadOnly">
+             <label>Truck Unreported</label>
+   
+             </div>
+              
+            </div>
+            
+            <div class="col-sm-3" >
+             <div class="form-floating mb-3">
+              <select class="form-select formControl mt-1" aria-label="Default select example" formControlName="TrailerID" style="margin-top: 28px;" (change)="onTrailerChange($event)">
+               <option hidden value="" disabled selected> Select Trailer</option>
+               <option value="">None</option>
+               <ng-container *ngIf="trailers && trailers.length > 0; else noTrailerData">
+                 <ng-container *ngFor="let data of trailers">
+                   <option *ngIf="data.BodyType === 'Trailer'" [value]="data.VehicleID">
+                       🚗 VIN - ({{ data.VIN }}) |  🛠️ Model - ({{ data.Model }}) | 🚙 Body Type - ({{ data.BodyType }})
+                   </option>
+                 </ng-container>
+               </ng-container>
+               <ng-template #noTrailerData>
+                 <option disabled>No data found</option>
+               </ng-template>
+             </select>
+             <label>Trailer </label>
+             </div>
+            </div>
+            <div class="col-sm-3 mt-1">
+             <div class="form-floating mb-3"> 
+              <input type ="text" class="form-control" formControlName ='Trailer'[readonly]="isTrailerReadOnly" >
+              <label>Trailer Unreported</label>
+             </div>
+            </div>
+            <div class="col-sm-3 ">
+             <div class="form-floating mb-3">
+              <select class="form-select formControl mt-2"  formControlName ='InformationReceivedBy'>
+               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option  value="By Email">By Email</option>
+               <option  value="By Call">By Call</option>
+             </select>
+             <label>Information Received By</label>
+             </div>
+             </div>
+             <div class="col-sm-3">
+            <div class="text-center ">
+            <div class="mt-3"  *ngIf ="messageSuccess" style="text-align: left;">
+          
+          <a href="javascript:void(0)"  (click)="onSubmit();" class="ml-4"><img src="assets/save_8361323.png" width="40px" height="40px" ></a>
+          <!-- <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a> -->
+        
+           
+          
+          </div>
+      </div>
+             </div>
+          </div>
+       </form>
+    </mat-dialog-content>
+    
+
+      
+   </div>
+
+  
+ </div>
+    
+     
+ 
+  
+    <!-- <div class="text-center mt-5 ">
+     <div class="btn-group  gap-2  ">
+      
+         <button mat-stroked-button class="text-right"  style="background-color: #3f51b5 !important;color:white"(click)="onSubmit()" >{{ClaimID ==undefined ?'Save':'Update'}}</button>
+         <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+        
+       
+       </div>
+ </div> -->
+ 
+ 

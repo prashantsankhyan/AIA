@@ -1,0 +1,335 @@
+<div class="main" style="background-color: white;">
+  <div *ngIf ="showSpinner">
+  <app-spinner></app-spinner>
+  </div>
+
+ <!-- <div class="container" style="text-align: right;" *ngIf ="!showSpinner">
+     <button type="button" class="btn btn-danger" (click)="exportHtmlToPDF()"><mat-icon>picture_as_pdf</mat-icon></button>
+    </div> -->
+ <button *ngIf ="!showSpinner"
+          style="width: 300px; color: green;"
+          class="learn-more"
+          [useExistingCss]="true"
+          printSectionId="print-section"
+          printTitle="Invoice"
+          ngxPrint>
+          Save And Convert PDF
+        </button>
+
+   
+     
+<!-- <div class="contailer p-2"  id="htmltable" #htmltable> -->
+  <div class="contailer p-2"   id="print-section">
+<div class="row mt-5" *ngFor ="let data of listForPdf">
+ <div class="col-sm-6">
+
+  <h2 style="margin:0;">Amerigo Insurance Agency</h2>
+  <p style="margin:0;">Phone :- <span style="font-weight:500;">530-290-1633</span></p>
+  <p style="margin:0;">State :- <span style="font-weight:500;">CA</span></p>
+
+  <!-- Add space only here -->
+  <div style="margin-top:18px;">
+
+ 
+
+    <p style="margin:0;">
+      Account Name :- <span style="font-weight:500;">{{data.AccountName}}</span><br/>
+       Phone :- <span style="font-weight:500;">{{data.PhoneNumber}}</span><br/>
+      Address :- <span style="font-weight:500;">{{data.Description}}</span><br/>
+      City :- <span style="font-weight:500;">{{data.City}}</span><br/>
+      State :- <span style="font-weight:500;">{{data.State}}</span>
+    </p>
+
+  </div>
+
+</div>
+ <div class="col-sm-2">
+   
+ </div>
+ 
+
+ <div class="col-sm-4">
+  
+   <h3>Invoice#: <span style="font-weight: 600"> {{InvoiceID}}{{data.AccountName | slice:0:3 }}</span></h3>
+ 
+   
+   
+     <table class="table table-bordered ">
+     <thead >
+         <tr style="height: 1px;">
+           <th class="col-sm-6" >Account Number </th>
+           <th class="col-sm-6" >Date</th>
+          
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td> {{data.LookUpCode}}</td>
+           <td> {{currentDate |date :'MM/dd/yyyy'}} </td>
+         
+         </tr>
+       
+         <tr>
+         </tbody>
+     </table>
+     <table class="table table-bordered table-sm" style="margin-top: 0px;">
+         <thead >
+             <tr>
+               <th class="col-sm-6"> BALANCE DUE ON</th>
+               
+              
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>{{data.ARDue |date:'MM/dd/yyyy'}} </td>
+              
+             
+             </tr>
+           
+             <tr>
+             </tbody>
+         </table>
+         <table class="table table-bordered table-sm " style="margin-top: -1px;">
+             <thead >
+                 <tr>
+                   <th class="col-sm-6"> AMOUNT PAID</th>
+                   <th class="col-sm-6"> AMOUNT DUE </th>
+                  
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>{{data.ReceiveAmount | currency}}</td>
+                   <td>{{data.TotalOpeningBalance | currency }}</td>
+                  
+                 
+                 </tr>
+               
+                 <tr>
+                 </tbody>
+             </table>
+ </div>
+
+</div>
+<div class="row">
+ <div class="col-sm-3">
+
+ </div>
+ <div class="col-sm-4">
+     <h2> </h2>
+ </div>
+ 
+
+</div>
+<div >
+  
+<h1>Note:- <span>Vehicle changes</span></h1>
+
+ <table class="table table-sm" *ngIf="Service !== null && Service !== '' && Service !== 0">
+  <thead>
+    <tr>
+      <th>Vehicle ID</th>
+      <th> Year </th>
+      
+      <th>Make</th>
+      <th>Model</th>
+      <th>VIN</th>
+      <th> Value </th>
+     
+      <!-- Add other headings as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vehicle of ListOfAllVehicle">
+      <td>{{ vehicle.VehicleID }}</td>
+      <td>{{ vehicle.Year}}</td>
+      
+      <td>{{ vehicle.Make }}</td>
+      <td>{{ vehicle.Model }}</td>
+      <td>{{ vehicle.VIN }}</td>
+      <td>{{ vehicle.Value | currency }}</td>
+      <!-- <td>{{ vehicle.Status }}</td> -->
+      <!-- Add other columns as needed -->
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 50px;" *ngFor ="let data of listForPdf">
+  
+<div class="card mt-5">
+
+
+<!-- Optionally show a message when condition is false -->
+
+
+
+
+ <table class="table table-borderless ">
+     <thead class="">
+     
+       <tr class="header-row" style="background-color: black; color: white;" >
+        <th> Sr No</th>
+         <!-- <th  *ngIf="data.Detail && data.Detail[0]?.Endorsement_No !==null"> Endorsement_No</th> -->
+         <!-- <th>Premium</th> -->
+         
+        
+         <th > Effective - Expiration Date </th>
+         
+           <th>TransCode</th>
+           <th>Change Date</th>
+           <th>Policy Number</th>
+         <!-- <th *ngIf="data.Detail && data.Detail[0]?.Endorsement_Date !==null" >Endorsement_Date</th> -->
+         <th>Description</th>
+         <th> Amount </th>
+        
+       
+       
+         
+         <!-- <th>AP/RP</th>
+         <th >PolicyFee</th>
+         <th >SurpluxTax</th>
+         <th >Financed Amount</th> -->
+         <!-- <th > Agency Fees</th> -->
+         <!-- <th>Amount</th> -->
+         
+       </tr>
+     </thead>
+     <tbody>
+      <ng-container *ngFor ="let data1 of data.Detail; let i=index;">
+        <tr >
+          <td>{{i+1}}</td>
+         
+           <!-- <td *ngIf="data1.Endorsement_No !==null">{{data1.Endorsement_No}}</td> -->
+           <!-- <td>{{data1.LineShortName}}</td> -->
+           
+         
+           <td >{{data1.Effective | date:'MM/dd/YYYY' }} - {{data1.Expiration | date:'MM/dd/YYYY'}} </td>
+          
+             <td>{{data1.TransCode }}</td>
+             <td>{{data1.EffectiveDate | date:'MM/dd/YYYY' }}</td>
+             
+             <td> {{ data1.LineName === 'Auto Liability' ? 'AL' : data1.LineName }}-{{data1.ChildPolicyName}}</td>
+           <!-- <td *ngIf="data1.Endorsement_Date !==null">{{data1.Endorsement_Date |date:'MM/dd/yyyy'}}</td> -->
+           <td>
+            Premium
+            <!-- <span > {{data1.Service == 0 ? data1.ChildPolicy_Description : data1.Endorsement_Description}}</span> -->
+             <br/>
+            <span style="margin-top: 20px;">Policy Fees:</span> <br/>
+            <span style="margin-top: 20px;">Surplux Tax: </span><br/>
+            <span style="margin-top: 20px;">Financed: </span> <br/>
+            <span style="margin-top: 20px;">Down: </span>
+
+        </td> 
+       <td>
+
+  <!-- Amount -->
+  <span style="color: red;">
+    {{ data1.Amount | currency:'USD' }}
+  </span><br/>
+
+  <!-- Policy Fee -->
+  <span style="color: red; margin-top:20px;">
+    {{ data1.PolicyFee | currency:'USD' }}
+  </span><br/>
+
+  <!-- Surplus Tax (Calculated Amount, NOT percent) -->
+  <span style="color: red; margin-top:20px;">
+    {{ getCalculatedValues(data1).surpluxValue | currency:'USD' }}
+  </span><br/>
+
+  <!-- Company Financed -->
+  <span style="color: red; margin-top:20px;">
+    {{ data1.CompanyFinanced | currency:'USD' }}
+  </span><br/>
+
+  <!-- Total -->
+  <span style="color: red; font-weight:800; margin-top:20px;">
+    {{ getCalculatedValues(data1).total | currency:'USD' }}
+  </span>
+
+</td>
+          
+         </tr>
+        
+       <tr *ngFor ="let transaction of data1.TransactionDetails; let i=index;">
+       
+        <td scope="row"></td>
+       
+        <td scope="row"></td>
+        <td  scope="row"></td>
+        <td  scope="row"></td>
+        <!-- <td  scope="row"></td> -->
+        
+       
+        
+        <td >{{transaction.Notes}}-<span >{{transaction.CurDate | date:'MM/dd/YYYY'}}</span></td>
+        
+      <td scope="row">
+  <div class="top-line">
+    {{transaction.RecieveAmount | currency}}
+  </div>
+</td>
+      
+
+    </tr>
+      </ng-container>
+      <tr>
+
+        <td></td>
+        <td></td>
+        <td></td>
+       
+        </tr>
+        <tr>
+
+          <td></td>
+          <td></td>
+          <td></td>
+         
+          </tr>
+    
+      <tr>
+
+        <td></td>
+        <td></td>
+         <td></td>
+
+        
+       <td scope="row"></td>
+        <td  scope="row"></td>
+        
+        <td >Remaining Balance</td>
+        <td style="font-weight: 600;color: red;">{{data.TotalOpeningBalance | currency }}</td>
+        </tr>
+     </tbody>
+    
+    
+   <tfoot>
+   
+</tfoot>
+   
+    
+   </table>
+   <table class="table">
+    <thead>
+     
+    </thead>
+    <tbody>
+     
+    </tbody>
+  </table>
+ 
+ </div>
+</div>
+
+<div *ngFor="let note of allNotes">
+ <h1>Note:- <span style="font-size:18px; font-weight:normal;">{{ note }}</span></h1>
+</div>
+ 
+ </div>
+</div>
+
+
+
+</div>
+

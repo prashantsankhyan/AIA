@@ -1,0 +1,502 @@
+<!-- <div class="container-fluid">
+ <nav class="navbar navbar-expand-lg navbar-white bg-white" style="transition: box-shadow 0.3s ease;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+  <div class="container-fluid">
+    <a class="navbar-brand" ><img src="../../../assets/img/logo.png" style="height: 50px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+      
+        <section>
+          <h5 class="text-shadow"> -- Welcome Back -- </h5>
+          <div class="tags">
+            <p class="text-shadow">{{nameOfTeam}}</p>
+          </div>
+        </section>
+      
+
+      
+      
+      </ul>
+      <div class="d-flex">
+
+      <div *ngIf ="showSaleTeam">
+        
+        <button style="color:rgba(0, 0, 255, 0.689);"  mat-button [matMenuTriggerFor]="menu"   ><i class="fa fa-address-card fa-3x" aria-hidden="true"></i> </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="addAccountDetail($event)">
+            <mat-icon>dialpad</mat-icon>
+            <span>Add Account</span>
+          </button>
+          <button mat-menu-item routerLink="/mainLayout/account" >
+            <mat-icon>voicemail</mat-icon>
+            <span>View Account</span>
+          </button>
+        
+        </mat-menu>
+      </div>
+      <div *ngIf ="showClaimTeam">
+        <button class="btn btn-outline-primary" >Add New Claim</button>
+
+      </div>
+      <div *ngIf ="showSubmissionTeam">
+      
+
+      </div>
+     
+
+      
+
+      
+        
+        
+    </div>
+    </div>
+  </div>
+ </nav>
+ 
+ <div class="sidebar">
+  <a routerLink="./_dashboard" routerLinkActive="active">Dashboard</a>
+  <a   routerLink="./_carrier" routerLinkActive="active" >Carrier </a>
+  <a   routerLink="./_broker" routerLinkActive="active" >Broker</a>
+  <a   routerLink="" >Report</a>
+  
+  <a   routerLink="" >Generate Certifcate</a>
+  <a   routerLink="/appRegistration" >Generate Login</a>
+ 
+  <a href="javascript:void(0)" (click)="logout()">Log out</a>
+  
+ </div>
+ <div class="content" style="height: 500px;">
+    <router-outlet></router-outlet>
+ </div>
+</div> -->
+
+
+
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper" >
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="javascript:void(0)" >
+            <div class="containerJB">
+           <img src="assets/img/otherlogo.PNG" class="static-logo" alt="Logo">
+  <!-- <div class="moving-text">Amerigo Insurance Agency</div> -->
+  
+</div>
+           
+            <!-- <div class="sidebar-brand-icon rotate-n-0" style="color: #1397d5">
+                <img src="../../../assets/img/madeLogo.PNG" style="height: 30px; width: 40px;border-radius: 50%;">AIA
+            </div>
+            <div class="sidebar-brand-text" style="color:#1397d5;">  <sup>where truth build trust</sup></div> -->
+        </a>
+          <!-- Sidebar - Brand -->
+          <!-- <a class="sidebar-brand d-flex align-items-center " style="background-color: white;" href="index.html">
+              <div class="sidebar-brand-icon rotate-n-0" style="background-color: white;">
+                
+                  <img src="../../../assets/img/madeLogo.PNG" style="height: 50px;">
+              </div>
+              <div  >
+                
+        </div>
+              
+          </a> -->
+
+        
+
+          <!-- Divider -->
+          <hr class="sidebar-divider my-0">
+
+          <!-- Nav Item - Dashboard -->
+          <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_dashboard" href="javascript:void(0)">Dashboard</a>
+          </li>
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_claimsData" href="javascript:void(0)">Claim Data</a>
+          </li>
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_endrosementData" href="javascript:void(0)">Endorsement Data</a>
+          </li>
+
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_marketd" href="javascript:void(0)">Marketed Data</a>
+          </li>
+                    
+          
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./transactionView" href="javascript:void(0)">View Transaction</a>
+          </li>
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./holder" href="javascript:void(0)">Hlder</a>
+          </li>
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./renewPolicy" href="javascript:void(0)">Renew</a>
+          </li>
+
+          
+
+           <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_carrier" href="javascript:void(0)">Carrier</a>
+          </li>
+
+                     <li   class="mt-3" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_broker" href="javascript:void(0)">Broker</a>
+          </li>
+          
+
+          
+           <!-- <li   class="mt-2" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_carrier" href="javascript:void(0)">Carrier</a>
+          </li>
+            <li   class="mt-2" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="./_broker" href="javascript:void(0)">Broker</a>
+          </li> -->
+
+           <!-- <li   class="mt-2" routerLinkActive="active">
+              
+                    <a class="btn cta bg"  routerLink="/appRegistration" href="javascript:void(0)">Carrier</a>
+          </li> -->
+
+         
+
+          <!-- Heading -->
+         
+
+         
+
+          <!-- Divider -->
+         
+
+          <!-- Heading -->
+        
+
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+              <a class="nav-link collapsed"  (click)="toggleDropdown()"  data-toggle="collapse" data-target="#collapsePages"
+                  aria-expanded="true" aria-controls="collapsePages">
+                  <i class="fas fa-fw fa-folder"></i>
+                  <span>Pages</span>
+              </a>
+               <a class="nav-link collapsed"  (click)="toggleDropdown()"  data-toggle="collapse" data-target="#collapsePages"
+                  aria-expanded="true" aria-controls="collapsePages">
+                  <i class="fas fa-fw fa-folder"></i>
+                  <span>Pages</span>
+              </a>
+
+              
+              <div id="collapsePages" class="collapse"[class.show]="isDropdownOpen" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Admin Area:</h6>
+                      <a class="collapse-item" routerLink="./_carrier" routerLinkActive="active" >Carrier</a>
+                      <a class="collapse-item" routerLink="./_broker" routerLinkActive="active">Broker</a>
+                      <a class="collapse-item" routerLink="/appRegistration">Generate Login</a>
+                    
+                  </div>
+              </div>
+          </li>
+
+        
+
+         
+
+      
+        
+
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column" >
+
+          <!-- Main Content -->
+          <div id="content"  >
+
+              <!-- Topbar -->
+              <nav class="navbar navbar-expand navbar-light  topbar static-top shadow" style='background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png");' >
+
+                  <!-- Sidebar Toggle (Topbar) -->
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3" >
+                      <i class="fa fa-bars"></i>
+                  </button>
+
+               
+               
+
+                  <!-- Topbar Navbar -->
+                  <ul class="navbar-nav ml-auto" >
+
+                      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                      <li class="nav-item dropdown no-arrow d-sm-none">
+                         
+                          <!-- Dropdown - Messages -->
+                          
+                      </li>
+
+                      <!-- Nav Item - Alerts -->
+                      <li class="nav-item dropdown no-arrow mx-1">
+                          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="alertsDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-bell fa-fw"></i>
+                              <!-- Counter - Alerts -->
+                              <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+                          </a>
+                          <!-- Dropdown - Alerts -->
+                          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                              aria-labelledby="alertsDropdown">
+                              <h6 class="dropdown-header">
+                                  Alerts Center
+                              </h6>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="mr-3">
+                                      <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="small text-gray-500">December 12, 2019</div>
+                                      <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                  </div>
+                              </a>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="mr-3">
+                                      <div class="icon-circle bg-success">
+                                          <i class="fas fa-donate text-white"></i>
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="small text-gray-500">December 7, 2019</div>
+                                      $290.29 has been deposited into your account!
+                                  </div>
+                              </a>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="mr-3">
+                                      <div class="icon-circle bg-warning">
+                                          <i class="fas fa-exclamation-triangle text-white"></i>
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="small text-gray-500">December 2, 2019</div>
+                                      Spending Alert: We've noticed unusually high spending for your account.
+                                  </div>
+                              </a>
+                              <a class="dropdown-item text-center small text-gray-500" href="javascript:void(0)">Show All Alerts</a>
+                          </div>
+                      </li>
+
+                      <!-- Nav Item - Messages -->
+                      <li class="nav-item dropdown no-arrow mx-1">
+                          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="messagesDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-envelope fa-fw"></i>
+                              <!-- Counter - Messages -->
+                              <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                          </a>
+                          <!-- Dropdown - Messages -->
+                          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                              aria-labelledby="messagesDropdown">
+                              <h6 class="dropdown-header">
+                                  Message Center
+                              </h6>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="dropdown-list-image mr-3">
+                                      <!-- <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                          alt="..."> -->
+                                      <div class="status-indicator bg-success"></div>
+                                  </div>
+                                  <div class="font-weight-bold">
+                                      <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                          problem I've been having.</div>
+                                      <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                  </div>
+                              </a>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="dropdown-list-image mr-3">
+                                      <!-- <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                          alt="..."> -->
+                                      <div class="status-indicator"></div>
+                                  </div>
+                                  <div>
+                                      <div class="text-truncate">I have the photos that you ordered last month, how
+                                          would you like them sent to you?</div>
+                                      <div class="small text-gray-500">Jae Chun · 1d</div>
+                                  </div>
+                              </a>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="dropdown-list-image mr-3">
+                                      <!-- <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                          alt="..."> -->
+                                      <div class="status-indicator bg-warning"></div>
+                                  </div>
+                                  <div>
+                                      <div class="text-truncate">Last month's report looks great, I am very happy with
+                                          the progress so far, keep up the good work!</div>
+                                      <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                  </div>
+                              </a>
+                              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                                  <div class="dropdown-list-image mr-3">
+                                      
+                                      <div class="status-indicator bg-success"></div>
+                                  </div>
+                                  <div>
+                                      <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                          told me that people say this to all dogs, even if they aren't good...</div>
+                                      <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                  </div>
+                              </a>
+                              <a class="dropdown-item text-center small text-gray-500" href="javascript:void(0)">Read More Messages</a>
+                          </div>
+                      </li>
+
+  <div  class="topbar-divider d-none d-sm-block"></div>
+
+ 
+  <li *ngIf ="showSaleTeam"  class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"(click)="toggleDropdownForName()"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+            {{userName}}
+          </span>
+          <img class="img-profile rounded-circle"
+              src="/assets/img/undraw_profile.svg">
+      </a>
+     
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+      [class.show]="isNameDropdownOpen"
+          aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="javascript:void(0)"(click)="addAccountDetail($event)">
+              
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Account
+          </a>
+          <a class="dropdown-item" href="javascript:void(0)"routerLink="/mainLayout/account">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+              View List
+          </a>
+         
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal" (click)="logout()">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+          </a>
+      </div>
+  </li>
+
+
+  
+
+  
+  <li *ngIf ="!showSaleTeam"  class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"(click)="toggleDropdownForName()"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+            {{userName}}
+          </span>
+          <img class="img-profile rounded-circle"
+              src="/assets/img/undraw_profile.svg">
+      </a>
+      
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+      [class.show]="isNameDropdownOpen"
+          aria-labelledby="userDropdown">
+         
+         
+          <a class="dropdown-item"href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal" (click)="logout()">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+          </a>
+      </div>
+  </li>
+
+                     
+
+                  </ul>
+
+              </nav>
+              <!-- End of Topbar -->
+
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
+                <router-outlet></router-outlet>
+
+                 
+               </div>
+              <!-- /.container-fluid -->
+
+          </div>
+          <!-- End of Main Content -->
+
+          <!-- Footer -->
+          <!-- <footer class="sticky-footer bg-white">
+              <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                      <span>MINDSET &copy; IS EVERYTHING</span>
+                  </div>
+              </div>
+          </footer> -->
+          <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
+
+  </div>
+  
+  <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" >Logout</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+

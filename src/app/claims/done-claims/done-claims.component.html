@@ -1,0 +1,125 @@
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid page-background" >
+  
+  <div class=" py-3"  style="border-top: 1px solid rgba(0, 0, 0, 0.085);">
+    
+    <div class ="row p-1">
+    <div class="col-sm-1">
+      <a href="javascript:void(0)" (click)="backToClaims()" >
+ <img src="assets/back.png" width="50px" /></a>
+    </div>
+
+           <div class="col-sm-4">
+        <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ClaimNumber" (ngModelChange)="onClaimNumberChange($event)"  />
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Cliam No</button>
+	     </div>
+        
+       </div>
+       <div class="col-sm-3">
+         <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.LineShortName" (ngModelChange)="onLineShortNameChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Policy</button>
+	     </div>
+      </div>
+      <div class="col-sm-4">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ReportedTo" (ngModelChange)="onReportedToChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Repoted</button>
+	     </div>
+        
+      </div>
+      
+
+    </div>
+  
+
+  
+
+</div>
+  
+     <div class="scrolling mt-2" > 
+     
+       <table  class="table table-bordered" style="margin:0 auto;" >
+           <thead >
+             <tr>
+              <th>  Policy Type </th>
+         
+              <th>Reported To</th>
+              <th>Claim Type</th>
+              <th>Driver</th>
+              <th>Truck</th>
+              <th>Trailer </th>
+              <th>Info Received</th>
+              <th> ClaimNumber</th>  
+              <th >EnteredDate</th>
+              <th >EnteredBy </th>
+              <th > </th>
+              <th > </th>
+               
+               </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor ="let data of listOfMoveClaim |claims:searchCriteria" (dblclick) ="getListOfAdjustors(data)">
+              <td >{{data.LineName}} /{{data.LineShortName}} </td>
+    
+      <td>{{data.ReportedTo}}</td>
+      <td>{{data.ClaimType}}</td>
+     <!-- Driver Column -->
+<td [ngStyle]="{
+  color: data.DriverName == null && data.Driver ? '#e93423' : 'rgba(15, 15, 15, 0.7)'
+}">
+  {{ data.DriverName ?? data.Driver ?? '' }}
+ 
+</td>
+
+<!-- Truck Column -->
+<td [ngStyle]="{
+  color: data.Truck_VIN == null && data.Truck ? '#e93423' : 'rgba(15, 15, 15, 0.7)'
+}">
+  {{ data.Truck_VIN ?? data.Truck ?? '' }}
+
+</td>
+
+<!-- Trailer Column -->
+<td [ngStyle]="{
+  color: data.Trailer_VIN == null && data.Trailer ? '#e93423' : 'rgba(15, 15, 15, 0.7)'
+}">
+  {{ data.Trailer_VIN ?? data.Trailer ?? '' }}
+ 
+</td>
+
+      <td>{{data.InformationReceivedBy}}</td>
+      <td>{{data.ClaimNumber}}</td>
+     <td>{{data.EnteredDateTime|date:'dd/MM/yyyy'}}</td>
+     <td>{{data.EnteredBy}} </td>
+              <td>{{data.DeleteReason}}</td>
+              <td>
+                <a  href="javascript:void(0)"  (click)="reverseClaim(data)"><img src="../../../assets/reverse.png" width="40px" height="40px"></a>
+               
+             </td>
+             
+           
+             
+            </tr>
+            
+            
+     
+          
+            
+          
+             
+           
+           
+            
+           </tbody>
+         </table>
+   </div>
+   
+ 
+</div>
+</div>

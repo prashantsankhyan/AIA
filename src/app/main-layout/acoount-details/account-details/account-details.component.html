@@ -1,0 +1,178 @@
+
+
+<div class="container-fluid mt-2 page-background" >
+  <div *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+   </div>
+   <div *ngIf ="!showSpiner">
+
+
+       <div class ="row mt-2" >
+       <div class="col-sm-3">
+        <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.name"
+          (ngModelChange)="onNameChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Name</button>
+	     </div>
+        
+       </div>
+       <div class="col-sm-3">
+         <div class="container__item">
+             <select
+  class="form__field"
+  [(ngModel)]="searchCriteria.accountType"
+  (ngModelChange)="onAccountTypeChange($event)"
+  aria-label="Search By Account Type"
+>
+  <option value="" disabled>Select Account Type</option>
+  <option value ='INSURED'>Insured</option>
+  <option value ='Client'>Client</option>
+</select>
+			  <!-- <input type="text" class="form__field"  [(ngModel)]="searchCriteria.accountType"
+            (ngModelChange)="onAccountTypeChange($event)"/> -->
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By  Type</button>
+	     </div>
+      </div>
+      <div class="col-sm-3">
+           <div class="container__item">
+			  <input type="text" class="form__field"  [(ngModel)]="searchCriteria.city"
+        (ngModelChange)="onCityChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By City</button>
+	     </div>
+        
+      </div>
+      <div class="col-sm-3 mt-2">
+           <div class="container__item">
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.state"
+        (ngModelChange)="onStateChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Stae</button>
+	     </div>
+      
+      </div>
+    
+         <div class="col-sm-3 mt-2">
+           <div class="container__item">
+			  <input type="text" class="form__field"  [(ngModel)]="searchCriteria.lookUpCode"
+         (ngModelChange)="onLookUpCodeChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Code</button>
+	     </div>
+        
+       
+      
+      </div>
+         <div class="col-sm-3 mt-2">
+       
+      
+      </div>
+         <div class="col-sm-3 mt-2">
+       
+      
+      </div>
+     
+      <div class="col-sm-3 mt-2">
+         
+       <div class=" d-grid" >
+        <!-- <input type="text" name="search"class="form-control" [(ngModel)]="searchCriteria.enteredBy" (ngModelChange)="onEnteredByChange($event)" placeholder="Search Enter By" style="border-radius: 40px;"> -->
+
+         <button class="btn" style="height: 35px;font-size: small; background-color: #1397d5;color: white;" (click) ="addAccount()">ADD ACCOUNT DETAIL</button>
+      </div>
+      </div>
+      
+       
+    
+      </div>
+
+
+   
+     
+    
+       
+       
+      
+     
+        <div class="scrolling mt-4">
+        
+          <table  class="table table-bordered table-hover dt-responsive">
+                
+                   <thead>
+                     <tr>
+                       <th >Account Name</th>
+                       <th>Lookup Code</th>
+                       <th>Number</th>
+                       <th>Email</th>
+                       <th>Zip</th>
+                       <th>Address</th>
+                       <th>Effective Date<th>
+                        <th></th>
+                       
+                       
+                     </tr>
+                   </thead>
+                   <tbody>
+                   
+                      <tr  *ngFor ="let data of listOfAllAcount | searchFilter: searchCriteria; index as i" >
+                        <td (click)="goToAttachmentFile(data)" class="account-name-td">{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+                        <td>{{data.LookUpCode}}</td>
+                        <td>{{data.PhoneNumber}}</td>
+                        <td>{{data.EmailID}}</td>
+                        <td>{{data.ZIP}}</td>
+                        <td>{{data.City}}-{{data.State}}-{{data.Country}}</td>
+                        <td>{{data.EffectiveDate }}</td>
+                        <td >
+                         <mat-icon style="color: red; font-size: small;" *ngIf="data.AccountType === 'Prospective'">error</mat-icon>
+                         <mat-icon style="color: green; font-size: small;" *ngIf="data.AccountType !== 'Prospective'">check_circle</mat-icon>
+                       
+                       </td>
+                        
+            
+                        <td>
+                          <a  [matMenuTriggerFor]="menu" >
+                          <i class="fas fa-list fa-2x  mr-2"></i>
+                          </a>
+                          
+                         <mat-menu #menu="matMenu">
+                          <a style="color: rgb(255, 174, 0);" class="dropdown-item"href="javascript:void(0)"*ngIf="data.AccountType === 'Prospective'"  mat-menu-item (click)= "updateAccountType(data)"  >
+                          <span ><i class="fas fa-check mr-3 fa-sm innerfont">Confirm Account  </i></span>   
+                           
+                        </a>
+                        <a style="color: green;" class="dropdown-item"href="javascript:void(0)" mat-menu-item (click)= "addEditAccount(data)">
+                        <span style="margin-left: 10px;"><i class="fas fa-user mr-3 fa-sm innerfont"> Edit Account</i></span>  
+
+                         
+                      </a>
+                      <!-- <a style="color: red;" class="dropdown-item"href="javascript:void(0)" (click)= "deleteAccountType(data)">
+                     <span style="margin-left: 10px;"> <i class="fa fa-times mr-3 fa-sm innerfont"> Delete Account</i></span>  
+
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a> -->
+                      
+                          
+                           
+                          <!-- <button mat-menu-item > </button>
+                          <button mat-menu-item (click)= "goToAttachmentFile(data)">Attach File Here  </button>
+                          <button mat-menu-item (click)= "addNoteForYourSelf(data)">Add Note </button>
+                           -->
+                         </mat-menu>
+                       </td>
+                      </tr>
+                    
+                  
+                    
+                   </tbody>
+                  
+                 </table>
+              
+             </div>
+           
+      
+      
+   
+     
+    
+   
+     
+   </div>
+</div>
+
+
+

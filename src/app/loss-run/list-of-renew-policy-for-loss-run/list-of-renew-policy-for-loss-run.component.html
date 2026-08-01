@@ -1,0 +1,82 @@
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+ <div *ngIf ="!showSpiner">
+<div class="card mt-1">
+<div class="row p-1">
+ <div class="col-sm-2">
+  <a href="javascript:void(0)" (click) ="backToLossRun()"  class="btn btn-primary" class="d"  data-title="Back To lossRun!">Back To lossRun!</a>
+</div>
+ <div class="col-sm-2">
+   <input type="text" class="form-control"[(ngModel)]="searchCriteria.Expiration" (ngModelChange)="onExpirationChange($event)"   placeholder="MM/DD/YYYY">
+ </div>
+ <div class="col-sm-2">
+   <input type="text" class="form-control"[(ngModel)]="searchCriteria.LookUpCode" (ngModelChange)="onLookUpCodeChange($event)"   placeholder="Search By Code">
+ </div>
+ <div class="col-sm-2">
+   <input type="text" class="form-control"[(ngModel)]="searchCriteria.ExpireInDays" (ngModelChange)="onExpireInDaysChange($event)"   placeholder="Search By Panding  Days">
+ </div>
+
+</div>
+</div>
+
+<div class="scrollable-table-body mt-2">
+   
+<table  class="table table-bordered">
+
+ <thead>
+   <tr>
+     
+     <th>Account </th>
+     <th>DOT</th>
+     <th>Policy Name</th>
+     <th>Policy Number</th>
+     <th>Effective</th>
+     <th>Expiration</th>
+     <th>Carrier</th>
+     <th>Broker Name</th>
+    
+     
+     
+     <th>Email</th>
+     <th>ExpireInDays</th>
+     <th></th>
+    
+   </tr>
+ </thead>
+ <tbody>
+ 
+    <tr *ngFor = "let data of listOfAllRenew|  searchRenewList: searchCriteria  ">
+     <td>{{data.AccountName}}</td>
+     <td>{{data.LookUpCode}}</td>
+      <td>{{data.LineName}}/{{data.LineShortName}}</td>
+      <td>{{data.ChildPolicyName}}</td>
+      <td>{{data.Effective|date:'MM/dd/yyyy'}}</td>
+      <td>{{data.Expiration|date:'MM/dd/yyyy'}}</td>
+      <td>{{data.IssuingCompanyName}}</td>
+      <td>{{data.BrokerName}}</td>
+      <td>{{data.EmailID}}</td>
+      <td>{{data.ExpireInDays}}</td>
+      <td>
+       <a href="javascript:void(0)" [matMenuTriggerFor]="menu" style="text-align: center;font-size: small;">
+           <i class="fa fa-cog" aria-hidden="true"></i>
+       </a>
+       <mat-menu #menu="matMenu">
+         <button mat-menu-item (click)="listOfAllData(data)">List Of All Data</button>
+        
+     
+       </mat-menu>
+   </td>
+    </tr>
+  
+
+  
+ </tbody>
+
+</table>
+
+</div>
+
+</div>

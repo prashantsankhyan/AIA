@@ -1,0 +1,55 @@
+.form-control {
+ display: block;
+ width: 100%;
+ 
+ font-size: x-small;
+ font-weight: 400;
+ line-height: 1.5;
+ color: #212529c7;
+ background-color: #fff;
+ background-clip: padding-box;
+ border: 1px solid #ced4da;
+ appearance: none;
+ border-radius: 0.25rem;
+ font-family: sans-serif;
+ transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ height: 30px;
+ 
+}
+
+
+
+
+@media screen and (min-width: 1200px) and (max-width: 1340px) {
+ .scrolling{
+  height:620px;  
+  overflow:scroll;
+ }
+ 
+}
+@media screen and (min-width: 1340px) and (max-width: 1540px) {
+ .scrolling{
+  height:620px;  
+  overflow:scroll;
+ }
+}
+@media screen and (min-width: 1569px) and (max-width: 1800px) {
+ .scrolling{
+ height:700px;  
+ overflow:scroll;
+}
+}
+@media screen and (min-width: 1800px) and (max-width: 2200px) {
+ .scrolling{
+  height:820px;  
+  overflow:scroll;
+ }
+ label{
+  font-size: small !important;
+  font-weight: bold !important;
+ }
+}
+
+.colDefivd {
+ width: 12.5% !important;
+}

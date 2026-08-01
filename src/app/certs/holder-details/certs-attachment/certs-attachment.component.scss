@@ -1,0 +1,92 @@
+.mat-drawer-container {
+ background-color: #fafafa !important;
+ color: rgba(0, 0, 0, 0.87);
+}
+
+
+
+
+.mat-drawer-container {
+ background-color: #fafafa !important;
+ color: rgba(0, 0, 0, 0.87);
+}
+
+label {
+
+ font-size: small; 
+ font-weight:500;color: #0000008c;
+}
+
+
+tr {
+ border-color: bisque;
+ border-style: hidden;
+ border-width: 0;
+}
+
+
+label {
+ display: inline-flex;
+ font-size: smaller;
+ 
+}
+
+
+
+
+.scrolling1{
+ height:540px;  
+ overflow:scroll;
+}
+
+// .card{
+//     border-radius: 4px;
+//     background: #fff;
+//     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+//       transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+//   padding: 14px 80px 18px 36px;
+//   cursor: pointer;
+// }
+
+// .card:hover{
+  
+//   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+// }
+
+
+
+
+p {
+ font-family: Lato;
+}
+.error {
+   color: #f00;
+}
+
+.dragarea {
+   font-size: 1.5rem;
+   border: 3px solid #bbb;
+   padding: 1.5rem;
+   background-color: #fff;
+   color: #bbb;
+}
+
+.droparea {
+ font-size: 1.5rem;
+ border: 3px dashed #bbb;
+ padding: 1.5rem;
+ background-color: #eff;
+ color: #aaa;
+}
+
+
+.file-container {
+ // width: 450px;
+ border: 4px dotted black;
+ .file {
+     opacity: 0;
+     padding: 5rem;
+     width: auto;
+     height: 5rem;
+ }
+}

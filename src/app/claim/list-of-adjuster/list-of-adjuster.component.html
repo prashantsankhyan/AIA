@@ -1,0 +1,90 @@
+<app-claim-nav-bar></app-claim-nav-bar>
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+ <div class="container-fluid" style="background-color: white;">
+  <div class="row">
+   <div class="col-sm-1">
+    <button class="btn btn-outline-primary mt-2" style="height: 30px;font-size: small;" (click)="addEditAdjustor($event)" >+ Adjuster</button>
+   </div>
+   <div class="col-sm-1">
+    <button class="btn btn-outline-primary mt-2" style="height: 30px;font-size: small;" routerLink="/claim" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+   </div>
+   <div class="col-sm-3 mt-2">
+    <input type="text"  name="search"id="search"class="form-control mt-1" placeholder="--Search--" style="border-radius: 40px;">
+ </div>
+   
+  </div>
+
+
+<div class="card mt-1">
+ <div class="scrolling" > 
+ 
+   <table id="example" class="table table-bordered" style="width:100%">
+       <thead  class="" >
+         <tr>
+           <th>Name </th>
+           <th>Business </th>
+           <th>City  </th>
+           <th>State </th>
+           <th>Country </th>
+           <th>Phone</th>
+           <th>Emial</th>
+
+          
+           <th>Fax</th>
+           <th>EnteredBy</th>  
+           <th></th> 
+          
+          
+          
+      
+          
+          
+        
+         
+ 
+         </tr>
+       </thead>
+       <tbody>
+         <tr  *ngFor ="let data of  getALLAdjustsList">
+           <td >{{data.AdjustName}}</td>
+           <td>{{data.Business}}</td>
+           <td>{{data.City}}</td>
+          <td>{{data.State}}</td>
+          <td> {{data.Country}}</td>
+         
+          <td>{{data.Phone}}</td>
+          <td>{{data.Email}}</td>
+          <td>{{data.Fax}}</td>
+          <td>{{data.EnteredBy}}</td>
+          
+         
+          <td> <a class="mr-5"  href="javascript:void(0)" (click)="addEditAdjustor(data)"  ><mat-icon class="mt-1">edit</mat-icon></a> 
+          </td>
+ 
+          
+          
+        
+ 
+     
+        
+        
+         </tr>
+         
+       
+       
+        
+       </tbody>
+     </table>
+</div>
+</div>
+
+
+  
+    
+ 
+</div>
+</div>

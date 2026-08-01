@@ -1,0 +1,72 @@
+
+
+<div class="container-fluid">
+ <nav class="navbar navbar-expand-lg navbar-white bg-white" style="transition: box-shadow 0.3s ease;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/dashboard/_dashboard"><img src="../../../assets/img/logo.png" style="height: 45px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item">
+          <p style="color: #17a0bc;font-size: smaller;">Team - <span>{{teamName}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Account Name - <span>{{accountName}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Code - <span>{{lookUpCode}}</span></p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Email - <span> {{emailID}}</span>
+          </p>
+       
+        </li>
+        <li class="nav-item">
+          <p style="margin-left: 20px;color: #17a0bc;font-size: smaller">Phone Number - <span>{{phoneNumber}}</span></p>
+       
+        </li>
+      
+      </ul>
+      <div class="d-flex">
+        
+        <button class="btn btn-outline-primary mt-2" style="height: 30px;font-size: small;" (click)="addClaimHere($event)" >Add Claim Here</button>
+        <div>
+         <button class="btn btn-outline-primary bb" style="font-size: smaller; margin-top: -2px;margin-left: 2px; " mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Add Attachment </span>
+          </button>
+       
+          <button mat-menu-item (click)="getListOfMoveClaim()">
+            <mat-icon>notifications_off</mat-icon>
+            <span >List Of Confirm Claim</span>
+          </button>
+        </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+ </nav>
+ 
+
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+

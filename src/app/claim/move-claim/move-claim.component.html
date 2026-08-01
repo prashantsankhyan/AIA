@@ -1,0 +1,27 @@
+<div class="container">
+ <form [formGroup]="deleteForm">
+  <h2 class="text-center mt-2">Are you  Sure ?</h2>
+  <h5 class="text-center"> Please select reason to delete It</h5>
+  <select class="form-select formControl mt-4" formControlName="Reason"   aria-label="Default select example" style="margin-top: 28px;" >
+    <option hidden value="" disabled selected  > Select Reason to Move</option>
+    
+    <option  value="Claim Done">Claim Done</option>
+    
+  
+    
+   
+  </select>
+</form>
+<div class="text-center mt-5">
+ <div  *ngIf ="messageSuccess">
+   <button type="button" class="btn btn-outline-success btn-sm" style="width: 120px;" (click)="onSubmit()" > Save</button>
+   <button type="button" class="btn btn-outline-danger btn-sm" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+     
+    
+   
+   </div>
+
+</div>
+
+
+</div>

@@ -1,0 +1,135 @@
+<!-- Spinner -->
+<div *ngIf="showSpiner">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- Card Buttons -->
+<div class="container-fluid page-background" *ngIf="!showSpiner">
+  <div class="row mt-3">
+     <div class="col-xl-3 col-sm-6 col-12" (click)="goToDashboard()" >
+      <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+          <h4 class="primary">Previous Page  </h4>
+          <img src="assets/back.png" width="50px" />
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12" (click)="getPolicy()">
+      <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+          <h4 class="primary">ALL POLICY</h4>
+          <img src="assets/icons8-mark-80.png" width="50px" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 col-12" (click)="getAllExpire()">
+      <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+          <h4 class="danger">Expire & Delete</h4>
+          <img src="assets/icons8-delete-100.png" width="50px" />
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="col-xl-3 col-sm-6 col-12" (click)="updateAccountType($event)">
+      <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+          <h4 class="success">Edit Account Detail</h4>
+          <img src="assets/insurance.png" width="50px" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPTY issued -->
+  <div *ngIf="showPolicyTableEmpty "  class="scrollable-table-body card ">
+    <table class="table table-bordered table-hover dt-responsive">
+      <thead><tr><th colspan="6">Issued Policies</th></tr></thead>
+      <tbody><tr><td colspan="6" class="text-center">No Data</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- FILLED issued -->
+  <div *ngIf="showPolicyTableFilled " class="scrollingPolicy card " style="padding: 0;margin-top: -5px;" >
+    <table class="table table-bordered table-hover dt-responsive">
+      <thead>
+        <tr>
+          <th>Line Name</th>
+          <th>Policy Number</th>
+          <th>Effective-Expiration</th>
+          <th>Broker Name</th>
+          <th>Carrier</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of filteredPolicies"
+             >
+          <td (click)="goToEndrosement(data)">{{ data.LineName }}/{{ data.LineShortName }}</td>
+          <td>{{ data.ChildPolicyName }}</td>
+          <td>{{ data.Effective | date: 'MM/dd/yyyy' }} - {{ data.Expiration | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ data.BrokerName }}</td>
+          <td>{{ data.IssuingCompanyName }}</td>
+          <td> <span [ngStyle]="data?.IsTemporaryDelete ? { color: 'red' } : {}">{{ data.Description }} <br/>
+
+            <span  *ngIf="data?.IsTemporaryDelete">    {{ data.DeletedTimeStamp | date: 'MM/dd/yyyy' }} <br />
+    {{ data.DeleteReason }}  -{{data.DeletedBy}}       </span>
+          </span> 
+
+          </td>
+        
+          <td>
+            <a href="javascript:void(0)" [matMenuTriggerFor]="menu">
+              <i class="fa fa-cog"></i>
+            </a>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editPolicy(data)">Edit Policy</button>
+              <button mat-menu-item (click)="deletePolicy(data)" style="color: red;">Delete Policy</button>
+              <button mat-menu-item (click)="remarksViews(data)" >View Remarks</button>
+            </mat-menu>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EMPTY expired -->
+  <div *ngIf="showExpireTableEmpty " class="scrollable-table-body card ">
+    <table class="table table-bordered table-hover dt-responsive">
+      <thead><tr><th colspan="6">Expired Policies</th></tr></thead>
+      <tbody><tr><td colspan="6" class="text-center">No Data</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- FILLED expired -->
+  <div *ngIf="showExpireTableFilled  " class="scrollable-table-body card">
+    <table class="table table-bordered table-hover dt-responsive">
+      <thead>
+        <tr>
+          <th>Line Name</th>
+          <th>Policy Number</th>
+          <th>Effective-Expiration</th>
+          <th>Broker Name</th>
+          <th>Carrier</th>
+          <th>Description</th>
+          <th>Delete Resion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of expiredPolicies">
+          <td>{{ data.LineName }}/{{ data.LineShortName }}</td>
+          <td>{{ data.ChildPolicyName }}</td>
+          <td>{{ data.Effective | date: 'MM/dd/yyyy' }} - {{ data.Expiration | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ data.BrokerName }}</td>
+          <td>{{ data.IssuingCompanyName }}</td>
+          <td>{{ data.Description }}</td>
+          <td>{{data.DeleteReason}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+  <div class="container-fluid ">
+      <div class="row p-1">
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.Year" (ngModelChange)="onYearChange($event)"  
+               />
+                <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Year</button>
+      </div>
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.Model" (ngModelChange)="onModelChange($event)"  
+               />
+               <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Model</button>
+      </div>
+      <div class="col-sm-4 mb-1">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.VIN" (ngModelChange)="onVINChange($event)"  
+               />
+                <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By VIN</button>
+      </div>
+     <div class="col-6 col-lg-6">
+          <div class="d-flex flex-wrap gap-3 mt-2">
+  <!-- <div *ngFor="let type of bodyTypeCounts | keyvalue" class="body-type-pill">
+    <span class="material-symbols-rounded icon">
+      {{ getIcon(type.key) }}
+    </span>
+    <span class="text">{{ type.key }}: {{ type.value }}</span>
+  </div> -->
+</div>    
+      </div>
+
+   
+
+       <div class="col-6 col-lg-6 col-sm-6 mt-2" style="text-align: right;" *ngIf="showSaveButtion">
+        
+               
+                <button type="button" class="btn btn--primary  uppercase" (click)="addDataByExcel($event)" style="margin-right: 2px;background-color: #fd7e14;">💡 Import </button>
+                <button type="button"  class="btn btn--primary  uppercase " (click)="openDialog($event)"  style="background-color: #198754;color: white;">🚛  Vehicle </button>
+      </div>
+      
+     <div class="col-sm-12 " style="text-align: right;">
+        <a href="javascript:void(0)"  class=""  (click)="exportAsExcel()">
+          📊
+        </a>
+
+      </div>
+    </div>
+    
+      
+     
+         
+
+             
+        
+  
+   
+     
+
+  
+    
+    
+     
+    
+   
+     
+
+
+   
+   
+   
+    <div class="scrolling mt-2"  >
+        
+          <table  class="table table-bordered table-hover dt-responsive">
+         
+            <thead>
+              <tr>
+                <th >#</th>
+                <th> Unit</th>
+                <th >Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Body Type</th>
+                <th>VIN</th>
+               
+             
+                <th>PolicyNumber</th>
+                <th>Option</th>
+                <th>Value</th>
+                <th> EnterDate </th>
+                <th>Description</th>
+                
+                <th> Detail </th>
+                <th *ngIf ="showSaveButtion"></th>
+              </tr>
+            </thead>
+            <tbody>
+            
+               <tr  *ngFor ="let data of listOfAllVehilce|searchVehicle:searchCriteria;let i = index">
+                <td>{{i + 1}}</td>
+                 <td>{{data?.Unit}}</td>
+                 <td>{{data?.Year}}</td>
+                 <td>{{data?.Make}}</td>
+                 <td>{{data?.Model}}</td>
+                  <td>{{data?.BodyType}}</td>
+                 <td>{{data?.VIN}}</td>
+                 <td>{{data?.PolicyNumber}}</td>
+                 <td>{{data?.Option}}</td>
+
+                 
+                
+                 <td>{{data?.Value | currency:'USD':'symbol'}}</td>
+                 <td>
+
+                   {{ data?.EnterDate | date:'MM/dd/yyyy' }}
+                 </td>
+                 <td> {{data?.Description}}</td>
+                 
+                  <td>
+                       {{ data?.EnterBy }} <br/>
+
+                   {{ data?.CurrentDate | date:'MM/dd/yyyy' }}
+                 </td>
+
+                 
+               
+     
+                 <td *ngIf ="showSaveButtion"><button mat-button class="settings" title="Settings" [matMenuTriggerFor]="menu" *ngIf ="showSaveButtion" style="color: #0397d6;" ><i class="material-icons">&#xE8B8;</i></button>
+                  <mat-menu #menu="matMenu" >
+                  
+                    <a href="javascript:void(0)" (click)="openDialog(data)" mat-menu-item >Edit Vehicle</a>
+                    <!-- <a href="javascript:void(0)" (click)="delete(data)" mat-menu-item style="color: red;" >Delete Vehicle</a> -->
+                  </mat-menu></td>
+               </tr>
+             
+           
+             
+            </tbody>
+           
+          </table>
+       
+      </div>
+
+    
+    
+  
+  </div>
+ 
+</div>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />

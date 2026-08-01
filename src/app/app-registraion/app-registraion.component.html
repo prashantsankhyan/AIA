@@ -1,0 +1,81 @@
+<div class="container-fluid">
+ <div >
+  <div class="card mt-2">
+    <div class="row p-2">
+     <div class="col-sm-2">
+      
+      <button type="button" class="btn btn-primary"(click)="addEditAppRegistrationDetail($event)"
+      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+ Genrate App Login
+</button>
+   </div>
+      <div class="col-sm-3 ">
+        <input
+         class="form-control "
+         type="search"
+        
+         placeholder="Search By Account"
+         aria-label="Search"
+       />
+     </div>
+  
+     <div class="col-sm-3">
+       <input
+         class="form-control"
+         type="search"
+        
+         placeholder="Search By Name"
+         aria-label="Search"
+       />
+     </div>
+     <div class="col-sm-3">
+      <input
+        class="form-control"
+        type="search"
+      
+        placeholder="Search By password "
+        aria-label="Search"
+      />
+    </div>
+   
+   
+   
+    </div>
+  </div>
+  
+    <div class="scrolling mt-2" >
+      
+        <table  class="table table-bordered table-hover dt-responsive">
+       
+          <thead>
+            <tr>
+              <th>Account Name</th>
+              <th> User Name</th>
+              <th>Password</th>
+              <th>DOT</th>
+            
+             
+            </tr>
+          </thead>
+          <tbody>
+          
+             <tr *ngFor ="let data of listOfLoginDetail">
+               <td>{{data.AccountName}}</td>
+               <td>{{data.UserName}}</td>
+               <td>{{data.Password}}</td>
+               <td>{{data.LookupCode}}</td>
+             </tr>
+           
+         
+           
+          </tbody>
+         
+        </table>
+     
+    </div>
+
+  
+ 
+</div>
+
+</div>

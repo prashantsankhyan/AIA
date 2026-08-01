@@ -1,0 +1,21 @@
+input.form-control:focus {
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.6);
+  border-color: #1397d5;
+}
+
+.card-header {
+  font-size: 1rem;
+  font-family: sans-serif
+}
+
+input::placeholder {
+  font-size: medium;
+  color: #aaa;
+    font-family: sans-serif
+}
+
+input {
+  font-size: medium;
+  color: rgba(0, 0, 0, 0.637);
+    font-family: sans-serif
+}

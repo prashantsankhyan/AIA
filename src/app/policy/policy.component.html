@@ -1,0 +1,245 @@
+<app-policy-nav></app-policy-nav>
+
+  <div class="container-fluid page-background" >
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+
+  
+ 
+
+<div class="grey-bg container-fluid mt-1">
+  <section id="minimal-statistics">
+   
+  
+    
+  
+    <div class="row mb-2">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">MAILING ADDRESS</h3>
+                  <span>{{ fullAddress?.Description}}-{{fullAddress.City}}-{{ fullAddress.State }}-{{ fullAddress.ZIP }}</span>
+                </div>
+                <div class="align-self-center">
+                 
+                    <img src="assets/email.png" width="50px" height="50px">
+                 
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="warning">GARAG Address</h3>
+                  <span>{{ GaragingAddress }} - {{ GaragingCity }} - {{ GaragingState }} - {{ GaragingPinCode }}</span>
+                </div>
+                <div class="align-self-center">
+                  <img src="assets/grage.png" width="50px" height="50px">
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card" (click)="listOfAttachemnt()">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex mb-2">
+                <div class="media-body text-left">
+                  <h4 class="danger">
+                    ATTACHMENTS
+                  </h4>
+               
+                  
+                </div>
+                <div class="align-self-center">
+                  <img src="assets/attached.png" width="50px" height="50px">
+                 
+                </div>
+              </div>
+              
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%; font-size: 10px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12" (click) ="addPolicyHere()">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex mb-2">
+                
+                <div class="media-body text-left">
+                  <h4 class="success">ADD POLICY</h4>
+                  <!-- <span>Bounce Rate</span> -->
+                </div>
+                <div class="align-self-center">
+                   <img src="assets/insurance.png" width="50px" height="50px">
+                  
+                </div>
+              </div>
+             
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+  
+ 
+  
+
+ 
+
+</div>
+
+
+  
+
+  
+   <!-- <mat-tab-group class="mt-3 mb-3" (selectedTabChange)="onTabChange($event)" (click)="onTabClick($event)">
+  <mat-tab label="Policy List"></mat-tab>
+  <mat-tab label="Expired Data"></mat-tab>
+  <mat-tab label="Current Delete"></mat-tab>
+  <mat-tab label="All Renew"></mat-tab>
+</mat-tab-group> -->
+    
+  
+ <div class="scrolling" >
+
+  <table class="table table-bordered table-hover dt-responsive" *ngIf="showTableIfDataHave; else emptyState">
+    <thead>
+      <tr>
+        <th style="text-align: center;">Line Name</th>
+        <th style="text-align: center;">Policy Number</th>
+        <th style="text-align: center;">Date</th>
+        <th style="text-align: center;">Broker Name</th>
+        <th style="text-align: center;">Carrier</th>
+        <th style="text-align: center;">Description</th>
+        <th style="text-align: center;">Stage</th>
+        <th style="text-align: center;">Status</th>
+        <th style="text-align: center;">Highlight</th>
+        <th style="text-align: center;">Enter By</th>
+        <th style="text-align: center;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listOfPolicy" [ngStyle]="getRowStyles(data)" >
+        <td (click)="goDoDetailPage(data)" >{{ data.LineName }}/{{ data.LineShortName }}</td>
+        <td style="text-align: center;">{{ data.ChildPolicyName }}</td>
+        <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }}  {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
+        <td style="text-align: center;">{{ data.BrokerName }}</td>
+        <td style="text-align: center;">{{ data.IssuingCompanyName }}</td>
+        <td style="text-align: center;">{{ data.Description }}</td>
+        <td style="text-align: center;">{{ data.StageType }}</td>
+        <td [ngStyle]="{'color': data.DeleteReason ? 'red' : 'inherit'}" style="text-align: center;">
+  {{ data.DeleteReason ? data.DeleteReason : data.Policy_Status }}
+</td>
+        <td>
+          <span *ngIf="data.HighLightPolicy" class="highlight-expiry">
+            Going To expire
+          </span>
+        </td>
+        <td>{{data.EnteredBy}} <br/>
+         {{data.UpdatedBy}}</td>
+        <td>
+          <a href="javascript:void(0)" [matMenuTriggerFor]="menu">
+            
+            <i class="fa fa-cog fa-2x" style="text-align: center;"></i>
+          </a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editPolicy(data)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit Data</span>
+            </button>
+            <button mat-menu-item (click)="renewPolicy(data)">
+              <mat-icon>autorenew</mat-icon>
+              <span>Renew</span>
+            </button>
+            <button mat-menu-item (click)="listOfAllData(data)">
+              <mat-icon>add_circle</mat-icon>
+              <span>List Of All Data</span>
+            </button>
+            <button mat-menu-item (click)="viewRemkarsByChiledPolciy(data)">
+              <mat-icon>pageview</mat-icon>
+              <span>View Remarks</span>
+            </button>
+            
+            <button mat-menu-item (click)="updateStage(data)">
+              <mat-icon>add_circle</mat-icon>
+              <span>Add Stage</span>
+            </button>
+            <button mat-menu-item *ngIf="data.StageType !== 'Issue'" (click)="deletePolicy(data)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete Data</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyState>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Line Name</th>
+          <th>Effective</th>
+          <th>Expiration</th>
+          <th>P.Number</th>
+          <th>Payable</th>
+          <th>Description</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="text-center" style="padding: 40px;">
+            <i class="fa fa-folder-open-o fa-5x" aria-hidden="true" style="color: #ccc;"></i>
+            <h3>No policies available.</h3>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+</div>
+<div style="text-align: left;vertical-align: bottom;"(click)="expirePolicyList()">
+  <img src="assets/expired.png" width="50px" height="50px">
+</div>
+   
+
+  
+
+ </div>
+ </div>
+
+
+
+

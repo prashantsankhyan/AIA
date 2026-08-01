@@ -1,0 +1,136 @@
+
+<div class="container">
+ <div *ngIf ="!showFiv">
+     <h5>File Size is  Big sow it will take some time to Upload</h5>
+     <app-spinner></app-spinner>
+   </div>
+<h5 style="text-align: center;"> Account Name  : {{accountName}}</h5>
+
+
+ <div class="container-fluid " *ngIf ="showFiv">
+ 
+  <mat-dialog-content class="mat-typography">
+   <form [formGroup]="addEditAttachmentForm"> 
+    <div class="row">
+       
+        <div class="col-sm-12">
+         <div class="form-floating"> 
+         <select class="form-select" formControlName="AttachedBy"  aria-label="Policy Status">
+          <option hidden value="" disabled selected  > Policy Status</option>
+          <option value="Our">Our</option>
+          <option value="Other">Other</option>
+        </select>
+        <label >Please Select Policy Status</label>
+        </div>
+        
+        </div>
+          
+          
+       
+       <div class="col-sm-12 mt-2"> 
+        <div class="form-floating">
+         <select class="form-select mt-1" formControlName="PolicyType">
+          <option hidden value="" disabled selected  > Please select Policy Type</option>
+          <option value="PKG - (AL,APD,MTC)">PKG - (AL,APD,MTC)</option>
+          <option value="AL">AL</option>
+          <option value="PD">PD</option>
+          <option value="MTC">MTC</option>
+          <option value="GL">GL</option>
+          <option value="AL&MTC">AL&MTC</option>
+          <option value="AL&PD">AL&PD</option>
+          <option value="AL&GL">AL&GL</option>
+          <option value="GL&MTC">GL&MTC</option>
+          <option value="PD&MTC">PD&MTC</option>
+          <option value="GL&PD">GL&PD</option>
+         
+        </select>
+            <label> Policy Type</label>
+           
+        </div>
+       
+         </div>
+    
+ 
+         
+        <div class="col-sm-12 mt-3">
+            <label>Upload file here</label>
+            <div class=" file-container center  text-center mt-2" >
+                
+               <label>Upload file here</label>
+               <input
+               type="file"
+               class="file"
+               placeholder="File Name"
+               multiple
+               accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav"
+               
+               (change)= "onFileUpload($event)"  [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+               <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback">
+                   <div *ngIf ="f['abc'].errors">FIle is required</div>
+               </div>
+               <label>Upload file here</label>
+           </div>
+           <div *ngIf ="files">
+              File selected 
+            
+           </div>
+        </div>
+         
+           
+    <div >
+      
+     
+    </div>
+    <div class="col-sm-12"> 
+     <div class="form-floating"> 
+      <input type="text" class="form-control mt-2"   formControlName ="Description" placeholder="please enter Description">
+      <label>Description</label>
+     </div>
+
+       
+        
+     
+    </div>
+
+   
+            
+      
+    </div>
+
+   
+</form>
+
+   </mat-dialog-content>
+
+   <mat-dialog-actions align="end">
+
+    <div class="text-right">
+     <div >
+
+      <a href="javascript:void(0)"  (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i>Save</a>
+             <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+       
+       
+       </div>
+   </div>
+   </mat-dialog-actions>
+    
+    
+   
+ 
+    
+  
+      <!-- <div class="text-center mt-5 mb-5">
+          <div class="btn-group  gap-2  " >
+             
+              <button mat-stroked-button class="text-right" (click)="onSubmit()">Save</button>
+              <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
+             
+            
+            </div>
+      </div> -->
+  
+  </div>
+
+
+</div>

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <h5 style="text-align: center;font-family: sans-serif;"> </h5>
+ <div class="mt-2" >
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="addEditRemarks">
+            <div class="row">
+                
+            
+                <div class="col-sm-12 ">
+                  
+                  
+                    <textarea class="form-control " formControlName ="Remarks" rows="8" id="comment" name="text" style="white-space: pre-wrap" ></textarea>
+                </div>
+               
+            </div>
+        
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end"  *ngIf ="messageSuccess">
+        <div class="text-center  mt-5">
+            <div  *ngIf ="messageSuccess">
+                <a href="javascript:void(0)"  (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i>{{RemarkID == undefined? ' Add':'Edit'}} Remarks</a>
+                <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
+               
+             
+              </div>
+          </div>
+        </mat-dialog-actions>
+
+    
+        
+
+    
+ </div>
+
+
+
+</div>

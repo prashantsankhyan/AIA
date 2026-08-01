@@ -1,0 +1,42 @@
+ .name-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .name-table th {
+      text-align: left;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .name-table td {
+      padding: 12px 15px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      font-size: 15px;
+      color: #444;
+    }
+
+    .name-table tr {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .name-table tr:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      background: #f0f2f5;
+      padding: 2rem;
+    }
+
+    .table-wrapper {
+      max-width: 500px;
+      margin: auto;
+    }

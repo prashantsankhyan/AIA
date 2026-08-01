@@ -1,0 +1,132 @@
+.checkmark { 
+ color: black !important;
+}
+
+table, th, td {
+ border: 1px solid rgba(0, 0, 0, 0.447);
+ border-collapse: collapse;
+ font-size: 10px !important;
+
+ 
+}
+
+
+th, td {
+ font-size: 10px !important;
+ color: black;
+
+}
+
+
+label {
+ color: black;
+ font-size: small !important;
+}
+p{
+ color: black;
+ font-size: small !important;
+}
+
+
+
+
+
+
+.checkbox-container {
+ position: relative;
+ display: inline-block;
+ font-size: 20px;
+ cursor: pointer;
+}
+
+.checkbox-container input {
+ display: none; /* Hide the default checkbox */
+}
+
+.checkbox-container .checkmark {
+ font-size: 15px;
+}
+
+.border {
+  border: 1px solid rgba(0, 0, 0, 0.447) !important;
+}
+.checkbox-row {
+ display: flex !important;
+ border-left: 1px solid rgba(0, 0, 0, 0.447) !important;
+ border-right: 1px solid rgba(0, 0, 0, 0.447) !important;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.447) !important;
+ border-top: none; /* No top border */
+}
+.Fax {
+ display: flex !important;
+ border-left: 1px solid rgba(0, 0, 0, 0.447) !important;
+
+}
+
+.underline-input {
+ border: none;
+ border-bottom: 5px solid rgba(0, 0, 0, 0.447);
+ width: 100%; /* Adjust width as needed */
+ outline: none;
+ font-weight: 900;
+}
+
+.underline-input1 {
+ border: none;
+ border-bottom: 0.5px solid rgba(0, 0, 0, 0.447);
+ width: 300px; /* Adjust width as needed */
+ outline: none;
+ 
+}
+
+
+.page-break {
+	page-break-after: always;
+}
+
+
+@media print {
+  @page {
+    size: auto; 
+    margin: 0; 
+  }
+
+  /* Remove any browser-generated headers and footers */
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide any unwanted elements like page numbers */
+  header, footer {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+
+.form-control{
+  font-size: smaller !important;
+
+  
+}
+
+.scrolling{
+  height:500px;  
+  overflow:scroll;
+}
+// #print-section {
+//   width: 1050px !important; /* ≈ 210mm at 96dpi */
+//   padding: 6px !important;
+ 
+// }
+
+
+.custom-input {
+  background-color: #f5f5f5;
+  text-align: center;
+  font-size: 11px !important;
+  border: none;
+  box-shadow: none;
+}

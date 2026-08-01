@@ -1,0 +1,72 @@
+
+<div class="container-fluid">
+<div *ngIf="!showFiv" class="text-center p-3">
+  <h5>File Size is Big so it will take some time to Upload</h5>
+  <app-spinner></app-spinner>
+</div>
+
+<form [formGroup]="addEditAttachmentForm" *ngIf="showFiv">
+
+  <!-- 🔽 SCROLLABLE FORM BODY -->
+  <mat-dialog-content class="dialog-content mt-1">
+
+    <div class="col-sm-12"> <label>Upload file here</label>
+         <div class=" file-container center text-center" > <label>Upload file here</label>
+             <input type="file" class="file" placeholder="File Name" multiple accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav" (change)= "onFileUpload($event)" [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+              <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback"> <div *ngIf ="f['abc'].errors">FIle is required</div> 
+            </div> <label>Upload file here</label> </div> </div> <div *ngIf ="files"> {{files.name}} </div>
+
+    <!-- Binding -->
+    <div class="mt-2">
+      <label>Agency Document</label>
+    <mat-form-field appearance="outline" class="w-100">
+    <mat-select formControlName="AgencyDocument">
+      <mat-option *ngFor="let doc of agencyDocuments" [value]="doc">
+        {{ doc }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    </div>
+
+    <!-- Policies -->
+    <div>
+      <label>Expense</label>
+      <mat-form-field appearance="outline" class="w-100">
+  <mat-select formControlName="Invoice">
+    <mat-option *ngFor="let inv of invoices" [value]="inv">
+      {{ inv }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+    </div>
+
+  
+  </mat-dialog-content>
+
+  <!-- 🔒 FIXED BUTTONS -->
+  <mat-dialog-actions align="end" class="dialog-footer">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      
+    >
+      <mat-icon>upload</mat-icon>
+      Upload Data
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+
+  </mat-dialog-actions>
+
+</form>
+</div>
+
+

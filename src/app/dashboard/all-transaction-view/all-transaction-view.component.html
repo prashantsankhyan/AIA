@@ -1,0 +1,67 @@
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf ="!showSpiner">
+  <div class="container-fluid " >
+    <div class="row mt-2">
+      <div class="col-sm-5">
+       <input
+  type="text"
+  class="form-control mb-2"
+  placeholder="Search policy, invoice, dates, amounts, user..."
+  [(ngModel)]="searchCriteria.global"
+/>
+      </div>
+   
+       <div class="col-sm-12 " style="text-align: right;">
+        <a href="javascript:void(0)"  class=""  (click)="exportAsExcel()">
+          📊
+        </a>
+
+      </div>
+    </div>
+    <div class="scrolling mt-2" > 
+      <table  class="table table-bordered" style="margin:0 auto;" >
+        <thead>
+          <tr>
+            <th> SrNo </th>
+            <th> Name</th>
+            <th>Description </th>
+            <th>Polciy</th>
+             <th>Date</th>
+            <th>Payment</th>
+            <th>Tatal</th>
+            
+           
+            
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredMarketed()">
+            <td>{{item.SrNo}}</td>
+            <td>{{item.Marked_PolicyName}}- ({{item.InvoiceID}})</td>
+            <td>{{item.ChildPolicy_Description}}</td>
+         
+            <td>{{item.LineName}}<br/>{{formatDate(item.Child_EffectiveDate)}}<br/>{{formatDate(item.Child_ExpirationDate)}}<br/><span style="color: black;">{{item.ChildPolicyName}}</span></td>
+            <td>{{formatDate(item.GenerateInvoice)}}<span> (GN) </span> <br/>
+             <span style="color: rgba(255, 0, 0, 0.656);"> {{formatDate(item.ARDue)}} (AR) </span></td>
+            <td style="color: black;">{{item.Amount | currency}}<span style="font-size: 11px;"> Account</span><br/>
+                {{item.PolicyFee | currency}}<span style="font-size: 11px;"> Fees</span><br/>
+                 {{item.SurpluxTax | currency}}<span style="font-size: 11px;"> Tax</span><br/>
+                  {{item.CompanyFinanced | currency}}<span style="font-size: 11px;"> Finiced</span>
+            </td>
+             <td><span style="color: red;">{{item.OpeningBalance | currency}} <span style="font-size: 11px;">(Opening)</span> </span><br/>
+               <span style="color: green;"> {{item.TotalRecievedAmount | currency}}  <span style="font-size: 11px;">(Received)</span> </span><br/>
+               
+            </td>
+              <td>{{item.EnteredBy}}<br/>
+               
+               
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

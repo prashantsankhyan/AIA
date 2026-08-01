@@ -1,0 +1,169 @@
+<div class="container-fluid">
+  <mat-card *ngIf="listOfRemakrs?.length">
+
+    <mat-card-header>
+      <mat-card-title>Remarks Details</mat-card-title>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+
+      <table class="table table-bordered table-striped mt-3">
+        <tbody>
+
+          <tr>
+            <th>Auto Liability</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.AutoLiability) }}</td>
+
+            <th>AL Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.AL_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Physical Damage</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.PhysicalDamage) }}</td>
+
+            <th>Physical Damage Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.PhyDamage_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>MTC</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.MTC) }}</td>
+
+            <th>MTC Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.MTC_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>MTC Refer Breakdown</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.MTC_Refer_Breakdown) }}</td>
+
+            <th>MTC Theft of Electronic</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.MTC_Theft_of_Electronic) }}</td>
+          </tr>
+
+          <tr>
+            <th>Trailer Interchange</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.TrailerInterchange) }}</td>
+
+            <th>Trailer Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Trailer_limit) }}</td>
+          </tr>
+
+          <tr>
+            <th>Trailer Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Trailer_Interchange_Deductible) }}</td>
+
+            <th>GLC Occurrence</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_occurence) }}</td>
+          </tr>
+
+          <tr>
+            <th>GLC Damage To Rented</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_DamageToRented) }}</td>
+
+            <th>GLC Medical Expense</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_MedExp) }}</td>
+          </tr>
+
+          <tr>
+            <th>GLC Personal & Advertising</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_PersonalAdv) }}</td>
+
+            <th>GLC General Aggregate</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_GeneralAgg) }}</td>
+          </tr>
+
+          <tr>
+            <th>GLC Product Completed</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_Productcomp) }}</td>
+
+            <th>GLC Others</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.GLC_Others) }}</td>
+          </tr>
+
+          <tr>
+            <th>Umbrella Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Umbrella_Limit) }}</td>
+
+            <th>Umbrella Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Umbrella_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Contingent Cargo Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Contingent_CargoLimit) }}</td>
+
+            <th>Contingent Cargo Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Contingent_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Contingent Liability Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.ContingentLiability_Limit) }}</td>
+
+            <th>Contingent Liability Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.ContingentLiability_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Contingent XS Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Contingent_XS_Limit) }}</td>
+
+            <th>Contingent XS Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.Contingent_XS_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Excess Liability Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.ExcessLiability_Limit) }}</td>
+
+            <th>Excess Liability Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.ExcessLiablity_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Non Trucking Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.NonTrucking_Limit) }}</td>
+
+            <th>Non Trucking Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.NonTrucking_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>Towing Limit</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.TowingLimit_Limit) }}</td>
+
+            <th>Towing Deductible</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.TowingLimit_Deductible) }}</td>
+          </tr>
+
+          <tr>
+            <th>TIV</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.TIV) }}</td>
+
+            <th>Reported To</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.ReportedTo) }}</td>
+          </tr>
+
+          <tr>
+            <th>Uninsured Motorist</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.UninsuredMotorist) }}</td>
+
+            <th>Underinsured Motorist</th>
+            <td>{{ formatValue(listOfRemakrs[0]?.UnderinsuredMotorist) }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <div class="text-center mt-4" *ngIf="!listOfRemakrs?.length">
+    <h5>No Data Found</h5>
+  </div>
+</div>

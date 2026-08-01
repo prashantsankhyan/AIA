@@ -1,0 +1,75 @@
+<div  class ="container">
+ <div class="card mt-2">
+     <div class="card-header" style="background-color: #17a0bc; color: white;">
+            Renew Policy Name - {{LineName}}/{{LineShortName}}
+        </div>
+   </div>
+<form [formGroup]="addEditPolicyForm">
+ <div class="row">
+  <div class="col-sm-12 mt-2">
+    
+     <input type ="text" class="form-control mt-1" formControlName ="AccountID" style="display:none">
+     <input type ="text" class="form-control mt-1"  formControlName ="MarkedPolicyID"style="display:none">
+     <input type ="text" class="form-control mt-1"formControlName ="ChildPolicyID"style="display:none">
+
+  </div>
+
+  
+  <div class="col-sm-12 mt-2">
+     <label>Effective #</label>
+     <input type="text" class="form-control mt-2" formControlName ="Effective" [(ngModel)]="Effective" (ngModelChange)="changeNextDate()"  bsDatepicker 
+     [ngClass]= "{ 'is-invalid': submit && f['Effective'].errors }">
+     <div *ngIf ="submit && f['Effective'].errors" class="invalid-feedback">
+         <div *ngIf ="f['Effective'].errors">Effective is required</div>
+     </div> 
+    
+ </div>
+ <div class="col-sm-12 mt-2">
+     <label>Expiration #</label>
+     <input type="text" class="form-control mt-2" formControlName ="Expiration" [ngClass]= "{ 'is-invalid': submit && f['Expiration'].errors }">
+     <div *ngIf ="submit && f['Expiration'].errors" class="invalid-feedback">
+         <div *ngIf ="f['Expiration'].errors">Expiration is required</div>
+     </div> 
+ </div>
+ <div class="col-sm-12 mt-2">
+    <label>Policy Number </label>
+    <input type="text" class="form-control mt-2" formControlName ="ChildPolicyName" >
+   
+  </div>
+  <div class="col-sm-12 mt-2">
+    <label style="text-align: center;">Select Broker</label>
+    <select   class="form-select" formControlName ="BrokerID"  >
+     <option hidden value="" disabled selected  > Select Broker</option>
+     <option *ngFor ="let data of listOfBroker"  value="{{data.BrokerID}}">{{data.AccountName}}</option>
+    
+     
+    
+   </select>
+  
+  
+     </div>
+  <div class="col-sm-12 mt-2">
+    <label>Carrier  </label>
+    <select   class="form-select" formControlName ="IssuingCompany"  >
+        <option hidden value="" disabled selected  > Select Payable</option>
+        <option  *ngFor ="let data of listOfAllCarrier" value="{{data.ID}}">{{data.CarrierName}}</option>  
+       
+        
+       
+      </select>
+   
+  </div>
+
+
+ </div>
+</form>
+<div class="text-center mt-5">
+ <div  *ngIf ="messageSuccess">
+   <button type="button" class="btn btn-outline-success btn-lg" style="width: 120px;" (click)="onSubmit()" > Save</button>
+   <button type="button" class="btn btn-outline-danger btn-lg" style="width: 120px;margin-left: 10px;" mat-dialog-close>Clear</button>
+     
+    
+   
+   </div>
+</div>
+</div>

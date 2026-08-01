@@ -1,0 +1,51 @@
+
+<div class="container-fluid">
+ 
+   
+   <form [formGroup]="addEditPolicyForm">
+   <h2 class="text-center">Are you  Sure ?</h2>
+   <h5 class="text-center">Please Select Reason to delete</h5>
+   <div class="row">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10">
+     <select class="form-select"  formControlName="DeletedReason" style="height: 29px;font-size: x-small;" aria-label="Default select example">
+     
+      
+      <option value="Connection Lose"> Connection Lose </option>
+      <option value="No Response"> No Response </option>
+    </select>
+    
+    </div>
+    <div class="col-sm-1">
+ 
+    </div>
+    
+   </div>
+   </form>
+   <div class="text-center mt-4 mb-4">
+
+    <div *ngIf ="messageSuccess">
+      <button type="button" style="width: 130px;background-color: red;" class="btn btn-outline-danger"(click)="onSubmit()">Delete</button>
+      <button type="button"  style="width: 130px; margin-left: 5px; " class="btn btn-outline-success "mat-dialog-close>Cancel</button>
+      
+     
+  
+        
+       
+      
+      </div>
+   
+  </div>
+   </div>
+   
+   <!-- <div class="btn-group  gap-2 mt-4 mb-5 ">
+          
+       <button mat-stroked-button class="text-right" color="warn" (click)="onSubmit()" >Delete</button>
+       <button mat-stroked-button class="text-right"  mat-button mat-dialog-close>Clear</button>
+      
+     
+     </div> -->
+   
+

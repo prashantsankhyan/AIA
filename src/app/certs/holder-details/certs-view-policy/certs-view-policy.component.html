@@ -1,0 +1,97 @@
+
+
+  <div class="container-fluid page-background" >
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf ="!showSpiner">
+
+  
+ 
+
+
+
+
+
+  
+
+  
+   <!-- <mat-tab-group class="mt-3 mb-3" (selectedTabChange)="onTabChange($event)" (click)="onTabClick($event)">
+  <mat-tab label="Policy List"></mat-tab>
+  <mat-tab label="Expired Data"></mat-tab>
+  <mat-tab label="Current Delete"></mat-tab>
+  <mat-tab label="All Renew"></mat-tab>
+</mat-tab-group> -->
+    
+  
+ <div class="scrolling mt-5" >
+
+  <table class="table table-bordered table-hover dt-responsive" *ngIf="showTableIfDataHave; else emptyState">
+    <thead>
+      <tr>
+        <th style="text-align: center;">Line Name</th>
+        <th style="text-align: center;">Policy Number</th>
+        <th style="text-align: center;">Date</th>
+        <th style="text-align: center;">Broker Name</th>
+        <th style="text-align: center;">Carrier</th>
+        <th style="text-align: center;">Description</th>
+        <th style="text-align: center;">Stage</th>
+        <th style="text-align: center;"></th>
+       
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listOfPolicy" (dblclick)="viewRemkarsByChiledPolciy(data)">
+        <td  >{{ data.LineName }}/{{ data.LineShortName }}</td>
+        <td style="text-align: center;">{{ data.ChildPolicyName }}</td>
+        <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }}  {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
+        <td style="text-align: center;">{{ data.BrokerName }}</td>
+        <td style="text-align: center;">{{ data.IssuingCompanyName }}</td>
+        <td style="text-align: center;">{{ data.Description }}</td>
+        <td style="text-align: center;">{{ data.StageType }}</td>
+        <td style="text-align: center;" (click)="viewAccountBane(data)">remarks</td>
+        
+      
+      
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyState>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Line Name</th>
+          <th>Effective</th>
+          <th>Expiration</th>
+          <th>P.Number</th>
+          <th>Payable</th>
+          <th>Description</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="text-center" style="padding: 40px;">
+            <i class="fa fa-folder-open-o fa-5x" aria-hidden="true" style="color: #ccc;"></i>
+            <h3>No policies available.</h3>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+</div>
+
+   
+
+  
+
+ </div>
+ </div>
+
+
+
+

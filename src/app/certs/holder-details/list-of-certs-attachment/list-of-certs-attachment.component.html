@@ -1,0 +1,121 @@
+<div *ngIf ="showSpiner">
+<app-spinner></app-spinner>
+</div>
+
+<div *ngIf ="!showSpiner">
+<div class="container-fluid page-background" >
+ 
+ 
+
+
+  <div class="row">
+       <div class="col-xl-3 col-sm-6 col-12 mb-2 mt-2" (click) ="backToHolder()" >
+     <a><img src="assets/back.png" width="50px" /></a> 
+    </div>
+      <div class="col-xl-3 col-sm-6 col-12" >
+      
+      </div>
+        <div class="col-xl-3 col-sm-6 col-12" >
+      
+      </div>
+   <div class="col-xl-3 col-sm-6 col-12 mb-2 mt-2" style="text-align: right;" >
+      
+          <!-- <div class="align-self-right"(click)="addEditAttachement($event)">
+                 <a><img src="assets/insurance.png" width="50px" height="50px"></a>  
+                  
+                </div> -->
+       
+      </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form__field" [(ngModel)]="searchCriteria.HoldingID" (ngModelChange)="onHoldingIDChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Holder</button>
+       
+      </div> 
+      <div class="col-sm-3 ">
+       
+         <input type="text" class="form__field" [(ngModel)]="searchCriteria.Description" (ngModelChange)="onDescriptionChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Detail</button>
+       
+      </div>
+         <div class="col-sm-3 ">
+           <input type="text" class="form__field" [(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Date</button>
+       
+       
+       </div>
+       <div class="col-sm-3 ">
+           <input type="text" class="form__field" [(ngModel)]="searchCriteria.EnteredBy" (ngModelChange)="onEnteredByChange($event)" />
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 Enter By</button>
+       
+       
+       </div>
+     
+       
+
+
+  </div>
+ 
+
+ 
+    
+
+ 
+  
+ 
+   <!-- <div class="row mt-2">
+    <div class="col-sm-1">
+     <button class="btn btn-outline-primary" style="font-size: xx-small;" (click) ="addEditAttachement($event)">Attach File Here</button>
+    
+ 
+    </div>
+    <div class="col-sm-3">
+      <input type="text" name="search"id="search"class="form-control "[(ngModel)]="searchCriteria.AttachmentDate" (ngModelChange)="onAttachmentDateChange($event)" style="border-radius: 35px;font-size: xx-small;">
+    </div>
+   </div> -->
+ 
+
+   
+      <div class=" scrollable-table-body mt-3" >
+        
+       <table  class="table table-bordered">
+             <thead >
+               <tr>
+             
+                 <th style="width: 100px;">HoldingID</th>
+                
+                  <th style="width: 600px;">Description</th>
+                
+                 
+                 
+               
+                 <th style="width: 100px;"> Attach</th>
+                  <th style="width: 100px;">Date </th>
+                 
+                 <th style="width: 100px;">Enter By </th>
+                 <th style="width: 20px;"></th>
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor ="let data of listOfAllFatchData | searchCertsAttachement : searchCriteria " (dblclick)="sendHoldingMail(data)">
+              
+                 <td style="width: 100px;">{{data.HoldingID}}</td>
+                  <td style="width: 600px;">{{data.Description}}</td>
+                 
+                
+                
+                <td style="width: 100px;">{{data.AttachedBy}}</td>
+                <td style="width: 100px;">{{data.AttachmentDate | date :'MM/dd/yyyy'}}</td>
+                <td style="width: 100px;">{{data.EnteredBy}}</td>
+                <td><span (click)="onClickDataGetClick(data)"><i class="fa fa-eye" aria-hidden="true"></i></span></td>
+                
+             
+               </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+</div>
+</div>
+

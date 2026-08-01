@@ -1,0 +1,88 @@
+
+  <div *ngIf ="showSpiner">
+    <app-spinner></app-spinner>
+   </div>
+   
+    <div class="container-fluid" *ngIf ="!showSpiner">
+<div class="card mt-1">
+  <div class="row p-1">
+    <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.AccountName" (ngModelChange)="onAccountNameChange($event)"   placeholder="Search By Account">
+    </div>
+    <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.LookUpCode" (ngModelChange)="onLookUpCodeChange($event)"   placeholder="Search By DOT">
+    </div>
+   
+    <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.ChildPolicyName" (ngModelChange)="onChildPolicyChange($event)"   placeholder="Search By Policy Number">
+    </div>
+    <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.Expiration" (ngModelChange)="onExpirationChange($event)"   placeholder="MM/DD/YYYY">
+    </div>
+   
+    <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.ExpireInDays" (ngModelChange)="onExpireInDaysChange($event)"   placeholder="Search By Panding  Days">
+    </div>
+  </div>
+</div>
+ 
+ <div class="scrollable-table-body mt-2">
+      
+  <table  class="table table-bordered table-hover dt-responsive">
+ 
+    <thead>
+      <tr>
+        
+        <th>Account </th>
+        <th>DOT</th>
+        <th>Policy Details</th>
+        <th>Policy Number</th>
+       
+        <th>Carrier</th>
+        <!-- <th>Broker Name</th> -->
+       
+        
+        
+        <th></th>
+        <th style="width: 30px;">Days</th>
+        <th style="width: 30px;"></th>
+       
+      </tr>
+    </thead>
+    <tbody>
+    
+       <tr *ngFor = "let data of listOfAllRenew|  searchRenewList: searchCriteria  ">
+        <td>{{data.AccountName}}</td>
+        <td>{{data.LookUpCode}}</td>
+         <td>{{data.LineName}}/{{data.LineShortName}} <br/>
+        {{data.Effective|date:'MM/dd/yyyy'}} -{{data.Expiration|date:'MM/dd/yyyy'}}
+        </td>
+         <td>{{data.ChildPolicyName}}</td>
+        
+         <td>{{data.IssuingCompanyName}}</td>
+         <!-- <td>{{data.BrokerName}}</td> -->
+         <td>{{data.StageType}}</td>
+         <td [ngStyle]="{ color: data.ExpireInDays <= -2 ? 'red' : 'inherit' }">{{ data.ExpireInDays <= -2 ? 'EX' : data.ExpireInDays }}</td>
+         <td>
+          <a href="javascript:void(0)" [matMenuTriggerFor]="menu" style="text-align: center;font-size: small;">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+          </a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="listOfAllData(data)">List Of All Data</button>
+            <button mat-menu-item (click)="detailList(data)">Account details</button>
+           
+            <button mat-menu-item (click)="restoreData(data)">Renew</button>
+        
+          </mat-menu>
+      </td>
+       </tr>
+     
+   
+     
+    </tbody>
+   
+  </table>
+
+</div>
+
+</div>

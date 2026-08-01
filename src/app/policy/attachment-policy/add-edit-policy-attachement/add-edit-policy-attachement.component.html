@@ -1,0 +1,142 @@
+<h3 mat-dialog-title class="text-center">
+  Account Name : {{ accountName }}
+</h3>
+
+<!-- Spinner -->
+<div *ngIf="!showFiv" class="text-center p-3">
+  <h5>File Size is Big so it will take some time to Upload</h5>
+  <app-spinner></app-spinner>
+</div>
+
+<form [formGroup]="addEditAttachmentForm" *ngIf="showFiv">
+
+  <!-- 🔽 SCROLLABLE FORM BODY -->
+  <mat-dialog-content class="dialog-content mt-1">
+
+    <div class="col-sm-12"> <label>Upload file here</label>
+         <div class=" file-container center text-center" > <label>Upload file here</label>
+             <input type="file" class="file" placeholder="File Name" multiple accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav" (change)= "onFileUpload($event)" [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+              <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback"> <div *ngIf ="f['abc'].errors">FIle is required</div> 
+            </div> <label>Upload file here</label> </div> </div> <div *ngIf ="files"> {{files.name}} </div>
+
+    <!-- Binding -->
+    <div class="mt-2">
+      <label>Binding Paperwork</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="Binding">
+          <mat-option
+            value="Binding Requests Emails – From LDH Team to Binding Team / Parm">
+            Binding Requests Emails – From LDH Team to Binding Team / Parm
+          </mat-option>
+          <mat-option
+            value="Binding Requests Emails – To Carrier / MGAs">
+            Binding Requests Emails – To Carrier / MGAs
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Policies -->
+    <div>
+      <label>Policies</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="Policies">
+          <mat-option value="Physical Damage">Physical Damage</mat-option>
+          <mat-option value="General Liability">General Liability</mat-option>
+          <mat-option value="Motor Truck Cargo">Motor Truck Cargo</mat-option>
+          <mat-option value="Auto Liability">Auto Liability</mat-option>
+          <mat-option value="Package">Package</mat-option>
+          <mat-option value="Excess Liability">Excess Liability</mat-option>
+          <mat-option value="Contingent Cargo">Contingent Cargo</mat-option>
+          <mat-option value="Contingent Auto Liability">Contingent Auto Liability</mat-option>
+          <mat-option value="Dec Pages">Dec Pages</mat-option>
+          <mat-option value="Non-Truck Liability">Non-Truck Liability</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Proposal -->
+   <div class="compact-field">
+  <label>Proposals & Initial Down Payments</label>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-select formControlName="Proposal">
+      <mat-option value="Finalized Proposal – Signed & Accepted by Insured for Bind">
+        Finalized Proposal – Signed & Accepted by Insured for Bind
+      </mat-option>
+      <mat-option value="All Proposals – Not Signed">
+        All Proposals – Not Signed
+      </mat-option>
+      <mat-option value="Down Payment – Insured">
+        Down Payment – Insured
+      </mat-option>
+      <mat-option value="Down Payment – Carrier">
+        Down Payment – Carrier
+      </mat-option>
+      <mat-option value="Proposal sent to insured">
+        Proposal sent to insured
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+    <!-- BOR -->
+    <div >
+      <label>BORs</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="Bors">
+          <mat-option value="All BORs – Not Signed">
+            All BORs – Not Signed
+          </mat-option>
+          <mat-option value="Signed BORs">
+            Signed BORs
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Notice -->
+    <div>
+      <label>Notice</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="Notice">
+          <mat-option value="Non-Renewal - From Carrier">
+            Non-Renewal - From Carrier
+          </mat-option>
+          <mat-option value="Cancellation – NOC – From Carrier">
+            Cancellation – NOC – From Carrier
+          </mat-option>
+          <mat-option value="Reinstatement – NOC – From Carrier">
+            Reinstatement – NOC – From Carrier
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- File Upload -->
+  
+  </mat-dialog-content>
+
+  <!-- 🔒 FIXED BUTTONS -->
+  <mat-dialog-actions align="end" class="dialog-footer">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+    >
+      <mat-icon>upload</mat-icon>
+      Upload Data
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+
+  </mat-dialog-actions>
+
+</form>

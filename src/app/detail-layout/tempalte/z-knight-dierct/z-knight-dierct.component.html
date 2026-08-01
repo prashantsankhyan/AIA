@@ -1,0 +1,10 @@
+<div *ngIf ="showSpiner">
+  please wait data is doing upload
+
+</div>
+<div *ngIf ="!showSpiner">
+ 
+<button (click)="fillExcelTemplate()" class="btn btn-primary">
+  Export Excel Template </button>
+</div>
+

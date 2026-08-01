@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <form [formGroup]="addEditHolderForm">
+    <textarea
+      formControlName="Input"
+      class="form-control mt-2 mb-2"
+      style="width: 400px; height: 200px; margin-left: 10px; margin-right: 10px; font-size: 14px; padding: 10px;"
+      placeholder="Enter vehicle details here..."
+    ></textarea>
+
+   
+
+    <mat-dialog-actions align="end">
+      <a *ngIf="showButton" href="javascript:void(0)" (click)="onSubmit()">
+        <img src="assets/save_8361323.png" width="50px" height="50px">
+      </a>
+    </mat-dialog-actions>
+  </form>
+</div>

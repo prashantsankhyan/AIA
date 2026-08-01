@@ -1,0 +1,38 @@
+.dialog-content {
+  max-width: 320px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.small-mat-input {
+  width: 100%;
+  font-size: 13px;
+}
+
+.small-mat-input .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.small-mat-input .mat-form-field-infix {
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.btn-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button[mat-raised-button] {
+  font-size: 13px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  text-transform: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}

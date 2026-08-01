@@ -1,0 +1,943 @@
+
+<div class="scrolling">
+   <div style="margin-bottom: 10px;">
+    <div class="container-fluid">
+<div class="row">
+   
+      <div class="col-sm-12">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+        <label *ngFor="let driver of driverDetails; let i = index" style="white-space: nowrap;">
+         <input type="checkbox" [(ngModel)]="driver.selected" />
+         {{ i + 1 }} {{ driver.DriverName }} - {{driver.AuthType}}
+         </label>
+     </div>
+      <div style="margin-top: 10px;">
+            <button (click)="displaySelectedDrivers()">Display Selected Drivers</button>
+             
+         </div>
+      </div>
+
+    </div>
+    </div>
+    
+
+
+
+</div>
+    <div class="container-fluid" id="print-section">
+        <div class="container-fluid">
+
+       
+
+        <div class="card mt-5">
+            <div class="card-body">
+              <p style="text-decoration: underline;font-size:medium;">GENERAL INFORMATION</p>
+           
+              <label  style="font-size: 11px;">Name</label>
+             <input type="text"  class="underline-input" [value]="listOfData?.AccountName">
+             <div class="row mt-2">
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">MC Number: </label>
+               <input type="text"  class="underline-input1" [value] = "listOfData?.MC">
+              </div>
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">DOT Number:   </label>
+               <input type="text"  class="underline-input1" [value]="listOfData?.LookUpCode">
+              </div>
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">CA Number:</label>
+               <input type="text"  class="underline-input1" [value] = "listOfData?.CA">
+               
+              </div>
+              
+           
+             </div>
+             <div class="row mt-2">
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">Telephone Number:</label>
+               <input type="text"  class="underline-input2" [value]="listOfData?.PhoneNumber" >
+              </div>
+              <div class="col-sm-6">
+               <label style="font-size: 11px;">Contact Name:</label>
+               <input type="text"  class="underline-input000" [value]="primacryName[0]?.Name">
+              </div>
+              <div class="col-sm-2">
+              
+               
+              </div>
+              
+           
+             </div>
+             <div class="row mt-2">
+                
+                <!-- <p style="font-size: 11px;">
+                    <span class="custom-radio" (click)="toggleOption('Individual')">
+                      <span>{{ isChecked('Individual') ? '☒' : '☐' }}</span> Individual
+                    </span>
+                  
+                    <span class="custom-radio" style="margin-left: 15px;" (click)="toggleOption('Corporation')">
+                      <span>{{ isChecked('Corporation') ? '☒' : '☐' }}</span> Corporation
+                    </span>
+                  
+                    <span class="custom-radio" style="margin-left: 15px;" (click)="toggleOption('Partnership')">
+                      <span>{{ isChecked('Partnership') ? '☒' : '☐' }}</span> Partnership
+                    </span>
+                  
+                    <span class="custom-radio" style="margin-left: 15px;" (click)="toggleOption('LLC')">
+                      <span>{{ isChecked('LLC') ? '☒' : '☐' }}</span> Limited Liability Corporation
+                    </span>
+                  
+                    <span class="custom-radio" style="margin-left: 15px;" (click)="toggleOption('Other')">
+                      <span>{{ isChecked('Other') ? '☒' : '☐' }}</span> Other:
+                    </span>
+                  </p> -->
+
+
+                  <p style="font-size: 11px;">
+                    <span style="font-size: 11px;  cursor: pointer;" (click)="toggleOption('Individual')">
+                      <span>{{ isChecked('Individual') ? '☒' : '☐' }}</span> Individual
+                    </span>
+                  
+                    <span  style="margin-left: 15px;font-size: 11px;  cursor: pointer;" (click)="toggleOption('Corporation')">
+                      <span>{{ isChecked('Corporation') ? '☒' : '☐' }}</span> Corporation
+                    </span>
+                  
+                    <span  style="margin-left: 15px;font-size: 11px;  cursor: pointer;" (click)="toggleOption('Partnership')">
+                      <span>{{ isChecked('Partnership') ? '☒' : '☐' }}</span> Partnership
+                    </span>
+                  
+                    <span  style="margin-left: 15px;font-size: 11px;  cursor: pointer;" (click)="toggleOption('LLC')">
+                      <span>{{ isChecked('LLC') ? '☒' : '☐' }}</span> Limited Liability Corporation
+                    </span>
+                  
+                    <span class="custom-radio" style="margin-left: 15px;font-size: 11px;  cursor: pointer;" (click)="toggleOption('Other')">
+                      <span>{{ isChecked('Other') ? '☒' : '☐' }}</span> Other:
+                    </span>
+                  </p>
+             </div>
+             <div class="row ">
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">Effective Date: </label>
+               <input type="text"  class="underline-input1" [(ngModel)]="Effective" 
+               (ngModelChange)="changeNextDate()">
+              </div>
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">Expiration date:</label>
+               <input type="text"  class="underline-input1"  [(ngModel)]="Expiration">
+              </div>
+              <div class="col-sm-4">
+               <label style="font-size: 11px;">  Years in Business:</label>
+               <input type="text"  class="underline-input1"[value]="listOfData?.YearInBusiness" >
+               
+              </div>
+              
+           
+             </div>
+           
+             <table class="table strong-border-table mt-3" >
+              <thead class="table">
+                 
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="width: 100px;">Mailing</td>
+                      <td style="width: 500px;height: 20px;"><input type="text"  class="underline-input12" value ={{listOfData?.Description}}> </td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.City}}> </td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.State}}> </td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.ZIP}}> </td>
+                  </tr>
+                  <tr>
+                      <td>Garaging</td>
+                      <td> <input type="text"  class="underline-input12" value ={{listOfData?.GaragingAddress}}></td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.GaragingCity}}></td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.GaragingState}}></td>
+                      <td><input type="text"  class="underline-input13" value ={{listOfData?.GaragingPinCode}}> </td>
+                  </tr>
+                  
+              </tbody>
+           </table>
+            </div>
+           </div>
+           
+           <div class="card" >
+            <div class="card-body" >
+             <div class="row">
+              <div class="col-sm-8">
+               <p style="text-decoration: underline;font-size:medium;">RADIUS</p>
+               <div class="row" style="margin-bottom: -0px;">
+                <p style="font-size: 11px;">Range of Transport:  
+                  <span class="custom-radio" style="margin-left: 15px;" (click)="toggleTransport('Interstate')">
+                    <span>{{ isTransportChecked('Interstate') ? '☒' : '☐' }}</span> Interstate
+                  </span> 
+                  
+                  <span class="custom-radio" style="margin-left: 15px;" (click)="toggleTransport('Intrastate')">
+                    <span>{{ isTransportChecked('Intrastate') ? '☒' : '☐' }}</span> Intrastate
+                  </span>
+                </p>
+              </div>
+            
+              </div>
+              <div class="col-sm-4" >
+               <table class="table strong-border-table  11px-table"  >
+                <thead class="table" style="text-align:center;margin-bottom: -0px;">
+                   
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Radius</td>
+                        <td> Percentage</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>0-100</td>
+                        <td>  <input type="text"  class="underline-input7" value ='10'></td>
+                        
+                    </tr>
+                    <tr>
+                     <td>101-300</td>
+                     <td><input type="text"  class="underline-input7" value ='25'></td>
+                     
+                    </tr>
+                    <tr>
+                     <td>301-500</td>
+                     <td><input type="text"  class="underline-input7" value ='35'></td>
+                     
+                    </tr>
+                    <tr>
+                     <td>500+</td>
+                     <td><input type="text"  class="underline-input7" value ='30'></td>
+                     
+                    </tr>
+                    
+                </tbody>
+             </table>
+              </div>
+           
+             </div>
+             
+             
+            </div>
+           </div>
+           
+           
+           <div class="card">
+            <div class="card-body">
+              <p style="text-decoration: underline;font-size:medium;">COMMODITIES</p>
+              <div class="row">
+                <div class="col-sm-4">
+                    <p class="checkbox-label" style="font-size: 15px;">List shipper requirements, if any:</p>
+                  
+                    <label class="custom-radio"  (click)="toggleCheckbox('Refuse')" style="margin-top: -4px;">
+                      <span>{{ refuseChecked ? '☒' : '☐' }}</span> Refuse/Waste/Garbage
+                    </label>
+                  <br/>
+                    <label class="custom-radio" (click)="toggleCheckbox('Property')">
+                      <span>{{ propertyChecked ? '☒' : '☐' }}</span> Property (non-hazardous)
+                    </label>
+                  </div>
+                  <div class="col-sm-8" style="margin-top: 35px;">
+                    
+                  
+                    <label class="custom-radio" (click)="toggleCheckbox1('HazardousLow')">
+                      <span>{{ selectedOptions['HazardousLow'] ? '☒' : '☐' }}</span>
+                      Hazardous Substances requiring $1,000,000 liability limits or less
+                    </label>
+                  
+                    <label class="custom-radio" (click)="toggleCheckbox1('HazardousHigh')">
+                      <span>{{ selectedOptions['HazardousHigh'] ? '☒' : '☐' }}</span>
+                      Hazardous Substances requiring Liability limits in excess of $1,000,000 (please explain)
+                    </label>
+                  </div>
+              </div>
+             
+               <table class="table strong-border-table center-bold-table" >
+                   <thead>
+                       <tr>
+                           <th >Commodity</th>
+                           <th >% of Loads:</th>
+                           <th >Avg Value </th>
+                           <th>Max Value </th>
+                           
+                          
+                       </tr>
+                   </thead>
+                   <tbody>
+                    <ng-container *ngFor="let data of listOfCommodity">
+                        <tr *ngIf="data.Type || data.Total || data.MaxValue || data.AvgValue">
+                          <td style="width: 30%;">{{ data.Type }}</td>
+                          <td style="width: 20%;">  
+                            <!-- {{ data.Total }} -->
+
+                            {{
+                              data?.Total
+                                ? (data.Total.toString().includes('$')
+                                    ? data.Total
+                                    :data.Total + '%'  )
+                                : ''
+                            }}
+                          </td>
+                          <td style="width: 20%;">
+                            <!-- {{ data.AvgValue | currency:'USD':'symbol':'1.0-0' }} -->
+                            {{ 
+                              data?.AvgValue 
+                                ? (data.AvgValue.toString().includes('$') 
+                                    ? data.AvgValue 
+                                    : '$' + (+data.AvgValue).toFixed(2)) 
+                                : '' 
+                            }}
+
+                          </td>
+                          <td style="width: 30%;">
+                            <!-- {{ data.MaxValue | currency:'USD':'symbol':'1.0-0' }} -->
+                            {{ 
+                              data?.MaxValue 
+                                ? (data.MaxValue.toString().includes('$') 
+                                    ? data.MaxValue 
+                                    : '$' + (+data.MaxValue).toFixed(2)) 
+                                : '' 
+                            }}
+                          </td>
+                          
+                        </tr>
+                      </ng-container>
+                       
+                   </tbody>
+               </table>
+           
+           <p style="font-size: 11px; ">Do you ever haul any of the following commodities? (All commodities require a response)</p>
+           <table class="table strong-border-table ">
+            <thead class="table">
+               
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-size: 11px;">Steel Materials <span>☐ Yes   ☒ No</span></td>
+                    <td style="font-size: 11px;">Garbage/Refuse/Waste  <span>☐ Yes   ☒ No</span> </td>
+                    <td style="font-size: 11px;">Livestock/Animals  <span>☐  Yes   ☒ No</span> </td>
+                    <td style="font-size: 11px;">Cement Mixers <span>☐ Yes   ☒ No</span> </td>
+                   
+                </tr>
+                <tr>
+                    <td style="font-size: 11px;">Scrap Metal <span>☐ Yes   ☒ No</span></td>
+                    <td style="font-size: 11px;">Automobiles <span>☐ Yes   ☒ No</span></td>
+                    <td style="font-size: 11px;">Tankers<span>☐ Yes   ☒ No</span></td>
+                    <td style="font-size: 11px;">Boat(s) <span>☐ Yes   ☒ No</span></td>
+                   
+                </tr>
+                
+            </tbody>
+           </table>
+           <p  style="font-size: 11px;">Please indicate any other (or additional) commodities hauled: </p>
+            </div>
+           </div>
+           
+           <div class="page-break">
+            
+           </div>
+           <div>
+
+           </div>
+           <div class="card mt-5" >
+            <div class="card-body">
+              <p style="text-decoration: underline;font-size:medium;">Underwriting Questions</p>
+              <div class="row" style="margin-bottom: -15px;">
+           <div class="col-sm-1">
+            <h5 style="font-weight: 500;font-size: 11px;">Yes-No</h5>
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox2()">
+                {{ isFirstChecked ? '☒-☐':'☐-☒' }}
+              </p>
+            
+            
+           </div>
+           <div class="col-sm-3" style="margin-top: 27px;">
+            <p style="font-size: 11px;">Are filings required?</p>
+            
+           </div>
+           <div class="col-sm-3 " style="margin-top: 27px;font-size: 11px;" >
+            <label style="font-size: 11px;">Docket #:</label>
+            <input type="text"  class="underline-input2"style="font-size: 11px;"[value] = "listOfData?.MC">
+           </div>
+           <div class="col-sm-3 " style="margin-top: 27px;font-size: 11px;" >
+            <label style="font-size: 11px;">MCP #:  </label>
+            <input type="text"  class="underline-input2" [value]="listOfData?.LookUpCode">
+           </div>
+           <div class="col-sm-2 " style="margin-top: 27px;font-size: 11px;">
+            <label style="font-size: 11px;">Other:   </label>
+            
+           </div>
+           <div class="col-sm-1">
+            
+           
+
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -10px;" (click)="toggleCheckbox3()">
+                {{ isFirstChecked3 ? '☒-☐':'☐-☒' }}
+              </p>
+            
+            
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;margin-top: -10px;">Do you act as a freight-broker or freight-forwarder or arrange loads for others?  </p>
+            
+           </div>
+           <div class="col-sm-2">
+           
+           </div>
+           
+           <div class="col-sm-4" >
+            <p style="font-size: 11px;margin-top: -10px;">If yes, provide brokerage name: <br/><span>Annual Brokerage Revenue:</span> </p> 
+          
+            
+            
+           </div>
+           <div class="col-sm-6" >
+            
+           
+           </div>
+           <div class="col-sm-1">
+            
+            
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -15px;" (click)="toggleCheckbox4()">
+                {{ isFirstChecked4 ? '☒-☐':'☐-☒' }}
+              </p>
+            
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;margin-top: -15px;">Is all equipment operated under the applicant's authority scheduled on the application? If no, attach explanation</p>
+            
+           </div>
+           <div class="col-sm-1">
+            
+           
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -15px;" (click)="toggleCheckbox5()">
+                {{ isFirstChecked5 ? '☒-☐':'☐-☒' }}
+              </p>
+            
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;margin-top: -15px;">Is all owned equipment scheduled on this application? </p>
+            
+           </div>
+           <div class="col-sm-2" style="margin-top: -15px;">
+           
+           </div>
+           
+           <div class="col-sm-3" >
+           <p style="font-size: 11px;margin-top: -16px;">If no, attach explanation.</p>  
+           
+            
+            
+           </div>
+           <div class="col-sm-7" >
+            
+           
+           </div>
+           <div class="col-sm-1"style="margin-top: -8px;">
+            
+           
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -8px;" (click)="toggleCheckbox6()">
+                {{ isFirstChecked6 ? '☒-☐':'☐-☒' }}
+              </p>
+            
+           </div>
+           <div class="col-sm-11"style="margin-top: -8px;" >
+            <p style="font-size: 11px;margin-top: -8px;">Is all scheduled equipment owned by you? If no, attach explanation </p>
+            
+           </div>
+           
+           <div class="col-sm-1">
+          
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -15px;" (click)="toggleCheckbox7()">
+                {{ isFirstChecked7 ? '☒-☐':'☐-☒' }}
+              </p>
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;margin-top: -15px;">Do you sub-haul, lease or hire equipment from others? If yes, is it:  </p>
+            
+           </div>
+           
+           
+           <div class="col-sm-1">
+           
+           </div>
+           <div class="col-sm-11" style="margin-top: -17px;">
+           <span style="font-size: 11px;margin-left: 60px;margin-bottom: 1px;">a.If permanently leased, is it scheduled on this application?</span> <br/>
+           <span style="font-size: 11px;margin-left: 60px;">b.If permanently leased, are autos hired with drivers? <br/></span>
+           <span style="font-size: 11px;margin-left: 60px;">c. If trip leased, provide the annual estimated </span>
+           
+           
+           <label  style="margin-left: 20px;margin-top: -10px;font-size: 11px;"> Cost of hire: </label>
+               <input type="text"  class="underline-input4">
+           
+               <label  style="margin-left:1px;font-size: 11px;"> Current Year:</label>
+               <input type="text"  class="underline-input4">
+               <label  style="margin-left:1px;font-size: 11px;"> Prior Year:  </label>
+               <!-- <input type="text"  class="underline-input4"> -->
+           </div>
+           
+           <div class="col-sm-1">
+           
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox8()">
+                {{ isFirstChecked8 ? '☒-☐':'☐-☒' }}
+              </p>
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;">Do you lease to others? If yes, who must provide primary insurance? If you provide insurance, is coverage desired for:<br/>
+            <span style="margin-left: 60px;font-size: 11px;">If Named Lessee(s), attach a list of Name and Addresses for each lessee.</span>   </p>
+            
+           </div>
+           
+           <div class="col-sm-1" style="margin-top: -10px;">
+           
+
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox9()">
+                {{ isFirstChecked9 ? '☒-☐':'☐-☒' }}
+              </p>
+           </div>
+           <div class="col-sm-11" style="margin-top: -10px;">
+            <p style="font-size: 11px; ">Do you pull doubles? <br/>
+            <span style="margin-left: 60px;font-size: 11px;">
+             a. Do you pull triples?
+            </span> </p>
+            
+           </div>
+           <div class="col-sm-1">
+            
+            <p  style="font-size: 11px;  cursor: pointer;margin-top: -15px;" (click)="toggleCheckbox10()">
+                {{ isFirstChecked10 ? '☒-☐':'☐-☒' }}
+              </p>
+           </div>
+           <div class="col-sm-11" >
+            <p style="font-size: 11px;margin-top: -15px;">Do you haul containers or containerized freight? 10 Do you haul oversize/overweight loads? <br/>
+           </div>
+           
+           <div class="col-sm-1" style="margin-top:-10px ;">
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox11()">
+                {{ isFirstChecked11 ? '☒-☐':'☐-☒' }}
+              </p>
+          
+           </div>
+           <div class="col-sm-11"style="margin-top:-10px ;" >
+            <p style="font-size: 11px;">Do you haul any hazardous material or commodities that require a HAZMAT placard?   <br/>
+           </div>
+           
+           <div class="col-sm-1"style="margin-top:-10px ;">
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox12()">
+                {{ isFirstChecked12 ? '☒-☐':'☐-☒' }}
+              </p>
+          
+           </div>
+           <div class="col-sm-11" style="margin-top:-10px ;">
+            <p style="font-size: 11px;">Do you do any refuse/waste hauling involving residential exposure? <br/>
+           </div>
+           <div class="col-sm-1" style="margin-top:-10px ;">
+            <p  style="font-size: 11px;  cursor: pointer;" (click)="toggleCheckbox13()">
+                {{ isFirstChecked13 ? '☒-☐':'☐-☒' }}
+              </p>
+          
+           </div>
+           <div class="col-sm-11" style="margin-top:-10px ;">
+            <p style="font-size: 11px;">Do you haul electronics? If yes, list the shipper & the percentage of the load:<br/>
+           </div>
+           
+           
+            
+            
+           
+           
+              </div>
+             
+           
+           
+            </div>
+           </div>
+           
+           <div class="card" style="margin-top: 20px;">
+               <div class="card-body">
+                 <p style="text-decoration: underline;font-size:medium;">COVERAGE SECTION</p>
+                 <div class="row">
+                   <div class="col-sm-3">
+                  
+                    <p style="font-size: 11px;" class="custom-radio" (click)="toggleCoverage()">
+                        <span>{{ isCoverageChecked ? '☒':'☐' }}</span> Coverage Liability*
+                      </p> 
+                   </div>
+                   <div class="col-sm-3">
+                    <p style="font-size: 11px;">Combined Single Limit:</p>  
+                      
+                   </div>
+                   <div class="col-sm-3">
+                   
+                     <p style="font-size: 11px;" class="custom-radio" (click)="toggleMoter()">
+                        <span>{{ isCoverageMoter ? '☒':'☐' }}</span>Motor Truck Cargo
+                      </p> 
+                   </div>
+                   <div class="col-sm-3">
+                    <p style="font-size: 10px;">Limit Per Conveyance:<input type="text"  class="underline-input9" value="$100,000"> </p>
+                       
+                   </div>
+           
+           
+                   <div class="col-sm-3" style="margin-top: -10px;">
+                    <p style="font-size: 11px;" class="custom-radio" (click)="togglePd()">
+                        <span>{{ isCoveragePd ? '☒':'☐' }}</span>Physical damage
+                      </p> 
+                  
+                   </div>
+                   <div class="col-sm-3"style="margin-top: -10px;" *ngIf ='TotalVehiclesTractor'>
+                       
+                       <label style="font-size: 11px;">Total Insured Values:</label>
+                       <input type="text"  class="underline-input8"[value]="TotalVehiclesTractor?.TotalVehicleValueVINSeventeen | currency:'USD':'symbol'">
+                   </div>
+                   <div class="col-sm-3"style="margin-top: -8px;">
+                    
+                      
+                      <p style="font-size: 11px;" class="custom-radio" (click)="toggleGl()">
+                        <span>{{ isCoverageGl ? '☒':'☐' }}</span>General Liability
+                      </p> 
+                   </div>
+                   <div class="col-sm-3">
+                      <p style="font-size: 11px;margin-top: -8px;">Per Occurrence/Aggregate:</p> 
+                   </div>
+                   <div class="col-sm-12">
+                      <p style="font-size: 11px;margin-top: -10px;">*Deductible</p> 
+                   </div>
+                   <div class="col-sm-12">
+                   
+                    <p style="font-size: 11px;margin-top: -10px;" class="custom-radio" (click)="toggleDeductiblesMTC()">
+                        <span>{{ isDeductiblesMTC ? '☒':'☐' }}</span>$1,000 Deductibles for Motor truck cargo
+                      </p> 
+                   </div>
+                   <div class="col-sm-12">
+                  
+                    <p style="font-size: 11px;margin-top: -10px;" class="custom-radio" (click)="toggleDeductiblesPD()">
+                        <span>{{ isDeductiblesPD ? '☒':'☐' }}</span>$2,500 Deductibles for Physical damage
+                      </p> 
+                   </div>
+              
+                 </div>
+                
+                 
+              
+             
+               </div>
+              </div>
+           
+           
+           
+              <div class="card">
+               <div class="card-body">
+                 <p style="text-decoration: underline;font-size:medium;" (click)="resetVehicleList()">EQUIPMENT LIST</p>
+                
+                 <table class="table strong-border-table mt-4">
+                   <thead class="table">
+                      
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td  style="text-align: center;">Sr. #</td>
+                           <td style="text-align: center;">Year</td>
+                           <td style="text-align: center;">Make </td>
+                           <td style="text-align: center;">Type </td>
+                           <td style="text-align: center;">Value </td>
+                           <td style="text-align: center;">Vin Number </td>
+                           
+                       </tr>
+                       <tr *ngFor="let data of visibleVehicleRows; let i = index" (dblclick)="hideRowByData(data)">
+                           <td style="text-align: center;">{{i+1}}</td>
+                           <td style="text-align: center;">{{data.Year}}</td>
+                           <td style="text-align: center;">{{data.Make}}</td>
+                           <td style="text-align: center;">{{data.BodyType}}</td>
+                           <td style="text-align: center;">
+                             <!-- {{data.Value | currency:'USD':'symbol'}} -->
+                             {{ 
+                              data?.Value != null
+                                ? (+data.Value === 0 
+                                    ? 'N/A' 
+                                    : (data.Value.toString().includes('$') 
+                                        ? data.Value 
+                                        : '$' + (+data.Value).toFixed(2))) 
+                                : '' 
+                            }}
+
+                           </td>
+                           <td style="text-align: center;"> {{data.VIN}}</td>
+                       </tr>
+                       
+                   </tbody>
+                </table>
+                 
+              
+             
+               </div>
+              </div>
+           
+              <div class="page-break">
+            
+              </div>
+              <div></div>
+              <div class="card mt-5">
+               <div class="card-body">
+                   <div style="display: flex; align-items: center;">
+                       <p style="text-decoration: underline;font-size:medium; margin-right: 10px;">UNIT REVENUE AND MILEAGE</p>
+                       <span style="text-decoration: none;font-size: large; margin-top: -10px;">Actual & Estimated</span>
+                   </div>
+                
+                 <table class="table strong-border-table">
+                   <thead class="table">
+                      
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td ></td>
+                           <td >Year</td>
+                           <td>#of Units </td>
+                           <td>Revenue </td>
+                           <td>Mileage </td>
+                           
+                           
+                       </tr>
+                       <tr *ngIf ='TotalVehiclesTractor'>
+                           <td>Projected</td>
+                           <td></td>
+                           <!-- <td class="underline-input10">{{ TotalVehiclesTractor?.TotalVehiclesTractor ?? 'N/A' }}</td> -->
+                            <td><input type="text" class="underline-input10"
+                              [value]="TotalVehiclesTractor?.TotalVehiclesTractor ?? 'N/A'"></td>
+                           <td>  
+                            <input type="text"  class="underline-input10" 
+                            [value]="'$' + (TotalVehiclesTractor.TotalVehiclesTractor * 120000 | number:'1.0-2')">
+                        
+                        </td>
+                           <td>
+                            <input type="text"  class="underline-input10" 
+                            [value]="TotalVehiclesTractor.TotalVehiclesTractor * 90000 | number:'1.0-2'">
+                        </td>
+                           
+                       </tr>
+                       <tr>
+                           <td>Current</td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           
+                       </tr>
+                       
+                   </tbody>
+                </table>
+                 
+              
+             
+               </div>
+              </div>
+           
+              <div class="card">
+               <div class="card-body">
+                   <div style="display: flex; align-items: center;">
+                       <p style="text-decoration: underline;font-size:medium; margin-right: 10px;">DRIVER SECTION</p>
+                       <span style="text-decoration: none;font-size: large; margin-top: -10px;">Actual & Estimated</span>
+                   </div>
+                
+                 <table class="table strong-border-table">
+                   <thead class="table">
+                      
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td style="text-align: center;">Sr. No.</td>
+                           <td style="text-align: center;">Driver’s Name</td>
+                           <td style="text-align: center;">License Number</td>
+                           <td style="text-align: center;">State </td>
+                           <td style="text-align: center;">Years of Exp. </td>
+                           
+                           
+                       </tr>
+                       <tr *ngFor ="let data of fixedDriverRows; let i = index">
+                           <td style="text-align: center;">{{i+1}}</td>
+                           <td style="text-align: center;">{{data.DriverName}}</td>
+                           <td style="text-align: center;">{{data.DriverLicenceNo}}</td>
+                           <td style="text-align: center;">{{data.StateLicenced}}</td>
+                           <td style="text-align: center;">{{data.Experience}}</td>
+                           
+                       </tr>
+                     
+                       
+                   </tbody>
+                </table>
+
+              
+             
+               </div>
+              </div>
+           
+              <div class="card">
+               <div class="card-body">
+                 
+                       <p style="text-decoration: underline;font-size:medium; margin-right: 10px;">INSURANCE HISTORY & LOSS EXPERIENCE</p>
+                       <p style="font-size: 10px;margin-top:-10px;">HAS ANY INSURANCE CARRIER CANCELLED OR NONRENEWED YOUR POLICY IN THE LAST THREE YEARS?</p>
+                       <p style="font-size: 11px;margin-top:-10px;">If yes, please provide an explanation:</p>
+                      
+           
+                
+                 <table class="table strong-border-table">
+                   <thead class="table">
+                      
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td >Policy Term</td>
+                           <td >Insurance Company</td>
+                           <td>Policy Number</td>
+                           <td># of Units </td>
+                           <td>Any Claims?</td>
+                           <td>If yes, Provide Details</td>
+                           
+                           
+                       </tr>
+                       <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           
+                       </tr>
+                     
+                       
+                   </tbody>
+                </table>
+                 
+              
+             
+               </div>
+              </div>
+              <div class="page-break">
+            
+              </div>
+              <div></div>
+              <div class="card mt-5"  >
+               <div class="card-body">
+                 
+                       <p style="text-decoration: underline;font-size:medium; margin-right: 10px;">SCHEDULE OF ADDITIONAL INSUREDS</p>
+                      
+                      
+           
+                
+                 <table class="table strong-border-table ">
+                   <thead class="table">
+                      
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td>Sr.#</td>
+                           <td >Name</td>
+                           <td>Address</td>
+                           <td>City</td>
+                           <td>State</td>
+                           <td>Zip Code</td>
+                           
+                           
+                       </tr>
+                       <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           
+                       </tr>
+                     
+                       
+                   </tbody>
+                </table>
+                 
+              
+             
+               </div>
+              </div>
+           
+          
+              <div class="card " >
+               <div class="card-body">
+                 
+                       <p style="text-decoration: underline;font-size:medium; margin-right: 10px;">SIGNATURES</p>
+                       <p style="font-size: 11px;">This application does not bind you or us to complete the insurance, but it is agreed that the information contained herein shall be the basis of the contract should a
+                           policy be issued.</p>
+                           <p style="font-size: 11px;">Attention all applicants in the states of AL, AR, AZ, CA CO, DE, FL, IN, KY, MN, NH, NJ, NY, OH, PA, TN, UT - For your protection the preceding states' laws require
+                               the following to appear on this form: Any person who knowingly, and with intent to defraud any insurance company or other person, files an application for insurance
+                               or statement of claim containing any materially false, incomplete, or misleading information, or conceals information concerning any material fact thereto, commits
+                               a fraudulent insurance act, which is a crime punishable by incarceration and shall also be subject to civil penalties</p>
+           
+           
+                               <p style="font-size: 11px;">For risks located in New York, Pennsylvania and California: Any person who knowingly makes or assists, abets, solicits or conspires with another to make a false or
+                                   misleading report of theft, destruction, damage or conversion of any motor vehicle to a law enforcement agency, a state department of motor vehicles, or an insurance
+                                   company commits perjury or a fraudulent insurance act, which are crimes punishable by incarceration, and shall also be subject to a civil penalty.</p>
+           
+                                   <p style="font-size: 11px;">I authorize, NTA General Insurance Agency to obtain a copy of my Motor Vehicle Report for rating/underwriting the insurance for which I have applied. I also understand
+                                       that a routine inquiry may be made providing information concerning my character, general reputation, personal characteristics and mode of living, as well as any
+                                       pertinent financial data deemed necessary. Upon written request, information as to the nature and scope of the report will be provided to me.</p>
+           
+                                       <p style="font-size: 11px;">I hereby certify that the foregoing statements and answers a just, full and true exposition of all the facts and circumstances with regard to the risk to be insured, insofar
+                                           as the same are known to be, and the same are hereby made as the basis and condition of the insurance.</p>
+           
+           
+                                           <p style="font-size: 11px;">Any person who, with intent to defraud or knowing that he or she is facilitating a fraud against an insurer, submits an application or files a claim containing a false
+                                               or deceptive statement is guilty of insurance fraud. By signing below, I affirm full knowledge of the and adherence to current D.O.T. Safety Regulations, and hereby
+                                               apply for insurance with respect to the coverage stated herein.</p>
+           
+                                               <p style="font-size: 11px;">It is through the inducement of the provided information that New York Marine and General Insurance Company shall issue a policy. It is a stipulation of the policy that
+                                                   the policy shall become null and void, and no benefit or effect whatsoever as to any claim arising, in the event that any of the accurate admittance of the application
+                                                   are found false of fraudulent in</p>
+           
+           
+                                                   <p style="font-size: 11px;">The vehicles to be insured are owned or leased by the Applicant/Name Insured and the drivers on record with New York Marine and General Insurance Company will
+                                                       be the only drivers of the insured vehicles during the policy period and all subsequent renewals unless additional drivers are reported to and approved by New York
+                                                       Marine And General Insurance Company prior to the operation or use of any vehicle shown in the policy.</p>
+           
+           
+           
+                                                       <div class="row">
+                                                           <div class="col-sm-6" style="text-align: center;">
+                                                               <div>
+                                                               <!-- <label style="font-size: 11px;"> ---------</label> <br/> -->
+                                                                   <label style="font-size: 11px;">Insured’s Signature</label>
+                                                               </div>
+                                                               <div>
+                                                                
+                                                                   <label style="font-size: 11px; margin-top: 15px;">Date</label>
+                                                               </div>
+           
+                                                           </div>
+           
+                                                           <div class="col-sm-6" style="text-align: center;">
+                                                               <div>
+                                                                <!-- <label style="font-size: 11px;"> ---------</label> <br/> -->
+                                                                   <label style="font-size: 11px">Producer’s Name</label>
+                                                               </div>
+                                                               <div>
+                                                                <!-- <label style="font-size: 11px;"> ---------</label> <br/> -->
+                                                                   <label style="font-size: 11px;margin-top: 15px;">Producer’s Signature</label>
+                                                               </div>
+                                                               <div>
+                                                               
+                                                                   <label style="font-size: 11px;margin-top: 15px;">Date</label>
+                                                               </div>
+           
+                                                           </div>
+           
+                                                       </div>
+                      
+                      
+           
+                
+               
+               </div>
+              </div>
+            </div>
+        </div>
+        </div>
+        <div  style ="text-align: center;margin-top: 5px;">
+            <button style="width: 300px;color: green;" class="learn-more"[useExistingCss]="true" printSectionId="print-section"printTitle="General info"  ngxPrint>Save And convert PDF</button> 
+            </div>
+

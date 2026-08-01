@@ -1,0 +1,82 @@
+<app-nav-registration></app-nav-registration>
+<div *ngIf ="showSpiner">
+  <app-spinner></app-spinner>
+ </div>
+<div *ngIf ="!showSpiner">
+
+
+<div class="container-fluid">
+  <div class="card mt-2">
+    <div class="row p-2">
+      <div class="col-sm-2">
+        <input
+         class="form-control "
+         type="search"
+         [(ngModel)]="searchCriteria.Team"
+         (ngModelChange)="onTeamChange($event)"
+         placeholder="Search By Team"
+         aria-label="Search"
+       />
+     </div>
+    
+     <div class="col-sm-2">
+       <input
+         class="form-control"
+         type="search"
+         [(ngModel)]="searchCriteria.UserName"
+         (ngModelChange)="onUserNameChange($event)"
+         placeholder="Search By Name"
+         aria-label="Search"
+       />
+     </div>
+     
+    
+  
+    </div>
+  </div>
+   
+   
+
+
+    
+ <div class="scrolling mt-2" >
+   <table  class="table table-bordered table-hover dt-responsive" >
+ 
+     <thead>
+       <tr>
+         <th>Team Name</th>
+         <th>User Name</th>
+         <th> Password</th>
+         <th>Email</th>
+        
+       
+       
+       </tr>
+     </thead>
+     <tbody>
+            
+      <tr  *ngFor ="let data of listOfAllLoginDetail  | searchFilter: searchCriteria">
+        <td>{{data.Team}}</td>
+        <td>{{data.UserName}}</td>
+        <td>{{data.Password}}</td>
+        <td>{{data.EmailID}}</td>
+        <td ><a href="javascript:void(0)" style="color: green;text-decoration: blink;" (click)="addEditRegistrationDetail(data)">Edit</a></td>
+        
+        
+
+      
+      </tr>
+    
+  
+    
+   </tbody>
+    
+   </table>
+ </div>
+ 
+
+
+</div>
+</div>
+
+

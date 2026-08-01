@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+ 
+
+ <h2 class="text-center">Are you  Sure ?</h2>
+ <h5 class="text-center"> Please Select Resion? </h5>
+ <form [formGroup]="deleteForm">
+  <div class=" mb-3">
+      <label >Enter Date</label>
+    <input type="text" class="form-control"[(ngModel)] ="ExpirationDate" formControlName ="ExpirationDate">
+  
+    </div>
+    <div class=" mb-3">
+        <label >Select Reason</label>
+<select class="form-control" formControlName="DeleteReason" aria-label="Select Reason">
+  <option *ngFor="let reason of deleteReasons" [value]="reason">{{ reason }}</option>
+</select>
+
+</div>
+</form>
+ <div class="text-center mt-4 mb-4">
+
+  <div *ngIf ="messageSuccess">
+    <button type="button" style="width: 130px;background-color: red;" class="btn btn-outline-danger"(click)="deleteRecord()">Delete</button>
+    <button type="button"  style="width: 130px; margin-left: 5px; " class="btn btn-outline-success "mat-dialog-close>Cancel</button>
+    
+   
+
+      
+     
+    
+    </div>
+ 
+</div>
+ </div>
+ 
+ <!-- <div class="btn-group  gap-2 mt-4 mb-5 ">
+        
+     <button mat-stroked-button class="text-right" color="warn" (click)="onSubmit()" >Delete</button>
+     <button mat-stroked-button class="text-right"  mat-button mat-dialog-close>Clear</button>
+    
+   
+   </div> -->
+ 
+

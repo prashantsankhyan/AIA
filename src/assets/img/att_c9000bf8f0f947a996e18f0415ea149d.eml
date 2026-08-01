@@ -1,0 +1,341 @@
+Received: by 2002:a05:6214:1183:b0:6d4:634:a97c with SMTP id t3csp136952qvv;
+        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-21de31f9dfasor6318645ad.8.2025.01.29.20.32.43
+        for <Assist@aiazone.net>
+        (Google Transport Security);
+        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
+From: "AIA CSR" <csr@aiazone.net>
+To: "AIA Assist" <Assist@aiazone.net>
+Cc: <compliance@aiazone.net>
+References: ee920d58dff7e237a04cee646809344e@mail.gmail.com
+In-Reply-To: ee920d58dff7e237a04cee646809344e@mail.gmail.com
+Subject: FW: Policy # SEPK012000048700- APD/MTC - DIA Transport Inc - Endorsement - Update Mailing Address - Effective Date - 01/23/2025
+Date: Wed, 29 Jan 2025 20:32:31 -0800
+Message-ID: <f5dd31b2679e7bcb7e1e5d93077608d7@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_024B_01DB728D.F51C0110"
+X-Mailer: Microsoft Outlook 16.0
+X-Received: by 2002:a17:903:11c3:b0:215:5625:885b with SMTP id d9443c01a7336-21dd7e3be5bmr90837625ad.52.1738211563474;
+        Wed, 29 Jan 2025 20:32:43 -0800 (PST)
+X-Received: by 2002:a17:90b:3a0e:b0:2f2:8bdd:cd8b with SMTP id
+ 98e67ed59e1d1-2f83ac7f028mr8588284a91.29.1738211562344; Wed, 29 Jan 2025
+ 20:32:42 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aiazone-net.20230601.gappssmtp.com header.s=20230601 header.b=W18G6xct;
+       spf=pass (google.com: domain of csr@aiazone.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=csr@aiazone.net;
+       dara=pass header.i=@aiazone.net
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738211562; x=1738816362;
+        h=cc:to:subject:message-id:date:thread-index:mime-version:in-reply-to
+         :references:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iPOuo16uzGl1plkM//Uv11UDtrunI7ug82HPyK3qDDw=;
+        b=RpuNFy1/pa6hpwbpCbFOiynH/Pk6dK0URohdV5nnVOFjN2VbjKvfRPbXJhNIdQzLVp
+         BEKsFJtGxRSaGFgjJWVLMaoMMCfqiVvnBVu7uaOVP8QiCB5Zd744Rup2RcdPbirG4DK+
+         mrxcWEKUpMU5tAKhZnA5iDtNOv1PZeHefViiXQ4zzpbGVWWCJ2LPMpfubPX8bYoOALAj
+         4RbX0iMz1SXnC2a+JsyGWhxKSyMd+NkUWqm5oKrQntryvMowfdHoLTvOzm6asUb7gxDt
+         Dgk1Hn+0RQ3m0+GvzM0nwtZvqtQQXq07AGWMCYSrl31DsUGMuBro+YSzxWi1D0oFuiS4
+         MFNw==
+X-Gm-Message-State: AOJu0YyLRxRHhEPrTHlF9puhw1RwbtEy+Cq9deVShErfKduUTTXz+A4w
+	fejYvZPNsYDv3MKOeXQN2mbhjVaE/5SeiOPgz3aSho3BEb3iUyhQ8Yd6gURutAQnktTWd2UHRCF
+	bXKDTYy1S7HxrSr8TGxnY8Q9YTNtD0+sjXzQshny5x25n06RuywPIjA==
+X-Gm-Gg: ASbGncsYKJc/hY/jXhoK464ft2+xov72oaovfPvMw9ypz1LghrDrn+hFLhOyuWqPWsE
+	0TikPaeAxxMS125xKIViyLzgP+UgmHcx9LwAvhJOU5Eqt6rIc0HT2NbHShWp4dAKr4c/cLUIddJ
+	37k0PCAzM5ZRIyKNTH6XqMNJ81fRgbvBc=
+X-Google-Smtp-Source: AGHT+IFybuokiNvsvVODdtDieKKvCH7e+ZCqhp4T2AaTIwNu/+V7eJSfWpS4Bf5+3dSHd3iO++xTgH6M7gPAAszt0Ow=
+Thread-Index: AQFq9LYkjAkSm/iaXwuShPViXSbqHA==
+X-Gm-Features: AWEUYZnlI4V7RhfSUeF-C_uwSCPpT32vfwu7M5sgFbv2OMu9KiNvqZq9MiAsbbs
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_024B_01DB728D.F51C0110
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_024C_01DB728D.F51C2820"
+
+
+------=_NextPart_001_024C_01DB728D.F51C2820
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+
+
+
+
+From: AIA CSR <csr@aiazone.net <mailto:csr@aiazone.net> >
+Sent: Thursday, January 23, 2025 5:04 PM
+To: 'Cindy Soto' <cindy.soto@hullstk.com <mailto:cindy.soto@hullstk.com> >; 
+'Brittney Roberts' <brittney.roberts@hullstk.com 
+<mailto:brittney.roberts@hullstk.com> >
+Cc: AIA Billing <billing@aiazone.net <mailto:billing@aiazone.net> >; AIA 
+Reporting <reporting@aiazone.net <mailto:reporting@aiazone.net> >; 
+'compliance@aiazone.net <mailto:compliance@aiazone.net> ' 
+<compliance@aiazone.net <mailto:compliance@aiazone.net> >
+Subject: Policy # SEPK012000048700- APD/MTC - DIA Transport Inc - 
+Endorsement - Update Mailing Address - Effective Date - 01/23/2025
+
+
+
+Hello,
+
+
+
+Insured would like to update his mailing address in his policy.
+
+
+
+Insured: DIA Transport Inc
+
+Policy # SEPK012000048700
+
+Updated Mailing Address
+ <https://www.google.com/maps/search/4800+CITRUS+AVE+APT+3312+FONTANA+,+CA+%C2%A0+92336?entry=gmail&source=g> 
+4800 CITRUS AVE APT 3312
+ <https://www.google.com/maps/search/4800+CITRUS+AVE+APT+3312+FONTANA+,+CA+%C2%A0+92336?entry=gmail&source=g> 
+FONTANA , CA  92336
+
+Thank you for choosing to work with Amerigo Insurance Agency.
+
+Please feel free to contact us if you have any question.
+
+Lucky
+
+CSR
+
+LIC # 0M90893
+
+(530) 290-1633 Office Ext 101
+
+(530) 464-8814 Direct Line
+
+(530) 290-1701 Fax /  <mailto:csr@aiazone.net> csr@aiazone.net Email
+
+
+
+
+
+
+
+
+
+
+------=_NextPart_001_024C_01DB728D.F51C2820
+Content-Type: text/html;
+	boundary="000000000000b81efa062ce4ea38";
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dutf-8">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered =
+medium)"><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Aptos;}
+@font-face
+	{font-family:Roboto;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-ligatures:standardcontextual;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+span.EmailStyle19
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	mso-ligatures:none;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style></head><body lang=3D"EN-US" link=3D"#0563C1" =
+vlink=3D"#954F72" style=3D"word-wrap:break-word"><div =
+class=3D"WordSection1"><p class=3D"MsoNormal">=C2=A0</p><p =
+class=3D"MsoNormal">=C2=A0</p><div><div =
+style=3D"border:none;border-top:solid #e1e1e1 1.0pt;padding:3.0pt 0in =
+0in 0in"><p class=3D"MsoNormal"><b><span =
+style=3D"mso-ligatures:none">From:</span></b><span =
+style=3D"mso-ligatures:none"> AIA CSR &lt;<a =
+href=3D"mailto:csr@aiazone.net">csr@aiazone.net</a>&gt; <br><b>Sent:</b> =
+Thursday, January 23, 2025 5:04 PM<br><b>To:</b> &#39;Cindy Soto&#39; =
+&lt;<a =
+href=3D"mailto:cindy.soto@hullstk.com">cindy.soto@hullstk.com</a>&gt;; =
+&#39;Brittney Roberts&#39; &lt;<a =
+href=3D"mailto:brittney.roberts@hullstk.com">brittney.roberts@hullstk.com=
+</a>&gt;<br><b>Cc:</b> AIA Billing &lt;<a =
+href=3D"mailto:billing@aiazone.net">billing@aiazone.net</a>&gt;; AIA =
+Reporting &lt;<a =
+href=3D"mailto:reporting@aiazone.net">reporting@aiazone.net</a>&gt;; =
+&#39;<a =
+href=3D"mailto:compliance@aiazone.net">compliance@aiazone.net</a>&#39; =
+&lt;<a =
+href=3D"mailto:compliance@aiazone.net">compliance@aiazone.net</a>&gt;<br>=
+<b>Subject:</b> Policy # SEPK012000048700- APD/MTC - DIA Transport Inc - =
+Endorsement - Update Mailing Address - Effective Date - =
+01/23/2025</span></p></div></div><p class=3D"MsoNormal">=C2=A0</p><p =
+class=3D"MsoNormal"><span lang=3D"EN-IN" =
+style=3D"font-size:14.0pt">Hello,</span></p><p class=3D"MsoNormal"><span =
+lang=3D"EN-IN" style=3D"font-size:14.0pt">=C2=A0</span></p><p =
+class=3D"MsoNormal"><span style=3D"font-size:14.0pt">Insured would like =
+to update his mailing address in his policy.</span></p><p =
+class=3D"MsoNormal"><span lang=3D"EN-IN" =
+style=3D"font-size:14.0pt">=C2=A0</span></p><p class=3D"MsoNormal"><span =
+style=3D"font-size:14.0pt">Insured: DIA Transport Inc =
+=C2=A0</span></p><p class=3D"MsoNormal"><span =
+style=3D"font-size:14.0pt">Policy #</span> <span =
+style=3D"font-size:14.0pt">SEPK012000048700</span></p><p =
+class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><span =
+style=3D"font-size:14.0pt">Updated Mailing Address</span></b><span =
+style=3D"font-size:14.0pt"><br><a =
+href=3D"https://www.google.com/maps/search/4800+CITRUS+AVE+APT+3312+FONTA=
+NA+,+CA+%C2%A0+92336?entry=3Dgmail&amp;source=3Dg"><span =
+style=3D"color:windowtext;text-decoration:none">4800 CITRUS AVE APT =
+3312</span></a><br><a =
+href=3D"https://www.google.com/maps/search/4800+CITRUS+AVE+APT+3312+FONTA=
+NA+,+CA+%C2%A0+92336?entry=3Dgmail&amp;source=3Dg"><span =
+style=3D"color:windowtext;text-decoration:none">FONTANA , CA =
+=C2=A092336</span></a></span> =C2=A0</p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-size:12.0pt;font-family:&quot;Times New =
+Roman&quot;,serif;color:#1c4587">Thank you for choosing to work with =
+Amerigo Insurance Agency.</span></i></b><span =
+style=3D"mso-ligatures:none"></span></p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-size:12.0pt;font-family:&quot;Times New =
+Roman&quot;,serif;color:#1c4587">Please feel free to contact us if you =
+have any question.</span></i></b></p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><img =
+width=3D"157" height=3D"147" style=3D"width:1.6333in;height:1.5333in" =
+src=3D"cid:image001.jpg@01DB6DB8.C5A8DDB0" align=3D"left" =
+hspace=3D"12"><b><i><span =
+style=3D"font-size:12.0pt;font-family:&quot;Times New =
+Roman&quot;,serif;color:#1c4587">Lucky</span></i></b></p><p =
+class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-size:12.0pt;font-family:&quot;Times New =
+Roman&quot;,serif;color:#1c4587">CSR</span></i></b></p><p =
+class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-family:Roboto;color:#222222">LIC =
+#=C2=A00M90893</span></i></b></p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-family:Roboto;color:#222222">(530) 290-1633 Office Ext =
+101</span></i></b></p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-family:Roboto;color:#222222">(530) 464-8814 Direct =
+Line</span></i></b></p><p class=3D"MsoNormal" =
+style=3D"mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><b><i><span =
+style=3D"font-family:Roboto;color:#222222">(530) 290-1701 Fax / =
+</span></i></b><a href=3D"mailto:csr@aiazone.net" =
+target=3D"_blank"><b><i><span =
+style=3D"font-family:Roboto;color:blue">csr@aiazone.net</span></i></b></a=
+><b><i><span style=3D"font-family:Roboto"> <span =
+style=3D"color:#222222">Email</span></span></i></b></p><p =
+class=3D"MsoNormal">=C2=A0</p><p class=3D"MsoNormal">=C2=A0</p><p =
+class=3D"MsoNormal">=C2=A0</p><p =
+class=3D"MsoNormal">=C2=A0</p></div></body></html>
+
+------=_NextPart_001_024C_01DB728D.F51C2820--
+
+------=_NextPart_000_024B_01DB728D.F51C0110
+Content-Type: image/jpeg;
+	name="image001.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image001.jpg@01DB6DB8.C5A8DDB0>
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCACTAJ0DASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiii
+gBv40Zqub62BINzCMcHLjij7da/8/MP/AH2KOV9ieeK6ljNGar/b7X/n6h/77FH2+1/5+of++xTs
++wc8e5ZzRmq32+0/5+of++xSre2zkBLiJiegDiiz7Bzx7likorzjxbq10viCWOC5ljjiVVwjY561
+pRoyqy5UY4nERw8eaSuejg5pa868MahrIvBMizXloW2Sgtnb7jNehNIqJudgoHJLHAFFWk6UuVu4
+8PXVaHPaw7NGar/brT/n6g/77FH260/5+oP++xWdn2NeePcs0VW+3Wn/AD9Qf99ij7faf8/UH/fY
+o5X2Dnj3LFHNVv7Rsv8An7h/7+CnxXUMzEQzRyEddrA4pcrQKaezLFFFFBQUlLSUAcH4p8JzNdNe
+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
+
+------=_NextPart_000_024B_01DB728D.F51C0110--

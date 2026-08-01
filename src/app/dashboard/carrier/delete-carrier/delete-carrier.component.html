@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+ 
+
+ <h2 class="text-center">Are you  Sure ?</h2>
+ <h5 class="text-center">You want to Delete ? </h5>
+
+
+ <div class="text-center mt-4 mb-4">
+
+  <div *ngIf ="messageSuccess">
+    <button type="button" style="width: 130px;background-color: red;" class="btn btn-outline-danger"(click)="deleteRecord()">Delete</button>
+    <button type="button"  style="width: 130px; margin-left: 5px; " class="btn btn-outline-success "mat-dialog-close>Cancel</button>
+    
+   
+
+      
+     
+    
+    </div>
+ 
+</div>
+ </div>
+ 
+ <!-- <div class="btn-group  gap-2 mt-4 mb-5 ">
+        
+     <button mat-stroked-button class="text-right" color="warn" (click)="onSubmit()" >Delete</button>
+     <button mat-stroked-button class="text-right"  mat-button mat-dialog-close>Clear</button>
+    
+   
+   </div> -->
+ 
+

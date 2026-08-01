@@ -1,0 +1,83 @@
+<div class="container-fluid">
+ <h4 style="text-align: center;color: rgba(0, 0, 255, 0.541);">Add Login Detail</h4>
+ <div  class="card p-1" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+  <section class="registration backgroundPage">
+   
+   <form [formGroup]="addEditRegistrationForm" >
+    <div class="col-sm-12">
+     <label>Select Team</label>
+     <select  aria-label="Default select example" formControlName ="Team" class="form-control"  [ngClass]= "{ 'is-invalid': submit && f['Team'].errors }">
+         <option hidden value="" disabled selected  > Select Team</option>
+         <option  value="Sale Team">Sale Team</option>
+         <option value="Submission Team">Submission Team</option>
+         <option value="Binding Team">Binding Team</option>
+         <option value="Loss Run">Loss Run</option>
+         <option value="Claim Team">Claim Team</option>
+         <option  value="Transaction Team">Transaction Team </option>
+         <option  value="Endorsement Team">Endorsement Team</option>
+         <option  value="App Registration">App Registration </option>
+         <option  value="Genrate Certificate Team">Certificate Team</option>
+         <option  value="Renewable Team">Renewable Team</option>
+          <option  value="Support Team">Support Team</option>
+           <option  value="Master Login">Master Login</option>
+            <option  value="Account Team">Account Team</option>
+           
+       
+     </select>
+     <div *ngIf ="submit && f['Team'].errors" class="invalid-feedback">
+      <div *ngIf ="f['Team'].errors">select Team Is  Required</div>
+  </div> 
+   </div>
+      <div class="col-sm-12">
+          <label style="text-align: center;">User Name</label>
+          <input type="text" class="form-control" formControlName ="UserName">
+       
+      </div>
+    
+    
+      
+     <div class="col-sm-12">
+      <label>Passward</label>
+      <input type="text" class="form-control" formControlName ="Password">
+    
+    </div>
+    <div class="col-sm-12">
+     <label>Email</label>
+     <input type="text" class="form-control" formControlName ="EmailID">
+    </div>
+ 
+    
+     
+     
+   
+     
+    
+    
+     
+      
+      
+      
+ 
+  
+      <div class="text-center mt-4 mb-4">
+ 
+       <div  *ngIf ="messageSuccess">
+         <button type="button" style="width: 130px;"(click)="onSubmit()" class="btn btn-outline-success">Save</button>
+         <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
+         
+        
+     
+           
+          
+         
+         </div>
+      
+     </div>
+    
+    
+  </form>
+ 
+  </section>
+</div>
+
+</div>

@@ -1,0 +1,346 @@
+<div class="container-fluid scrolling" id="print-section">
+
+
+ 
+
+
+
+ <h3  style="text-align: center;">Account Details</h3>
+ <div style="text-align: center;">
+
+ 
+ <p style="color: black;"><strong>Account Name:</strong> <span style="color: black;"> {{ listOfData.AccountName }}</span> </p>
+ <p style="color: black;"><strong>Code :-</strong> {{ listOfData.LookUpCode }}</p>
+ <p style="color: black;"><strong>CA:</strong>  {{ listOfData.CA }}</p>
+ <p style="color: black;"><strong>MC:</strong> {{ listOfData.MC }}</p>
+ <p style="color: black;"><strong>Phone Number:</strong> {{ listOfData.PhoneNumber }}</p>
+ <p style="color: black;"><strong>Email:</strong> {{ listOfData.EmailID }}</p>
+ <p style="color: black;"><strong>Yard Address</strong> {{ listOfData.Description }}</p>
+ <p style="color: black;"><strong>City:</strong> {{ listOfData.City }}</p>
+ <p style="color: black;"><strong>State:</strong> {{ listOfData.State }}</p>
+ <p style="color: black;"><strong>ZIP Code:</strong> {{ listOfData.ZIP }}</p>
+ <p style="color: black;"><strong>Year in Business:</strong> {{ listOfData.YearInBusiness }}</p>
+ <p style="color: black;"><strong>Garaging Address:</strong> {{ listOfData.GaragingAddress }}</p>
+ <p style="color: black;"><strong>Garaging City:</strong> {{ listOfData.GaragingCity }}</p>
+ <p style="color: black;"><strong>Garaging State:</strong> {{ listOfData.GaragingState }}</p>
+ <p style="color: black;"><strong>Garaging State:</strong> {{ listOfData.GaragingState }}</p>
+</div>
+ 
+
+ <h3 style="color: blue;">Primary Account Details</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Phone No</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let primary of listOfData.AccountPrimaryDetail">
+      <td>{{ primary.Name }}</td>
+      <td>{{ primary.Designation }}</td>
+      <td>{{ primary.PhoneNo }}</td>
+      <td>{{ primary.EmailID }}</td>
+    </tr>
+  </tbody>
+</table>
+<h3 style="color: blue;">Identification Details</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Identification Type</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let id of listOfData.AccountIdentificationDetail">
+      <td>{{ id.IdentificationType }}</td>
+      <td>{{ id.IdentificationNumber }}</td>
+    </tr>
+  </tbody>
+</table>
+
+  <!-- Vehicles Details Table -->
+  <h3 class="mt-3" style="color: blue;">Vehicle Details</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>VIN</th>
+        <th>Value</th>
+        <th>Vehicle Type</th>
+        <th>Owner Ship Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicleDetails">
+        <td>{{ vehicle.Make }}</td>
+        <td>{{ vehicle.Model }}</td>
+        <td>{{ vehicle.Year }}</td>
+        <td>{{ vehicle.VIN }}</td>
+        <td>{{vehicle.Value}}</td>
+        <td>{{vehicle.VehicleType}}</td>
+        <td>{{vehicle.OwnerShipType}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Drivers Details Table -->
+  <h3 class="mt-3" style="color: blue;">Details Driver And Vehicle</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Total Drivers</th>
+        <th>Total Vehicles</th>
+        <th>TotalVehiclesTrailer</th>
+        <th>TotalVehiclesTrailerValue</th>
+        
+        <th>TotalVehiclesTractor</th>
+        <th>TotalVehiclesTractorValue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let details of TotalVehiclesTractor">
+        <td>{{ details.TotalDrivers }}</td>
+        <td>{{ details.TotalVehicles}} </td>
+        <td>{{ details.TotalVehiclesTrailer}}</td>
+        <td>{{ details.TotalVehiclesTrailerValue }}</td>
+        
+        <td>{{ details.TotalVehiclesTractor}} </td>
+        <td>{{ details.TotalVehiclesTractorValue  }} </td>
+
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-3" style="color: blue;">Driver Details</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Driver Name</th>
+        <th>Driver LicenceNo</th>
+        <th>Year of Licence Issued</th>
+        <th>DateofBirth</th>
+        
+        <th>Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let driver of driverDetails">
+        <td>{{ driver.DriverName }}</td>
+        <td>{{ driver.DriverLicenceNo}} </td>
+        <td>{{ driver.YearofLicenceIssued | date:'MM/dd/yyyy'}}</td>
+        <td>{{ driver.DateofBirth| date:'MM/dd/yyyy' }}</td>
+        
+        <td>{{ driver.Experience}} </td>
+
+        
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+  <h3 class="mt-3" style="color: blue;">Commodity Details</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>MaxValue</th>
+        <th>AvgValue</th>
+        <th>Total</th>
+        
+        <th>MajorShipper</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commodity of listOfCommodity">
+        <ng-container *ngIf="commodity && hasData(commodity)">
+          <td>{{ commodity.Type }}</td>
+          <td>{{ commodity.MaxValue }} </td>
+          <td>{{ commodity.AvgValue }}</td>
+          <td>{{ commodity.Total }}</td>
+          <td>{{ commodity.MajorShipper }}</td>
+        </ng-container>
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="mt-3" style="color: blue;">ClientSummary</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>StateFillings</th>
+        <th>ApplicableStates</th>
+        <th>Terminal Location</th>
+        <th>Radius0To50Miles</th>
+        
+        <th>Radius51to200Miles</th>
+        <th>Radius201to500Miles</th>
+        <th>Radius501PlusMiles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ClientSummary of ClientSummary">
+        
+          <td>{{ ClientSummary.NeededStateFillings }}</td>
+          <td>{{ ClientSummary.ApplicableStates }} </td>
+          <td>{{ ClientSummary.TerminalLocation }}</td>
+          <td>{{ ClientSummary.Radius0To50Miles }}</td>
+          <td>{{ ClientSummary.Radius51to200Miles }}</td>
+          <td>{{ ClientSummary.Radius201to500Miles }}</td>
+          <td>{{ ClientSummary.Radius501PlusMiles }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="mt-3" style="color: blue;">Coverage</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>AutoLiability</th>
+        <th>LimitRequested</th>
+        <th>Deductible</th>
+        <th>CurrentCarrier</th>
+        
+        <th>ExpiringPremium</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Coverage of Coverage">
+        
+          <td>{{ Coverage.AutoLiability }}</td>
+          <td>{{ Coverage.LimitRequested }} </td>
+          <td>{{ Coverage.Deductible }}</td>
+          <td>{{ Coverage.CurrentCarrier }}</td>
+          <td>{{ Coverage.ExpiringPremium }}</td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="mt-3" style="color: blue;">Liabilities</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>MotorTruckCargo</th>
+        <th>LimitRequested</th>
+        <th>Deductible</th>
+        <th>CurrentCarrier</th>
+        
+        <th>ExpiringPremium</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let AutoLiability of AutoLiability">
+        
+          <td>{{ AutoLiability.MotorTruckCargo }}</td>
+          <td>{{ AutoLiability.LimitRequested }} </td>
+          <td>{{ AutoLiability.Deductible }}</td>
+          <td>{{ AutoLiability.CurrentCarrier }}</td>
+          <td>{{ AutoLiability.ExpiringPremium }}</td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="mt-3" style="color: blue;">MotorTruckCargo</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>MotorTruckCargo</th>
+        <th>LimitRequested</th>
+        <th>Deductible</th>
+        <th>CurrentCarrier</th>
+        
+        <th>ExpiringPremium</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let MoterTruckCargo of MoterTruckCargo">
+        
+          <td>{{ MoterTruckCargo.MotorTruckCargo }}</td>
+          <td>{{ MoterTruckCargo.LimitRequested }} </td>
+          <td>{{ MoterTruckCargo.Deductible }}</td>
+          <td>{{ MoterTruckCargo.CurrentCarrier }}</td>
+          <td>{{ MoterTruckCargo.ExpiringPremium }}</td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-3" style="color: blue;">PhysicalDamage</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Physical Damage</th>
+        <th>Deductible</th>
+        <th>CurrentCarrier</th>
+        <th>ExpiringPremium</th>
+        
+       
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let AutoPhysicalDamage of AutoPhysicalDamage">
+        
+          <td>{{ AutoPhysicalDamage.PhysicalDamage }}</td>
+         
+          <td>{{ AutoPhysicalDamage.Deductible }}</td>
+          <td>{{ AutoPhysicalDamage.CurrentCarrier }}</td>
+          <td>{{ AutoPhysicalDamage.ExpiringPremium }}</td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="mt-3" style="color: blue;">Personnel</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Years</th>
+        <th>ownerShip</th>
+        
+        <th>ExpiringPremium</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Personnel of Personnel">
+        
+          <td>{{ Personnel.Position }}</td>
+          <td>{{ Personnel.Name }} </td>
+          <td>{{ Personnel.Years }}</td>
+          <td>{{ Personnel.ownerShip }}</td>
+         
+        
+        
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+

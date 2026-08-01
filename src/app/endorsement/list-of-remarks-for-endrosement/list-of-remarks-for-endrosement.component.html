@@ -1,0 +1,44 @@
+<!-- Spinner -->
+<div *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- Data Display -->
+<div *ngIf="!showSpinner">
+  <!-- Remarks Found -->
+  <div *ngIf="listOfRemarksFormatted.length > 0" class="scrollable-table-body  p-3" style="max-height: 80vh; overflow-y: auto;">
+    <div *ngFor="let brokerFields of listOfRemarksFormatted" class="mb-4">
+     
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of brokerFields">
+            <!-- Skip AccountId and RemarkID -->
+            <ng-container *ngIf="item.key !== 'AccountId' && item.key !== 'RemarkID'">
+              <td>{{ item.key }}</td>
+              <td>
+                <!-- TrailerInterchange handled separately -->
+                <ng-container *ngIf="item.key === 'TrailerInterchange'; else defaultValue">
+                  {{ item.value }} units
+                </ng-container>
+                <ng-template #defaultValue>
+                  {{ isNumeric(item.value) ? (item.value | currency:'USD':'symbol':'1.0-0') : item.value }}
+                </ng-template>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- No Data Found Message -->
+  <div *ngIf="listOfRemarksFormatted.length === 0" class="text-center text-danger mt-3">
+    No remarks data found.
+  </div>
+</div>
