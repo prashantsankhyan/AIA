@@ -11,7 +11,7 @@ export class ClaimsPipe implements PipeTransform {
     if (!items) return [];
     if (!criteria) return items;
 
-    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo} = criteria;
+    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo ,ChildPolicyDescription} = criteria;
 
 
     return items.filter(item => {
@@ -22,7 +22,14 @@ export class ClaimsPipe implements PipeTransform {
       const matchesReportedTo = ReportedTo ? (item.ReportedTo ? item.ReportedTo.toString().toLowerCase().includes(ReportedTo.toString().toLowerCase()): false) :true;
       const matchesLineShortName = LineShortName ? (item.LineShortName ? item.LineShortName.toLowerCase().includes(LineShortName.toLowerCase()) : false) : true;
        const matchesLineDeleteReason = DeleteReason ? (item.DeleteReason ? item.DeleteReason.toLowerCase().includes(DeleteReason.toLowerCase()) : false) : true;
-      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason;
+       const matchesChildPolicyDescription = ChildPolicyDescription
+  ? (item.ChildPolicyDescription
+      ? item.ChildPolicyDescription
+          .toLowerCase()
+          .includes(ChildPolicyDescription.toLowerCase())
+      : false)
+  : true;
+      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason && matchesChildPolicyDescription;
 
      
       return result;

@@ -50,6 +50,7 @@ export class ListOfClaimsComponent {
     LineShortName: '',
     ReportedTo: '',
   };
+  accountName:any;
   constructor(private http:AllApiService,private router:ActivatedRoute,private cRouter:Router,public dialog: MatDialog,
     private cdr: ChangeDetectorRef) { }
 
@@ -58,6 +59,8 @@ export class ListOfClaimsComponent {
     this.userPermission = localStorage.getItem('userPermissiondetail')
     
     this.AccountID = JSON.parse(localStorage.getItem('accountId')||'{}') 
+    this.accountName = localStorage.getItem('claimAccountName') || '';
+    
     this.getAllData();
     this.getPolicyByAccountId();
     

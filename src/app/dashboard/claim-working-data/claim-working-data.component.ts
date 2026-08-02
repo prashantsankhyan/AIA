@@ -30,7 +30,10 @@ export class ClaimWorkingDataComponent {
       LineShortName: '',
       ReportedTo: '',
       DeleteReason:'',
+        ChildPolicyDescription: ''
+
     };
+    
     constructor(private http:AllApiService,private cRouter:Router,private cdr: ChangeDetectorRef,public dialog: MatDialog,) { }
   
     ngOnInit(): void {
@@ -56,7 +59,7 @@ export class ClaimWorkingDataComponent {
     }
     
     onLineShortNameChange(newLineShortName: string) {
-      this.updateSearchCriteria({ ClaimNumber: newLineShortName });
+      this.updateSearchCriteria({ LineShortName: newLineShortName });
     }
     
     onReportedToChange(newReportedTo: string) {
@@ -65,6 +68,11 @@ export class ClaimWorkingDataComponent {
        onDeleteReasonChange(newDeleteReason: string) {
       this.updateSearchCriteria({ DeleteReason: newDeleteReason });
     }
+    onChildPolicyDescriptionChange(value: string) {
+  this.updateSearchCriteria({
+    ChildPolicyDescription: value
+  });
+}
 
     applyClaimConfirmSearch() {
   this.searchCriteria.DeleteReason = 'Claim Confirm';
@@ -74,6 +82,8 @@ export class ClaimWorkingDataComponent {
   this.searchCriteria.DeleteReason = '';
   this.onDeleteReasonChange(''); // if you want to reset filter logic
 }
+
+
     getAllData(){
       this.http.getAllData(ApiUrl.getAllCalimDatawithoutAccountId).subscribe(
         data=>{

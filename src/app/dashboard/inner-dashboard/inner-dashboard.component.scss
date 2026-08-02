@@ -856,3 +856,8 @@ a {
   border-color: #4a90e2;
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.15);
 }
+
+.selected-row {
+  background-color: #d9edf7 !important;
+  font-weight: bold;
+}

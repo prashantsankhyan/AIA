@@ -105,6 +105,7 @@ export class InnerDashboardComponent {
   teamName:any;
   showSpinner = true;
   showTeamSelector: boolean = false;
+  selectedAccountName = '';
   constructor( private http:AllApiService,private router:Router,public dialog: MatDialog,private cdr: ChangeDetectorRef){
     this.http.listen().subscribe((m:any)=>{
       console.log(m)
@@ -114,7 +115,7 @@ export class InnerDashboardComponent {
 
 
   ngOnInit(){
-  
+
      if (!sessionStorage.getItem('reloaded')) {
     sessionStorage.setItem('reloaded', 'true');
     window.location.reload();
@@ -145,6 +146,7 @@ export class InnerDashboardComponent {
 
 
   onNameChange(newName: string) {
+    
     this.updateSearchCriteria({ name: newName });
   }
 
@@ -500,6 +502,9 @@ return;
       this.http.getAllData(ApiUrl.getAllAcountForTransactionAndClaim).subscribe(data => {
         this.showSpiner = false;
         this.listOfAllAcountForClaim = data.Accounts;
+       // Restore last searched account
+    this.searchCriteria.name = localStorage.getItem('claimAccountName') || '';
+
       });
       break;
 
@@ -1161,6 +1166,8 @@ resetTeamFlags() {
 
 
     addClaim(data:any) {
+       this.selectedAccountName = data.AccountName;
+       localStorage.setItem('claimAccountName', data.AccountName);
       this.clearLocalStorageValue();
       this.router.navigateByUrl('/claims');
       this.accountId = data.AccountID
@@ -1177,6 +1184,8 @@ resetTeamFlags() {
           ZIP: data.ZIP,
           Description: data.Description
         };
+      
+         
         localStorage.setItem("accountId" ,this.accountId)
         localStorage.setItem("accountName" ,this.accountName)
         localStorage.setItem("lookUpCode" ,this.lookUpCode)

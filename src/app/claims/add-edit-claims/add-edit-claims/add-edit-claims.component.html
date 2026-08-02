@@ -38,7 +38,7 @@
                <option  value="Insured">Insured</option>
                <option  value="Other Party">Other Party</option>
              </select>
-             <label>Reported By</label>
+             <label>Insurance Company</label>
              </div>
             </div>
          
@@ -148,7 +148,8 @@
         <tr *ngFor="let data of listOfPolicy"
            [ngClass]="{'selected-row': data.MarkedPolicyID == MarkedPolicyId && data.ChildPolicyID == ChildPolicyID}"
             (click)="getMarkedPolicyId(data)">
-          <td *ngIf="data.StageType !== 'In-Process'">{{data.LineName}} - {{data.LineShortName}}</td>
+          <td *ngIf="data.StageType !== 'In-Process'"  [matTooltip]="data.BrokerName"
+    matTooltipPosition="above">{{data.LineName}} - {{data.LineShortName}}</td>
           <td *ngIf="data.StageType !== 'In-Process'">{{data.ChildPolicyName}}</td>
           <td *ngIf="data.StageType !== 'In-Process'">{{data.Effective | date:'MM/dd/yyyy'}}</td>
           <td *ngIf="data.StageType !== 'In-Process'">{{data.Expiration | date:'MM/dd/yyyy'}}</td>

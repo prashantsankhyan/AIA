@@ -3,6 +3,7 @@
 </div>
 <div *ngIf ="!showSpiner">
  <div class="container-fluid page-background" >
+ 
   <div class ="row mt-2" >
        <div class="col-sm-4">
         <div class="container__item">
@@ -129,7 +130,11 @@
 </td>
     
       <td>{{data.ReportedTo}}</td>
-      <td>{{data.ClaimType}}</td>
+      <td>{{data.ClaimType}} 
+       
+          
+         
+      </td>
      <td [ngStyle]="{
       'color': data.DriverName == null && data.Driver ? '#e93423' : 'rgba(15, 15, 15, 0.542)',
      
