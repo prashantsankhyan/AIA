@@ -22,15 +22,15 @@
 			  <input
       type="text"
       class="form__field"
-      [(ngModel)]="searchCriteria.ChildPolicyDescription"
+      [(ngModel)]="searchCriteria.ChildPolicyName"
       (ngModelChange)="onChildPolicyDescriptionChange($event)" />
 		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Policy</button>
 	     </div>
       </div>
       <div class="col-sm-3">
            <div class="container__item">
-			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.LineShortName" (ngModelChange)="onLineShortNameChange($event)"/>
-		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Report</button>
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ReportedTo" (ngModelChange)="onReportedToChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍Insurance </button>
 	     </div>
         
       </div>
@@ -99,15 +99,16 @@
   </span> </td>
                <td>
         <span *ngIf="data.ClaimNumber && data.ClaimNumber.trim() !== ''" class="claim-highlight">
-    {{ data.ClaimNumber }}
+    {{ data.ClaimNumber }} 
   </span>
   <span *ngIf="!data.ClaimNumber || data.ClaimNumber.trim() === ''">
-    Missing
+    Missing -{{data.ChildPolicyName}}
   </span> <br/> 
-         {{data.ClaimType}}
+         {{data.ClaimType}} -{{data.ChildPolicyName}}
     </td>
     
-      <td>{{data.ReportedTo}}</td>
+      <td><span style="color: rgba(230, 185, 6, 0.915);">{{data.ReportedTo}}</span> <br/>
+      {{data.BrokerName}}</td>
      
      <!-- Driver Column -->
 <td [ngStyle]="{

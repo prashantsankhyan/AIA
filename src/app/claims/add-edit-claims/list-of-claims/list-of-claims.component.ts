@@ -49,6 +49,8 @@ export class ListOfClaimsComponent {
     ClaimNumber: '',
     LineShortName: '',
     ReportedTo: '',
+    ChildPolicyName:'',
+    Truck_VIN:'',
   };
   accountName:any;
   constructor(private http:AllApiService,private router:ActivatedRoute,private cRouter:Router,public dialog: MatDialog,
@@ -87,12 +89,29 @@ export class ListOfClaimsComponent {
   onReportedToChange(newReportedTo: string) {
     this.updateSearchCriteria({ ReportedTo: newReportedTo });
   }
+     onChildPolicyDescriptionChange(value: string) {
+  this.updateSearchCriteria({
+    ChildPolicyName: value
+  });
+}
+
+  onChildPolicyTrcukVin(value: string) {
+  this.updateSearchCriteria({
+    Truck_VIN: value
+  });
+}
+
+
 
   backToDashboarc(){
     this.cRouter.navigate(['/dashboard/_dashboard'])
 
   }
  
+  goForListOfAttachemtn(){
+     this.cRouter.navigate(['/claims/claimAttach'])
+    
+  }
  getPolicyByAccountId(){
   this.http.getAllDataId(ApiUrl.getAllPolicyByAccountId,this.AccountID).subscribe(
     data=>{

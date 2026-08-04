@@ -8,19 +8,23 @@
        <div class="col-sm-4">
         <div class="container__item">
 			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ClaimNumber" (ngModelChange)="onClaimNumberChange($event)"  />
-		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By ClaimNo</button>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍Claim No</button>
 	     </div>
         
        </div>
        <div class="col-sm-4">
          <div class="container__item">
-			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.LineShortName" (ngModelChange)="onLineShortNameChange($event)"/>
+			  <input
+      type="text"
+      class="form__field"
+      [(ngModel)]="searchCriteria.ChildPolicyName"
+      (ngModelChange)="onChildPolicyDescriptionChange($event)" />
 		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Policy</button>
 	     </div>
       </div>
       <div class="col-sm-4">
            <div class="container__item">
-			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ReportedTo" (ngModelChange)="onReportedToChange($event)"/>
+			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.Truck_VIN" (ngModelChange)="onChildPolicyTrcukVin($event)"/>
 		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Vin</button>
 	     </div>
         
@@ -66,8 +70,8 @@
       
         </div>
         <div class="col-sm-4 mt-2 " style="text-align: right;">
-           <button type="button" class="btn btn--primary  uppercase"(click)="getListOfDoneClaims()" style="margin-right: 2px;background-color: #dc3545;color: white">📌 List Done Claims  </button>
-                <button type="button" class="btn btn--primary  uppercase" style="margin-right: 2px;background-color: #fd7e14;">📎 Add Attachment </button>
+           <button type="button" class="btn btn--primary  uppercase"(click)="getListOfDoneClaims()" style="margin-right: 2px;background-color: #dc3545;color: white">📌 List of Closed Claims  </button>
+                <button type="button" class="btn btn--primary  uppercase" style="margin-right: 2px;background-color: #fd7e14;"(click) ="goForListOfAttachemtn()">📎 Add Attachment </button>
                 <button type="button" class="btn btn--primary  uppercase" (click)="addEditClaims($event)"  style="background-color: #198754;color: white;">🧾 Add Claims </button>
       
           

@@ -1,0 +1,86 @@
+<h3 mat-dialog-title class="text-center">
+  Account Name : {{ accountName }}
+</h3>
+
+<!-- Spinner -->
+<div *ngIf="!showFiv" class="text-center p-3">
+  <h5>File Size is Big so it will take some time to Upload</h5>
+  <app-spinner></app-spinner>
+</div>
+
+<form [formGroup]="addEditAttachmentForm" *ngIf="showFiv">
+
+  <!-- 🔽 SCROLLABLE FORM BODY -->
+  <mat-dialog-content class="dialog-content mt-1">
+
+    <div class="col-sm-12"> <label>Upload file here</label>
+         <div class=" file-container center text-center" > <label>Upload file here</label>
+             <input type="file" class="file" placeholder="File Name" multiple accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.wav" (change)= "onFileUpload($event)" [ngClass]= "{ 'is-invalid': submit && f['abc'].errors }" />
+              <div *ngIf ="submit && f['abc'].errors" class="invalid-feedback"> <div *ngIf ="f['abc'].errors">FIle is required</div> 
+            </div> <label>Upload file here</label> </div> </div> <div *ngIf ="files"> {{files.name}} </div>
+
+  
+
+    <!-- Policies -->
+    <div>
+      <label>Policies</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="PolicyType">
+          <mat-option value="Physical Damage">Physical Damage</mat-option>
+          <mat-option value="General Liability">General Liability</mat-option>
+          <mat-option value="Motor Truck Cargo">Motor Truck Cargo</mat-option>
+          <mat-option value="Auto Liability">Auto Liability</mat-option>
+          <mat-option value="Package">Package</mat-option>
+          <mat-option value="Excess Liability">Excess Liability</mat-option>
+          <mat-option value="Contingent Cargo">Contingent Cargo</mat-option>
+          <mat-option value="Contingent Auto Liability">Contingent Auto Liability</mat-option>
+          <mat-option value="Dec Pages">Dec Pages</mat-option>
+          <mat-option value="Non-Truck Liability">Non-Truck Liability</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+   
+   
+
+    <!-- Notice -->
+   <!-- Notice -->
+<div>
+  <label>Description</label>
+  <mat-form-field appearance="outline" class="w-100">
+    <textarea
+      matInput
+      formControlName="Description"
+      rows="5"
+      placeholder="Enter Description here...">
+    </textarea>
+  </mat-form-field>
+</div>
+
+    <!-- File Upload -->
+  
+  </mat-dialog-content>
+
+  <!-- 🔒 FIXED BUTTONS -->
+  <mat-dialog-actions align="end" class="dialog-footer">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+    >
+      <mat-icon>upload</mat-icon>
+      Upload Data
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+
+  </mat-dialog-actions>
+
+</form>

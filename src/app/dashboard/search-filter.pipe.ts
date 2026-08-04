@@ -10,7 +10,7 @@ export class SearchFilterPipe implements PipeTransform {
     if (!items) return [];
     if (!criteria) return items;
 
-    const { name, lookUpCode, city, state, zip ,accountType,claimNumber} = criteria;
+    const { name, lookUpCode, city, state, zip ,accountType,claimNumber,childPolicyName} = criteria;
 
     console.log('Filtering with criteria:', criteria);
 
@@ -21,7 +21,11 @@ export class SearchFilterPipe implements PipeTransform {
       const itemState = item.State ? item.State.toLowerCase() : '';
       const itemZip = item.ZIP ? item.ZIP.toLowerCase() : '';
       const itemAccountType = item.AccountType ? item.AccountType.toLowerCase() : '';
-
+const matchesChildPolicy = childPolicyName
+  ? item.ChildPolicyNames?.some((policy: string) =>
+      policy.toLowerCase().includes(childPolicyName.toLowerCase())
+    )
+  : true;
       const matchesName = name ? itemName.includes(name.toLowerCase()) : true;
       const matchesLookUpCode = lookUpCode ? itemLookUpCode.includes(lookUpCode.toLowerCase()) : true;
       const matchesCity = city ? itemCity.includes(city.toLowerCase()) : true;
@@ -31,7 +35,7 @@ export class SearchFilterPipe implements PipeTransform {
       const matchesClaimNumber = claimNumber ? item.AccountClaims.some((claim:any) => 
         claim.ClaimNumber && claim.ClaimNumber.includes(claimNumber)
       ) : true;
-      const result = matchesName && matchesLookUpCode && matchesCity && matchesState && matchesZip && matchesAccountType && matchesClaimNumber;
+      const result = matchesName && matchesLookUpCode && matchesCity && matchesState && matchesZip && matchesAccountType && matchesClaimNumber && matchesChildPolicy;
 
       console.log(`Item: ${item.AccountName} matches: ${result}`);
       return result;

@@ -99,6 +99,7 @@ export class InnerDashboardComponent {
   zip: '',
   accountType:'',
   claimNumber:'',
+  childPolicyName:'',
   };
 
   autoSelect ="Insured";
@@ -145,10 +146,20 @@ export class InnerDashboardComponent {
   // Example function to update criteria based on user input
 
 
-  onNameChange(newName: string) {
+  // onNameChange(newName: string) {
     
-    this.updateSearchCriteria({ name: newName });
+  //   this.updateSearchCriteria({ name: newName });
+  // }
+  onNameChange(newName: string) {
+
+  if (!newName || newName.trim() === '') {
+    localStorage.removeItem('claimAccountName');
+  } else {
+    localStorage.setItem('claimAccountName', newName);
   }
+
+  this.updateSearchCriteria({ name: newName });
+}
 
   onLookUpCodeChange(newLookUpCode: string) {
     this.updateSearchCriteria({ lookUpCode: newLookUpCode });
@@ -173,6 +184,9 @@ export class InnerDashboardComponent {
     this.updateSearchCriteria({ claimNumber: newClaimNumber });
   }
 
+  onChildPolicyChange(value: string) {
+  this.updateSearchCriteria({ childPolicyName: value });
+}
   
 
   getCountAccount(){

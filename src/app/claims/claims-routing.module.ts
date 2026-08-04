@@ -20,6 +20,10 @@ const routes: Routes = [
         path:'doneClaims',
         loadChildren:()=> import('./done-claims/done-claims.module').then(m=>m.DoneClaimsModule)
       },
+       {
+        path:'claimAttach',
+        loadChildren:()=> import('./list-of-claims-attach/list-of-claims-attach.module').then(m=>m.ListOfClaimsAttachModule)
+      },
       
     ]
   }

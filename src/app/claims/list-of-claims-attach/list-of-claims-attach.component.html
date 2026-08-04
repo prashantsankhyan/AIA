@@ -1,0 +1,101 @@
+
+
+ <hr class="policy-divider">
+
+<div *ngIf ="showSpiner">
+ <app-spinner></app-spinner>
+</div>
+
+<div  class="container-fluid attachment-page" *ngIf ="!showSpiner">
+ 
+  <!-- <a routerLink ="/policy"><i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK TO</a> -->
+ 
+
+
+
+ 
+  
+ 
+   <div class="row mt-2" >
+    <div class="col-sm-4 mt-1">
+       <a routerLink ="/claims/listOfClaims" class="btn btn-primary" class="d"  data-title="Back To CLaim"></a>
+
+    </div>
+    
+   
+    <div class="col-sm-3">
+    <input
+  type="text"
+  class="form-control mt-1 mb-3 text-center"
+  placeholder="Search File Here"
+  [(ngModel)]="searchTerm"
+/>
+
+    </div>
+     <div class="col-sm-3">
+      
+    </div>
+
+     <div class="col-sm-2 mt-2" style="text-align: right;">
+      <a (click)="addEditAttachement()" href="javascript:void(0)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-right: 10px;"><i  class="fas fa-check fa-sm text-white-50"></i> Add Attachment </a>
+      
+    
+ 
+    </div>
+   </div>
+   
+
+   
+      <div class="scrollable-table-body" >
+        
+       <table  class="table table-bordered table-hover dt-responsive" *ngIf="!showSpiner">
+             <thead >
+               <tr>
+                 <th >File Path</th>
+              
+                  <th >Policy Type</th>
+                
+                
+                 <th >Description </th>
+                 <th>Date</th>
+
+
+                 
+                 
+                 
+                 <th >Enter By </th>
+               
+                
+               </tr>
+             </thead>
+             <tbody>
+            <tr
+        *ngFor="let data of filteredAttachments"
+        (click)="onRowClick(data)"
+        style="cursor: pointer"
+      >
+        <td>{{ data.FileName }}</td>
+      
+        <td>{{ data.PolicyType || '—' }}</td>
+        <td>{{ data.Description || '—' }}</td>
+     
+        <td>{{ data.AttachmentDate | date:'MM/dd/yyyy' }}</td>
+        <td>{{ data.EnteredBy }}</td>
+      </tr>
+
+      <tr *ngIf="filteredAttachments.length === 0">
+        <td colspan="7" class="text-center text-muted">
+          No records found
+        </td>
+      </tr>
+             </tbody>
+           </table>
+     </div>
+   
+  
+ 
+</div>
+ 
+
+
+

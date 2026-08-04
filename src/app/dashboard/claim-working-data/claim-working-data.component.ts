@@ -30,7 +30,7 @@ export class ClaimWorkingDataComponent {
       LineShortName: '',
       ReportedTo: '',
       DeleteReason:'',
-        ChildPolicyDescription: ''
+        ChildPolicyName: ''
 
     };
     
@@ -38,7 +38,7 @@ export class ClaimWorkingDataComponent {
   
     ngOnInit(): void {
      
-      
+      localStorage.removeItem('claimAccountName');
       this.AccountID = JSON.parse(localStorage.getItem('accountId')||'{}') 
       this.getAllData()
       
@@ -70,7 +70,7 @@ export class ClaimWorkingDataComponent {
     }
     onChildPolicyDescriptionChange(value: string) {
   this.updateSearchCriteria({
-    ChildPolicyDescription: value
+    ChildPolicyName: value
   });
 }
 

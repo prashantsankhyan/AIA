@@ -140,6 +140,8 @@ allDriverByEndrosment:'Driver/GetAllDriverWithEndorsementId',
 
  getAllCalimDatawithoutAccountId:'Claim/GetAllClaim',
  updateClaimStats:'Claim/UpdateClaimStatus',
+ uploadAttachementClaim:'FAttachmentClaimTeam/UploadMultiFilesClaimTeam',
+ getAttachfileOfClaim:'FAttachmentClaimTeam/GetAllFileDetailsClaimTeam',
  //tempalteForMTrut//
  getAllDetailToFillTemplate:'ChildPolicy/GetAllDriverVehicleCountAccAndClientSummary',
 //broker//

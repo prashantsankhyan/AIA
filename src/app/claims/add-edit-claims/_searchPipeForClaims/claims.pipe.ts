@@ -11,7 +11,7 @@ export class ClaimsPipe implements PipeTransform {
     if (!items) return [];
     if (!criteria) return items;
 
-    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo ,ChildPolicyDescription} = criteria;
+    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo ,ChildPolicyName,Truck_VIN} = criteria;
 
 
     return items.filter(item => {
@@ -22,14 +22,22 @@ export class ClaimsPipe implements PipeTransform {
       const matchesReportedTo = ReportedTo ? (item.ReportedTo ? item.ReportedTo.toString().toLowerCase().includes(ReportedTo.toString().toLowerCase()): false) :true;
       const matchesLineShortName = LineShortName ? (item.LineShortName ? item.LineShortName.toLowerCase().includes(LineShortName.toLowerCase()) : false) : true;
        const matchesLineDeleteReason = DeleteReason ? (item.DeleteReason ? item.DeleteReason.toLowerCase().includes(DeleteReason.toLowerCase()) : false) : true;
-       const matchesChildPolicyDescription = ChildPolicyDescription
-  ? (item.ChildPolicyDescription
-      ? item.ChildPolicyDescription
+       const matchesChildPolicyName = ChildPolicyName
+  ? (item.ChildPolicyName
+      ? item.ChildPolicyName
           .toLowerCase()
-          .includes(ChildPolicyDescription.toLowerCase())
+          .includes(ChildPolicyName.toLowerCase())
       : false)
   : true;
-      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason && matchesChildPolicyDescription;
+ const matchesTruck_VIN = Truck_VIN
+  ? (item.Truck_VIN
+      ? item.Truck_VIN
+          .toLowerCase()
+          .includes(Truck_VIN.toLowerCase())
+      : false)
+  : true;
+  
+      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason && matchesChildPolicyName && matchesTruck_VIN;
 
      
       return result;
