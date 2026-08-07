@@ -16,6 +16,7 @@ import { EnterVehicleDetialsByExcelComponent } from './enter-vehicle-detials-by-
 import { CertsAttachmentComponent } from './certs-attachment/certs-attachment.component';
 import { CertsViewPolicyComponent } from './certs-view-policy/certs-view-policy.component';
 import { NewCertsPdfConverterComponent } from '../new-certs-pdf-converter/new-certs-pdf-converter.component';
+import { HolderRemakrsComponent } from './holder-remakrs/holder-remakrs.component';
 
 
 @Component({
@@ -162,6 +163,17 @@ onHoldingIDChange(newHoldingID: string) {
        data: {AccountId:data.AccountID,holderDetails:data.HoldingDetails,holderId:data.HoldingID},
     });
   } 
+  }
+
+
+  holderRemarks(data:any){
+      {
+    const dialogRef = this.dialog.open(HolderRemakrsComponent, {
+     
+       data: {AccountId:this.AccountID},
+    });
+  } 
+    
   }
 
   goToAppication(){

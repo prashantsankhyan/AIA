@@ -190,6 +190,8 @@ getInfoSingleVehicle:'CarSoft/GetByDotSingleVin',
  getHolderCertificateByAccountId:'HoldingVehicle/GetHoldingCertificateByAccountId',
  sendEmail:'HoldingVehicle/SendHoldingCertificateMail',
  getAllHolderAttach:'HoldingVehicle/GetHoldingCertificateByWithoutAccountId',
+ addHolderRemakrs:'Account/AddUpdateAccountNotes',
+ getHlderReamkrs:'Account/GetAllAccountNotesByAccountId',
 
 
  //report and support team //

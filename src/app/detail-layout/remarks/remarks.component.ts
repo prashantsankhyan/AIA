@@ -105,7 +105,6 @@ IsChildPolicyExist:any;
       Trailer_Interchange_Deductible:[''],
        UninsuredMotorist:[''],
       UnderinsuredMotorist:[''],
-
       TIV:[''],
     });
   }
@@ -156,8 +155,38 @@ IsChildPolicyExist:any;
       }
     });
   }
+formatCoverage(controlName: string, prefix: string) {
+  const control = this.addEditRemarksForm.get(controlName);
+  if (!control) return;
 
+  let value = (control.value || '').toString().trim();
+
+  if (!value) {
+    control.setValue('');
+    return;
+  }
+
+  // Already formatted
+  if (value.startsWith(prefix)) {
+    return;
+  }
+
+  // Keep custom text (e.g. "See Proposal")
+  if (!/^[\d$,]+$/.test(value)) {
+    return;
+  }
+
+  // Remove "$" and commas
+  const numericValue = value.replace(/\$/g, '').replace(/,/g, '');
+
+  if (!isNaN(Number(numericValue))) {
+    control.setValue(
+      `${prefix} $${Number(numericValue).toLocaleString('en-US')}`
+    );
+  }
+}
   saveRemarks() {
+   
     if (this.addEditRemarksForm.invalid) return;
 
     this.showSpinner = true;

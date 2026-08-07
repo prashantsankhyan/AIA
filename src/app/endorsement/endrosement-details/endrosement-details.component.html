@@ -121,7 +121,7 @@
          </thead>
          <tbody *ngIf="listOfEndorsements?.length > 0">
            <ng-container >
-             <tr *ngFor ="let data of listOfEndorsements | searchEndrosement:searchCriteria; let i = index" style="height: 40px;" (dblclick) ="goToChickAddOrVistEndroseemtLine(data)" style="background-color: white;">
+             <tr *ngFor ="let data of listOfEndorsements | searchEndrosement:searchCriteria; let i = index" style="height: 40px;"  (dblclick)="i !== 0 && goToChickAddOrVistEndroseemtLine(data)" style="background-color: white;">
                <td>{{data.IDBasedOnAMC == null? data.LineShortName:data.IDBasedOnAMC}}</td>
                <td>{{data.Entered | date:'MM/dd/yyyy'}}</td>
               

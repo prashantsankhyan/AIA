@@ -91,6 +91,7 @@ clickedAfterSelection = false;
 
 showEndrosement = false;
 selectedPolicy: any = null;
+accountNotes:any[]=[];
  constructor(@Inject(MAT_DIALOG_DATA) public data:any,private http:AllApiService,private ngZone: NgZone,private router:Router,private toastr: ToastrService,private cdr: ChangeDetectorRef  ,private httpClient: HttpClient ,public dialog: MatDialog,){}
 
 
@@ -107,10 +108,24 @@ ngOnInit(): void {
      this.getAllPolciyBaseOfAccountId();
      this.changePolicyType()
  
+     this.getRemakrsOfHolder();
      
 
    
  
+  }
+     getRemakrsOfHolder(){
+      this.http.getAllDataId(ApiUrl.getHlderReamkrs,this.AccountID).subscribe(
+        data=>{
+          let respone = JSON.stringify(data)
+          let obj  = JSON.parse(respone)
+          this.accountNotes= obj.AccountNotes ;
+        
+          
+          
+        }
+      )
+
   }
     
 
@@ -160,6 +175,8 @@ showPoclicy(){
       )
 
   }
+
+
 
 
 

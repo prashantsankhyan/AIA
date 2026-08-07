@@ -46,7 +46,7 @@ export const routes: Routes = [
 },
 
 {
-  path:'registration',
+  path:'team',
   loadChildren:()=> import('./registration-form/registration-form.module').then(m=>m.RegistrationFormModule)
 },
 {

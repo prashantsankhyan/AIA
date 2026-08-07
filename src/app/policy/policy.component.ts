@@ -168,7 +168,7 @@ listOfAllData(data:any) {
   const dialogRef = this.dialog.open(ListOfAllDriverTruckAndAnotherComponent, {
     width: '1400px',
     height: '700px',
-    data: {MarkedPolicyID:this.MarkedPolicyID},
+    data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
     
   });
 }

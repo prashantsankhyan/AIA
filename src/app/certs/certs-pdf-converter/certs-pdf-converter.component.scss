@@ -267,3 +267,10 @@ textarea {
     border-top: none !important;
     border-bottom: none !important;
 }
+
+
+
+textarea {
+    resize: none;
+    overflow: hidden;
+}

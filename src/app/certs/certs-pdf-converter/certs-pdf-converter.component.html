@@ -165,7 +165,17 @@
         Select Auto Add
       </button>
     </div>
+    <div class="col-sm-3">
+        <div *ngFor="let data of accountNotes"
+       style="white-space: pre-line;">
+    {{ data.Description }}
   </div>
+
+    </div>
+  </div>
+
+
+ 
 </div>
 
 
@@ -230,12 +240,37 @@
             <td valign="top" colspan="2" class="small_product"><span  style="margin-top: 8px; display: inline-block;margin-left: 5px;">INSURED</span></td>
           </tr>
          <tr >
-               <td width="100%" colspan="2 "  class="bordrb "><textarea style="margin-left: 5px;margin-bottom: 24px;margin-top: 4px;" cols="50" rows="5" 
-               [value]="ListOfChildPolicy[0]?.AccountName + '\n' +
-           ListOfChildPolicy[0]?.Description + '\n' +
-           ListOfChildPolicy[0]?.City + ', ' +
-           ListOfChildPolicy[0]?.State + ' ' +
-           ListOfChildPolicy[0]?.ZIP">&nbsp;</textarea></td>
+            <td width="100%" colspan="2" class="bordrb" style="position: relative;">
+
+  <textarea
+    style="margin-left:5px; margin-bottom:24px; margin-top:4px; width:80%;"
+    cols="50"
+    rows="5"
+    [value]="
+  (ListOfChildPolicy[0]?.AccountName || '') +
+  (ListOfChildPolicy[0]?.BDA ? ' - ' + ListOfChildPolicy[0]?.BDA : '') +
+  '\n' +
+  (ListOfChildPolicy[0]?.Description || '') +
+  '\n' +
+  (ListOfChildPolicy[0]?.City || '') +
+  (ListOfChildPolicy[0]?.City && ListOfChildPolicy[0]?.State ? ', ' : '') +
+  (ListOfChildPolicy[0]?.State || '') +
+  (ListOfChildPolicy[0]?.ZIP ? ' ' + ListOfChildPolicy[0]?.ZIP : '')
+">
+  </textarea>
+
+  <span
+    style="
+      position:absolute;
+      top:-20px;
+      right:10px;
+      font-size:12px;
+      font-weight:500;">
+    {{ ListOfChildPolicy[0]?.LookUpCode }}
+     
+  </span>
+
+</td>
           </tr>
           
         
@@ -509,7 +544,15 @@
             <table width="100%"  style="margin-top: -5px;" >
                 <tr style="margin-top: 5px;" >
                     <td class="bordrb bordrr small_textfour" width="50%" style="padding: 0; margin: 0;font-size: 9px;" ><span style=" margin-left: 2px;">EACH OCCURRENCE</span></td>
-                    <td class="small_textfour bordrb " style="font-size: 12px; margin-left: 2px;"> <span style=" margin-left: 2px;">$</span> <input name="" type="text" [value]="glPolicy[0]?.ClientSummData[0]?.GLC_occurence" style="width:85%; height: 12px;"/></td>
+                    <td class="small_textfour bordrb " style="font-size: 12px; margin-left: 2px;"> <span style=" margin-left: 2px;"></span> 
+                      <!-- <input name="" type="text" [value]="glPolicy[0]?.ClientSummData[0]?.GLC_occurence" style="width:85%; height: 12px;"/> -->
+                       <input
+  type="text"
+  style="width:85%; height:12px;"
+  [value]="glPolicy[0]?.ClientSummData[0]?.GLC_occurence"
+  (input)="glPolicy[0].ClientSummData[0].GLC_occurence = $any($event.target).value"
+  [style.fontSize.px]="(glPolicy[0]?.ClientSummData[0]?.GLC_occurence?.length || 0) > 14 ? 9 : 11">
+                    </td>
                 </tr>
                 <tr>
                    <td class="bordrb bordrr " style=" padding: 0; margin: 0; line-height: 1;font-size: 9px;margin-top: 5px;">
@@ -517,11 +560,27 @@
                         DAMAGE TO RENTED<br>PREMISES (Ea occurrence)
                       </span>
                    </td>
-                    <td class="small_textfour bordrb" style="font-size: 12px; margin-left: 2px;"><span style=" margin-left: 2px;">$</span> <input name="" type="text"[value]="glPolicy[0]?.ClientSummData[0]?.GLC_DamageToRented|numberFormat"  style="width:85%; height: 12px;margin-top: 10px;"/></td>
+                    <td class="small_textfour bordrb" style="font-size: 12px; margin-left: 2px;">$<span style=" margin-left: 2px;"></span>
+                       <!-- <input name="" type="text"[value]="glPolicy[0]?.ClientSummData[0]?.GLC_DamageToRented|numberFormat"  style="width:85%; height: 12px;margin-top: 10px;"/> -->
+                        <input
+  type="text"
+  style="width:85%; height:12px; margin-top:10px;"
+  [value]="glPolicy[0]?.ClientSummData[0]?.GLC_DamageToRented | numberFormat"
+  (input)="glPolicy[0].ClientSummData[0].GLC_DamageToRented = $any($event.target).value"
+  [style.fontSize.px]="(($any(glPolicy[0]?.ClientSummData[0]?.GLC_DamageToRented)?.toString().length) || 0) > 13 ? 9 : 12">
+                      </td>
                 </tr>
                 <tr>
                     <td class="bordrb bordrr "><span style=" margin-left: 2px; font-size: 9px;">MED EXP (Any one person)</span> </td>
-                    <td class="small_textfour bordrb "style="font-size: 12px; margin-left: 2px;"><span style=" margin-left: 2px;">$</span> <input name="" type="text" [value]="glPolicy[0]?.ClientSummData[0]?.GLC_MedExp|numberFormat" style="width:85%; height: 12px;margin-top: 5px;"/></td>
+                    <td class="small_textfour bordrb "style="font-size: 12px; margin-left: 2px;">$<span style=" margin-left: 2px;"></span> 
+                      <!-- <input name="" type="text" [value]="glPolicy[0]?.ClientSummData[0]?.GLC_MedExp|numberFormat" style="width:85%; height: 12px;margin-top: 5px;"/> -->
+                       <input
+  type="text"
+  [value]="glPolicy[0]?.ClientSummData[0]?.GLC_MedExp | numberFormat"
+  (input)="glPolicy[0].ClientSummData[0].GLC_MedExp = $any($event.target).value"
+  [style.fontSize.px]="((glPolicy[0]?.ClientSummData[0]?.GLC_MedExp?.toString().length) || 0) > 13 ? 9 : 12"
+  style="width:85%; height:12px; margin-top:5px;" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="bordrb bordrr"><span style=" margin-left: 2px; font-size: 9px;">PERSONAL & ADV INJURY</span></td>
@@ -533,7 +592,15 @@
                 </tr>
                 <tr>
                     <td class="bordrb bordrr"><span style=" margin-left: 2px; font-size: 9px;margin-top: 6px;margin-bottom: 6px;">PRODUCTS-COMP/OP AGG</span></td>
-                    <td class="small_textfour bordrb "style="font-size: 12px; margin-left: 2px;"><span style=" margin-left: 2px;">$</span> <input name="" type="text"[value]="glPolicy[0]?.ClientSummData[0]?.GLC_Productcomp|numberFormat"  style="width:85%; height: 12px;margin-top: 5px;"/></td>
+                    <td class="small_textfour bordrb "style="font-size: 12px; margin-left: 2px;"><span style=" margin-left: 2px;">$</span> 
+                      <!-- <input name="" type="text"[value]="glPolicy[0]?.ClientSummData[0]?.GLC_Productcomp|numberFormat"  style="width:85%; height: 12px;margin-top: 5px;"/> -->
+                       <input
+  type="text"
+  [value]="glPolicy[0]?.ClientSummData[0]?.GLC_Productcomp | numberFormat"
+  (input)="glPolicy[0].ClientSummData[0].GLC_Productcomp = $any($event.target).value"
+  [style.fontSize.px]="((glPolicy[0]?.ClientSummData[0]?.GLC_Productcomp?.toString().length) || 0) > 13 ? 9 : 12"
+  style="width:85%; height:12px; margin-top:5px;" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="small_textfour bordrr"></td>
@@ -835,16 +902,37 @@
 </td> -->
 <td class="small_textfour bordrb bordrr ins_textsec" width="50%" >
   <label style="display: inline-flex; align-items: center; margin-right: 10px;">
-    <input type="checkbox" class="form-check-input" style="height: 17px;width: 20px;margin-left: -1px; border-bottom: 0mm solid #00000000;margin-top: 4px;" />
-    <span style="font-size: 8px;margin-left: 2px;margin-top: 3px;font-weight: 500;padding: 0;">PER<br/>STATUTE</span>
+    <input type="checkbox" class="form-check-input" style="height: 20px;width: 20px;margin-left: -1px; margin-top: 5px;border-bottom: 0mm solid #00000000;" />
+   <span
+  style="font-size:7px;
+         line-height:8px;
+         margin-left:2px;
+         font-weight:500;
+         padding:0;
+         color: rgba(0, 0, 0, 0.707);
+         margin-top: 1px;
+         display:inline-block;">
+  PER<br>STATUTE
+</span>
   </label>
 
   <label style="display: inline-flex; align-items: center;">
-    <input type="checkbox" class="form-check-input" style="width: 20px; height: 17px; margin-right: 4px; border-bottom: 0mm solid #00000000;margin-top: 4px;" />
-    <span style="font-size: 8px;margin-top: 3px;font-weight: 500;padding: 0;">OTH<br/>ER</span>
+    <input type="checkbox" class="form-check-input" style="width: 20px; height: 20px; margin-right: 4px; border-bottom: 0mm solid #00000000;margin-top: 4px;" />
+    <!-- <span style="font-size: 8px;margin-top: 3px;font-weight: 500;padding: 0;">OTH<br/>ER</span> -->
+     <span
+  style="
+    font-size:7px;
+    line-height:7px;
+    display:inline-block;
+    font-weight:500;
+     color: rgba(0, 0, 0, 0.707);
+    margin:0;
+    padding:0;">
+  OTH<br>ER
+</span>
   </label>
 </td>
-              <td class=" bordrb" style="font-size: 12px; margin-left: 2px;">  <span style=" margin-left: 2px;">$</span> <input name="" type="text" style="width: 85%;margin-top: 1px;height: 10px;" />
+              <td class=" bordrb" style="font-size: 12px; margin-left: 2px;">  <span style=" margin-left: 2px;">$</span> <input name="" type="text" style="width: 85%;margin-top: 2px;height: 10px;" />
               </td>
            </tr>
               <tr>
@@ -1214,13 +1302,17 @@
     <tr *ngFor="let item of displayedLimitDeductibles">
       <td class="bordrr">
         <input type="text" 
-               style="width: 95%; font-size: 12px; margin-left: 3px; margin-right: 2px;margin-top: 2px;" 
-               [value]="item.limit">
+               style="width: 95%;  margin-left: 3px; margin-right: 2px;margin-top: 2px;" 
+                [value]="item.limit"
+  (input)="item.limit = $any($event.target).value"
+  [style.fontSize.px]="item.limit.length > 13 ? 9 : 12">
       </td>
       <td>
         <input type="text" 
-               style="width: 95%; font-size: 12px; margin-left: 3px; margin-right: 2px;margin-top: 2px;" 
-               [value]="item.deductible">
+               style="width: 95%;  margin-left: 3px; margin-right: 2px;margin-top: 2px;" 
+               [value]="item.deductible"
+               (input)="item.deductible = $any($event.target).value"
+  [style.fontSize.px]="item.deductible.length > 13 ? 9 : 12">
       </td>
     </tr>
   </table>
@@ -1241,7 +1333,7 @@
 
 <tr>
   <td colspan="8" class="small_top1 bordrb bordrr" style="font-size: 11px; padding: 10px;">
-    <b>DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES</b>
+    <b>DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (ACORD 101, Additional Remarks Schedule, may be attached if more space is required)</b>
     <br/>
     <textarea
       style="width: 100%; height: 120px; font-size: 13px; padding: 8px; box-sizing: border-box; resize: none;"
@@ -1294,7 +1386,32 @@
     </td>
   </tr>
 </table>
+<div style="padding: 0px;margin-top: -1px;">
+  <h4 style="color: black;margin-left: 520px;">© 1988-2015 ACORD CORPORATION. All rights reserved</h4>
+  
+</div>
+<div class="container">
+<div style="
+  display: flex;
+  
+  
 
+  width: 100%;
+ 
+">
+  <div style="
+    display: flex;
+    justify-content: space-between;
+   
+   
+   
+   
+  ">
+    <h4 style="color: black;">ACORD 25 (2016/03)</h4>
+    <h4 style="color: black; margin-left: 120px;">The ACORD name and logo are registered marks of ACORD</h4>
+  </div>
+</div>
+</div>
 </div>
 
 <!-- ///5555// -->

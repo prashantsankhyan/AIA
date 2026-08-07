@@ -44,7 +44,7 @@
             <div class="card-body">
               <div class="media d-flex">
                 <div class="media-body text-left">
-                  <h3 class="warning">GARAG Address</h3>
+                  <h3 class="warning">GARAGE ADDRESS</h3>
                   <span>{{ GaragingAddress }} - {{ GaragingCity }} - {{ GaragingState }} - {{ GaragingPinCode }}</span>
                 </div>
                 <div class="align-self-center">
@@ -136,11 +136,12 @@
     <thead>
       <tr>
         <th style="text-align: center;">Line Name</th>
+          <th style="text-align: center;">Description</th>
         <th style="text-align: center;">Policy Number</th>
-        <th style="text-align: center;">Date</th>
+        <th style="text-align: center;">Policy Period</th>
         <th style="text-align: center;">Broker Name</th>
         <th style="text-align: center;">Carrier</th>
-        <th style="text-align: center;">Description</th>
+      
         <th style="text-align: center;">Stage</th>
         <th style="text-align: center;">Status</th>
         <th style="text-align: center;">Highlight</th>
@@ -151,11 +152,12 @@
     <tbody>
       <tr *ngFor="let data of listOfPolicy" [ngStyle]="getRowStyles(data)" >
         <td (click)="goDoDetailPage(data)" >{{ data.LineName }}/{{ data.LineShortName }}</td>
+        <td style="text-align: center;">{{ data.Description }}</td>
         <td style="text-align: center;">{{ data.ChildPolicyName }}</td>
-        <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }}  {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
+        <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }} - {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
         <td style="text-align: center;">{{ data.BrokerName }}</td>
         <td style="text-align: center;">{{ data.IssuingCompanyName }}</td>
-        <td style="text-align: center;">{{ data.Description }}</td>
+        
         <td style="text-align: center;">{{ data.StageType }}</td>
         <td [ngStyle]="{'color': data.DeleteReason ? 'red' : 'inherit'}" style="text-align: center;">
   {{ data.DeleteReason ? data.DeleteReason : data.Policy_Status }}

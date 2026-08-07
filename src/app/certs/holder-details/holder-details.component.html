@@ -56,12 +56,18 @@
     </div>
 
      <div class="col-sm-4" style="text-align: center; margin-top: 40px;">
- <a (click) ="viewOfPolcy($event)" >
+ <a  >
           <div  >
                 
                 
-                <div >
-                  🛡️ Policy
+                <div  class="row">
+                  <div class="col-sm-6"(click) ="viewOfPolcy($event)">
+                    🛡️ Policy
+                  </div>
+                   <div class="col-sm-6" (click)="holderRemarks($event)">
+                  💬  ADD YOUR REMARKS
+                  </div>
+                  
                   
                 </div>
               </div>

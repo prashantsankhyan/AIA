@@ -37,13 +37,13 @@
       <div class="row">
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="PhysicalDamage"></textarea>
+            <textarea class="form-control" formControlName="PhysicalDamage"  (blur)="formatCoverage('PhysicalDamage', 'Comprehensive')"></textarea>
             <label>Comprehensive Deductible</label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="PhyDamage_Deductible"></textarea>
+            <textarea class="form-control" formControlName="PhyDamage_Deductible"(blur)="formatCoverage('PhyDamage_Deductible', 'Collision')"></textarea>
             <label>Collision Deductible</label>
           </div>
         </div>
@@ -53,13 +53,13 @@
       <div class="row">
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="MTC"></textarea>
+            <textarea class="form-control" formControlName="MTC"  (blur)="formatCoverage('MTC', 'Limit')"></textarea>
             <label>Limit</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="MTC_Deductible"></textarea>
+            <textarea class="form-control" formControlName="MTC_Deductible"(blur)="formatCoverage('MTC_Deductible', 'Ded')"></textarea>
             <label>Deductible</label>
           </div>
         </div>
@@ -260,7 +260,8 @@
       <div class="row">
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control"  [value]="addEditRemarksForm.get('TIV')?.value | currency"></textarea>
+            <!-- <textarea class="form-control"  TIV  [value]="addEditRemarksForm.get('TIV')?.value | currency"></textarea> -->
+             <textarea class="form-control" formControlName="TIV"   ></textarea>
             <label>TIV</label>
           </div>
         </div>
