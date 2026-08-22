@@ -135,7 +135,7 @@ onHoldingIDChange(newHoldingID: string) {
   }
     extraVehicleDetailsByXecel(data:any) {
     const dialogRef = this.dialog.open(EnterVehicleDetialsByExcelComponent, {
-      data: {AccountId:data.AccountID,holderDetails:data.HoldingDetails,holderId:data.HoldingID},
+      data: {AccountId:data.AccountID,holderDetails:data.HoldingDetails,HoldingID:data.HoldingID},
     });  
   }
 

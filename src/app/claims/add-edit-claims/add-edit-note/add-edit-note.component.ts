@@ -75,8 +75,6 @@ makeForm(){
     ClaimID:[this.ClaimID],
     Notes:['',[Validators.required,]],
     EnteredBy:[this.LoginUserName],
-  
-    
   });
 }
 

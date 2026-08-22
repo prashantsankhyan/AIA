@@ -33,13 +33,13 @@
     
          <div class="col-sm-8 mt-2" >
         <div class="row">
-  <div class="col-sm-3 mb-3" *ngFor="let data of listOfPolicy" (click) ="viewRemkarsByChiledPolciy(data)">
+  <div class="col-sm-3 mb-3" *ngFor="let data of listOfPolicy" >
     <div class="policy-card">
-      <div class="policy-header">
+      <div class="policy-header" (click) ="viewRemkarsByChiledPolciy(data)">
         {{ data.LineName }}/{{ data.LineShortName }}
       </div>
 
-      <div class="policy-body">
+      <div class="policy-body" (click)="viewTruckAndDriver(data)">
         <div class="policy-name">
           {{ data.ChildPolicyName }}
         </div>
@@ -174,49 +174,45 @@
     <a><img src="assets/32.png" width="20px" height="20px"></a>
   </button>
 
-  <mat-menu #menu="matMenu">
-     <button mat-menu-item (click)="addEditClaims(data)" style="text-align: center;">
-      <a href="javascript:void(0)" style="text-decoration: none;">
-        <img src="assets/edit1.png" width="50px" height="50px">
-        <!-- <span style="font-size: 5px;color:black;">Edit</span> -->
-      </a>
-    </button>
-     <button mat-menu-item (click)="confirmClaim(data)" style="text-align: center;">
-      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 5px;">
-        <img src="assets/confirm.png" width="40px" height="40px">
-        <!-- <span style="font-size: 5px;color:black;">Confirm</span> -->
-      </a>
-    </button>
-   
-    <button mat-menu-item (click)="addEditNote(data)" style="text-align: center;">
-      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 3px;">
-        <img src="assets/note.png" width="40px" height="40px">
-        <!-- <span style="font-size: 5px;color:black;">Note</span> -->
-      </a>
-    </button>
-    <button mat-menu-item (click)="viewOfNote(data)" style="text-align: center;">
-      <a href="javascript:void(0)" style="text-decoration: none;margin-left: 4px;">
-        <img src="assets/viewNote.png" width="40px" height="40px">
-        <!-- <span style="font-size: 5px;color:black;">View Note</span> -->
-      </a>
-    </button>
-   
-    <button mat-menu-item (click)="doneIt(data)" style="color: red;text-align: center;" >
-      <a href="javascript:void(0)" style="text-decoration: none;">
-        <img src="assets/done.png" width="50px" height="50px">
-        <!-- <span style="font-size: 5px;color:black;">Claim Done</span> -->
-      </a>
-    </button>
-      <button mat-menu-item (click)="lossNoticeClaim(data)" style="color: red;text-align: center;" >
-      <a href="javascript:void(0)" style="text-decoration: none;">
-        
-        <span style="width: 50px;"> 📄</span>
-        <!-- <span style="font-size: 5px;color:black;">Claim Done</span> -->
-      </a>
-    </button>
+<mat-menu #menu="matMenu" class="claim-action-menu">
 
-    
-  </mat-menu>
+  <!-- Edit -->
+  <button mat-menu-item (click)="addEditClaims(data)">
+    <img src="assets/edit1.png" class="menu-icon edit-icon">
+    <span>Edit Claim</span>
+  </button>
+
+  <!-- Confirm -->
+  <button mat-menu-item (click)="confirmClaim(data)">
+    <img src="assets/confirm.png" class="menu-icon">
+    <span>Confirm Claim</span>
+  </button>
+
+  <!-- Add Note -->
+  <button mat-menu-item (click)="addEditNote(data)">
+    <img src="assets/note.png" class="menu-icon">
+    <span>Add Note</span>
+  </button>
+
+  <!-- View Note -->
+  <button mat-menu-item (click)="viewOfNote(data)">
+    <img src="assets/viewNote.png" class="menu-icon">
+    <span>View Notes</span>
+  </button>
+
+  <!-- Done -->
+  <button mat-menu-item (click)="doneIt(data)" class="done-item">
+    <img src="assets/done.png" class="menu-icon done-icon">
+    <span>Claim Close</span>
+  </button>
+
+  <!-- Loss Notice -->
+  <button mat-menu-item (click)="lossNoticeClaim(data)">
+    <span class="loss-icon">📄</span>
+    <span>Loss Notice</span>
+  </button>
+
+</mat-menu>
 </td>
 
    </tr>

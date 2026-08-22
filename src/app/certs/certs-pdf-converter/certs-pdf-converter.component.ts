@@ -120,9 +120,6 @@ ngOnInit(): void {
           let respone = JSON.stringify(data)
           let obj  = JSON.parse(respone)
           this.accountNotes= obj.AccountNotes ;
-        
-          
-          
         }
       )
 
@@ -204,6 +201,9 @@ getInsurerLabel(index: number): string {
         var obj  = JSON.parse(response)
         this.ListOfChildPolicy = obj.Accounts;
         this.ListOfaccountDetails = obj.ChildPolicy;
+        this.trailerInterChange = obj.TrailerInterChange || [];
+
+console.log('Trailer InterChange:', this.trailerInterChange);
         this.issueDetails = this.ListOfaccountDetails.map((p: any) => p.IssueDetail);
 
       // Ensure exactly 7 rows always — fill missing with nulls
@@ -588,7 +588,27 @@ trackByIndex(index: number, item: any): number {
 //     return ` Refer Breakdown: ${deductible}`;
 //   }).join('\n'); // Join with new lines for textarea
 // }
+formatCurrency(value: any): string {
+  if (value === null || value === undefined || value === '') {
+    return '';
+  }
 
+  const str = String(value).trim();
+
+  // Already has $ → just return it
+  if (str.includes('$')) {
+    return str;
+  }
+
+  // Remove existing commas before converting
+  const numberValue = Number(str.replace(/,/g, ''));
+
+  if (isNaN(numberValue)) {
+    return str;
+  }
+
+  return `$${numberValue.toLocaleString('en-US')}`;
+}
 trailerInterChange: any[] = [];
 get mtcPoliciesText(): string {
   const lines: string[] = [];
@@ -602,24 +622,37 @@ get mtcPoliciesText(): string {
     const deductible = p?.ClientSummData?.[0]?.MTC_Deductible || '';
     const referBreakdown = p?.ClientSummData?.[0]?.MTC_Refer_Breakdown || '';
 
-    if (mtcLimit) {
-      lines.push(`Cargo Limit: ${mtcLimit}`);
-    }
+    // if (mtcLimit) {
+    //   lines.push(`Cargo Limit: ${mtcLimit}`);
+    // }
 
-    if (deductible) {
-      lines.push(`Deductible: ${deductible}`);
-    }
+    // if (deductible) {
+    //   lines.push(`Deductible: ${deductible}`);
+    // }
 
     if (referBreakdown) {
       lines.push(`Refer Breakdown: ${referBreakdown}`);
     }
   });
 
-  this.trailerInterChange.forEach((t: any) => {
-    lines.push(`Trailer Interchange: ${t.Trailer_limit}`);
-    lines.push(`Trailer Deductible: ${t.Trailer_Interchange_Deductible}`);
-  });
+  
+this.trailerInterChange.forEach((t: any) => {
 
+  const trailerLimit = this.formatCurrency(t.Trailer_limit);
+  const trailerDeductible = this.formatCurrency(
+    t.Trailer_Interchange_Deductible
+  );
+
+ if (trailerLimit || trailerDeductible) {
+  lines.push(
+    `Trailer Interchange: ${trailerLimit}` +
+    (trailerDeductible
+      ? ` with Deductible: ${trailerDeductible}`
+      : '')
+  );
+}
+
+});
   return lines.join('\n');
 }
 

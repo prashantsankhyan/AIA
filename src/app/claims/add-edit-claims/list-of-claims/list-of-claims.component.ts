@@ -15,6 +15,7 @@ import { AddEditNoteComponent } from '../add-edit-note/add-edit-note.component';
 import { ListOfNoteComponent } from '../list-of-note/list-of-note.component';
 import { LossNoticeClaimsComponent } from '../loss-notice-claims/loss-notice-claims.component';
 import { ViewRemkarsPolicyIdComponent } from '../../../policy/view-remkars-policy-id/view-remkars-policy-id.component';
+import { ListViewOfDriverAndTruckComponent } from '../list-view-of-driver-and-truck/list-view-of-driver-and-truck.component';
 
 @Component({
   selector: 'app-list-of-claims',
@@ -45,6 +46,7 @@ export class ListOfClaimsComponent {
   listOfPolicy:any =[];
   showTaleIfempity = false;
   showTableIfDataHave = false;
+  MarkedPolicyID:any;
   searchCriteria = {
     ClaimNumber: '',
     LineShortName: '',
@@ -206,8 +208,27 @@ viewRemkarsByChiledPolciy(data:any){
   addEditClaims(data?:any) {
     this.dialog.open(AddEditClaimsComponent ,{
       
-     
+    
       data: {ClaimID:data.ClaimID }
+
+    });
+    if(!!data){
+      data.content?.patchValue(data)
+    }
+   
+  }
+
+  
+   viewTruckAndDriver(data?:any) {
+   
+    this.MarkedPolicyID = data.MarkedPolicyID
+
+    this.dialog.open(ListViewOfDriverAndTruckComponent ,{
+      
+    width: '1400px',
+    height: '700px',
+      
+      data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
 
     });
     if(!!data){

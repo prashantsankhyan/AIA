@@ -65,7 +65,7 @@ IsChildPolicyExist:any;
 
     this.initForm();
     this.getListOfRemarks();
-    this.getDetails()
+    // this.getDetails()
   }
 
   initForm() {

@@ -1,83 +1,231 @@
-<div class="container-fluid">
- <h4 style="text-align: center;color: rgba(0, 0, 255, 0.541);">Add Login Detail</h4>
- <div  class="card p-1" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
-  <section class="registration backgroundPage">
-   
-   <form [formGroup]="addEditRegistrationForm" >
-    <div class="col-sm-12">
-     <label>Select Team</label>
-     <select  aria-label="Default select example" formControlName ="Team" class="form-control"  [ngClass]= "{ 'is-invalid': submit && f['Team'].errors }">
-         <option hidden value="" disabled selected  > Select Team</option>
-         <option  value="Sale Team">Sale Team</option>
-         <option value="Submission Team">Submission Team</option>
-         <option value="Binding Team">Binding Team</option>
-         <option value="Loss Run">Loss Run</option>
-         <option value="Claim Team">Claim Team</option>
-         <option  value="Transaction Team">Transaction Team </option>
-         <option  value="Endorsement Team">Endorsement Team</option>
-         <option  value="App Registration">App Registration </option>
-         <option  value="Genrate Certificate Team">Certificate Team</option>
-         <option  value="Renewable Team">Renewable Team</option>
-          <option  value="Support Team">Support Team</option>
-           <option  value="Master Login">Master Login</option>
-            <option  value="Account Team">Account Team</option>
-           
-       
-     </select>
-     <div *ngIf ="submit && f['Team'].errors" class="invalid-feedback">
-      <div *ngIf ="f['Team'].errors">select Team Is  Required</div>
-  </div> 
-   </div>
-      <div class="col-sm-12">
-          <label style="text-align: center;">User Name</label>
-          <input type="text" class="form-control" formControlName ="UserName">
-       
-      </div>
-    
-    
-      
-     <div class="col-sm-12">
-      <label>Passward</label>
-      <input type="text" class="form-control" formControlName ="Password">
-    
+<div class="container-fluid registration-form-wrapper">
+
+  <!-- Header -->
+  <div class="registration-header">
+    <div>
+      <h4>
+        <i class="fa fa-user-plus me-2"></i>
+        Add Login Detail
+      </h4>
+
+      <small>
+        Create a new user login account
+      </small>
     </div>
-    <div class="col-sm-12">
-     <label>Email</label>
-     <input type="text" class="form-control" formControlName ="EmailID">
-    </div>
- 
-    
-     
-     
-   
-     
-    
-    
-     
-      
-      
-      
- 
-  
-      <div class="text-center mt-4 mb-4">
- 
-       <div  *ngIf ="messageSuccess">
-         <button type="button" style="width: 130px;"(click)="onSubmit()" class="btn btn-outline-success">Save</button>
-         <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
-         
-        
-     
-           
-          
-         
-         </div>
-      
-     </div>
-    
-    
-  </form>
- 
-  </section>
-</div>
+  </div>
+
+
+  <!-- Form Card -->
+  <div class="registration-card">
+
+    <section class="registration">
+
+      <form [formGroup]="addEditRegistrationForm">
+
+        <div class="row g-3">
+
+          <!-- Team -->
+          <div class="col-md-6">
+
+            <label class="form-label">
+              <i class="fa fa-users me-1"></i>
+              Select Team
+              <span class="required">*</span>
+            </label>
+
+            <div class="input-icon-wrapper">
+
+              <i class="fa fa-users input-icon"></i>
+
+              <select
+                aria-label="Select Team"
+                formControlName="Team"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid': submit && f['Team'].errors
+                }"
+              >
+
+                <option value="" disabled>
+                  Select Team
+                </option>
+
+                <option value="Sale Team">
+                  Sale Team
+                </option>
+
+                <option value="Submission Team">
+                  Submission Team
+                </option>
+
+                <option value="Binding Team">
+                  Binding Team
+                </option>
+
+                <option value="Loss Run">
+                  Loss Run
+                </option>
+
+                <option value="Claim Team">
+                  Claim Team
+                </option>
+
+                <option value="Transaction Team">
+                  Transaction Team
+                </option>
+
+                <option value="Endorsement Team">
+                  Endorsement Team
+                </option>
+
+                <option value="App Registration">
+                  App Registration
+                </option>
+
+                <option value="Genrate Certificate Team">
+                  Certificate Team
+                </option>
+
+                <option value="Renewable Team">
+                  Renewable Team
+                </option>
+
+                <option value="Support Team">
+                  Support Team
+                </option>
+
+                <option value="Master Login">
+                  Master Login
+                </option>
+
+                <option value="Account Team">
+                  Account Team
+                </option>
+
+              </select>
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Team'].errors"
+              class="invalid-feedback d-block"
+            >
+              Select Team is required.
+            </div>
+
+          </div>
+
+
+          <!-- User Name -->
+          <div class="col-md-6">
+
+            <label class="form-label">
+              <i class="fa fa-user me-1"></i>
+              User Name
+              <span class="required">*</span>
+            </label>
+
+            <div class="input-icon-wrapper">
+
+              <i class="fa fa-user input-icon"></i>
+
+              <input
+                type="text"
+                class="form-control custom-input"
+                formControlName="UserName"
+                placeholder="Enter user name"
+                autocomplete="off"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- Password -->
+          <div class="col-md-6">
+
+            <label class="form-label">
+              <i class="fa fa-lock me-1"></i>
+              Password
+              <span class="required">*</span>
+            </label>
+
+            <div class="input-icon-wrapper">
+
+              <i class="fa fa-lock input-icon"></i>
+
+              <input
+                type="text"
+                class="form-control custom-input"
+                formControlName="Password"
+                placeholder="Enter password"
+                autocomplete="new-password"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- Email -->
+          <div class="col-md-6">
+
+            <label class="form-label">
+              <i class="fa fa-envelope me-1"></i>
+              Email
+            </label>
+
+            <div class="input-icon-wrapper">
+
+              <i class="fa fa-envelope input-icon"></i>
+
+              <input
+                type="email"
+                class="form-control custom-input"
+                formControlName="EmailID"
+                placeholder="Enter email address"
+                autocomplete="off"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Buttons -->
+        <div
+          *ngIf="messageSuccess"
+          class="form-actions"
+        >
+
+          <button
+            type="button"
+            class="btn btn-save"
+            (click)="onSubmit()"
+          >
+            <i class="fa fa-save me-1"></i>
+            Save
+          </button>
+
+
+          <button
+            type="button"
+            class="btn btn-cancel"
+            mat-dialog-close
+          >
+            <i class="fa fa-times me-1"></i>
+            Cancel
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </div>
 
 </div>

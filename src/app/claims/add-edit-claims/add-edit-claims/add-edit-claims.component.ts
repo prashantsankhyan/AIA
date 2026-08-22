@@ -10,11 +10,11 @@ import { AllApiService } from '../../../_service/all-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ViewRemkarsPolicyIdComponent } from '../../../policy/view-remkars-policy-id/view-remkars-policy-id.component';
-
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 @Component({
   selector: 'app-add-edit-claims',
   standalone: true,
-  imports: [CommonModule,MaterialModule,ReactiveFormsModule,FormsModule ,NgbDatepickerModule,NgbAlertModule,SpinnerComponent],
+  imports: [CommonModule,MaterialModule,ReactiveFormsModule,FormsModule ,NgbDatepickerModule,NgbAlertModule,SpinnerComponent,NgxMatSelectSearchModule],
   templateUrl: './add-edit-claims.component.html',
   styleUrl: './add-edit-claims.component.scss',
   providers: [DatePipe]
@@ -37,9 +37,18 @@ export class AddEditClaimsComponent {
     listOfPolicy:any =[];
     Risk ='';
     driverId:any
-    allDriverList:any =[]
-    trucks:any =[] 
+    allDriverList:any =[];
+    filteredDrivers: any[] = [];
+driverSearchCtrl = new FormControl('');
+    trucks:any =[] ;
+
+    filteredTrucks: any[] = [];
+
+truckSearchCtrl = new FormControl('');
     trailers:any =[] 
+    filteredTrailers: any[] = [];
+
+trailerSearchCtrl = new FormControl('');
     driver = false
     truck  = false
     ClaimID =''
@@ -69,6 +78,17 @@ export class AddEditClaimsComponent {
     this.LoginUserName = sessionStorage.getItem('UserName');
     this.ClaimID = this.data.ClaimID
     this.makeForm();
+     this.driverSearchCtrl.valueChanges.subscribe(value => {
+    this.filterDrivers(value || '');
+  });
+   // TRUCK SEARCH
+  this.truckSearchCtrl.valueChanges.subscribe(value => {
+    this.filterTrucks(value || '');
+  });
+  this.trailerSearchCtrl.valueChanges.subscribe(value => {
+  this.filterTrailers(value || '');
+})
+
     this.load();
     this.dateRepoted()
     this.dateOfLossRepoted()
@@ -118,24 +138,88 @@ dateRepoted() {
 
   
 
+  // onDriverChange(event: any) {
+    
+  //   const selectedValue = event.target.value;
+  //   this.isDriverReadOnly = selectedValue !== ""; // Read-only when a driver is selected
+  //   this.addEditClaimForm.controls['Driver'].setValue(''); // Clear input field
+  // }
   onDriverChange(event: any) {
-    const selectedValue = event.target.value;
-    this.isDriverReadOnly = selectedValue !== ""; // Read-only when a driver is selected
-    this.addEditClaimForm.controls['Driver'].setValue(''); // Clear input field
-  }
+
+  const selectedValue = event.value;
+
+  this.isDriverReadOnly = !!selectedValue;
+
+  this.addEditClaimForm.controls['Driver'].setValue('');
+}
+//   onDriverChange(event: any) {
+
+//   const selectedValue = event.value;
+
+//   this.isDriverReadOnly = selectedValue !== '';
+
+//   this.addEditClaimForm.controls['Driver'].setValue('');
+// }
   
+  // onTruckChange(event: any) {
+  //   const selectedValue = event.target.value;
+  //   this.isTruckReadOnly = selectedValue !== ""; // Read-only when a truck is selected
+  //   this.addEditClaimForm.controls['Truck'].setValue('');
+  
+  // }
   onTruckChange(event: any) {
-    const selectedValue = event.target.value;
-    this.isTruckReadOnly = selectedValue !== ""; // Read-only when a truck is selected
-    this.addEditClaimForm.controls['Truck'].setValue('');
-  
+
+  const selectedValue = event.value;
+
+  console.log('Truck selected:', selectedValue);
+
+  if (selectedValue === '' || selectedValue === null) {
+
+    // None selected
+    this.isTruckReadOnly = false;
+
+    this.addEditClaimForm.patchValue({
+      TruckID: '',
+      Truck: ''
+    });
+
+  } else {
+
+    // Truck selected
+    this.isTruckReadOnly = true;
+
+    this.addEditClaimForm.patchValue({
+      Truck: ''
+    });
+
   }
-  
-  onTrailerChange(event: any) {
-    const selectedValue = event.target.value;
-    this.isTrailerReadOnly = selectedValue !== ""; // Read-only when a trailer is selected
-    this.addEditClaimForm.controls['Trailer'].setValue('');
+}
+onTrailerChange(event: any) {
+
+  const selectedValue = event.value;
+
+  console.log('Trailer selected:', selectedValue);
+
+  if (selectedValue === '' || selectedValue === null) {
+
+    // None selected
+    this.isTrailerReadOnly = false;
+
+    this.addEditClaimForm.patchValue({
+      TrailerID: null,
+      Trailer: ''
+    });
+
+  } else {
+
+    // Trailer selected
+    this.isTrailerReadOnly = true;
+
+    this.addEditClaimForm.patchValue({
+      Trailer: ''
+    });
   }
+}
  
 
   changePolicyType(){
@@ -214,28 +298,116 @@ dateRepoted() {
   
 
 
-getAllDriverList(){
-  this.allDriverList =[]
-  this.MarkedPolicyId
-  this.ChildPolicyID ;
+// getAllDriverList(){
+//   this.allDriverList =[]
+//   this.MarkedPolicyId
+//   this.ChildPolicyID ;
  
-  this.http.getAllDataByTwoId(ApiUrl.getALLClaimDriver,this.MarkedPolicyId,this.ChildPolicyID).subscribe(
-    data=>{
+//   this.http.getAllDataByTwoId(ApiUrl.getALLClaimDriver,this.MarkedPolicyId,this.ChildPolicyID).subscribe(
+//     data=>{
       
-      let response  = JSON.stringify(data)
-      let obj = JSON.parse(response)
-     this.allDriverList = obj.Drivers;
-     this.showSpiner  = false ;
-     this.allDriverList.sort((a:any, b:any) => {
-  const nameA = a.DriverName?.toLowerCase() || '';
-  const nameB = b.DriverName?.toLowerCase() || '';
-  return nameA.localeCompare(nameB);
-});
+//       let response  = JSON.stringify(data)
+//       let obj = JSON.parse(response)
+//      this.allDriverList = obj.Drivers;
+//      this.showSpiner  = false ;
+//      this.allDriverList.sort((a:any, b:any) => {
+//   const nameA = a.DriverName?.toLowerCase() || '';
+//   const nameB = b.DriverName?.toLowerCase() || '';
+//   return nameA.localeCompare(nameB);
+// });
+
+//     }
+//   )
+// }
+
+
+getAllDriverList() {
+
+  this.allDriverList = [];
+  this.filteredDrivers = [];
+
+  this.http.getAllDataByTwoId(
+    ApiUrl.getALLClaimDriver,
+    this.MarkedPolicyId,
+    this.ChildPolicyID
+  ).subscribe(
+    data => {
+
+      let response = JSON.stringify(data);
+      let obj = JSON.parse(response);
+
+      this.allDriverList = obj.Drivers || [];
+
+      // Sort Driver Name A-Z
+      this.allDriverList.sort((a: any, b: any) => {
+
+        const nameA = String(a.DriverName || '').toLowerCase();
+        const nameB = String(b.DriverName || '').toLowerCase();
+
+        return nameA.localeCompare(nameB);
+      });
+
+      // Initially show all drivers
+      this.filteredDrivers = [...this.allDriverList];
+
+      this.showSpiner = false;
 
     }
-  )
+  );
 }
+filterDrivers(searchValue: string = '') {
 
+  const search = searchValue
+    .trim()
+    .toLowerCase();
+
+  // Empty search
+  if (!search) {
+
+    this.filteredDrivers = [...this.allDriverList];
+
+    return;
+  }
+
+  // Search Driver Name / Licence / Driver ID
+  this.filteredDrivers = this.allDriverList
+    .filter((data: any) => {
+
+      const driverName =
+        String(data.DriverName || '').toLowerCase();
+
+      const licenceNo =
+        String(data.DriverLicenceNo || '').toLowerCase();
+
+      const driverID =
+        String(data.DriverID || '').toLowerCase();
+
+      return (
+        driverName.includes(search) ||
+        licenceNo.includes(search) ||
+        driverID.includes(search)
+      );
+    })
+    .sort((a: any, b: any) => {
+
+      const nameA =
+        String(a.DriverName || '').toLowerCase();
+
+      const nameB =
+        String(b.DriverName || '').toLowerCase();
+
+      // Matching name comes first
+      if (nameA.startsWith(search) && !nameB.startsWith(search)) {
+        return -1;
+      }
+
+      if (!nameA.startsWith(search) && nameB.startsWith(search)) {
+        return 1;
+      }
+
+      return nameA.localeCompare(nameB);
+    });
+}
 
 getAllTruck(){
   this.trucks =[]
@@ -253,32 +425,182 @@ getAllTruck(){
   const vinB = b.VIN?.slice(-4) || '';
   return vinA.localeCompare(vinB);
 });
+this.filteredTrucks = [...this.trucks];
      this.showSpiner  = false ;
 
     }
   )
 }
 
+filterTrucks(searchValue: string = '') {
 
+  const search = searchValue
+    .trim()
+    .toLowerCase();
 
-getAllTrailer(){
-  this.trailers =[]
-  this.MarkedPolicyId
-  this.ChildPolicyID
+  // Empty search
+  if (!search) {
+    this.filteredTrucks = [...this.trucks];
+    return;
+  }
 
-  this.http.getAllDataByTwoId(ApiUrl.getAllClaimVehicle,this.MarkedPolicyId,this.ChildPolicyID).subscribe(
-    data=>{
-     
-      let response  = JSON.stringify(data)
-      let obj = JSON.parse(response)
-     this.trailers = obj.Vehicles
-    console.log(this.trailers)
-     this.showSpiner  = false ;
+  this.filteredTrucks = this.trucks
+    .filter((data: any) => {
 
-    }
-  )
+      const vin =
+        String(data.VIN || '').toLowerCase();
+
+      const vehicleName =
+        String(data.VehicleName || '').toLowerCase();
+
+      const make =
+        String(data.Make || '').toLowerCase();
+
+      const model =
+        String(data.Model || '').toLowerCase();
+
+      const year =
+        String(data.Year || '').toLowerCase();
+
+      const truckId =
+        String(data.TruckID || '').toLowerCase();
+
+      return (
+        vin.includes(search) ||
+        vehicleName.includes(search) ||
+        make.includes(search) ||
+        model.includes(search) ||
+        year.includes(search) ||
+        truckId.includes(search)
+      );
+    })
+    .sort((a: any, b: any) => {
+
+      const vinA = String(a.VIN || '').toLowerCase();
+      const vinB = String(b.VIN || '').toLowerCase();
+
+      // Matching VIN first
+      if (
+        vinA.startsWith(search) &&
+        !vinB.startsWith(search)
+      ) {
+        return -1;
+      }
+
+      if (
+        !vinA.startsWith(search) &&
+        vinB.startsWith(search)
+      ) {
+        return 1;
+      }
+
+      return vinA.localeCompare(vinB);
+    });
 }
 
+
+getAllTrailer() {
+
+  this.trailers = [];
+  this.filteredTrailers = [];
+
+  this.http.getAllDataByTwoId(
+    ApiUrl.getAllClaimVehicle,
+    this.MarkedPolicyId,
+    this.ChildPolicyID
+  ).subscribe(data => {
+
+    const response = JSON.stringify(data);
+    const obj = JSON.parse(response);
+
+    // ONLY TRAILERS
+    this.trailers = (obj.Vehicles || [])
+      .filter((x: any) => x.BodyType === 'Trailer');
+
+    // Sort by last 4 VIN
+    this.trailers.sort((a: any, b: any) => {
+
+      const vinA = String(a.VIN || '').slice(-4);
+      const vinB = String(b.VIN || '').slice(-4);
+
+      return vinA.localeCompare(vinB);
+    });
+
+    // Initially show all trailers
+    this.filteredTrailers = [...this.trailers];
+
+    console.log('Trailers:', this.trailers);
+
+    this.showSpiner = false;
+  });
+}
+filterTrailers(searchValue: string = '') {
+
+  const search = searchValue.trim().toLowerCase();
+
+  // Empty search
+  if (!search) {
+    this.filteredTrailers = [...this.trailers];
+    return;
+  }
+
+  this.filteredTrailers = this.trailers
+    .filter((data: any) => {
+
+      // Only Trailer
+      if (data.BodyType !== 'Trailer') {
+        return false;
+      }
+
+      const vin =
+        String(data.VIN || '').toLowerCase();
+
+      const model =
+        String(data.Model || '').toLowerCase();
+
+      const vehicleID =
+        String(data.VehicleID || '').toLowerCase();
+
+      const bodyType =
+        String(data.BodyType || '').toLowerCase();
+
+      const vehicleName =
+        String(data.VehicleName || '').toLowerCase();
+
+      return (
+        vin.includes(search) ||
+        model.includes(search) ||
+        vehicleID.includes(search) ||
+        bodyType.includes(search) ||
+        vehicleName.includes(search)
+      );
+    })
+    .sort((a: any, b: any) => {
+
+      const vinA =
+        String(a.VIN || '').toLowerCase();
+
+      const vinB =
+        String(b.VIN || '').toLowerCase();
+
+      // Matching VIN first
+      if (
+        vinA.startsWith(search) &&
+        !vinB.startsWith(search)
+      ) {
+        return -1;
+      }
+
+      if (
+        !vinA.startsWith(search) &&
+        vinB.startsWith(search)
+      ) {
+        return 1;
+      }
+
+      return vinA.localeCompare(vinB);
+    });
+}
 
 load(){
   let data = this.data ;
@@ -297,11 +619,14 @@ load(){
     data=>{
       let response  = JSON.stringify(data)
       let obj  = JSON.parse(response)
-      this.letListOfClaimId = obj.Claims
-      this.addEditClaimForm.controls['ClaimID'].setValue(this.letListOfClaimId[0].ClaimID)
-      this.addEditClaimForm.controls['AccountID'].setValue(this.letListOfClaimId[0].AccountID)
-      this.addEditClaimForm.controls['ChildPolicyID'].setValue(this.letListOfClaimId[0].ChildPolicyID)
-      this.addEditClaimForm.controls['MarkedPolicyID'].setValue(this.letListOfClaimId[0].MarkedPolicyID);
+     this.letListOfClaimId = obj.Claims;
+
+const claim = this.letListOfClaimId[0];
+
+this.addEditClaimForm.controls['ClaimID'].setValue(claim.ClaimID);
+this.addEditClaimForm.controls['AccountID'].setValue(claim.AccountID);
+this.addEditClaimForm.controls['ChildPolicyID'].setValue(claim.ChildPolicyID);
+this.addEditClaimForm.controls['MarkedPolicyID'].setValue(claim.MarkedPolicyID);
       
       
     
@@ -409,11 +734,112 @@ this.addEditClaimForm.controls['DateofLoss'].setValue(
       }else{
         this.addEditClaimForm.controls['DriverID'].setValue(this.letListOfClaimId[0].DriverID)
       }
+    
+
+this.MarkedPolicyId = claim.MarkedPolicyID;
+this.ChildPolicyID = claim.ChildPolicyID;
+
+// Load drivers first
+this.http.getAllDataByTwoId(
+  ApiUrl.getALLClaimDriver,
+  this.MarkedPolicyId,
+  this.ChildPolicyID
+).subscribe(data => {
+
+  const response = JSON.stringify(data);
+  const obj = JSON.parse(response);
+
+  this.allDriverList = obj.Drivers || [];
+
+  // Sort
+  this.allDriverList.sort((a: any, b: any) => {
+    const nameA = String(a.DriverName || '').toLowerCase();
+    const nameB = String(b.DriverName || '').toLowerCase();
+
+    return nameA.localeCompare(nameB);
+  });
+
+  // IMPORTANT
+  this.filteredDrivers = [...this.allDriverList];
+
+  // =========================
+  // SET EDIT DRIVER
+  // =========================
+
+  if (claim.DriverID != null && claim.DriverID !== '') {
+
+    // Driver selected from dropdown
+    this.addEditClaimForm.patchValue({
+      DriverID: claim.DriverID,
+      Driver: ''
+    });
+
+    this.isDriverReadOnly = true;
+
+  } else {
+
+    // Manual driver
+    this.addEditClaimForm.patchValue({
+      DriverID: '',
+      Driver: claim.Driver || ''
+    });
+
+    this.isDriverReadOnly = false;
+  }
+
+});
       if(this.letListOfClaimId[0].TruckID == null){
         this.addEditClaimForm.controls['Truck'].setValue(this.letListOfClaimId[0].Truck)
       }else{
         this.addEditClaimForm.controls['TruckID'].setValue(this.letListOfClaimId[0].TruckID)
       }
+      this.http.getAllDataByTwoId(
+  ApiUrl.getAllClaimVehicle,
+  markedPolcyId,
+  ChildPolicyID
+).subscribe(data => {
+
+  const response = JSON.stringify(data);
+  const obj = JSON.parse(response);
+
+  this.trucks = (obj.Vehicles || [])
+    .filter((x: any) => x.BodyType !== 'Trailer');
+
+  this.trucks.sort((a: any, b: any) => {
+
+    const vinA = String(a.VIN || '').slice(-4);
+    const vinB = String(b.VIN || '').slice(-4);
+
+    return vinA.localeCompare(vinB);
+  });
+
+  this.filteredTrucks = [...this.trucks];
+
+  // IMPORTANT: set existing Truck after list is loaded
+  const claim = this.letListOfClaimId[0];
+
+  if (claim.TruckID == null || claim.TruckID === '') {
+
+    this.addEditClaimForm.patchValue({
+      TruckID: null,
+      Truck: claim.Truck || ''
+    });
+
+    this.isTruckReadOnly = true;
+
+  } else {
+
+    this.addEditClaimForm.patchValue({
+      TruckID: claim.TruckID,
+      Truck: ''
+    });
+
+    this.isTruckReadOnly = true;
+
+  }
+
+  this.showSpiner = false;
+});
     
       if(this.letListOfClaimId[0].TrailerID == null){
         this.addEditClaimForm.controls['Trailer'].setValue(this.letListOfClaimId[0].Trailer)
@@ -421,6 +847,63 @@ this.addEditClaimForm.controls['DateofLoss'].setValue(
         this.addEditClaimForm.controls['TrailerID'].setValue(this.letListOfClaimId[0].TrailerID)
       }
     
+      
+
+this.http.getAllDataByTwoId(
+  ApiUrl.getAllClaimVehicle,
+  claim.MarkedPolicyID,
+  claim.ChildPolicyID
+).subscribe(data => {
+
+  const response = JSON.stringify(data);
+  const obj = JSON.parse(response);
+
+  // ONLY TRAILERS
+  this.trailers = (obj.Vehicles || [])
+    .filter((x: any) => x.BodyType === 'Trailer');
+
+  // Sort
+  this.trailers.sort((a: any, b: any) => {
+
+    const vinA = String(a.VIN || '').slice(-4);
+    const vinB = String(b.VIN || '').slice(-4);
+
+    return vinA.localeCompare(vinB);
+  });
+
+  this.filteredTrailers = [...this.trailers];
+
+  // =========================
+  // SET EDIT TRAILER
+  // =========================
+
+  if (
+    claim.TrailerID != null &&
+    claim.TrailerID !== ''
+  ) {
+
+    // Trailer selected from dropdown
+    this.addEditClaimForm.patchValue({
+      TrailerID: claim.TrailerID,
+      Trailer: ''
+    });
+
+    this.isTrailerReadOnly = true;
+
+  } else {
+
+    // Manual / unreported trailer
+    this.addEditClaimForm.patchValue({
+      TrailerID: null,
+      Trailer: claim.Trailer || ''
+    });
+
+    this.isTrailerReadOnly = false;
+  }
+
+  this.showSpiner = false;
+
+});
       
       
       this.addEditClaimForm.controls['UpdatedBy'].setValue(this.LoginUserName)

@@ -1,34 +1,48 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { MaterialModule } from '../../sharingModule/material/material.module';
-import { HttpClientModule } from '@angular/common/http';
-import { SpinnerComponent } from '../../spinner/spinner.component';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AllApiService } from '../../_service/all-api.service';
+import { MaterialModule } from '../../../sharingModule/material/material.module';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+import { NgbAlertModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerComponent } from '../../../spinner/spinner.component';
+import { ApiUrl } from '../../../_core/apiUrl';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef
+} from '@angular/material/dialog';
+import { AllApiService } from '../../../_service/all-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ApiUrl } from '../../_core/apiUrl';
 import * as ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
-
 @Component({
-  selector: 'app-list-of-all-driver-truck-and-another',
+  selector: 'app-list-view-of-driver-and-truck',
   standalone: true,
-  imports: [CommonModule,MatButtonModule,HttpClientModule,FormsModule],
-  templateUrl: './list-of-all-driver-truck-and-another.component.html',
-  styleUrl: './list-of-all-driver-truck-and-another.component.scss'
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbDatepickerModule,
+    NgbAlertModule,
+    SpinnerComponent
+  ],
+  templateUrl: './list-view-of-driver-and-truck.component.html',
+  styleUrl: './list-view-of-driver-and-truck.component.scss'
 })
-export class ListOfAllDriverTruckAndAnotherComponent {
-  showEndrosementList = true;
+export class ListViewOfDriverAndTruckComponent {
+ showEndrosementList = true;
   searchText: string = '';
 
   MarkedPolicyID:any;
   listOfAllData:any =[];
   filteredDrivers: any[] = [];
 filteredVehicles: any[] = [];
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private http:AllApiService,private toastr: ToastrService,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<ListOfAllDriverTruckAndAnotherComponent>){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private http:AllApiService,private toastr: ToastrService,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<ListViewOfDriverAndTruckComponent>){}
   ngOnInit(): void {
     this.data;
     this.MarkedPolicyID = this.data.MarkedPolicyID;
@@ -418,3 +432,4 @@ exportToExcel(): void {
    
   }
 }
+

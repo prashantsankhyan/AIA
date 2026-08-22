@@ -1,0 +1,33 @@
+.driver-table,
+.vehicle-table {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.driver-table table,
+.vehicle-table table {
+  min-width: 900px;
+}
+
+.driver-table thead th,
+.vehicle-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.driver-table tbody td,
+.vehicle-table tbody td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.card-header {
+  background: #f8f9fa;
+}
+
+.card {
+  border-radius: 6px;
+}

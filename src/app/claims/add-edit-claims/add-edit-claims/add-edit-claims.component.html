@@ -181,8 +181,8 @@
           <div class="row p-2">
       
             <div class="col-sm-3 " >
-             <div class="form-floating mb-3"> 
-              <select class="form-select formControl mt-2"  formControlName="DriverID" style="margin-top: 28px;" (change)="onDriverChange($event)">
+           
+              <!-- <select class="form-select formControl mt-2"  formControlName="DriverID" style="margin-top: 28px;" (change)="onDriverChange($event)">
                <option hidden value="" disabled >Select Drive</option>
                <option value="">None</option>
                <ng-container *ngIf="allDriverList && allDriverList.length > 0; else noData">
@@ -191,12 +191,56 @@
                <ng-template #noData>
                    <option disabled>No data found</option>
                </ng-template>
-           </select>
-           <label>Driver</label>
-             </div>
+           </select> -->
+         <mat-form-field appearance="outline" class="w-100">
+
+  <mat-select
+    #driverSelect
+    formControlName="DriverID"
+     placeholder="Select Driver"
+    (selectionChange)="onDriverChange($event)"
+  >
+
+    <!-- SEARCH BOX -->
+    <mat-option>
+
+      <ngx-mat-select-search
+        [formControl]="driverSearchCtrl"
+        placeholderLabel="Search Driver"
+        noEntriesFoundLabel="No matching Driver">
+      </ngx-mat-select-search>
+
+    </mat-option>
+
+    <!-- NONE -->
+    <mat-option [value]="null">
+      None
+    </mat-option>
+
+    <!-- DRIVER LIST -->
+    <mat-option
+      *ngFor="let data of filteredDrivers"
+      [value]="data.DriverID"
+    >
+      👤 {{ data.DriverName }}
+      | 🪪 {{ data.DriverLicenceNo }}
+    </mat-option>
+
+    <!-- NO RESULTS -->
+    <mat-option
+      *ngIf="filteredDrivers.length === 0"
+      disabled
+    >
+      No matching Driver
+    </mat-option>
+
+  </mat-select>
+
+</mat-form-field>
+          
             </div>
-            <div class="col-sm-3 mt-1">
-             <div class="form-floating mb-3"> 
+            <div class="col-sm-3 ">
+             <div class="form-floating "> 
               <input type ="text" class="form-control" formControlName ='Driver' [readonly]="isDriverReadOnly">
               <label>Driver Unreported</label>
              </div>
@@ -204,31 +248,77 @@
              </div>
             
             <div class="col-sm-3" >
-             <div class="form-floating mb-3">
-              <select class="form-select formControl mt-2"   aria-label="Default select example"formControlName="TruckID" style="margin-top: 28px;" (change)="onTruckChange($event)">
+          
+              <!-- <select class="form-select formControl mt-2"   aria-label="Default select example"formControlName="TruckID" style="margin-top: 28px;" (change)="onTruckChange($event)">
                <option hidden value="" disabled selected  > Select Truck</option>
                <option value="">None</option>
                <ng-container *ngIf="trucks && trucks.length > 0; else noTruckData">
                  <option *ngFor="let data of trucks" 
                          [value]="data.VehicleID" 
                          [hidden]="data.BodyType == 'Trailer'">
-               🚗 VIN - ({{ data.VIN }}) | 🚘 Type - ({{ data.VehicleType }})
+               🚗 VIN - ({{ data.VIN }}) | 🚘 Type - {{ data.VehicleType }} | 📅 Year - {{ data.Year }} | 🏭 Make - {{ data.Make }}
                  </option>
              </ng-container>
              <ng-template #noTruckData>
                  <option disabled>No data found</option>
              </ng-template>
-             </select>
-             <label>Truck </label>
-             </div>
+             </select> -->
+          <mat-form-field appearance="outline" class="w-100">
+
+  <mat-select
+    #truckSelect
+    formControlName="TruckID"
+     placeholder="Select Truck"
+    (selectionChange)="onTruckChange($event)"
+  >
+
+    <!-- SEARCH -->
+    <mat-option>
+      <ngx-mat-select-search
+        [formControl]="truckSearchCtrl"
+        placeholderLabel="Search Truck"
+        noEntriesFoundLabel="No matching Truck">
+      </ngx-mat-select-search>
+    </mat-option>
+
+    <!-- NONE -->
+    <mat-option [value]="null">
+      None
+    </mat-option>
+
+    <!-- TRUCKS -->
+    <mat-option
+      *ngFor="let data of filteredTrucks"
+      [value]="data.VehicleID"
+      [hidden]="data.BodyType === 'Trailer'"
+    >
+
+       ({{ data.VIN }})
+      | 🚘 Type - {{ data.VehicleType }}
+      | 📅 Year - {{ data.Year }}
+      | 🏭 Make - {{ data.Make }}
+
+    </mat-option>
+
+    <!-- NO DATA -->
+    <mat-option
+      *ngIf="filteredTrucks.length === 0"
+      disabled>
+      No data found
+    </mat-option>
+
+  </mat-select>
+
+</mat-form-field>
+           
              
               
                 
               
               
             </div>
-            <div class="col-sm-3 mt-1">
-             <div class="form-floating mb-3">  
+            <div class="col-sm-3 ">
+             <div class="form-floating ">  
               <input type ="text" formControlName ='Truck' class="form-control" [readonly]="isTruckReadOnly">
              <label>Truck Unreported</label>
    
@@ -237,8 +327,8 @@
             </div>
             
             <div class="col-sm-3" >
-             <div class="form-floating mb-3">
-              <select class="form-select formControl mt-1" aria-label="Default select example" formControlName="TrailerID" style="margin-top: 28px;" (change)="onTrailerChange($event)">
+            
+              <!-- <select class="form-select formControl mt-1" aria-label="Default select example" formControlName="TrailerID" style="margin-top: 28px;" (change)="onTrailerChange($event)">
                <option hidden value="" disabled selected> Select Trailer</option>
                <option value="">None</option>
                <ng-container *ngIf="trailers && trailers.length > 0; else noTrailerData">
@@ -251,19 +341,76 @@
                <ng-template #noTrailerData>
                  <option disabled>No data found</option>
                </ng-template>
-             </select>
-             <label>Trailer </label>
+             </select> -->
+        
+
+    <mat-form-field appearance="outline" class="w-100">
+
+      <mat-select
+        #trailerSelect
+        formControlName="TrailerID"
+        placeholder="Select Trailer"
+        (selectionChange)="onTrailerChange($event)"
+      >
+
+        <!-- SEARCH -->
+        <mat-option>
+          <ngx-mat-select-search
+            [formControl]="trailerSearchCtrl"
+            placeholderLabel="Search Trailer"
+            noEntriesFoundLabel="No matching Trailer">
+          </ngx-mat-select-search>
+        </mat-option>
+
+        <!-- NONE -->
+        <mat-option [value]="null">
+          None
+        </mat-option>
+
+        <!-- TRAILERS -->
+        <mat-option
+          *ngFor="let data of filteredTrailers"
+          [value]="data.VehicleID"
+        >
+          ({{ data.VIN }})
+          | 🛠️ Model - ({{ data.Model }})
+          | 🚙 Body Type - ({{ data.BodyType }})
+        </mat-option>
+
+        <!-- NO DATA -->
+        <mat-option
+          *ngIf="filteredTrailers.length === 0"
+          disabled>
+          No matching Trailer
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+   
+</div>
+
+<div class="col-sm-3 ">
+  <div class="form-floating ">
+
+    <input
+      type="text"
+      formControlName="Trailer"
+      class="form-control"
+      [readonly]="isTrailerReadOnly"
+    >
+
+    <label>Trailer Unreported</label>
+
+  
+             
              </div>
             </div>
-            <div class="col-sm-3 mt-1">
-             <div class="form-floating mb-3"> 
-              <input type ="text" class="form-control" formControlName ='Trailer'[readonly]="isTrailerReadOnly" >
-              <label>Trailer Unreported</label>
-             </div>
-            </div>
+          
             <div class="col-sm-3 ">
-             <div class="form-floating mb-3">
-              <select class="form-select formControl mt-2"  formControlName ='InformationReceivedBy'>
+             <div class="form-floating">
+              <select class="form-select formControl "  formControlName ='InformationReceivedBy'>
                <option hidden value="" disabled selected  > Select Claim  Type</option>
                <option  value="By Email">By Email</option>
                <option  value="By Call">By Call</option>

@@ -31,7 +31,7 @@ export class RegistrationFormComponent {
     UserName: '',
     };
 
-  
+  selectedLoginID: any = null;
   constructor(private http:AllApiService,private router:Router,public dialog: MatDialog,private cdr: ChangeDetectorRef) { 
     this.http.listen().subscribe((m:any)=>{
       console.log(m)
@@ -69,18 +69,46 @@ export class RegistrationFormComponent {
       }
     )   
   }
+addEditRegistrationDetail(data: any) {
 
-  addEditRegistrationDetail(data:any) {
-    this.LoginID = data.LoginID
-   
-    const dialogRef = this.dialog.open(AddEditRegistrationFormComponent, {
+  this.LoginID = data.LoginID;
+
+  // Show password for selected user
+  this.selectedLoginID = data.LoginID;
+
+  const dialogRef = this.dialog.open(
+    AddEditRegistrationFormComponent,
+    {
       width: '500px',
       height: '400px',
-      data: {LoginID:this.LoginID,Team:data.Team,UserName:data.UserName,Password:data.Password,EmailID:data.EmailID},
-      
-    });
+      data: {
+        LoginID: this.LoginID,
+        Team: data.Team,
+        UserName: data.UserName,
+        Password: data.Password,
+        EmailID: data.EmailID
+      },
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(() => {
+    // Hide password after dialog closes
+    this.selectedLoginID = null;
+  });
+}
+
+
+togglePassword(data: any): void {
+
+  if (this.selectedLoginID === data.LoginID) {
+    // Hide password
+    this.selectedLoginID = null;
+  } else {
+    // Show password
+    this.selectedLoginID = data.LoginID;
   }
 
+}
 
  
 

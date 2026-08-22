@@ -1,26 +1,117 @@
+<div class="registration-navbar-wrapper">
 
-<div class="container-fluid">
- <nav class="navbar navbar-expand-lg navbar-white bg-white" style="transition: box-shadow 0.3s ease;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
-  <div class="container">
-    <a class="navbar-brand" ><img src="../../../assets/img/logo.png" style="height: 50px;" (click)="logout()"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-        <li class="nav-item ">
-         <p  style="color: rgba(0, 0, 255, 0.541);padding: 10px;"> Crate Your Employes List </p>
-        </li>
-      
-      </ul>
-      <div class="d-flex">
-        
-        <button class="btn btn-outline-primary" (click)="openRegistrationForm($event)">Create New Login  </button>
+  <nav class="navbar navbar-expand-lg registration-navbar">
+
+    <div class="container-fluid px-3 px-lg-4">
+
+      <!-- ================= LOGO ================= -->
+
+      <!-- <a
+        class="navbar-brand logo-container"
+        href="javascript:void(0)"
+        (click)="logout()"
+        title="Logout"
+      >
+        <img
+          src="../../../assets/img/logo.png"
+          class="registration-logo"
+          alt="Logo"
+        />
+      </a> -->
+
+
+      <!-- ================= MOBILE BUTTON ================= -->
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <!-- ================= NAVIGATION ================= -->
+
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+      >
+
+        <!-- Title -->
+
+        <div class="navbar-title">
+
+          <div class="title-icon">
+            <i class="fa fa-users"></i>
+          </div>
+
+          <div>
+
+            <div class="main-title">
+            AIA  Employee Management
+            </div>
+
+            <div class="sub-title">
+              Create & manage employee login accounts
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Right Side -->
+
+        <div class="navbar-actions">
+
+          <div class="login-info d-none d-lg-flex">
+
+            <i class="fa fa-user-circle"></i>
+
+            <span>
+              Registration
+            </span>
+
+          </div>
+
+
+          <button
+           *ngIf="showCreateLogin"
+            type="button"
+            class="create-login-btn"
+            (click)="openRegistrationForm($event)"
+          >
+
+            <span class="btn-icon">
+              <i class="fa fa-user-plus"></i>
+            </span>
+
+            <span>
+              Create New Login
+            </span>
+
+          </button>
+
+        </div>
+
       </div>
+
     </div>
-  </div>
- </nav>
+
+  </nav>
+
 </div>
 
-<router-outlet></router-outlet>
 
+<!-- ================= PAGE CONTENT ================= -->
+
+<div class="registration-content">
+
+  <router-outlet></router-outlet>
+
+</div>

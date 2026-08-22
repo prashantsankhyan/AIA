@@ -1,50 +1,205 @@
-.form-control {
- display: block;
- width: 100%;
- /* padding: 0.375rem 0.75rem; */
- font-size: 11px;
- font-weight: 100;
- line-height: 1.5;
- color: #212529;
- background-color: #fff;
- background-clip: padding-box;
- border: 1px solid #ced4da;
- appearance: none;
- border-radius: 0.25rem;
- transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- height: 26px;
-}
-.form-select {
- display: block;
- width: 100%;
- /* padding: 0.375rem 0.75rem; */
- font-size: 11px;
- font-weight: 100;
- line-height: 1.5;
- color: #212529;
- background-color: #fff;
- background-clip: padding-box;
- border: 1px solid #ced4da;
- appearance: none;
- border-radius: 0.25rem;
- transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- height: 26px;
-}
-
-tr {
- border-color: bisque;
- border-style: hidden;
- border-width: 0;
+.registration-form-wrapper {
+  background: #f6f8fb;
+  padding: 15px;
+  min-height: 100%;
 }
 
 
-label {
- display: inline-flex;
- font-size: smaller;
+/* ================= HEADER ================= */
 
+.registration-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 15px;
 }
-.error-message {
- color: red;
- font-size: 0.8rem;
- margin-top: 5px;
+
+.registration-header h4 {
+  margin: 0;
+  color: #315f9c;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.registration-header h4 i {
+  color: #0d6efd;
+}
+
+.registration-header small {
+  display: block;
+  margin-top: 4px;
+  color: #7a8491;
+  font-size: 12px;
+}
+
+
+/* ================= CARD ================= */
+
+.registration-card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e3e7ec;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  padding: 22px;
+}
+
+
+/* ================= LABEL ================= */
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #414b57;
+  margin-bottom: 6px;
+}
+
+.form-label i {
+  color: #0d6efd;
+}
+
+.required {
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+
+/* ================= INPUT ================= */
+
+.input-icon-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b95a1;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.custom-input {
+  height: 42px;
+  border: 1px solid #d8dde4;
+  border-radius: 7px;
+  padding-left: 36px;
+  font-size: 13px;
+  color: #343a40;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.custom-input::placeholder {
+  color: #a1a8b0;
+  font-size: 12px;
+}
+
+.custom-input:hover {
+  border-color: #b9c1cb;
+}
+
+.custom-input:focus {
+  border-color: #6ea8fe;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.10);
+}
+
+
+/* ================= SELECT ================= */
+
+select.custom-input {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+
+/* ================= VALIDATION ================= */
+
+.invalid-feedback {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid #edf0f3;
+}
+
+.btn-save,
+.btn-cancel {
+  min-width: 115px;
+  height: 38px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+
+/* Save */
+
+.btn-save {
+  color: #198754;
+  border: 1px solid #198754;
+  background: #fff;
+}
+
+.btn-save:hover {
+  color: #fff;
+  background: #198754;
+  box-shadow: 0 3px 8px rgba(25, 135, 84, 0.2);
+}
+
+
+/* Cancel */
+
+.btn-cancel {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  background: #fff;
+}
+
+.btn-cancel:hover {
+  color: #fff;
+  background: #dc3545;
+  box-shadow: 0 3px 8px rgba(220, 53, 69, 0.2);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 576px) {
+
+  .registration-form-wrapper {
+    padding: 10px;
+  }
+
+  .registration-card {
+    padding: 15px;
+  }
+
+  .registration-header h4 {
+    font-size: 18px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
+  }
 }

@@ -30,7 +30,8 @@ export class ClaimWorkingDataComponent {
       LineShortName: '',
       ReportedTo: '',
       DeleteReason:'',
-        ChildPolicyName: ''
+        ChildPolicyName: '',
+        AccountName:'',
 
     };
     
@@ -71,6 +72,12 @@ export class ClaimWorkingDataComponent {
     onChildPolicyDescriptionChange(value: string) {
   this.updateSearchCriteria({
     ChildPolicyName: value
+  });
+}
+
+onAccountNameChange(newAccountName: string) {
+  this.updateSearchCriteria({
+    AccountName: newAccountName
   });
 }
 

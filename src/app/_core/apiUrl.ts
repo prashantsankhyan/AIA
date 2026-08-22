@@ -192,6 +192,7 @@ getInfoSingleVehicle:'CarSoft/GetByDotSingleVin',
  getAllHolderAttach:'HoldingVehicle/GetHoldingCertificateByWithoutAccountId',
  addHolderRemakrs:'Account/AddUpdateAccountNotes',
  getHlderReamkrs:'Account/GetAllAccountNotesByAccountId',
+ manualVehicelImportByExcel:'HoldingVehicle/ReadHoldingVehicleExcelFileAndAppend',
 
 
  //report and support team //

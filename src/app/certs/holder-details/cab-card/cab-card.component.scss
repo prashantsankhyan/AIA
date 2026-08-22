@@ -1,0 +1,513 @@
+.cab-card-container {
+  width: 100%;
+  min-height: 100%;
+  background: #fff;
+  padding: 10px 15px 20px;
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 10px;
+}
+
+
+/* =========================
+   TOP REFERENCE
+========================= */
+
+.top-reference {
+  width: 348px;
+
+  margin-left: 0;
+  margin-bottom: 8px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+
+  font-size: 10px;
+  font-weight: bold;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.insurance-card {
+  width: 508px;
+  height: 420px;
+
+  border: 1px solid #000;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  padding: 13px 20px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.card-title {
+  text-align: center;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   TOP GRID
+========================= */
+
+.top-grid {
+  display: grid;
+
+  grid-template-columns: 47% 53%;
+
+  gap: 8px;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+label {
+  display: block;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  margin-bottom: 10px;
+}
+
+
+/* =========================
+   VALUE
+========================= */
+
+.value {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+
+/* =========================
+   FIELD
+========================= */
+
+.form-field {
+  margin-bottom: 9px;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* =========================
+   COMPANY
+========================= */
+
+.company {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.company strong {
+  font-size: 8px;
+}
+
+
+/* =========================
+   POLICY MESSAGE
+========================= */
+
+.policy-message {
+  text-align: center;
+
+  font-size: 8px;
+
+  font-weight: bold;
+
+  line-height: 1.4;
+
+  margin-top: 10px;
+}
+
+
+/* =========================
+   VEHICLE
+========================= */
+
+.vehicle-grid {
+  display: grid;
+
+  grid-template-columns: 17% 39% 44%;
+
+  gap: 5px;
+
+  margin-top: 6px;
+  line-height: 9px;
+}
+
+.vehicle-grid strong {
+  font-size: 8px;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  line-height: 6px;
+}
+
+.vehicle-grid .vin {
+  font-size: 7px;
+}
+
+
+/* =========================
+   AGENCY
+========================= */
+
+.agency {
+  margin-top: 7px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+.agency strong {
+  font-size: 8px;
+}
+
+
+/* =========================
+   INSURED
+========================= */
+
+.insured {
+  margin-top: 7px;
+}
+
+.insured-value {
+  margin-left: 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  font-size: 8px;
+
+  font-weight: bold;
+
+  line-height: 1.15;
+}
+
+
+/* =========================
+   IMPORTANT NOTICE
+========================= */
+
+.important-notice {
+  position: absolute;
+
+  bottom: 5px;
+
+  left: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 6px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   BACK CARD
+========================= */
+
+.back-card {
+  margin-top: 22px;
+
+  padding: 18px 20px;
+}
+
+
+/* =========================
+   KEEP MESSAGE
+========================= */
+
+.keep-card {
+  text-align: center;
+
+  font-size: 8px;
+
+  font-weight: bold;
+
+  line-height: 1.6;
+
+  margin-top: 3px;
+}
+
+
+/* =========================
+   ACCIDENT
+========================= */
+
+.accident {
+  margin-top: 38px;
+
+  font-size: 8px;
+
+  line-height: 1.35;
+}
+
+.accident p {
+  margin: 0 0 10px;
+}
+
+.accident ol {
+  margin-top: 5px;
+
+  padding-left: 27px;
+}
+
+.accident li {
+  padding-left: 3px;
+
+  margin-bottom: 7px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.card-footer {
+  position: absolute;
+
+  bottom: 4px;
+
+  left: 5px;
+  right: 5px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 5px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.dialog-buttons {
+  width: 348px;
+
+  margin-top: 10px;
+
+  text-align: right;
+}
+
+.dialog-buttons button {
+  padding: 5px 15px;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   PRINT
+========================= */
+
+@media print {
+
+  .dialog-buttons {
+    display: none;
+  }
+
+  .cab-card-container {
+    padding: 0;
+  }
+
+}
+.agency-label {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  height: auto !important;
+}
+
+.agency-details {
+  display: block !important;
+  margin: -13px 0 0 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  font-size: larger;
+}
+
+.agency-details span {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.vehicleHeighht{
+  margin: -15px 0 0 0 !important;
+}
+
+
+.company-details {
+  display: block;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.company-details span {
+  display: block;
+  margin: 1px;
+  padding: 0;
+}
+
+.insured-details {
+  display: block;
+  line-height: 1.1;
+}
+
+.insured-details span {
+  display: block;
+  margin: 1px 0;
+}
+/* =========================================
+   A4 PRINT PAGE
+========================================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  /* A4 container */
+  .cab-card-container {
+    width: 210mm !important;
+    height: 297mm !important;
+
+    min-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 10mm !important;
+
+    box-sizing: border-box;
+
+    background: #fff !important;
+
+    overflow: hidden;
+  }
+
+  /* Keep your existing card size */
+  .insurance-card {
+    width: 508px !important;
+    height: 400px !important;
+
+    box-sizing: border-box;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Space between front and back */
+  .back-card {
+    margin-top: 22px !important;
+  }
+
+  /* Top reference should align with card */
+  .top-reference {
+    width: 708px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 5px;
+  }
+
+  /* Hide buttons */
+  .dialog-buttons {
+    display: none !important;
+  }
+
+  button {
+    display: none !important;
+  }
+
+  /* Prevent Bootstrap spacing from affecting print */
+  .mt-4 {
+    margin-top: 7px !important;
+  }
+
+  /* Make sure nothing gets clipped horizontally */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Each vehicle gets its own A4 page */
+  .vehicle-card-wrapper {
+    width: 210mm !important;
+    height: 297mm !important;
+
+    page-break-after: always;
+    break-after: page;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .vehicle-card-wrapper:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+

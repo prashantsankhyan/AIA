@@ -7,6 +7,8 @@ import { AllApiService } from '../../../_service/all-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewRemkarsPolicyIdComponent } from '../../../policy/view-remkars-policy-id/view-remkars-policy-id.component';
 import { ViewRemakrsAccoutBaseComponent } from '../view-remakrs-accout-base/view-remakrs-accout-base.component';
+import { CertsViewTruckDriverComponent } from '../certs-view-truck-driver/certs-view-truck-driver.component';
+import { CabCardComponent } from '../cab-card/cab-card.component';
 
 @Component({
   selector: 'app-certs-view-policy',
@@ -25,6 +27,7 @@ export class CertsViewPolicyComponent {
   showTableIfDataHave = false;
   showEndrosementList = true;
   listOfEmpity:any;
+  MarkedPolicyID:any;
     constructor(private http:AllApiService,public dialog: MatDialog,) { 
       this.http.listen().subscribe((m:any)=>{
         console.log(m)
@@ -81,4 +84,34 @@ export class CertsViewPolicyComponent {
     }
   )   
 }
+
+
+
+
+listOfDriverTruckData(data:any) {
+  
+  this.MarkedPolicyID = data.MarkedPolicyID
+ 
+  const dialogRef = this.dialog.open(CertsViewTruckDriverComponent, {
+    width: '1400px',
+    height: '700px',
+    data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
+    
+  });
+}
+
+cabCard(data:any) {
+  
+  this.MarkedPolicyID = data.MarkedPolicyID
+ 
+  const dialogRef = this.dialog.open(CabCardComponent, {
+    width: '800px',
+    height: '700px',
+    data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
+    
+  });
+}
+
+
+
 }

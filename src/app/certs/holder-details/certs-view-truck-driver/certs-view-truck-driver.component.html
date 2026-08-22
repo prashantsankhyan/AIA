@@ -1,0 +1,380 @@
+<div *ngIf="showEndrosementList">
+
+  show list
+
+</div>
+
+
+<div *ngIf="!showEndrosementList">
+
+  <div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="row mt-2 mb-2">
+
+      <div class="col-sm-3">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="exportToExcel()">
+
+          <i class="fa fa-file-excel-o me-1"></i>
+          Excel
+
+        </button>
+      </div>
+
+      <div class="col-sm-9 text-end">
+
+        <a
+          href="javascript:void(0);"
+          (click)="closeModel()">
+
+          <i
+            class="fa fa-times-circle-o"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div *ngIf="listOfAllData">
+
+      <div class="row mb-3">
+
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="searchText"
+            (ngModelChange)="onSearchChange()"
+            placeholder="Search Driver / Vehicle..." />
+
+        </div>
+
+      </div>
+
+
+      <!-- ================================================= -->
+      <!-- DRIVER TABLE -->
+      <!-- ================================================= -->
+
+      <div class="card mb-4">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+          <strong>
+            Drivers
+          </strong>
+
+          <span class="badge bg-primary">
+           {{ filteredDrivers.length }}
+          </span>
+
+        </div>
+
+        <div class="table-responsive driver-table">
+
+          <table class="table table-bordered table-hover mb-0">
+
+            <thead class="table-light">
+
+              <tr>
+
+                <th style="width: 130px;">
+                  Driver S.NO
+                </th>
+
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Licence Issued
+                </th>
+
+                <th>
+                  Date of Birth
+                </th>
+
+                <th>
+                  State Licensed
+                </th>
+
+                <th>
+                  Licence No
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              <tr
+                *ngFor="
+                  let driver of filteredDrivers;
+                  let i = index
+                ">
+
+                <td>
+                  {{ i + 1 }}
+
+                  <span class="text-muted">
+                    -
+                    {{
+                      driver.EndorsementID === 0
+                        ? 'By Policy'
+                        : 'By Endorsement'
+                    }}
+                  </span>
+                </td>
+
+
+                <td>
+                  {{ driver.DriverName || '-' }}
+                </td>
+
+
+                <td>
+                  {{
+                    driver.YearofLicenceIssued
+                      ? (driver.YearofLicenceIssued | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+                </td>
+
+
+                <td>
+                  {{
+                    driver.DateofBirth
+                      ? (driver.DateofBirth | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+                </td>
+
+
+                <td>
+                  {{ driver.StateLicenced || '-' }}
+                </td>
+
+
+                <td>
+                  {{ driver.DriverLicenceNo || '-' }}
+                </td>
+
+              </tr>
+
+
+              <!-- NO DRIVER -->
+              <tr *ngIf="!filteredDrivers?.length">
+
+                <td
+                  colspan="6"
+                  class="text-center text-muted p-3">
+
+                  No drivers found.
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ================================================= -->
+      <!-- VEHICLE TABLE -->
+      <!-- ================================================= -->
+
+      <div class="card mb-4">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+          <strong>
+            Vehicles
+          </strong>
+
+          <span class="badge bg-success">
+          {{ filteredVehicles.length }}
+          </span>
+
+        </div>
+
+
+        <div class="table-responsive vehicle-table">
+
+          <table class="table table-bordered table-hover mb-0">
+
+            <thead class="table-light">
+
+              <tr>
+
+                <th style="width: 130px;">
+                  Vehicle S.NO
+                </th>
+
+                <th style="width: 110px;">
+                  Type
+                </th>
+
+                <th style="width: 100px;">
+                  Year
+                </th>
+
+                <th style="min-width: 180px;">
+                  Make
+                </th>
+
+                <th style="min-width: 180px;">
+                  Model
+                </th>
+
+                <th style="min-width: 220px;">
+                  VIN
+                </th>
+
+                <th style="width: 130px;">
+                  Value
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              <tr
+                *ngFor="
+                  let vehicle of filteredVehicles;
+                  let i = index
+                ">
+
+                <td>
+
+                  {{ i + 1 }}
+
+                  <span class="text-muted">
+                    -
+                    {{
+                      vehicle.EndorsementID === 0
+                        ? 'By Policy'
+                        : 'By Endorsement'
+                    }}
+                  </span>
+
+                </td>
+
+
+                <td>
+                  {{ vehicle.VehicleType || '-' }}
+                </td>
+
+
+                <td>
+                  {{ vehicle.Year || '-' }}
+                </td>
+
+
+                <td>
+                  {{ vehicle.Make || '-' }}
+                </td>
+
+
+                <td>
+                  {{ vehicle.Model || '-' }}
+                </td>
+
+
+                <td>
+                  {{ vehicle.VIN || '-' }}
+                </td>
+
+
+                <td>
+                  {{
+                    vehicle.Value != null
+                      ? (vehicle.Value | currency)
+                      : '-'
+                  }}
+                </td>
+
+              </tr>
+
+
+              <!-- NO VEHICLE -->
+              <tr *ngIf="!filteredVehicles?.length">
+
+                <td
+                  colspan="7"
+                  class="text-center text-muted p-3">
+
+                  No vehicles found.
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ================================================= -->
+      <!-- REMARKS -->
+      <!-- ================================================= -->
+
+      <div
+        class="card mb-3"
+        *ngIf="listOfAllData?.Remarks?.length">
+
+        <div class="card-header">
+
+          <strong>
+            Remarks
+          </strong>
+
+        </div>
+
+        <div class="card-body">
+
+          <ul class="mb-0">
+
+            <li
+              *ngFor="let remark of listOfAllData.Remarks">
+
+              {{ remark.Remarks }}
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

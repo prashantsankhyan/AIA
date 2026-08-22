@@ -11,7 +11,7 @@ export class ClaimsPipe implements PipeTransform {
     if (!items) return [];
     if (!criteria) return items;
 
-    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo ,ChildPolicyName,Truck_VIN} = criteria;
+    const { DateofBirth, DeleteReason, ClaimNumber , LineShortName, ReportedTo ,ChildPolicyName,Truck_VIN,AccountName} = criteria;
 
 
     return items.filter(item => {
@@ -36,8 +36,14 @@ export class ClaimsPipe implements PipeTransform {
           .includes(Truck_VIN.toLowerCase())
       : false)
   : true;
+
+    const matchesAccountName = AccountName
+      ? (item.AccountName
+          ? item.AccountName.toString().toLowerCase().includes(AccountName.toString().toLowerCase())
+          : false)
+      : true;
   
-      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason && matchesChildPolicyName && matchesTruck_VIN;
+      const result =  matchesClaimNumber && matchesLineShortName && matchesReportedTo && matchesLineDeleteReason && matchesChildPolicyName && matchesTruck_VIN &&  matchesAccountName;;
 
      
       return result;

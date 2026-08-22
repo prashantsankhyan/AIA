@@ -648,7 +648,7 @@
                    
                     <td style="width: 10%;"><input class="form-check-input  " type="checkbox" value="" style="margin-top: -1px;"></td>
                     <td  style="width: 40%;font-size: 10px;display: inline;">OWNED AUTOS ONLY </td>
-                    <td style="width: 10%;"><input class="form-check-input " type="checkbox" [checked]="alPolicies[0]?.ChildPolicies?.ChildPolicyName?.trim() !== ''"style="margin-top: -1px;"></td>
+                    <td style="width: 10%;"><input class="form-check-input " type="checkbox" [checked]="!!alPolicies[0]?.ChildPolicies?.ChildPolicyName?.trim()" style="margin-top: -1px;"></td>
                     <td style="width: 40%;font-size: 10px;">SCHEDULED AUTOS</td>
                 </tr>
             </table>
@@ -1580,11 +1580,11 @@ CONTACT NAME: <br/>
     *ngFor="let vehicle of getSelectedVehicles(page); let i = index"
     (click)="toggleVehicle(vehicle)"
     style="cursor:pointer">
-
     {{ i + 1 }} ({{ vehicle.Year || 'N/A' }}) -
+    {{ vehicle.Make || '' }} -
     {{ vehicle.Model || '' }} -
-    {{ vehicle.Make || '' }}
-    – VIN: {{ vehicle.VIN || '' }}
+    
+     VIN: {{ vehicle.VIN || '' }}
 
     <span *ngIf="showVehicleValue && vehicle.Value">
       -${{ vehicle.Value | number:'1.2-2' }}

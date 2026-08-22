@@ -1,82 +1,243 @@
 <app-nav-registration></app-nav-registration>
-<div *ngIf ="showSpiner">
+
+<!-- Spinner -->
+<div *ngIf="showSpiner">
   <app-spinner></app-spinner>
- </div>
-<div *ngIf ="!showSpiner">
+</div>
 
 
-<div class="container-fluid">
-  <div class="card mt-2">
-    <div class="row p-2">
-      <div class="col-sm-2">
-        <input
-         class="form-control "
-         type="search"
-         [(ngModel)]="searchCriteria.Team"
-         (ngModelChange)="onTeamChange($event)"
-         placeholder="Search By Team"
-         aria-label="Search"
-       />
-     </div>
-    
-     <div class="col-sm-2">
-       <input
-         class="form-control"
-         type="search"
-         [(ngModel)]="searchCriteria.UserName"
-         (ngModelChange)="onUserNameChange($event)"
-         placeholder="Search By Name"
-         aria-label="Search"
-       />
-     </div>
-     
-    
-  
+<div *ngIf="!showSpiner">
+
+  <div class="container-fluid mt-2">
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="card simple-card mb-2">
+
+      <div class="card-body py-2">
+
+        <div class="row g-2 align-items-center">
+
+          <!-- Team Search -->
+          <div class="col-sm-3">
+
+            <div class="input-group input-group-sm">
+
+              <span class="input-group-text">
+                <i class="fa fa-users"></i>
+              </span>
+
+              <input
+                type="search"
+                class="form-control"
+                [(ngModel)]="searchCriteria.Team"
+                (ngModelChange)="onTeamChange($event)"
+                placeholder="Search By Team"
+                aria-label="Search By Team"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- User Search -->
+          <div class="col-sm-3">
+
+            <div class="input-group input-group-sm">
+
+              <span class="input-group-text">
+                <i class="fa fa-user"></i>
+              </span>
+
+              <input
+                type="search"
+                class="form-control"
+                [(ngModel)]="searchCriteria.UserName"
+                (ngModelChange)="onUserNameChange($event)"
+                placeholder="Search By Name"
+                aria-label="Search By Name"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- User Count -->
+          <div class="col-sm-auto ms-auto">
+
+            <span class="user-count">
+
+              <i class="fa fa-users me-1"></i>
+
+              {{ listOfAllLoginDetail?.length || 0 }} Users
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="card simple-card">
+
+      <!-- Scrollable Table -->
+      <div class="table-responsive table-scroll">
+
+        <table
+          class="table table-bordered table-hover simple-table mb-0"
+        >
+
+          <!-- ================= TABLE HEADER ================= -->
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Team Name
+              </th>
+
+              <th>
+                User Name
+              </th>
+
+              <th>
+                Password
+              </th>
+
+              <th>
+                Email
+              </th>
+
+              <th
+                class="text-center"
+                style="width: 90px;"
+              >
+                Action
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <!-- ================= TABLE BODY ================= -->
+
+          <tbody>
+
+            <tr
+              *ngFor="
+                let data of listOfAllLoginDetail
+                | searchFilter: searchCriteria
+              "
+              [class.selected-row]="selectedLoginID === data.LoginID"
+            >
+
+              <!-- Team -->
+              <td>
+
+                {{ data.Team }}
+
+              </td>
+
+
+              <!-- User Name -->
+              <td>
+
+                {{ data.UserName }}
+
+              </td>
+
+
+              <!-- Password -->
+           <td
+  class="password-cell"
+  (click)="togglePassword(data)"
+>
+
+  <!-- Hidden -->
+  <span
+    *ngIf="selectedLoginID !== data.LoginID"
+    class="password-text"
+  >
+    ••••••••
+  </span>
+
+  <!-- Visible -->
+  <span
+    *ngIf="selectedLoginID === data.LoginID"
+    class="password-visible"
+  >
+    {{ data.Password }}
+  </span>
+
+</td>
+
+
+              <!-- Email -->
+              <td>
+
+                {{ data.EmailID }}
+
+              </td>
+
+
+              <!-- Action -->
+              <td class="text-center">
+
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-success edit-btn"
+                  (click)="addEditRegistrationDetail(data)"
+                  title="Edit User"
+                >
+
+                <i class="fa fa-pencil me-1">👨</i>
+
+                </button>
+
+              </td>
+
+            </tr>
+
+
+            <!-- ================= NO DATA ================= -->
+
+            <tr
+              *ngIf="
+                (listOfAllLoginDetail | searchFilter: searchCriteria)?.length === 0
+              "
+            >
+
+              <td
+                colspan="5"
+                class="text-center text-muted py-3"
+              >
+
+                <i class="fa fa-users me-1"></i>
+
+                No users found
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
   </div>
-   
-   
-
-
-    
- <div class="scrolling mt-2" >
-   <table  class="table table-bordered table-hover dt-responsive" >
- 
-     <thead>
-       <tr>
-         <th>Team Name</th>
-         <th>User Name</th>
-         <th> Password</th>
-         <th>Email</th>
-        
-       
-       
-       </tr>
-     </thead>
-     <tbody>
-            
-      <tr  *ngFor ="let data of listOfAllLoginDetail  | searchFilter: searchCriteria">
-        <td>{{data.Team}}</td>
-        <td>{{data.UserName}}</td>
-        <td>{{data.Password}}</td>
-        <td>{{data.EmailID}}</td>
-        <td ><a href="javascript:void(0)" style="color: green;text-decoration: blink;" (click)="addEditRegistrationDetail(data)">Edit</a></td>
-        
-        
-
-      
-      </tr>
-    
-  
-    
-   </tbody>
-    
-   </table>
- </div>
- 
-
 
 </div>
-</div>
-
-

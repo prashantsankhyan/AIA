@@ -94,7 +94,7 @@ export class ExtraVehicleDetailsComponent {
   makeForm(){
     
     this.addEditHolderForm = this.fb.group({
-      HoldingID:['0'],
+      HoldingID:[this.HoldingID],
     
       Input:['',[Validators.required,]],
      

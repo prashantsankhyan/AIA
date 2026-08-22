@@ -29,8 +29,9 @@
       </div>
       <div class="col-sm-3">
            <div class="container__item">
-			  <input type="text" class="form__field" [(ngModel)]="searchCriteria.ReportedTo" (ngModelChange)="onReportedToChange($event)"/>
-		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍Insurance </button>
+			  <input type="text" class="form__field" [ngModel]="searchCriteria.AccountName"
+  (ngModelChange)="onAccountNameChange($event)"/>
+		    <button type="button" class="btn btn--primary btn--inside uppercase" >🔍By Name </button>
 	     </div>
         
       </div>

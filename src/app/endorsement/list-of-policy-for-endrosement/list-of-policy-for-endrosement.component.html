@@ -120,7 +120,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of expiredPolicies">
+        <tr *ngFor="let data of expiredPolicies" (click)="goToEndrosement(data)">
           <td>{{ data.LineName }}/{{ data.LineShortName }}</td>
           <td>{{ data.ChildPolicyName }}</td>
           <td>{{ data.Effective | date: 'MM/dd/yyyy' }} - {{ data.Expiration | date: 'MM/dd/yyyy' }}</td>

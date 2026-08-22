@@ -33,17 +33,19 @@ addEditAttachmentForm!:FormGroup ;
    userName:any;
    accountName:any;
    teamName:any;
+   HoldingID:any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder, private http:AllApiService,private toastr: ToastrService ,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<EnterVehicleDetialsByExcelComponent>){
  
   }
   ngOnInit(): void {
-    
+  
     this.accountId = JSON.parse(localStorage.getItem('accountId')||'{}') 
     this.teamName =localStorage.getItem('teamName');
     this.userName = sessionStorage.getItem('UserName');
     this.accountName = localStorage.getItem('accountName');
-    
+     this.HoldingID = this.data.HoldingID;
+     
     this.getAllFileDetail()
     this.makeForm();
    
@@ -64,15 +66,8 @@ addEditAttachmentForm!:FormGroup ;
   makeForm(){
     this.addEditAttachmentForm = this.fb.group({
       abc:['',[Validators.required,]],
-      AccountID:[this.accountId ,[Validators.required,]],
-      // FolderID:['',[Validators.required,]],
-      AttachedBy:['',],
-      Description:['',[Validators.required,]],
-      ChangeType:[''],
-      PolicyType:['',],
-      UnderPolicy:[''],
+      HoldingId:[this.HoldingID],
       EnteredBy:[this.userName]
-      
       
     });
   }
@@ -83,7 +78,6 @@ addEditAttachmentForm!:FormGroup ;
   get productForm() {
     return this.addEditAttachmentForm.controls;
   }
-
 
   onSubmit(): void {
     this.submit  = true ;
@@ -99,14 +93,8 @@ addEditAttachmentForm!:FormGroup ;
       productFormData.append('abc',this.myFile[i])
       
     }
-   
-    productFormData.append('AccountID',this.addEditAttachmentForm.get('AccountID')?.value);
-    // productFormData.append('FolderID',this.addEditAttachmentForm.get('FolderID')?.value);
-    productFormData.append('AttachedBy',this.addEditAttachmentForm.get('AttachedBy')?.value);
-    productFormData.append('Description',this.addEditAttachmentForm.get('Description')?.value);
-    productFormData.append('ChangeType',this.addEditAttachmentForm.get('ChangeType')?.value);
-    productFormData.append('PolicyType',this.addEditAttachmentForm.get('PolicyType')?.value);
-    productFormData.append('UnderPolicy',this.addEditAttachmentForm.get('UnderPolicy')?.value);
+    productFormData.append('HoldingId',this.addEditAttachmentForm.get('HoldingId')?.value);
+    
     productFormData.append('EnteredBy',this.addEditAttachmentForm.get('EnteredBy')?.value);
 
     // Object.keys(this.productForm).map((key) =>{
@@ -122,7 +110,7 @@ addEditAttachmentForm!:FormGroup ;
 
     private _addProduct(productData: FormData): void {
       this.changeLocation()
-    this.http.addEditFormData(ApiUrl.uploadSubmissionFile,productData).pipe().subscribe(
+    this.http.addEditFormData(ApiUrl.manualVehicelImportByExcel,productData).pipe().subscribe(
         data => {
 
          this.changeLocation()

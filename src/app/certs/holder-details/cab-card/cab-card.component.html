@@ -1,0 +1,248 @@
+<div style="text-align: center; margin-top: 5px;">
+
+  <button
+    style="width: 300px; color: green;"
+    ngxPrint
+    class="learn-more"
+    [useExistingCss]="true"
+    printTitle={{cabCard}}
+    printSectionId="print-section">
+
+    Cab Card
+
+  </button>
+   <!-- <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="close()">
+
+    Close
+
+  </button> -->
+
+</div>
+
+
+
+
+
+
+ <div class="container-fluid">
+<div id="print-section">
+
+  <div
+    class="vehicle-card-wrapper"
+    *ngFor="let vehicle of vehicleDetail; let i = index"
+  >
+
+    <!-- TOP REFERENCE -->
+    <div class="top-reference">
+      <span>
+        {{LookUpCode}}
+      </span>
+      <span>{{LoginUserName}}</span>
+    </div>
+
+    <!-- FRONT -->
+    <div class="insurance-card">
+
+      <div class="card-title">
+        CALIFORNIA FLEET AUTO INSURANCE IDENTIFICATION CARD
+      </div>
+
+      <div class="top-grid">
+
+        <!-- LEFT -->
+        <div>
+
+          <div class="form-field">
+            <label>COMPANY NUMBER</label>
+            <div class="value">
+              {{ carrierData?.CompanyNumber || '' }}
+              
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>POLICY NUMBER</label>
+            <div class="value" style="margin-top: -13px;">
+              {{ policyData?.ChildPolicyName || '' }}
+            </div>
+          </div>
+
+          <div class="date-grid">
+
+            <div>
+              <label>EFFECTIVE DATE</label>
+              <div class="value" style="margin-top: -13px;">
+                {{ policyData?.Effective | date:'MM/dd/yyyy' }}
+              </div>
+            </div>
+
+            <div>
+              <label>EXPIRATION DATE</label>
+              <div class="value" style="margin-top: -13px;">
+                {{ policyData?.Expiration | date:'MM/dd/yyyy' }}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- COMPANY -->
+        <div class="company">
+
+          <label>COMPANY NAME AND ADDRESS</label>
+
+         <strong class="company-details" style="margin-top: -13px;">
+  <span>{{ policyData?.IssuingCompanyName || '' }}</span>
+  <span>{{ carrierData?.Address || '' }}</span>
+  <span>{{ carrierData?.City || '' }} {{ carrierData?.State || '' }} {{ carrierData?.ZIP || '' }}</span>
+    
+</strong>
+
+        
+
+        </div>
+
+      </div>
+
+
+      <!-- POLICY MESSAGE -->
+      <div class="policy-message mt-3 mb-3">
+
+        THIS POLICY MEETS THE REQUIREMENTS OF § 16056 OR § 16500.5 OF THE
+        <br>
+
+        CALIFORNIA VEHICLE CODE AND IS A COMMERCIAL OR FLEET POLICY
+
+      </div>
+
+
+      <!-- VEHICLE -->
+      <div class="vehicle-grid">
+
+        <div > 
+          <label>YEAR</label>
+          <strong  >
+            {{ vehicle.Year || '' }}
+          </strong>
+        </div>
+
+        <div>
+          <label>MAKE/MODEL</label>
+          <strong >
+             {{ vehicle.Make || '' }} {{ vehicle.Model || '' }}
+          </strong>
+        </div>
+
+        <div>
+          <label>VEHICLE IDENTIFICATION NUMBER</label>
+          <strong >
+            {{ vehicle.VIN || vehicle.Vin || vehicle.VehicleIdentificationNumber || '' }}
+          </strong>
+        </div>
+
+      </div>
+
+
+      <!-- AGENCY -->
+     <div class="agency mt-4">
+
+  <label>AGENCY/COMPANY ISSUING CARD</label>
+
+  <strong class="agency-details" >
+    <span>Amerigo Insurance Agency</span>
+    <span>1110 Civic Center Ste 202D</span>
+    <span>Yuba City, CA 95993</span>
+  </strong>
+
+</div>
+
+
+      <!-- INSURED -->
+      <div class="insured mt-4">
+
+        <label>INSURED</label>
+
+        <div class="insured-value" style="margin-top: -10px;">
+
+         <strong class="insured-details">
+    <span>{{ listOfAccount?.[0]?.AccountName || '' }}</span>
+    <span>{{ listOfAccount?.[0]?.Description || '' }}</span>
+    <span>{{ listOfAccount?.[0]?.City || '' }} {{ listOfAccount?.[0]?.State || '' }} {{ listOfAccount?.[0]?.ZIP || '' }}</span>
+  </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="important-notice">
+        SEE IMPORTANT NOTICE ON REVERSE SIDE
+      </div>
+
+    </div>
+
+
+    <!-- BACK -->
+    <div class="insurance-card back-card">
+
+      <div class="keep-card">
+
+        THIS CARD MUST BE KEPT IN THE INSURED
+        <br>
+
+        VEHICLE AND PRESENTED UPON DEMAND
+
+      </div>
+
+
+      <div class="accident">
+
+        <p>
+          <strong>IN CASE OF ACCIDENT:</strong>
+          Report all accidents to your Agent/Company as
+          soon as possible. Obtain the following information:
+        </p>
+
+        <ol>
+
+          <li>
+            Name and address of each driver, passenger and witness.
+          </li>
+
+          <li>
+            Name of Insurance Company and policy number for each
+            vehicle involved.
+          </li>
+
+        </ol>
+
+      </div>
+
+
+      <div class="card-footer">
+
+        <span>
+          ACORD 52 CA (2007/07)
+        </span>
+
+        <span>
+          © 2007 ACORD CORPORATION. All rights reserved.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+ </div>
+
+
+<!-- PRINT BUTTON -->
+
