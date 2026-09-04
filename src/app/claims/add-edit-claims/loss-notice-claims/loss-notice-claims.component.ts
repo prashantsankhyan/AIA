@@ -71,7 +71,8 @@ isDataLoaded = false;
 
 async fillPdf() {
 
-  const existingPdfBytes = await fetch('assets/Loss Notice Claim.pdf')
+  // const existingPdfBytes = await fetch('assets/Loss Notice Claim.pdf')
+  const existingPdfBytes = await fetch('assets/Blank Loss Notice.pdf')
     .then(res => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);

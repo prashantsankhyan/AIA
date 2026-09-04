@@ -499,6 +499,111 @@ filterTrucks(searchValue: string = '') {
 }
 
 
+// getAllTrailer() {
+
+//   this.trailers = [];
+//   this.filteredTrailers = [];
+
+//   this.http.getAllDataByTwoId(
+//     ApiUrl.getAllClaimVehicle,
+//     this.MarkedPolicyId,
+//     this.ChildPolicyID
+//   ).subscribe(data => {
+
+//     const response = JSON.stringify(data);
+//     const obj = JSON.parse(response);
+
+//     // ONLY TRAILERS
+//     this.trailers = (obj.Vehicles || [])
+//       .filter((x: any) => x.BodyType === 'Trailer');
+
+//     // Sort by last 4 VIN
+//     this.trailers.sort((a: any, b: any) => {
+
+//       const vinA = String(a.VIN || '').slice(-4);
+//       const vinB = String(b.VIN || '').slice(-4);
+
+//       return vinA.localeCompare(vinB);
+//     });
+
+//     // Initially show all trailers
+//     this.filteredTrailers = [...this.trailers];
+
+//     console.log('Trailers:', this.trailers);
+
+//     this.showSpiner = false;
+//   });
+// }
+// filterTrailers(searchValue: string = '') {
+
+//   const search = searchValue.trim().toLowerCase();
+
+//   // Empty search
+//   if (!search) {
+//     this.filteredTrailers = [...this.trailers];
+//     return;
+//   }
+
+//   this.filteredTrailers = this.trailers
+//     .filter((data: any) => {
+
+//       // Only Trailer
+//       if (data.BodyType !== 'Trailer') {
+//         return false;
+//       }
+
+//       const vin =
+//         String(data.VIN || '').toLowerCase();
+
+//       const model =
+//         String(data.Model || '').toLowerCase();
+
+//       const vehicleID =
+//         String(data.VehicleID || '').toLowerCase();
+
+//       const bodyType =
+//         String(data.BodyType || '').toLowerCase();
+
+//       const vehicleName =
+//         String(data.VehicleName || '').toLowerCase();
+
+//       return (
+//         vin.includes(search) ||
+//         model.includes(search) ||
+//         vehicleID.includes(search) ||
+//         bodyType.includes(search) ||
+//         vehicleName.includes(search)
+//       );
+//     })
+//     .sort((a: any, b: any) => {
+
+//       const vinA =
+//         String(a.VIN || '').toLowerCase();
+
+//       const vinB =
+//         String(b.VIN || '').toLowerCase();
+
+//       // Matching VIN first
+//       if (
+//         vinA.startsWith(search) &&
+//         !vinB.startsWith(search)
+//       ) {
+//         return -1;
+//       }
+
+//       if (
+//         !vinA.startsWith(search) &&
+//         vinB.startsWith(search)
+//       ) {
+//         return 1;
+//       }
+
+//       return vinA.localeCompare(vinB);
+//     });
+// }
+
+
+
 getAllTrailer() {
 
   this.trailers = [];
@@ -513,9 +618,20 @@ getAllTrailer() {
     const response = JSON.stringify(data);
     const obj = JSON.parse(response);
 
-    // ONLY TRAILERS
+    // Trailer + Dry trailer + Reefer trailer
     this.trailers = (obj.Vehicles || [])
-      .filter((x: any) => x.BodyType === 'Trailer');
+      .filter((x: any) => {
+
+        const bodyType = String(x.BodyType || '')
+          .trim()
+          .toLowerCase();
+
+        return (
+          bodyType === 'trailer' ||
+          bodyType === 'dry trailer' ||
+          bodyType === 'reefer trailer'
+        );
+      });
 
     // Sort by last 4 VIN
     this.trailers.sort((a: any, b: any) => {
@@ -534,6 +650,8 @@ getAllTrailer() {
     this.showSpiner = false;
   });
 }
+
+
 filterTrailers(searchValue: string = '') {
 
   const search = searchValue.trim().toLowerCase();
@@ -547,8 +665,16 @@ filterTrailers(searchValue: string = '') {
   this.filteredTrailers = this.trailers
     .filter((data: any) => {
 
-      // Only Trailer
-      if (data.BodyType !== 'Trailer') {
+      // Trailer + Dry trailer + Reefer trailer
+      const bodyTypeCheck = String(data.BodyType || '')
+        .trim()
+        .toLowerCase();
+
+      if (
+        bodyTypeCheck !== 'trailer' &&
+        bodyTypeCheck !== 'dry trailer' &&
+        bodyTypeCheck !== 'reefer trailer'
+      ) {
         return false;
       }
 
@@ -601,7 +727,6 @@ filterTrailers(searchValue: string = '') {
       return vinA.localeCompare(vinB);
     });
 }
-
 load(){
   let data = this.data ;
   

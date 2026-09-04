@@ -111,7 +111,9 @@
       </tr>
     </thead>
     <tbody >
-     <tr *ngFor ="let data of allList|claims:searchCriteria" (dblclick)="getListOfAdjustors(data)">
+     <tr *ngFor ="let data of allList|claims:searchCriteria" (dblclick)="getListOfAdjustors(data)"  [matTooltip]="data.DeleteReason || ''"
+  matTooltipPosition="above"
+  [matTooltipDisabled]="!data.DeleteReason">
        <td>   
        <span *ngIf="data.ClaimNumber && data.ClaimNumber.trim() !== ''" class="claim-highlight">
     {{ data.ClaimNumber }}

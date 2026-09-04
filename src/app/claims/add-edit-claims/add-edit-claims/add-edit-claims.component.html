@@ -290,7 +290,11 @@
     <mat-option
       *ngFor="let data of filteredTrucks"
       [value]="data.VehicleID"
-      [hidden]="data.BodyType === 'Trailer'"
+     [hidden]="
+  data.BodyType === 'Trailer' ||
+  data.BodyType === 'Dry trailer' ||
+  data.BodyType === 'Reefer trailer'
+"
     >
 
        ({{ data.VIN }})

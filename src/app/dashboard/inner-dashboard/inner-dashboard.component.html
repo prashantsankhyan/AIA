@@ -823,8 +823,17 @@ aria-label="Search By Account Type"
           </thead>
           <tbody>
           
-             <tr  *ngFor ="let data of listOfAllAcountForClaim | searchFilter: searchCriteria" (dblclick)="addClaim(data)">
-              <td>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></td>
+             <tr  *ngFor ="let data of listOfAllAcountForClaim | searchFilter: searchCriteria" (dblclick)="addClaim(data)"  [matTooltip]="
+    (data.AccountPrimaryDetail?.[0]?.Name || '') +
+    (data.AccountPrimaryDetail?.[0]?.PhoneNo
+      ? ' - ' + data.AccountPrimaryDetail[0].Designation
+      : '')
+  "
+  matTooltipPosition="above">
+              <td>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span><br/>
+              {{ data.AccountPrimaryDetail?.[0]?.Name }} - {{ data.AccountPrimaryDetail?.[0]?.PhoneNo }}
+              </td>
+              
                <td>{{data.LookUpCode}}</td>
                <td>{{data.PhoneNumber}}</td>
                <td>{{data.EmailID}}</td>
