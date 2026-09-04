@@ -117,6 +117,8 @@ export class ListOfPolicyForEndrosementComponent {
     });
   }
 
+  
+
   deletePolicy(data: any) {
     this.dialog.open(DeletePolicyComponent, {
       width: '400px',
@@ -161,5 +163,8 @@ export class ListOfPolicyForEndrosementComponent {
   goToDashboard() {
     this.router.navigate(['/dashboard/_dashboard']);
   }
+
+
+
 
 }

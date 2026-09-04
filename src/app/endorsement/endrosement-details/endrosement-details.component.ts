@@ -33,6 +33,7 @@ export class EndrosementDetailsComponent {
   EndorsementID:any;
   EndorsementType:any;
   marketedName :any;
+  repostingType:any;
   searchCriteria = {
     EndorsementType: '',
     Entered: '',
@@ -58,7 +59,8 @@ export class EndrosementDetailsComponent {
      
      }
      this.getAllEndroesemnt()
-     this.clearLocalStorage()
+     this.clearLocalStorage();
+     this.getData();
 
    }
 
@@ -82,6 +84,36 @@ export class EndrosementDetailsComponent {
   onDescriptionChange(newDescription: string) {
     this.updateSearchCriteria({ Description: newDescription });
   }
+
+  getData() {
+
+  this.http
+    .getAllDataId(
+      ApiUrl.getPolicyStatus,
+      this.ChildPolicyID
+    )
+    .subscribe((data: any) => {
+
+      const obj =
+        typeof data === 'string'
+          ? JSON.parse(data)
+          : data;
+
+      if (obj?.Reposting?.length > 0) {
+
+        const repostingData = obj.Reposting[0];
+
+        this.repostingType = repostingData.RepostingType;
+        const enteredBy = repostingData.EnteredBy;
+
+        console.log('RepostingType:', this.repostingType);
+        console.log('EnteredBy:', enteredBy);
+
+      }
+
+    });
+
+}
   
   
 

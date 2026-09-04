@@ -42,14 +42,50 @@ export class ListViewOfDriverAndTruckComponent {
   listOfAllData:any =[];
   filteredDrivers: any[] = [];
 filteredVehicles: any[] = [];
+repostingType:any;
+ChildPolicyID:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private http:AllApiService,private toastr: ToastrService,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<ListViewOfDriverAndTruckComponent>){}
   ngOnInit(): void {
     this.data;
     this.MarkedPolicyID = this.data.MarkedPolicyID;
+    this.ChildPolicyID = this.data.ChildPolicyID;
     
-     this.getListOfAllData()
+    
+     this.getListOfAllData();
+     this.getData();
 
    }
+
+
+     getData() {
+
+  this.http
+    .getAllDataId(
+      ApiUrl.getPolicyStatus,
+      this.ChildPolicyID
+    )
+    .subscribe((data: any) => {
+
+      const obj =
+        typeof data === 'string'
+          ? JSON.parse(data)
+          : data;
+
+      if (obj?.Reposting?.length > 0) {
+
+        const repostingData = obj.Reposting[0];
+
+        this.repostingType = repostingData.RepostingType;
+        const enteredBy = repostingData.EnteredBy;
+
+        console.log('RepostingType:', this.repostingType);
+        console.log('EnteredBy:', enteredBy);
+
+      }
+
+    });
+
+}
 
 
    getListOfAllData(){

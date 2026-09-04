@@ -235,7 +235,12 @@ loginStartDate:'Login/StartLoginSession',
 
  loginDaily: 'Login/GetLoginSummaryByPeriod/daily',
   loginWeekly: 'Login/GetLoginSummaryByPeriod/weekly',
-  loginMonthly: 'Login/GetLoginSummaryByPeriod/monthly'
+  loginMonthly: 'Login/GetLoginSummaryByPeriod/monthly',
+
+
+
+  addPolicyStatus:'Reposting/AddNewReposting',
+  getPolicyStatus:'Reposting/GetAllRepostingByChildPolicyID'
 
 
 

@@ -197,6 +197,7 @@
   <mat-select
     #driverSelect
     formControlName="DriverID"
+     panelWidth="500px"
      placeholder="Select Driver"
     (selectionChange)="onDriverChange($event)"
   >
@@ -218,13 +219,14 @@
     </mat-option>
 
     <!-- DRIVER LIST -->
-    <mat-option
-      *ngFor="let data of filteredDrivers"
-      [value]="data.DriverID"
-    >
-      👤 {{ data.DriverName }}
-      | 🪪 {{ data.DriverLicenceNo }}
-    </mat-option>
+<mat-option
+  *ngFor="let data of filteredDrivers"
+  [value]="data.DriverID"
+>
+  👤 {{ data.DriverName }}
+  | 🪪 {{ data.DriverLicenceNo }}
+  | 📅 {{ data.EnteredDateTime | date:'MM/dd/yyyy' }}
+</mat-option>
 
     <!-- NO RESULTS -->
     <mat-option
@@ -268,6 +270,7 @@
   <mat-select
     #truckSelect
     formControlName="TruckID"
+    panelWidth="650px"
      placeholder="Select Truck"
     (selectionChange)="onTruckChange($event)"
   >
@@ -353,6 +356,7 @@
       <mat-select
         #trailerSelect
         formControlName="TrailerID"
+         panelWidth="650px"
         placeholder="Select Trailer"
         (selectionChange)="onTrailerChange($event)"
       >

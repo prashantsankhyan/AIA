@@ -27,6 +27,7 @@ import { CurrentDeleteComponent } from './current-delete/current-delete.componen
 import { ListOfRenewPolcyComponent } from './list-of-renew-polcy/list-of-renew-polcy.component';
 import { ListOfAllDriverTruckAndAnotherComponent } from './list-of-all-driver-truck-and-another/list-of-all-driver-truck-and-another.component';
 import { ViewRemkarsPolicyIdComponent } from './view-remkars-policy-id/view-remkars-policy-id.component';
+import { AddPolicyRepotingStatusComponent } from './add-policy-repoting-status/add-policy-repoting-status.component';
 
 @Component({
   selector: 'app-policy',
@@ -260,6 +261,15 @@ deletePolicy(data:any){
    data: {ChildPolicyID:data.ChildPolicyID }
   });
 }
+
+addPlicyRepostingStatus(data:any){
+  this.dialog.open(AddPolicyRepotingStatusComponent ,{
+    width: '400px',
+    height:'410px',
+   data: {ChildPolicyID:data.ChildPolicyID }
+  });
+}
+
 
 expirePolicyList(){
   this.dialog.open(ExpirePolicyListComponent ,{

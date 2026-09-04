@@ -11,8 +11,20 @@
 
     <!-- HEADER -->
     <div class="row mt-2 mb-2">
+    
 
-      <div class="col-sm-3">
+     
+
+    
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div *ngIf="listOfAllData">
+
+      <div class="row mb-3">
+         <div class="col-sm-4">
         <button
           type="button"
           class="btn btn-success"
@@ -23,29 +35,15 @@
 
         </button>
       </div>
-
-      <div class="col-sm-9 text-end">
-
-        <a
-          href="javascript:void(0);"
-          (click)="closeModel()">
-
-          <i
-            class="fa fa-times-circle-o"
-            aria-hidden="true">
-          </i>
-
-        </a>
-
+      <div class="col-sm-4">
+    <div class="reporting-type">
+  <span class="reporting-label">Policy Type</span>
+  <span class="reporting-value">
+    <i class="bi bi-arrow-repeat"></i>
+    {{ repostingType }}
+  </span>
+</div>
       </div>
-
-    </div>
-
-
-    <!-- SEARCH -->
-    <div *ngIf="listOfAllData">
-
-      <div class="row mb-3">
 
         <div class="col-md-4">
 
@@ -110,6 +108,9 @@
                 <th>
                   Licence No
                 </th>
+                <th>
+                  Date Added 
+                </th>
 
               </tr>
 
@@ -169,6 +170,11 @@
                 <td>
                   {{ driver.DriverLicenceNo || '-' }}
                 </td>
+                 <td>
+  {{ driver.EnteredDateTime 
+      ? (driver.EnteredDateTime | date:'MM/dd/yyyy') 
+      : '-' }}
+</td>
 
               </tr>
 
