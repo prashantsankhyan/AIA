@@ -1,0 +1,319 @@
+/* ================================
+   TABLE WRAPPER
+================================ */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+
+/* ================================
+   POLICY TABLE
+================================ */
+
+.policy-table {
+  width: 100%;
+  min-width: 1800px;
+  margin-bottom: 0;
+  font-size: 13px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.policy-table thead th {
+  background: #f5f7fa;
+  color: #343a40;
+  font-weight: 600;
+  white-space: nowrap;
+
+  padding: 11px 12px;
+
+  vertical-align: middle;
+  text-align: left;
+
+  border-bottom: 1px solid #dee2e6;
+
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+.policy-table tbody td {
+  padding: 9px 12px;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+/* ================================
+   ROW HOVER
+================================ */
+
+.policy-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+
+/* ================================
+   SERIAL NUMBER
+================================ */
+
+.policy-table th:first-child,
+.policy-table td:first-child {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+
+  text-align: center;
+}
+
+
+/* ================================
+   POLICY NAME
+================================ */
+
+.policy-table th:nth-child(2),
+.policy-table td:nth-child(2) {
+  min-width: 210px;
+}
+
+
+/* ================================
+   ACCOUNT NAME
+================================ */
+
+.policy-table th:nth-child(3),
+.policy-table td:nth-child(3) {
+  min-width: 220px;
+}
+
+
+/* ================================
+   LOOKUP CODE
+================================ */
+
+.policy-table th:nth-child(4),
+.policy-table td:nth-child(4) {
+  min-width: 120px;
+}
+
+
+/* ================================
+   LINE
+================================ */
+
+.policy-table th:nth-child(5),
+.policy-table td:nth-child(5) {
+  min-width: 180px;
+}
+
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.policy-table th:nth-child(6),
+.policy-table td:nth-child(6) {
+  min-width: 130px;
+}
+
+
+/* ================================
+   DATES
+================================ */
+
+.policy-table th:nth-child(7),
+.policy-table td:nth-child(7),
+.policy-table th:nth-child(8),
+.policy-table td:nth-child(8) {
+  min-width: 120px;
+  text-align: center;
+}
+
+
+/* ================================
+   BILL TYPE
+================================ */
+
+.policy-table th:nth-child(9),
+.policy-table td:nth-child(9) {
+  min-width: 130px;
+}
+
+
+/* ================================
+   STAGE
+================================ */
+
+.policy-table th:nth-child(10),
+.policy-table td:nth-child(10) {
+  min-width: 100px;
+  text-align: center;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.policy-table th:nth-child(11),
+.policy-table td:nth-child(11) {
+  min-width: 110px;
+  text-align: center;
+}
+
+
+/* ================================
+   BROKER
+================================ */
+
+.policy-table th:nth-child(12),
+.policy-table td:nth-child(12) {
+  min-width: 280px;
+  max-width: 350px;
+}
+
+
+/* ================================
+   BROKER LOOKUP CODE
+================================ */
+
+.policy-table th:nth-child(13),
+.policy-table td:nth-child(13) {
+  min-width: 180px;
+}
+
+
+/* ================================
+   ISSUING COMPANY
+================================ */
+
+.policy-table th:nth-child(14),
+.policy-table td:nth-child(14) {
+  min-width: 300px;
+  max-width: 380px;
+}
+
+
+/* ================================
+   NAIC
+================================ */
+
+.policy-table th:nth-child(15),
+.policy-table td:nth-child(15) {
+  min-width: 100px;
+  text-align: center;
+}
+
+
+/* ================================
+   BADGE
+================================ */
+
+.policy-table .badge {
+  font-weight: 500;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #b8b8b8;
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .policy-table {
+    min-width: 1600px;
+    font-size: 12px;
+  }
+
+  .policy-table thead th {
+    padding: 9px 10px;
+  }
+
+  .policy-table tbody td {
+    padding: 8px 10px;
+  }
+
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .policy-table {
+    min-width: 1500px;
+    font-size: 11px;
+  }
+
+  .policy-table thead th {
+    padding: 8px;
+  }
+
+  .policy-table tbody td {
+    padding: 7px 8px;
+  }
+
+  
+}
+
+.table-responsive {
+  width: 100%;
+  height: 400px;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.policy-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}

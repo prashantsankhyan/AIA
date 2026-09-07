@@ -46,6 +46,11 @@ const routes: Routes = [
        
       },
       {
+        path:'issuePolicyDetails',
+        loadChildren:()=> import('./issue-policy-detail/issue-policy-detail.module').then(m=>m.IssuePolicyDetailModule)
+       
+      },
+      {
         path:'_endrosementData',
         loadChildren:()=> import('./endrosement-working-data/endrosement-working-data.module').then(m=>m.EndrosementWorkingDataModule)
        

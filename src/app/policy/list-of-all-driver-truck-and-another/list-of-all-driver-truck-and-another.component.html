@@ -1,167 +1,447 @@
 
- <!-- <h5 style="text-align: center;margin-top: 20px;">Endrosement List</h5> -->
-
- <div *ngIf ="showEndrosementList">
+<div *ngIf="showEndrosementList">
   show list
-
 </div>
-<div *ngIf ="!showEndrosementList">
 
- <div class="container-fluid">
-   <div class="row mt-2 mb-2">
-   
-     <div class="col-sm-9" style="text-align: right;">
-       <a href="javascript:void(0);" (click)="closeModel()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
-     
-     </div>
- </div>
- <div class="row mt-2 mb-2">
+<div *ngIf="!showEndrosementList" class="policy-dialog">
 
-  <div class="col-sm-3">
-    <button
-      type="button"
-      class="btn btn-success"
-      (click)="exportToExcel()">
+  <!-- ================= HEADER ================= -->
+  <div class="top-header">
+    <div class="header-title">
+      Driver & Vehicle Details
+    </div>
 
-      <i class="fa fa-file-excel-o me-1"></i>
-      Excel
-    </button>
+    <div class="header-actions">
+
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="exportToExcel()">
+        <i class="fa fa-file-excel-o me-1"></i>
+        Excel
+      </button>
+
+      <a
+        href="javascript:void(0);"
+        (click)="closeModel()"
+        class="close-btn">
+
+        <i
+          class="fa fa-times-circle-o"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+    </div>
   </div>
 
-  <div class="col-sm-9 text-end">
 
-    <a
-      href="javascript:void(0);"
-      (click)="closeModel()">
+  <!-- ================= SEARCH ================= -->
+  <div class="search-row">
 
-      <i
-        class="fa fa-times-circle-o"
-        aria-hidden="true">
-      </i>
+    <div class="search-box">
 
-    </a>
+      <i class="fa fa-search"></i>
+
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchText"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Search Driver / Vehicle..." />
+
+    </div>
 
   </div>
 
-</div>
- 
- <div *ngIf="listOfAllData">
- 
-  
-  <div class="row mb-3">
-  <div class="col-md-4">
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="searchText"
-      (ngModelChange)="onSearchChange()"
-      placeholder="Search Driver / Vehicle..."
-    />
-  </div>
-</div>
-    <ng-container >
-      <div class="scrollable-table-body">
-        <table  class="table table-bordered" >
- 
+
+  <!-- ================= MAIN SCROLL AREA ================= -->
+  <div
+    class="data-scroll-container"
+    *ngIf="listOfAllData">
+
+
+    <!-- ================================================= -->
+    <!-- ACTIVE DRIVERS -->
+    <!-- ================================================= -->
+
+    <div class="section-card">
+
+      <div class="section-header">
+        <span>
+          <i class="fa fa-user"></i>
+          Drivers
+        </span>
+
+        <span class="record-count">
+          {{ filteredDrivers.length }}
+        </span>
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table class="table table-bordered data-table">
+
           <thead>
             <tr>
               <th>Driver S.NO</th>
               <th>Name</th>
-              <th> Licence Issued </th>
-              <th>Date of Birth:</th>
-              <th>State Licenced</th> 
+              <th>Licence Issued</th>
+              <th>Date of Birth</th>
+              <th>State Licenced</th>
               <th>Licence No</th>
-             
             </tr>
           </thead>
+
           <tbody>
-            <ng-container >
-              <tr *ngFor="let driver of filteredDrivers ; let i = index">
-                <td>{{i+1}} -{{ driver.EndorsementID === 0 ? 'By Policy' : 'By Endorsement' }}</td>
-                <td>{{ driver.DriverName }}</td>
-                <td>{{ driver.YearofLicenceIssued | date }}</td>
-              
-                <td>{{ driver.DateofBirth | date }}</td>
-                <td>{{ driver.StateLicenced }}</td>
-                
-                <td>{{ driver.DriverLicenceNo }}</td>
-               
-            
-              
-              </tr>
-            </ng-container>
-           
-            
-            
-           
-          
-          </tbody>
-         
-        </table>
-      </div>
-     
-   </ng-container>
-  
 
- 
+            <tr
+              *ngFor="
+                let driver of filteredDrivers;
+                let i = index
+              ">
 
-  <ng-container >
-    <div class="scrollable-table-body"> 
-      <table  class="table table-bordered" >
+              <td>
+                {{ i + 1 }} -
+                {{
+                  driver.EndorsementID === 0
+                    ? 'By Policy'
+                    : 'By Endorsement'
+                }}
+              </td>
 
-        <thead>
-          <tr>
-            <th style="width: 175px;">Vehicle S.NO</th>
-            <th style="width: 100px;">Type</th>
-            <th style="width: 100px;">Year </th>
-            <th style="width: 200px;">Make</th>
-            <th style="width: 210px;">Model</th> 
-            <th style="width: 210px;">VIN</th>
-            <th>Value</th>
-          
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container >
-            <tr *ngFor="let vehicle of filteredVehicles ; let i = index">
-              <td>{{i+1}} - {{ vehicle.EndorsementID === 0 ? 'By Policy' : 'By Endorsement' }}</td>
-              <td>{{ vehicle.VehicleType }}</td>
-              <td> {{ vehicle.Year }}</td>
-            
-              <td>{{ vehicle.Make }}</td>
-              <td>{{ vehicle.Model }}</td>
-              
-              <td>{{ vehicle.VIN }}</td>
-              <td>{{ vehicle.Value | currency }}</td>
-             
-          
-            
+              <td>
+                {{ driver.DriverName }}
+              </td>
+
+              <td>
+                {{ driver.YearofLicenceIssued | date:'MM/dd/yyyy' }}
+              </td>
+
+              <td>
+                {{ driver.DateofBirth | date:'MM/dd/yyyy' }}
+              </td>
+
+              <td>
+                {{ driver.StateLicenced }}
+              </td>
+
+              <td>
+                {{ driver.DriverLicenceNo }}
+              </td>
+
             </tr>
-          </ng-container>
-         
-          
-          
-         
-        
-        </tbody>
-       
-      </table>
+
+
+            <tr *ngIf="filteredDrivers.length === 0">
+
+              <td
+                colspan="6"
+                class="no-data">
+
+                No drivers found
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
     </div>
-  
- </ng-container>
 
 
-<ul class="mt-2">
-    <li *ngFor="let remark of listOfAllData.Remarks">
-      <p><strong>Remark:</strong> {{ remark.Remarks }}</p>
-   
-    </li>
-  </ul>
- 
+
+    <!-- ================================================= -->
+    <!-- DELETED DRIVERS -->
+    <!-- ================================================= -->
+
+    <div
+      class="section-card deleted-section"
+      *ngIf="filteredDeletedDrivers.length > 0">
+
+      <div class="section-header deleted-header">
+
+        <span>
+          <i class="fa fa-trash"></i>
+          Deleted Drivers
+        </span>
+
+        <span class="record-count">
+          {{ filteredDeletedDrivers.length }}
+        </span>
+
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table class="table table-bordered data-table">
+
+          <thead>
+
+            <tr>
+              <th>S.NO</th>
+              <th>Name</th>
+              <th>Licence Issued</th>
+              <th>Date of Birth</th>
+              <th>State</th>
+              <th>Licence No</th>
+              <th>Delete Reason</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr
+              *ngFor="
+                let driver of filteredDeletedDrivers;
+                let i = index
+              ">
+
+              <td>
+                {{ i + 1 }}
+              </td>
+
+              <td>
+                {{ driver.DriverName }}
+              </td>
+
+              <td>
+                {{ driver.YearofLicenceIssued | date:'MM/dd/yyyy' }}
+              </td>
+
+              <td>
+                {{ driver.DateofBirth | date:'MM/dd/yyyy' }}
+              </td>
+
+              <td>
+                {{ driver.StateLicenced }}
+              </td>
+
+              <td>
+                {{ driver.DriverLicenceNo }}
+              </td>
+
+              <td>
+                {{ driver.DeleteReason || '-' }}
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- ACTIVE VEHICLES -->
+    <!-- ================================================= -->
+
+    <div class="section-card">
+
+      <div class="section-header">
+
+        <span>
+          <i class="fa fa-truck"></i>
+          Vehicles
+        </span>
+
+        <span class="record-count">
+          {{ filteredVehicles.length }}
+        </span>
+
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table class="table table-bordered data-table vehicle-table">
+
+          <thead>
+
+            <tr>
+              <th>Vehicle S.NO</th>
+              <th>Type</th>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>VIN</th>
+              <th>Value</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr
+              *ngFor="
+                let vehicle of filteredVehicles;
+                let i = index
+              ">
+
+              <td>
+                {{ i + 1 }} -
+                {{
+                  vehicle.EndorsementID === 0
+                    ? 'By Policy'
+                    : 'By Endorsement'
+                }}
+              </td>
+
+              <td>
+                {{ vehicle.VehicleType }}
+              </td>
+
+              <td>
+                {{ vehicle.Year }}
+              </td>
+
+              <td>
+                {{ vehicle.Make }}
+              </td>
+
+              <td>
+                {{ vehicle.Model }}
+              </td>
+
+              <td>
+                {{ vehicle.VIN }}
+              </td>
+
+              <td>
+                {{ vehicle.Value | currency }}
+              </td>
+
+            </tr>
+
+
+            <tr *ngIf="filteredVehicles.length === 0">
+
+              <td
+                colspan="7"
+                class="no-data">
+
+                No vehicles found
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- DELETED VEHICLES -->
+    <!-- ================================================= -->
+
+    <div
+      class="section-card deleted-section"
+      *ngIf="filteredDeletedVehicles.length > 0">
+
+      <div class="section-header deleted-header">
+
+        <span>
+          <i class="fa fa-trash"></i>
+          Deleted Vehicles
+        </span>
+
+        <span class="record-count">
+          {{ filteredDeletedVehicles.length }}
+        </span>
+
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table class="table table-bordered data-table vehicle-table">
+
+          <thead>
+
+            <tr>
+              <th>S.NO</th>
+              <th>Type</th>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>VIN</th>
+              <th>Value</th>
+              <th>Delete Reason</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr
+              *ngFor="
+                let vehicle of filteredDeletedVehicles;
+                let i = index
+              ">
+
+              <td>
+                {{ i + 1 }}
+              </td>
+
+              <td>
+                {{ vehicle.VehicleType }}
+              </td>
+
+              <td>
+                {{ vehicle.Year }}
+              </td>
+
+              <td>
+                {{ vehicle.Make }}
+              </td>
+
+              <td>
+                {{ vehicle.Model }}
+              </td>
+
+              <td>
+                {{ vehicle.VIN }}
+              </td>
+
+              <td>
+                {{ vehicle.Value | currency }}
+              </td>
+
+              <td>
+                {{ vehicle.DeleteReason || '-' }}
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
 </div>
-
-
- </div>
-</div>
-
 

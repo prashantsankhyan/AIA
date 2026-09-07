@@ -101,6 +101,13 @@ export class AllApiService {
   return this.http.post<any>(apiUrl, body);
 }
 
+getAllDataByTwoDate(url: string, fromDate: string, toDate: string): Observable<any> {
+  const apiUrl = `${environment.apiBaseUrl}${url}/${fromDate}/${toDate}`;
+
+  console.log('API URL:', apiUrl);
+
+  return this.http.get(apiUrl);
+}
 sendHoldingCertificateMail(HolderId: number, emailTo: string): Observable<any> {
 
   const body = {

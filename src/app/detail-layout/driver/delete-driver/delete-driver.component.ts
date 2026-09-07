@@ -29,6 +29,8 @@ export class DeleteDriverComponent {
   userName:any;
   userPermission:any;
   EndorsementID :any
+  ChildPolicyID:any;
+  AccountID:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder,private http:AllApiService ,private cRouter:ActivatedRoute, private router:Router,private toastr: ToastrService,public dialogRef: MatDialogRef<DeleteDriverComponent>) { }
 
   ngOnInit(): void {
@@ -44,14 +46,17 @@ export class DeleteDriverComponent {
     this.data;
     this.DriverID = this.data.DriverID;
     this.driverName = this.data.driverName;
-      this.EndorsementID = this.data.EndorsementID
-     
+    this.ChildPolicyID = this.data.ChildPolicyID
+    this.AccountID = this.data.AccountID
+    this.EndorsementID = this.data.EndorsementID
+      
     this.deleteForm = this.fb.group({
-      DriverID:[this.DriverID],
-      UserName:[this.userName],
-      Reason:['',[Validators.required,]],
-      EndorsementID:[this.EndorsementID]
-     
+    DriverID:[this.DriverID],
+    UserName:[this.userName],
+     AccountID:[this.AccountID],
+      ChildPolicyID:[this.ChildPolicyID],
+    Reason:['',[Validators.required,]],
+    EndorsementID:[this.EndorsementID]
     });
   }
 

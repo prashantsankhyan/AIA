@@ -240,7 +240,27 @@ loginStartDate:'Login/StartLoginSession',
 
 
   addPolicyStatus:'Reposting/AddNewReposting',
-  getPolicyStatus:'Reposting/GetAllRepostingByChildPolicyID'
+  getPolicyStatus:'Reposting/GetAllRepostingByChildPolicyID',
+  monthyRepostIssuePolicy:'ChildPolicy/GetAllIssueChildPolicyByDate',
+
+
+
+
+
+  //delete List driver vehicle //
+
+
+//   api/Vehicle/GetDeletedVehicleByAccountID/{AccountID}
+// api/Vehicle/GetDeletedVehicleByChildPolicyID/{ChildPolicyID}
+// api/Vehicle/GetDeletedVehicleByEndrosementID/{EndorsementID}
+
+// api/Driver/GetDeletedDriverByAccountID/{AccountID}
+// api/Driver/GetDeletedDriverByChildPolicyID/{ChildPolicyID}
+// api/Driver/GetDeletedDriverByEndrosementID/{EndorsementID}
+// api/Driver/GetDeletedLogDriverByChildPolicyIDMarkedIDEndrosementID/{MarkedPolicyID}/ChildPolicyId}/{EndorsementId}
+// api/Vehicle/GetDeletedLogDriverByChildPolicyIDMarkedIDEndrosementID/{MarkedPolicyID}/ChildPolicyId}/{EndorsementId} -- for all delete of vehicle
+  allEditDeleteUpdatedDataList:'Driver/GetAllVehicleDriverAddByChildPolicyIDMarkedIDEndrosementID',
+
 
 
 

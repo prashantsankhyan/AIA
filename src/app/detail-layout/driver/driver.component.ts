@@ -262,7 +262,7 @@ replaceDataByExcleFile(data:any){
     this.dialog.open(DeleteDriverComponent ,{
       width: '450px',
       height:'270px',
-      data:{DriverID:this.id ,EndorsementID:this.EndorsementID}
+      data:{DriverID:this.id ,EndorsementID:this.EndorsementID,ChildPolicyID:data.ChildPolicyID,AccountID:data.AccountID}
 
     });
     }
@@ -271,7 +271,7 @@ replaceDataByExcleFile(data:any){
     this.dialog.open(DeleteDriverComponent ,{
       width: '450px',
       height:'270px',
-      data:{DriverID:this.id ,EndorsementID:this.EndorsementID}
+      data:{DriverID:this.id ,EndorsementID:this.EndorsementID,ChildPolicyID:data.ChildPolicyID,AccountID:data.AccountID}
 
     });
     }

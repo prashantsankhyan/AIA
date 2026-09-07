@@ -31,3 +31,38 @@
 .card {
   border-radius: 6px;
 }
+
+
+
+.reporting-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  margin: 10px 0;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.reporting-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.reporting-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.reporting-value i {
+  font-size: 13px;
+}

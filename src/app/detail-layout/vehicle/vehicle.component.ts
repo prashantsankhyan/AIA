@@ -300,7 +300,7 @@ replaceDataByExcleFile(data:any){
     this.dialog.open(DeleteVehicleComponent ,{
       width: '450px',
       height:'265px',
-      data:{VehicleID:this.id ,VehicleType:this.userName,EndorsementID:this.EndorsementID}
+      data:{VehicleID:this.id ,VehicleType:this.userName,EndorsementID:this.EndorsementID,ChildPolicyID:data.ChildPolicyID,AccountID:data.AccountID}
 
     });
     

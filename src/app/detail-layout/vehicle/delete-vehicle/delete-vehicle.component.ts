@@ -29,6 +29,8 @@ export class DeleteVehicleComponent {
   EndorsementID:any
   VehicleID ='';
   userName:any;
+  ChildPolicyID:any;
+  AccountID:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder, private http:AllApiService,private toastr: ToastrService ,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<DeleteVehicleComponent>){
  
   }
@@ -45,12 +47,18 @@ export class DeleteVehicleComponent {
     this.data;
     this.data;
     this.VehicleID = this.data.VehicleID;
-    this.userName = this.data.VehicleType
+    this.userName = this.data.userName
     this.EndorsementID = this.data.EndorsementID
+    this.ChildPolicyID = this.data.ChildPolicyID
+    this.AccountID = this.data.AccountID
+
+  
     
     this.deleteForm = this.fb.group({
       VehicleID:[this.VehicleID],
       UserName:[this.userName],
+      AccountID:[this.AccountID],
+      ChildPolicyID:[this.ChildPolicyID],
       Reason:['',[Validators.required,]],
         EndorsementID:[this.EndorsementID]
      

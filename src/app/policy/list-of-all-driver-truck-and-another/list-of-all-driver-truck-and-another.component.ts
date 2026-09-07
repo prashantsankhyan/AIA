@@ -23,65 +23,142 @@ import { saveAs } from 'file-saver';
 export class ListOfAllDriverTruckAndAnotherComponent {
   showEndrosementList = true;
   searchText: string = '';
-
+  ChildPolicyID:any;
   MarkedPolicyID:any;
+  EndrosememtId ='0'
   listOfAllData:any =[];
   filteredDrivers: any[] = [];
 filteredVehicles: any[] = [];
+filteredDeletedDrivers: any[] = [];
+filteredDeletedVehicles: any[] = [];
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private http:AllApiService,private toastr: ToastrService,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<ListOfAllDriverTruckAndAnotherComponent>){}
   ngOnInit(): void {
     this.data;
-    this.MarkedPolicyID = this.data.MarkedPolicyID;
+    this.MarkedPolicyID = this.data.MarkedPolicyID; 
+    this.ChildPolicyID = this.data.ChildPolicyID;
+
     
      this.getListOfAllData()
 
    }
 
 
-   getListOfAllData(){
-    this.http.getAllDataId(ApiUrl.getAllDetailForPolicyAndAnoter,this.MarkedPolicyID).subscribe(
-      data=>{
-     
-        let response = JSON.stringify(data)
-        let obj  = JSON.parse(response)
-        this.listOfAllData = obj.servSummary;
-         this.filteredDrivers = this.listOfAllData.Drivers || [];
-    this.filteredVehicles = this.listOfAllData.Vehicles || [];
-        this.showEndrosementList = false
+getListOfAllData(): void {
+  this.http.getAllDataByThreId(
+    ApiUrl.allEditDeleteUpdatedDataList,
+    this.MarkedPolicyID,
+    this.ChildPolicyID,
+    this.EndrosememtId
+  ).subscribe({
+    next: (data: any) => {
 
-        // var obj  = JSON.parse(response)servSummary
-        
-      
-  
-      }
-    )   
-  }
+      console.log('API Response:', data);
 
-  onSearchChange(): void {
+      this.listOfAllData = data || {};
+
+      // Active
+      this.filteredDrivers = this.listOfAllData.Drivers || [];
+      this.filteredVehicles = this.listOfAllData.Vehicles || [];
+
+      // Deleted
+      this.filteredDeletedDrivers =
+        this.listOfAllData.DeletedDrivers || [];
+
+      this.filteredDeletedVehicles =
+        this.listOfAllData.DeletedVehicles || [];
+
+      console.log('Drivers:', this.listOfAllData.Drivers);
+      console.log('Deleted Drivers:', this.listOfAllData.DeletedDrivers);
+
+      console.log('Vehicles:', this.listOfAllData.Vehicles);
+      console.log('Deleted Vehicles:', this.listOfAllData.DeletedVehicles);
+
+      this.showEndrosementList = false;
+    },
+
+    error: (error) => {
+      console.error('API Error:', error);
+
+      this.listOfAllData = {};
+
+      this.filteredDrivers = [];
+      this.filteredVehicles = [];
+      this.filteredDeletedDrivers = [];
+      this.filteredDeletedVehicles = [];
+    }
+  });
+}
+onSearchChange(): void {
 
   const search = this.searchText.trim().toLowerCase();
 
   if (!search) {
-    this.filteredDrivers = this.listOfAllData.Drivers || [];
-    this.filteredVehicles = this.listOfAllData.Vehicles || [];
+
+    this.filteredDrivers =
+      this.listOfAllData?.Drivers || [];
+
+    this.filteredVehicles =
+      this.listOfAllData?.Vehicles || [];
+
+    this.filteredDeletedDrivers =
+      this.listOfAllData?.DeletedDrivers || [];
+
+    this.filteredDeletedVehicles =
+      this.listOfAllData?.DeletedVehicles || [];
+
     return;
   }
 
-  // Driver search
-  this.filteredDrivers = (this.listOfAllData.Drivers || []).filter((driver: any) =>
-    String(driver.DriverName || '').toLowerCase().includes(search) ||
-    String(driver.DriverLicenceNo || '').toLowerCase().includes(search) ||
-    String(driver.StateLicenced || '').toLowerCase().includes(search)
-  );
+  // ============================
+  // ACTIVE DRIVERS
+  // ============================
 
-  // Vehicle search
-  this.filteredVehicles = (this.listOfAllData.Vehicles || []).filter((vehicle: any) =>
-    String(vehicle.VehicleType || '').toLowerCase().includes(search) ||
-    String(vehicle.Year || '').toLowerCase().includes(search) ||
-    String(vehicle.Make || '').toLowerCase().includes(search) ||
-    String(vehicle.Model || '').toLowerCase().includes(search) ||
-    String(vehicle.VIN || '').toLowerCase().includes(search)
-  );
+  this.filteredDrivers =
+    (this.listOfAllData?.Drivers || []).filter((driver: any) =>
+      String(driver.DriverName || '').toLowerCase().includes(search) ||
+      String(driver.DriverLicenceNo || '').toLowerCase().includes(search) ||
+      String(driver.StateLicenced || '').toLowerCase().includes(search)
+    );
+
+
+  // ============================
+  // DELETED DRIVERS
+  // ============================
+
+  this.filteredDeletedDrivers =
+    (this.listOfAllData?.DeletedDrivers || []).filter((driver: any) =>
+      String(driver.DriverName || '').toLowerCase().includes(search) ||
+      String(driver.DriverLicenceNo || '').toLowerCase().includes(search) ||
+      String(driver.StateLicenced || '').toLowerCase().includes(search)
+    );
+
+
+  // ============================
+  // ACTIVE VEHICLES
+  // ============================
+
+  this.filteredVehicles =
+    (this.listOfAllData?.Vehicles || []).filter((vehicle: any) =>
+      String(vehicle.VehicleType || '').toLowerCase().includes(search) ||
+      String(vehicle.Year || '').toLowerCase().includes(search) ||
+      String(vehicle.Make || '').toLowerCase().includes(search) ||
+      String(vehicle.Model || '').toLowerCase().includes(search) ||
+      String(vehicle.VIN || '').toLowerCase().includes(search)
+    );
+
+
+  // ============================
+  // DELETED VEHICLES
+  // ============================
+
+  this.filteredDeletedVehicles =
+    (this.listOfAllData?.DeletedVehicles || []).filter((vehicle: any) =>
+      String(vehicle.VehicleType || '').toLowerCase().includes(search) ||
+      String(vehicle.Year || '').toLowerCase().includes(search) ||
+      String(vehicle.Make || '').toLowerCase().includes(search) ||
+      String(vehicle.Model || '').toLowerCase().includes(search) ||
+      String(vehicle.VIN || '').toLowerCase().includes(search)
+    );
 }
 exportToExcel(): void {
 
