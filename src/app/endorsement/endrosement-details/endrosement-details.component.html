@@ -3,7 +3,7 @@
 </div>
 <div *ngIf ="!showSpinner">
   <div class="container-fluid page-background" >
-    <div class="row mt-2">
+    <div class="row ">
     <div class="col-xl-3 col-sm-6 col-12" routerLink ="/endorsement/listOfPolicyForEndrosement" >
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
@@ -13,11 +13,13 @@
       </div>
     </div>
 
-    <div class="col-xl-3 col-sm-6 col-12" >
+    <div class="col-xl-3 col-sm-6 col-12" (click)="exportToExcel()">
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
-          <h4 class="danger">Expire & Delete</h4>
-          <img src="assets/icons8-delete-100.png" width="50px" />
+          <h4 class="danger">Excel Data</h4>
+          <i class="fa fa-file-excel-o me-1"
+   style="width: 50px; height: 50px; font-size: 50px;"></i>
+        
         </div>
       </div>
     </div>
@@ -60,7 +62,7 @@
   </span>
 </div>
     
-      <div class ="row mt-2">
+      <div class ="row ">
         
          <div class="col-sm-3">
        
@@ -99,7 +101,7 @@
        
  
       </div>
-      <div  class="scrollable-table-body mt-2" >
+      <div  class="scrollable-table-body mt-1" >
        <table  class="table table-bordered">
   
          <thead>
@@ -128,7 +130,13 @@
          </thead>
          <tbody *ngIf="listOfEndorsements?.length > 0">
            <ng-container >
-             <tr *ngFor ="let data of listOfEndorsements | searchEndrosement:searchCriteria; let i = index" style="height: 40px;"  (dblclick)="i !== 0 && goToChickAddOrVistEndroseemtLine(data)" style="background-color: white;">
+             <tr *ngFor ="let data of listOfEndorsements | searchEndrosement:searchCriteria; let i = index"
+           [ngClass]="{
+    'yellow-row':
+      data.Stage == null ||
+      data.Stage?.trim() === '' ||
+      data.Stage?.trim().toLowerCase() === 'in process'
+  }" style="height: 40px;"  (dblclick)="i !== 0 && goToChickAddOrVistEndroseemtLine(data)" >
                <td>{{data.IDBasedOnAMC == null? data.LineShortName:data.IDBasedOnAMC}}</td>
                <td>{{data.Entered | date:'MM/dd/yyyy'}}</td>
               
@@ -153,9 +161,14 @@
               
             <td *ngIf="i !== 0">
               
-             <mat-icon style="color: green; font-size: medium;"  (click)="addEditEndrocement(data)"><i class="fa fa-pencil-square" aria-hidden="true"></i></mat-icon>
-             <mat-icon   style="color: rgba(255, 0, 30, 0.514); font-size: medium;"  (click)="updateEndrosement(data)"><i class="fa fa-trash" aria-hidden="true"></i></mat-icon>
-           
+             <mat-icon class="edit-icon"  (click)="addEditEndrocement(data)" matTooltip="Edit">  <i class="fa fa-edit" aria-hidden="true"></i></mat-icon>
+             <!-- <mat-icon   style="color: rgba(255, 0, 30, 0.514); font-size: medium;"  (click)="updateEndrosement(data)"><i class="fa fa-trash" aria-hidden="true"></i></mat-icon> -->
+           <mat-icon
+  class="status-icon"
+  (click)="updateEndrosement(data)"
+  matTooltip="Change Status">
+  <i class="fa fa-refresh" aria-hidden="true"></i>
+</mat-icon>
               
            </td>
              

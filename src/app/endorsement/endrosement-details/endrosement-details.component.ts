@@ -13,7 +13,8 @@ import { ListOfPreviousDriverAndVehicleComponent } from './list-of-previous-driv
 import { SearchEndrosementPipe } from '../../_SearchPipe/search-endrosement.pipe';
 import { DeletePolicyComponent } from '../../policy/delete-policy/delete-policy.component';
 import { SubmitChangeRequestComponent } from './submit-change-request/submit-change-request.component';
-
+import * as ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-endrosement-details',
@@ -131,7 +132,470 @@ export class EndrosementDetailsComponent {
          }
        )
      }
+exportToExcel(): void {
 
+  const workbook = new ExcelJS.Workbook();
+
+  const worksheet =
+    workbook.addWorksheet('Endorsements');
+
+
+  // =====================================================
+  // TITLE
+  // =====================================================
+
+  worksheet.mergeCells('A1:G1');
+
+  const titleCell =
+    worksheet.getCell('A1');
+
+  titleCell.value =
+    'POLICY ENDORSEMENT DETAILS';
+
+  titleCell.font = {
+    bold: true,
+    size: 16
+  };
+
+  titleCell.alignment = {
+    horizontal: 'center',
+    vertical: 'middle'
+  };
+
+  worksheet.getRow(1).height = 30;
+
+
+  // =====================================================
+  // POLICY INFORMATION
+  // =====================================================
+
+  worksheet.mergeCells('A2:G2');
+
+  const policyCell =
+    worksheet.getCell('A2');
+
+  policyCell.value =
+    `Marked Policy ID: ${this.MarkedPolicyID}`;
+
+  policyCell.font = {
+    bold: true,
+    size: 11
+  };
+
+
+  // =====================================================
+  // HEADER
+  // =====================================================
+
+  const headerRow = 4;
+
+  const headers = [
+    'EnterNo',
+    'Entered',
+    'Endorsement',
+    'Description',
+    'Effective Date',
+    'Stage',
+    'Changed-Entered By'
+  ];
+
+  worksheet.getRow(headerRow).values =
+    headers;
+
+  worksheet.getRow(headerRow).font = {
+    bold: true
+  };
+
+  worksheet.getRow(headerRow).alignment = {
+    horizontal: 'center',
+    vertical: 'middle'
+  };
+
+  worksheet.getRow(headerRow).height = 25;
+
+
+  // =====================================================
+  // DATA
+  // IMPORTANT:
+  // Export same filtered data as HTML
+  // =====================================================
+
+  const searchPipeData =
+    this.listOfEndorsements || [];
+
+  const search =
+    this.searchCriteria || {};
+
+  const filteredData =
+    searchPipeData.filter((data: any) => {
+
+      const endorsementType =
+        String(data.EndorsementType ?? '')
+          .toLowerCase();
+
+      const entered =
+        String(data.Entered ?? '')
+          .toLowerCase();
+
+      const stage =
+        String(data.Stage ?? '')
+          .toLowerCase();
+
+      const description =
+        String(data.Description ?? '')
+          .toLowerCase();
+
+
+      const endorsementSearch =
+        String(search.EndorsementType ?? '')
+          .trim()
+          .toLowerCase();
+
+      const enteredSearch =
+        String(search.Entered ?? '')
+          .trim()
+          .toLowerCase();
+
+      const stageSearch =
+        String(search.Stage ?? '')
+          .trim()
+          .toLowerCase();
+
+      const descriptionSearch =
+        String(search.Description ?? '')
+          .trim()
+          .toLowerCase();
+
+
+      return (
+
+        (!endorsementSearch ||
+          endorsementType.includes(
+            endorsementSearch
+          ))
+
+        &&
+
+        (!enteredSearch ||
+          entered.includes(
+            enteredSearch
+          ))
+
+        &&
+
+        (!stageSearch ||
+          stage.includes(
+            stageSearch
+          ))
+
+        &&
+
+        (!descriptionSearch ||
+          description.includes(
+            descriptionSearch
+          ))
+
+      );
+
+    });
+
+
+  // =====================================================
+  // WRITE DATA
+  // =====================================================
+
+  let rowNumber = headerRow + 1;
+
+  filteredData.forEach(
+    (data: any, index: number) => {
+
+      const row =
+        worksheet.getRow(rowNumber);
+
+
+      // Enter No
+      row.getCell(1).value =
+        data.IDBasedOnAMC == null
+          ? data.LineShortName || ''
+          : data.IDBasedOnAMC;
+
+
+      // Entered
+      if (data.Entered) {
+
+        row.getCell(2).value =
+          new Date(data.Entered);
+
+        row.getCell(2).numFmt =
+          'mm/dd/yyyy';
+
+      } else {
+
+        row.getCell(2).value = '';
+
+      }
+
+
+      // Endorsement
+      row.getCell(3).value =
+        data.EndorsementType == null
+          ? 'Policy Detail'
+          : data.EndorsementType;
+
+
+      // Description
+      row.getCell(4).value =
+        data.Description || '';
+
+
+      // Effective Date
+      //
+      // Same logic as HTML:
+      // First row = EffectiveDate - ExpirationDate
+      // Other rows = EffectiveDateChange
+      //
+
+      if (index === 0) {
+
+        const effectiveDate =
+          data.EffectiveDate
+            ? this.formatExcelDate(
+                data.EffectiveDate
+              )
+            : '';
+
+        const expirationDate =
+          data.ExpirationDate
+            ? this.formatExcelDate(
+                data.ExpirationDate
+              )
+            : '';
+
+        if (
+          effectiveDate &&
+          expirationDate
+        ) {
+
+          row.getCell(5).value =
+            `${effectiveDate} - ${expirationDate}`;
+
+        } else {
+
+          row.getCell(5).value =
+            effectiveDate || expirationDate;
+
+        }
+
+      } else {
+
+        row.getCell(5).value =
+          data.EffectiveDateChange
+            ? this.formatExcelDate(
+                data.EffectiveDateChange
+              )
+            : '';
+
+      }
+
+
+      // Stage
+      row.getCell(6).value =
+        data.Stage || '';
+
+
+      // Changed - Entered By
+      row.getCell(7).value =
+        `${data.UpdatedBy || ''}${
+          data.UpdatedBy && data.EnteredBy
+            ? ' - '
+            : ''
+        }${data.EnteredBy || ''}`;
+
+
+      rowNumber++;
+
+    });
+
+
+  // =====================================================
+  // IF NO DATA
+  // =====================================================
+
+  if (filteredData.length === 0) {
+
+    const row =
+      worksheet.getRow(rowNumber);
+
+    worksheet.mergeCells(
+      `A${rowNumber}:G${rowNumber}`
+    );
+
+    row.getCell(1).value =
+      'No endorsements found';
+
+    row.getCell(1).alignment = {
+      horizontal: 'center',
+      vertical: 'middle'
+    };
+
+    row.getCell(1).font = {
+      italic: true
+    };
+
+    rowNumber++;
+
+  }
+
+
+  // =====================================================
+  // BORDERS
+  // =====================================================
+
+  worksheet.eachRow((row) => {
+
+    row.eachCell((cell) => {
+
+      cell.border = {
+
+        top: {
+          style: 'thin'
+        },
+
+        left: {
+          style: 'thin'
+        },
+
+        bottom: {
+          style: 'thin'
+        },
+
+        right: {
+          style: 'thin'
+        }
+
+      };
+
+      cell.alignment = {
+        vertical: 'middle'
+      };
+
+    });
+
+  });
+
+
+  // =====================================================
+  // COLUMN WIDTHS
+  // =====================================================
+
+  worksheet.getColumn(1).width = 15;
+  worksheet.getColumn(2).width = 18;
+  worksheet.getColumn(3).width = 25;
+  worksheet.getColumn(4).width = 45;
+  worksheet.getColumn(5).width = 30;
+  worksheet.getColumn(6).width = 18;
+  worksheet.getColumn(7).width = 30;
+
+
+  // =====================================================
+  // TEXT WRAP
+  // =====================================================
+
+  for (
+    let i = headerRow;
+    i < rowNumber;
+    i++
+  ) {
+
+    worksheet.getRow(i).eachCell(
+      (cell) => {
+
+        cell.alignment = {
+          vertical: 'middle',
+          wrapText: true
+        };
+
+      }
+    );
+
+  }
+
+
+  // =====================================================
+  // FREEZE HEADER
+  // =====================================================
+
+  worksheet.views = [
+    {
+      state: 'frozen',
+      ySplit: 4
+    }
+  ];
+
+
+  // =====================================================
+  // AUTO FILTER
+  // =====================================================
+
+  if (filteredData.length > 0) {
+
+    worksheet.autoFilter = {
+      from: `A${headerRow}`,
+      to: `G${rowNumber - 1}`
+    };
+
+  }
+
+
+  // =====================================================
+  // DOWNLOAD
+  // =====================================================
+
+  workbook.xlsx.writeBuffer().then(
+    (buffer: any) => {
+
+      const blob = new Blob(
+        [buffer],
+        {
+          type:
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        }
+      );
+
+      saveAs(
+        blob,
+        `Policy_Endorsements_${this.MarkedPolicyID}.xlsx`
+      );
+
+    }
+  );
+
+}
+formatExcelDate(dateValue: any): string {
+
+  if (!dateValue) {
+    return '';
+  }
+
+  const date = new Date(dateValue);
+
+  if (isNaN(date.getTime())) {
+    return '';
+  }
+
+  const month =
+    String(date.getMonth() + 1)
+      .padStart(2, '0');
+
+  const day =
+    String(date.getDate())
+      .padStart(2, '0');
+
+  const year =
+    date.getFullYear();
+
+  return `${month}/${day}/${year}`;
+}
    addEditEndrocement(data:any){
     this.dialog.open(AddOrEditEndrosementComponent ,{
       width: '400px',
@@ -145,6 +609,9 @@ export class EndrosementDetailsComponent {
 
   goToChickAddOrVistEndroseemtLine(data:any){
     this.EndorsementID =data.EndorsementID;
+
+   
+   
     // alert( this.EndorsementID)
    
     this.ChildPolicyID = data.ChildPolicyID;
@@ -168,6 +635,7 @@ export class EndrosementDetailsComponent {
       localStorage.setItem('EndorsementID',  this.EndorsementID)
       localStorage.setItem('marketedName',  this.marketedName)
       localStorage.setItem('endorsementType',  endorsementType)
+       localStorage.setItem('ExpirationDate', data.EffectiveDateChange);
       localStorage.setItem('IsChildPolicyExist', 'false')
       
       
@@ -182,6 +650,7 @@ export class EndrosementDetailsComponent {
       localStorage.setItem('EndorsementID',  this.EndorsementID)
       localStorage.setItem('marketedName',  this.marketedName)
       localStorage.setItem('endorsementType',  endorsementType)
+       localStorage.setItem('ExpirationDate', data.EffectiveDateChange);
       localStorage.setItem('IsChildPolicyExist', 'false')
      
   
@@ -195,6 +664,7 @@ export class EndrosementDetailsComponent {
       localStorage.setItem('EndorsementID',this.EndorsementID)
       localStorage.setItem('marketedName',  this.marketedName)
       localStorage.setItem('endorsementType',endorsementType)
+      localStorage.setItem('ExpirationDate', data.EffectiveDateChange);
       localStorage.setItem('IsChildPolicyExist', 'false')
    
     }
@@ -207,6 +677,7 @@ export class EndrosementDetailsComponent {
       localStorage.setItem('EndorsementID',this.EndorsementID)
       localStorage.setItem('marketedName',  this.marketedName)
       localStorage.setItem('endorsementType',endorsementType)
+       localStorage.setItem('ExpirationDate', data.EffectiveDateChange);
       localStorage.setItem('IsChildPolicyExist', 'false')
     }
      
@@ -231,8 +702,9 @@ export class EndrosementDetailsComponent {
   clearLocalStorage(){
     localStorage.removeItem('EndorsementID');
     localStorage.removeItem('marketedName')
+    localStorage.removeItem('ExpirationDate')
    
-   
+    
    
     localStorage.removeItem('endorsementType')
    

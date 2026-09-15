@@ -95,14 +95,14 @@
           <th>  Policy Type </th>
          
            <th>Reported To</th>
-           <th>Claim Type</th>
+           <th>Policy  Type</th>
            <th>Driver</th>
            <th>Truck</th>
            <th>Trailer </th>
            
           
            <th >Date Of Loss</th>
-           <th >EnteredBy </th>
+           <th >Entered Of CLaim & By </th>
            <th > </th>
         
       
@@ -163,7 +163,7 @@
       
      
      <td>{{data.DateofLoss|date:'MM/dd/yyyy'}}</td>
-     <td>{{data.EnteredBy}} </td>
+     <td>{{data.EnteredDateTime |date:'MM/dd/yyyy'}}-{{data.EnteredBy}} </td>
      
     
    

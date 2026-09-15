@@ -1,99 +1,178 @@
-
 <div *ngIf="showEndrosementList">
   show list
 </div>
 
 <div *ngIf="!showEndrosementList" class="policy-dialog">
 
-  <!-- ================= HEADER ================= -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+
   <div class="top-header">
-    <div class="header-title">
-      Driver & Vehicle Details
+
+    <div class="header-left">
+
+      <div class="header-icon">
+        <i class="fa fa-car"></i>
+      </div>
+
+      <div>
+        <div class="header-title">
+          Driver & Vehicle Details
+        </div>
+
+        <div class="header-subtitle">
+          Policy drivers, vehicles and activity history
+        </div>
+      </div>
+
     </div>
 
     <div class="header-actions">
 
       <button
         type="button"
-        class="btn btn-success"
+        class="excel-btn"
         (click)="exportToExcel()">
-        <i class="fa fa-file-excel-o me-1"></i>
-        Excel
+
+        <i class="fa fa-file-excel-o"></i>
+        <span>Export Excel</span>
+
       </button>
 
-      <a
-        href="javascript:void(0);"
-        (click)="closeModel()"
-        class="close-btn">
+      <button
+        type="button"
+        class="close-btn"
+        (click)="closeModel()">
 
-        <i
-          class="fa fa-times-circle-o"
-          aria-hidden="true">
-        </i>
+        <i class="fa fa-times"></i>
 
-      </a>
+      </button>
 
     </div>
+
   </div>
 
 
-  <!-- ================= SEARCH ================= -->
+  <!-- =========================================================
+       SEARCH
+  ========================================================== -->
+
   <div class="search-row">
 
-    <div class="search-box">
+    <div class="search-wrapper">
 
-      <i class="fa fa-search"></i>
+      <i class="fa fa-search search-icon"></i>
 
       <input
         type="text"
-        class="form-control"
+        class="search-input"
         [(ngModel)]="searchText"
         (ngModelChange)="onSearchChange()"
-        placeholder="Search Driver / Vehicle..." />
+        placeholder="Search driver, vehicle, VIN, licence..." />
+
+      <button
+        *ngIf="searchText"
+        type="button"
+        class="clear-search"
+        (click)="searchText=''; onSearchChange()">
+
+        <i class="fa fa-times"></i>
+
+      </button>
 
     </div>
 
   </div>
 
 
-  <!-- ================= MAIN SCROLL AREA ================= -->
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
   <div
     class="data-scroll-container"
     *ngIf="listOfAllData">
 
 
-    <!-- ================================================= -->
-    <!-- ACTIVE DRIVERS -->
-    <!-- ================================================= -->
+    <!-- =======================================================
+         ACTIVE DRIVERS
+    ======================================================== -->
 
     <div class="section-card">
 
       <div class="section-header">
-        <span>
-          <i class="fa fa-user"></i>
-          Drivers
-        </span>
 
-        <span class="record-count">
+        <div class="section-title">
+
+          <div class="section-icon driver-icon">
+            <i class="fa fa-user"></i>
+          </div>
+
+          <div>
+            <div class="section-name">
+              Active Drivers
+            </div>
+
+            <div class="section-description">
+              Current drivers assigned to the policy
+            </div>
+          </div>
+
+        </div>
+
+        <div class="record-count active-count">
           {{ filteredDrivers.length }}
-        </span>
+        </div>
+
       </div>
 
 
       <div class="table-scroll">
 
-        <table class="table table-bordered data-table">
+        <table class="data-table driver-table">
 
           <thead>
             <tr>
-              <th>Driver S.NO</th>
-              <th>Name</th>
-              <th>Licence Issued</th>
-              <th>Date of Birth</th>
-              <th>State Licenced</th>
-              <th>Licence No</th>
+
+              <th class="serial-column">
+                Driver
+              </th>
+
+              <th>
+                Name
+              </th>
+
+              <th>
+                Licence Issued
+              </th>
+
+              <th>
+                Date of Birth
+              </th>
+
+              <th>
+                State
+              </th>
+
+              <th>
+                Licence No
+              </th>
+
+              <!-- SEPARATE AUDIT COLUMNS -->
+              <th class="audit-column entered-column">
+                Entered By
+              </th>
+
+              <th class="audit-column updated-column">
+                Updated By
+              </th>
+
+            
+
             </tr>
           </thead>
+
 
           <tbody>
 
@@ -103,45 +182,252 @@
                 let i = index
               ">
 
-              <td>
-                {{ i + 1 }} -
-                {{
-                  driver.EndorsementID === 0
-                    ? 'By Policy'
-                    : 'By Endorsement'
-                }}
-              </td>
+              <!-- DRIVER -->
 
               <td>
-                {{ driver.DriverName }}
+
+                <div class="serial-cell">
+
+                  <span class="serial-number">
+                    {{ i + 1 }}
+                  </span>
+
+                  <span
+                    class="source-badge"
+                    [class.policy-badge]="driver.EndorsementID === 0"
+                    [class.endorsement-badge]="driver.EndorsementID !== 0">
+
+                    {{
+                      driver.EndorsementID === 0
+                        ? 'Policy'
+                        : 'Endorsement'
+                    }}
+
+                  </span>
+
+                </div>
+
               </td>
 
-              <td>
-                {{ driver.YearofLicenceIssued | date:'MM/dd/yyyy' }}
-              </td>
+
+              <!-- NAME -->
 
               <td>
-                {{ driver.DateofBirth | date:'MM/dd/yyyy' }}
+
+                <div class="name-cell">
+
+                  <div class="avatar driver-avatar">
+                    {{ driver.DriverName?.charAt(0) || '?' }}
+                  </div>
+
+                  <span>
+                    {{ driver.DriverName || '-' }}
+                  </span>
+
+                </div>
+
               </td>
 
-              <td>
-                {{ driver.StateLicenced }}
-              </td>
+
+              <!-- LICENCE ISSUED -->
 
               <td>
-                {{ driver.DriverLicenceNo }}
+
+                <div class="date-value">
+
+                  <i class="fa fa-calendar-o"></i>
+
+                  {{
+                    driver.YearofLicenceIssued
+                      ? (driver.YearofLicenceIssued | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+
+                </div>
+
               </td>
+
+
+              <!-- DOB -->
+
+              <td>
+
+                <div class="date-value">
+
+                  <i class="fa fa-birthday-cake"></i>
+
+                  {{
+                    driver.DateofBirth
+                      ? (driver.DateofBirth | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+
+                </div>
+
+              </td>
+
+
+              <!-- STATE -->
+
+              <td>
+
+                <span class="state-badge">
+                  {{ driver.StateLicenced || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- LICENCE -->
+
+              <td>
+
+                <span class="license-number">
+                  {{ driver.DriverLicenceNo || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- =================================================
+                   ENTERED
+              ================================================== -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box entered-box"
+                  *ngIf="driver?.EnteredBy">
+
+                 
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Entered
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(driver.EnteredBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          driver,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          driver,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!driver?.EnteredBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- =================================================
+                   UPDATED
+              ================================================== -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box updated-box"
+                  *ngIf="driver?.UpdatedBy">
+
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Updated
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(driver.UpdatedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          driver,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          driver,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!driver?.UpdatedBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- =================================================
+                   DELETED
+              ================================================== -->
+
+           
 
             </tr>
 
 
+            <!-- EMPTY -->
+
             <tr *ngIf="filteredDrivers.length === 0">
 
-              <td
-                colspan="6"
-                class="no-data">
+              <td colspan="9" class="no-data">
 
-                No drivers found
+                <div class="empty-icon">
+                  <i class="fa fa-user-times"></i>
+                </div>
+
+                <div class="empty-title">
+                  No drivers found
+                </div>
+
+                <div class="empty-text">
+                  Try changing your search criteria
+                </div>
 
               </td>
 
@@ -156,10 +442,9 @@
     </div>
 
 
-
-    <!-- ================================================= -->
-    <!-- DELETED DRIVERS -->
-    <!-- ================================================= -->
+    <!-- =======================================================
+         DELETED DRIVERS
+    ======================================================== -->
 
     <div
       class="section-card deleted-section"
@@ -167,35 +452,83 @@
 
       <div class="section-header deleted-header">
 
-        <span>
-          <i class="fa fa-trash"></i>
-          Deleted Drivers
-        </span>
+        <div class="section-title">
 
-        <span class="record-count">
+          <div class="section-icon deleted-icon">
+            <i class="fa fa-trash"></i>
+          </div>
+
+          <div>
+
+            <div class="section-name">
+              Deleted Drivers
+            </div>
+
+            <div class="section-description">
+              Removed drivers and deletion history
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="record-count deleted-count">
           {{ filteredDeletedDrivers.length }}
-        </span>
+        </div>
 
       </div>
 
 
       <div class="table-scroll">
 
-        <table class="table table-bordered data-table">
+        <table class="data-table deleted-table">
 
           <thead>
 
             <tr>
-              <th>S.NO</th>
-              <th>Name</th>
-              <th>Licence Issued</th>
-              <th>Date of Birth</th>
-              <th>State</th>
-              <th>Licence No</th>
-              <th>Delete Reason</th>
+
+             
+
+              <th>
+                Name
+              </th>
+
+              <th>
+                Licence Issued
+              </th>
+
+              <th>
+                Date of Birth
+              </th>
+
+              <th>
+                State
+              </th>
+
+              <th>
+                Licence No
+              </th>
+
+              <th>
+                Delete Reason
+              </th>
+
+              <th class="audit-column entered-column">
+                Entered By
+              </th>
+
+              <th class="audit-column updated-column">
+                Updated By
+              </th>
+
+              <th class="audit-column deleted-column">
+                Deleted By
+              </th>
+
             </tr>
 
           </thead>
+
 
           <tbody>
 
@@ -205,32 +538,268 @@
                 let i = index
               ">
 
-              <td>
-                {{ i + 1 }}
-              </td>
+              <!-- DRIVER -->
+
+             
+
+              <!-- NAME -->
 
               <td>
-                {{ driver.DriverName }}
+
+                <div class="name-cell">
+
+                  <div class="avatar deleted-avatar">
+                    {{ driver.DriverName?.charAt(0) || '?' }}
+                  </div>
+
+                  <span>
+                    {{ driver.DriverName || '-' }}
+                  </span>
+
+                </div>
+
               </td>
 
-              <td>
-                {{ driver.YearofLicenceIssued | date:'MM/dd/yyyy' }}
-              </td>
+
+              <!-- LICENCE ISSUED -->
 
               <td>
-                {{ driver.DateofBirth | date:'MM/dd/yyyy' }}
+
+                <div class="date-value">
+
+                  <i class="fa fa-calendar-o"></i>
+
+                  {{
+                    driver.YearofLicenceIssued
+                      ? (driver.YearofLicenceIssued | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+
+                </div>
+
               </td>
 
-              <td>
-                {{ driver.StateLicenced }}
-              </td>
+
+              <!-- DOB -->
 
               <td>
-                {{ driver.DriverLicenceNo }}
+
+                <div class="date-value">
+
+                  <i class="fa fa-birthday-cake"></i>
+
+                  {{
+                    driver.DateofBirth
+                      ? (driver.DateofBirth | date:'MM/dd/yyyy')
+                      : '-'
+                  }}
+
+                </div>
+
               </td>
 
+
+              <!-- STATE -->
+
               <td>
-                {{ driver.DeleteReason || '-' }}
+
+                <span class="state-badge">
+                  {{ driver.StateLicenced || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- LICENCE -->
+
+              <td>
+
+                <span class="license-number">
+                  {{ driver.DriverLicenceNo || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- DELETE REASON -->
+
+              <td>
+
+                <div class="delete-reason">
+
+                  <i class="fa fa-exclamation-circle"></i>
+
+                  <span>
+                    {{ driver.DeleteReason || 'No reason provided' }}
+                  </span>
+
+                </div>
+
+              </td>
+
+
+              <!-- ENTERED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box entered-box"
+                  *ngIf="driver?.EnteredBy">
+
+                
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Entered
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(driver.EnteredBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          driver,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          driver,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!driver?.EnteredBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- UPDATED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box updated-box"
+                  *ngIf="driver?.UpdatedBy">
+
+               
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Updated
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(driver.UpdatedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          driver,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          driver,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!driver?.UpdatedBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- DELETED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box deleted-box"
+                  *ngIf="driver?.DeletedBy">
+
+                 
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Deleted
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(driver.DeletedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          driver,
+                          'DeletedBy',
+                          ['DeletedDate', 'DeleteDate', 'DeletedOn']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          driver,
+                          'DeletedBy',
+                          ['DeletedDate', 'DeleteDate', 'DeletedOn']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!driver?.DeletedBy">
+                  —
+                </span>
+
               </td>
 
             </tr>
@@ -244,44 +813,91 @@
     </div>
 
 
-
-    <!-- ================================================= -->
-    <!-- ACTIVE VEHICLES -->
-    <!-- ================================================= -->
+    <!-- =======================================================
+         ACTIVE VEHICLES
+    ======================================================== -->
 
     <div class="section-card">
 
       <div class="section-header">
 
-        <span>
-          <i class="fa fa-truck"></i>
-          Vehicles
-        </span>
+        <div class="section-title">
 
-        <span class="record-count">
+          <div class="section-icon vehicle-icon">
+            <i class="fa fa-truck"></i>
+          </div>
+
+          <div>
+
+            <div class="section-name">
+              Active Vehicles
+            </div>
+
+            <div class="section-description">
+              Current vehicles assigned to the policy
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="record-count active-count">
           {{ filteredVehicles.length }}
-        </span>
+        </div>
 
       </div>
 
 
       <div class="table-scroll">
 
-        <table class="table table-bordered data-table vehicle-table">
+        <table class="data-table vehicle-table">
 
           <thead>
 
             <tr>
-              <th>Vehicle S.NO</th>
-              <th>Type</th>
-              <th>Year</th>
-              <th>Make</th>
-              <th>Model</th>
-              <th>VIN</th>
-              <th>Value</th>
+
+              <th class="serial-column">
+                Vehicle
+              </th>
+
+              <th>
+                Type
+              </th>
+
+              <th>
+                Year
+              </th>
+
+              <th>
+                Make
+              </th>
+
+              <th>
+                Model
+              </th>
+
+              <th>
+                VIN
+              </th>
+
+              <th>
+                Value
+              </th>
+
+              <th class="audit-column entered-column">
+                Entered By
+              </th>
+
+              <th class="audit-column updated-column">
+                Updated By
+              </th>
+
+             
+
             </tr>
 
           </thead>
+
 
           <tbody>
 
@@ -291,49 +907,239 @@
                 let i = index
               ">
 
-              <td>
-                {{ i + 1 }} -
-                {{
-                  vehicle.EndorsementID === 0
-                    ? 'By Policy'
-                    : 'By Endorsement'
-                }}
-              </td>
+              <!-- VEHICLE -->
 
               <td>
-                {{ vehicle.VehicleType }}
+
+                <div class="serial-cell">
+
+                  <span class="serial-number">
+                    {{ i + 1 }}
+                  </span>
+
+                  <span
+                    class="source-badge"
+                    [class.policy-badge]="vehicle.EndorsementID === 0"
+                    [class.endorsement-badge]="vehicle.EndorsementID !== 0">
+
+                    {{
+                      vehicle.EndorsementID === 0
+                        ? 'Policy'
+                        : 'Endorsement'
+                    }}
+
+                  </span>
+
+                </div>
+
               </td>
 
-              <td>
-                {{ vehicle.Year }}
-              </td>
+
+              <!-- TYPE -->
 
               <td>
-                {{ vehicle.Make }}
+
+                <span class="type-badge">
+
+                  <i class="fa fa-car"></i>
+
+                  {{ vehicle.VehicleType || '-' }}
+
+                </span>
+
               </td>
 
-              <td>
-                {{ vehicle.Model }}
-              </td>
+
+              <!-- YEAR -->
 
               <td>
-                {{ vehicle.VIN }}
+
+                <span class="year-badge">
+                  {{ vehicle.Year || '-' }}
+                </span>
+
               </td>
 
+
+              <!-- MAKE -->
+
               <td>
-                {{ vehicle.Value | currency }}
+                <strong>
+                  {{ vehicle.Make || '-' }}
+                </strong>
               </td>
+
+
+              <!-- MODEL -->
+
+              <td>
+                {{ vehicle.Model || '-' }}
+              </td>
+
+
+              <!-- VIN -->
+
+              <td>
+
+                <span class="vin-number">
+                  {{ vehicle.VIN || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- VALUE -->
+
+              <td>
+
+                <span class="vehicle-value">
+
+                  {{
+                    vehicle.Value !== null &&
+                    vehicle.Value !== undefined
+                      ? (vehicle.Value | currency)
+                      : '-'
+                  }}
+
+                </span>
+
+              </td>
+
+
+              <!-- ENTERED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box entered-box"
+                  *ngIf="vehicle?.EnteredBy">
+
+                 
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Entered
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(vehicle.EnteredBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          vehicle,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          vehicle,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!vehicle?.EnteredBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- UPDATED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box updated-box"
+                  *ngIf="vehicle?.UpdatedBy">
+
+                  
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Updated
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(vehicle.UpdatedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          vehicle,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          vehicle,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!vehicle?.UpdatedBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- DELETED -->
+
+           
 
             </tr>
 
 
+            <!-- EMPTY -->
+
             <tr *ngIf="filteredVehicles.length === 0">
 
-              <td
-                colspan="7"
-                class="no-data">
+              <td colspan="10" class="no-data">
 
-                No vehicles found
+                <div class="empty-icon">
+                  <i class="fa fa-car"></i>
+                </div>
+
+                <div class="empty-title">
+                  No vehicles found
+                </div>
+
+                <div class="empty-text">
+                  Try changing your search criteria
+                </div>
 
               </td>
 
@@ -348,10 +1154,9 @@
     </div>
 
 
-
-    <!-- ================================================= -->
-    <!-- DELETED VEHICLES -->
-    <!-- ================================================= -->
+    <!-- =======================================================
+         DELETED VEHICLES
+    ======================================================== -->
 
     <div
       class="section-card deleted-section"
@@ -359,36 +1164,89 @@
 
       <div class="section-header deleted-header">
 
-        <span>
-          <i class="fa fa-trash"></i>
-          Deleted Vehicles
-        </span>
+        <div class="section-title">
 
-        <span class="record-count">
+          <div class="section-icon deleted-icon">
+            <i class="fa fa-trash"></i>
+          </div>
+
+          <div>
+
+            <div class="section-name">
+              Deleted Vehicles
+            </div>
+
+            <div class="section-description">
+              Removed vehicles and deletion history
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="record-count deleted-count">
           {{ filteredDeletedVehicles.length }}
-        </span>
+        </div>
 
       </div>
 
 
       <div class="table-scroll">
 
-        <table class="table table-bordered data-table vehicle-table">
+        <table class="data-table vehicle-table deleted-table">
 
           <thead>
 
             <tr>
-              <th>S.NO</th>
-              <th>Type</th>
-              <th>Year</th>
-              <th>Make</th>
-              <th>Model</th>
-              <th>VIN</th>
-              <th>Value</th>
-              <th>Delete Reason</th>
+
+              <th class="serial-column">
+                Vehicle
+              </th>
+
+              <th>
+                Type
+              </th>
+
+              <th>
+                Year
+              </th>
+
+              <th>
+                Make
+              </th>
+
+              <th>
+                Model
+              </th>
+
+              <th>
+                VIN
+              </th>
+
+              <th>
+                Value
+              </th>
+
+              <th>
+                Delete Reason
+              </th>
+
+              <th class="audit-column entered-column">
+                Entered By
+              </th>
+
+              <th class="audit-column updated-column">
+                Updated By
+              </th>
+
+              <th class="audit-column deleted-column">
+                Deleted By
+              </th>
+
             </tr>
 
           </thead>
+
 
           <tbody>
 
@@ -398,36 +1256,277 @@
                 let i = index
               ">
 
-              <td>
-                {{ i + 1 }}
-              </td>
+              <!-- VEHICLE -->
 
               <td>
-                {{ vehicle.VehicleType }}
+
+                <div class="serial-cell">
+
+                  <span class="serial-number deleted-number">
+                    {{ i + 1 }}
+                  </span>
+
+                  <span class="deleted-badge">
+                    Deleted
+                  </span>
+
+                </div>
+
               </td>
 
-              <td>
-                {{ vehicle.Year }}
-              </td>
+
+              <!-- TYPE -->
 
               <td>
-                {{ vehicle.Make }}
+
+                <span class="type-badge">
+
+                  <i class="fa fa-car"></i>
+
+                  {{ vehicle.VehicleType || '-' }}
+
+                </span>
+
               </td>
 
-              <td>
-                {{ vehicle.Model }}
-              </td>
+
+              <!-- YEAR -->
 
               <td>
-                {{ vehicle.VIN }}
+
+                <span class="year-badge">
+                  {{ vehicle.Year || '-' }}
+                </span>
+
               </td>
 
-              <td>
-                {{ vehicle.Value | currency }}
-              </td>
+
+              <!-- MAKE -->
 
               <td>
-                {{ vehicle.DeleteReason || '-' }}
+
+                <strong>
+                  {{ vehicle.Make || '-' }}
+                </strong>
+
+              </td>
+
+
+              <!-- MODEL -->
+
+              <td>
+                {{ vehicle.Model || '-' }}
+              </td>
+
+
+              <!-- VIN -->
+
+              <td>
+
+                <span class="vin-number">
+                  {{ vehicle.VIN || '-' }}
+                </span>
+
+              </td>
+
+
+              <!-- VALUE -->
+
+              <td>
+
+                <span class="vehicle-value">
+
+                  {{
+                    vehicle.Value !== null &&
+                    vehicle.Value !== undefined
+                      ? (vehicle.Value | currency)
+                      : '-'
+                  }}
+
+                </span>
+
+              </td>
+
+
+              <!-- DELETE REASON -->
+
+              <td>
+
+                <div class="delete-reason">
+
+                  <i class="fa fa-exclamation-circle"></i>
+
+                  <span>
+                    {{ vehicle.DeleteReason || 'No reason provided' }}
+                  </span>
+
+                </div>
+
+              </td>
+
+
+              <!-- ENTERED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box entered-box"
+                  *ngIf="vehicle?.EnteredBy">
+
+                
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Entered
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(vehicle.EnteredBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          vehicle,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          vehicle,
+                          'EnteredBy',
+                          ['EnteredDate', 'EntryDate', 'CreatedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!vehicle?.EnteredBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- UPDATED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box updated-box"
+                  *ngIf="vehicle?.UpdatedBy">
+
+                 
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Updated
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(vehicle.UpdatedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          vehicle,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          vehicle,
+                          'UpdatedBy',
+                          ['UpdatedDate', 'UpdateDate', 'ModifiedDate']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!vehicle?.UpdatedBy">
+                  —
+                </span>
+
+              </td>
+
+
+              <!-- DELETED -->
+
+              <td class="audit-column-cell">
+
+                <div
+                  class="audit-box deleted-box"
+                  *ngIf="vehicle?.DeletedBy">
+
+                
+
+                  <div class="audit-content">
+
+                    <div class="audit-title">
+                      Deleted
+                    </div>
+
+                    <div class="audit-user">
+                      {{ getAuditName(vehicle.DeletedBy) }}
+                    </div>
+
+                    <div
+                      class="audit-date"
+                      *ngIf="
+                        getAuditDateFromObject(
+                          vehicle,
+                          'DeletedBy',
+                          ['DeletedDate', 'DeleteDate', 'DeletedOn']
+                        )
+                      ">
+
+                      <i class="fa fa-calendar"></i>
+
+                      {{
+                        getAuditDateFromObject(
+                          vehicle,
+                          'DeletedBy',
+                          ['DeletedDate', 'DeleteDate', 'DeletedOn']
+                        )
+                      }}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <span
+                  class="empty-audit"
+                  *ngIf="!vehicle?.DeletedBy">
+                  —
+                </span>
+
               </td>
 
             </tr>
@@ -440,8 +1539,6 @@
 
     </div>
 
-
   </div>
 
 </div>
-

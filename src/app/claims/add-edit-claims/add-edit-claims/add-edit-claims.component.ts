@@ -727,6 +727,8 @@ filterTrailers(searchValue: string = '') {
       return vinA.localeCompare(vinB);
     });
 }
+
+
 load(){
   let data = this.data ;
   

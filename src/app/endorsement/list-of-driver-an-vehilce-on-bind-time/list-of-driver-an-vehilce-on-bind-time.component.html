@@ -1,0 +1,235 @@
+
+<div *ngIf="!showEndrosementList" class="policy-dialog">
+
+  <!-- HEADER -->
+  <div class="top-header">
+    <h3>Driver & Vehicle Details</h3>
+
+    <button
+      type="button"
+      class="close-btn"
+      (click)="showEndrosementList = true">
+      ×
+    </button>
+  </div>
+
+
+  <!-- SEARCH -->
+  <div class="search-section">
+
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+      placeholder="Search driver, licence, state, vehicle, VIN..."
+      autocomplete="off"
+    />
+
+    <button
+      *ngIf="searchText"
+      type="button"
+      (click)="searchText = ''; onSearchChange()">
+      Clear
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       DRIVERS
+  ========================== -->
+
+  <div class="section">
+
+    <div class="section-header">
+      <h4>
+        Drivers ({{ filteredDrivers.length || 0 }})
+      </h4>
+    </div>
+
+
+    <div
+      class="table-container"
+      *ngIf="filteredDrivers.length; else noDrivers">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Driver Name</th>
+            <th>Licence No.</th>
+            <th>State</th>
+            <th>Driver Type</th>
+            <th>Stage</th>
+            <th>Renewal</th>
+            <th>Entered By</th>
+            <th>Updated By</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let driver of filteredDrivers;
+              let i = index
+            ">
+
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              {{ driver.DriverName || '-' }}
+            </td>
+
+            <td>
+              {{ driver.DriverLicenceNo || '-' }}
+            </td>
+
+            <td>
+              {{ driver.StateLicenced || '-' }}
+            </td>
+
+            <td>
+              {{ driver.DriverType || '-' }}
+            </td>
+
+            <td>
+              {{ driver.DriverStage || '-' }}
+            </td>
+
+            <td>
+              {{ driver.RenewalStatus || '-' }}
+            </td>
+
+            <td>
+              <div>
+                {{ driver.EnteredBy || '-' }}
+              </div>
+
+              <small *ngIf="driver.EnteredDateTime">
+                {{ driver.EnteredDateTime | date:'MM/dd/yyyy hh:mm a' }}
+              </small>
+            </td>
+
+            <td>
+              <div>
+                {{ driver.UpdatedBy || '-' }}
+              </div>
+
+              <small *ngIf="driver.UpdatedDateTime">
+                {{ driver.UpdatedDateTime | date:'MM/dd/yyyy hh:mm a' }}
+              </small>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <ng-template #noDrivers>
+
+      <div class="no-data">
+        No drivers found.
+      </div>
+
+    </ng-template>
+
+  </div>
+
+
+  <!-- =========================
+       VEHICLES
+  ========================== -->
+
+  <div class="section">
+
+    <div class="section-header">
+      <h4>
+        Vehicles ({{ filteredVehicles.length || 0 }})
+      </h4>
+    </div>
+
+
+    <div
+      class="table-container"
+      *ngIf="filteredVehicles.length; else noVehicles">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Vehicle Type</th>
+            <th>Year</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>VIN</th>
+            <th>Plate No.</th>
+            <th>State</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let vehicle of filteredVehicles;
+              let i = index
+            ">
+
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              {{ vehicle.VehicleType || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.Year || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.Make || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.Model || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.VIN || vehicle.VehicleVIN || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.PlateNo || vehicle.LicensePlate || '-' }}
+            </td>
+
+            <td>
+              {{ vehicle.State || '-' }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <ng-template #noVehicles>
+
+      <div class="no-data">
+        No vehicles found.
+      </div>
+
+    </ng-template>
+
+  </div>
+
+</div>
+

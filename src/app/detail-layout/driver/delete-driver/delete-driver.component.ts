@@ -31,10 +31,24 @@ export class DeleteDriverComponent {
   EndorsementID :any
   ChildPolicyID:any;
   AccountID:any;
+  ExpirationDate:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder,private http:AllApiService ,private cRouter:ActivatedRoute, private router:Router,private toastr: ToastrService,public dialogRef: MatDialogRef<DeleteDriverComponent>) { }
 
   ngOnInit(): void {
     this.userName = sessionStorage.getItem('UserName')
+     this.ExpirationDate = localStorage.getItem('ExpirationDate');
+
+if (this.ExpirationDate) {
+  const date = new Date(this.ExpirationDate);
+
+  this.ExpirationDate = date.toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric'
+  });
+} else {
+  this.ExpirationDate = '';
+}
     this.makeForm()
   
    
@@ -49,12 +63,11 @@ export class DeleteDriverComponent {
     this.ChildPolicyID = this.data.ChildPolicyID
     this.AccountID = this.data.AccountID
     this.EndorsementID = this.data.EndorsementID
-      
     this.deleteForm = this.fb.group({
     DriverID:[this.DriverID],
-    UserName:[this.userName],
-     AccountID:[this.AccountID],
-      ChildPolicyID:[this.ChildPolicyID],
+    UserName:[`${this.userName}\n${this.ExpirationDate}`],
+    AccountID:[this.AccountID],
+    ChildPolicyID:[this.ChildPolicyID],
     Reason:['',[Validators.required,]],
     EndorsementID:[this.EndorsementID]
     });

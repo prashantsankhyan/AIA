@@ -59,6 +59,7 @@ export class AddEditDriverComponent {
   userName:any;
   DriverStage: string = '';  // Store selected value
   hideDateOfHire = false;
+  ExpirationDate:any;
   
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder, private http:AllApiService,private toastr: ToastrService ,private cRouter:ActivatedRoute,private router: Router,private cdRef: ChangeDetectorRef,public dialog: MatDialog,public dialogRef: MatDialogRef<AddEditDriverComponent>){
  
@@ -71,7 +72,20 @@ export class AddEditDriverComponent {
     this.ChildPolicyID = localStorage.getItem('ChildPolicyID');
     this.EndorsementID = localStorage.getItem('EndorsementID')
     this.userName = sessionStorage.getItem('UserName')
-    
+   
+     this.ExpirationDate = localStorage.getItem('ExpirationDate');
+
+if (this.ExpirationDate) {
+  const date = new Date(this.ExpirationDate);
+
+  this.ExpirationDate = date.toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric'
+  });
+} else {
+  this.ExpirationDate = '';
+}
     if(this.userName == null){
       this.router.navigate(['/login'])
       this.dialogRef.close();
@@ -148,11 +162,10 @@ export class AddEditDriverComponent {
       Description:[''],
       MailReceived:[''],
       DriverType:[''],
-      
       Gender:[''],
       MartialStatus:[''],
       EffectiveDate:[''],
-      EnteredBy:[this.userName],
+      EnteredBy: [`${this.userName}\n${this.ExpirationDate}`],
       UpdatedBy:[''],
     });
   }
@@ -237,7 +250,9 @@ export class AddEditDriverComponent {
    
     
     this.addEditMarkedForm.controls['EffectiveDate'].setValue(this.EffectiveDate)
-    this.addEditMarkedForm.controls['UpdatedBy'].setValue(this.userName)
+    this.addEditMarkedForm.controls['UpdatedBy'].setValue(
+  `${this.userName}\n${this.ExpirationDate}`
+);
    }
    
   }

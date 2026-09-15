@@ -10,6 +10,9 @@ import { AddEditAccountComponent } from '../../main-layout/acoount-details/add-e
 import { DeletePolicyComponent } from '../../policy/delete-policy/delete-policy.component';
 import { AddEditPolicyComponent } from '../../policy/add-edit-policy/add-edit-policy.component';
 import { ListOfRemarksForEndrosementComponent } from '../list-of-remarks-for-endrosement/list-of-remarks-for-endrosement.component';
+import { ListOfAllDriverTruckAndAnotherComponent } from '../../policy/list-of-all-driver-truck-and-another/list-of-all-driver-truck-and-another.component';
+import { ListOfDriverAnVehilceOnBindTimeComponent } from '../list-of-driver-an-vehilce-on-bind-time/list-of-driver-an-vehilce-on-bind-time.component';
+import { ListOfEndrosementBaseAddEditDeleteDataComponent } from '../list-of-endrosement-base-add-edit-delete-data/list-of-endrosement-base-add-edit-delete-data.component';
 
 @Component({
   selector: 'app-list-of-policy-for-endrosement',
@@ -118,7 +121,37 @@ export class ListOfPolicyForEndrosementComponent {
   }
 
   
+  
+  viewAllData(data: any) {
+  
 
+    this.dialog.open(ListOfAllDriverTruckAndAnotherComponent, {
+    width: '1900px',
+    height: '700px',
+      data: { ChildPolicyID: data.ChildPolicyID, MarkedPolicyID: data.MarkedPolicyID }
+    });
+  }
+
+
+   bindTimeData(data: any) {
+  
+
+    this.dialog.open(ListOfDriverAnVehilceOnBindTimeComponent, {
+    width: '1900px',
+    height: '700px',
+      data: { ChildPolicyID: data.ChildPolicyID, MarkedPolicyID: data.MarkedPolicyID }
+    });
+  }
+
+  changeTimeData(data: any) {
+  
+
+    this.dialog.open(ListOfEndrosementBaseAddEditDeleteDataComponent, {
+    width: '1900px',
+    height: '700px',
+      data: { ChildPolicyID: data.ChildPolicyID, MarkedPolicyID: data.MarkedPolicyID }
+    });
+  }
   deletePolicy(data: any) {
     this.dialog.open(DeletePolicyComponent, {
       width: '400px',
@@ -146,6 +179,8 @@ export class ListOfPolicyForEndrosementComponent {
     localStorage.setItem('MarkedPolicyID', data.MarkedPolicyID);
     localStorage.setItem('ChildPolicyID', data.ChildPolicyID);
     localStorage.setItem('accountId', this.AccountID);
+   
+    
     localStorage.setItem('Description', data.Description);
 
     this.router.navigate(['./endorsement/endrosementDetail']);
@@ -155,6 +190,8 @@ export class ListOfPolicyForEndrosementComponent {
     localStorage.removeItem('EndorsementID');
     localStorage.removeItem('ChildPolicyID');
     localStorage.removeItem('Description');
+     localStorage.removeItem('ExpirationDate')
+    
   }
 
   shouldHighlight(data: any): boolean {

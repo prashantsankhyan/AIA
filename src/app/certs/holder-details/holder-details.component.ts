@@ -130,6 +130,7 @@ onHoldingIDChange(newHoldingID: string) {
   }
   extraVehicleDetails(data:any) {
     const dialogRef = this.dialog.open(ExtraVehicleDetailsComponent, {
+      width: '700px',
       data: {HoldingID:data.HoldingID},
     });  
   }

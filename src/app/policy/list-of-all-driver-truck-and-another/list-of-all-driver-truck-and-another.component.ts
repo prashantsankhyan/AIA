@@ -160,336 +160,1251 @@ onSearchChange(): void {
       String(vehicle.VIN || '').toLowerCase().includes(search)
     );
 }
-exportToExcel(): void {
 
-  const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet('Policy Details');
+getAuditName(value: any): string {
+  if (!value) {
+    return '-';
+  }
 
-  // =====================================================
-  // TITLE
-  // =====================================================
+  return String(value)
+    .split(/\r?\n/)[0]
+    ?.trim() || '-';
+}
 
-  worksheet.mergeCells('A1:G1');
 
-  const titleCell = worksheet.getCell('A1');
-  titleCell.value = 'POLICY DRIVER & VEHICLE DETAILS';
-  titleCell.font = {
-    bold: true,
-    size: 16
-  };
-  titleCell.alignment = {
-    horizontal: 'center',
-    vertical: 'middle'
-  };
+getAuditDate(value: any): string {
+  if (!value) {
+    return '';
+  }
 
-  worksheet.getRow(1).height = 28;
+  const parts = String(value)
+    .split(/\r?\n/)
+    .map(x => x.trim())
+    .filter(Boolean);
 
-  // =====================================================
-  // POLICY INFORMATION
-  // =====================================================
+  return parts.slice(1).join(' ').trim();
+}
 
-  worksheet.mergeCells('A2:G2');
 
-  const policyCell = worksheet.getCell('A2');
-  policyCell.value = `Marked Policy ID: ${this.MarkedPolicyID}`;
-  policyCell.font = {
-    bold: true,
-    size: 11
-  };
+/**
+ * Use this when API returns user/date separately.
+ */
+getAuditDateFromObject(
+  item: any,
+  userField: string,
+  dateFields: string[] = []
+): string {
 
-  // =====================================================
-  // DRIVERS TITLE
-  // =====================================================
+  // First check separate date fields
+  for (const field of dateFields) {
 
-  worksheet.mergeCells('A4:F4');
+    if (item?.[field]) {
 
-  const driverTitle = worksheet.getCell('A4');
-  driverTitle.value = 'DRIVERS';
-  driverTitle.font = {
-    bold: true,
-    size: 13
-  };
-  driverTitle.alignment = {
-    horizontal: 'center'
-  };
+      const date = new Date(item[field]);
 
-  // =====================================================
-  // DRIVER HEADERS
-  // =====================================================
+      if (!isNaN(date.getTime())) {
 
-  const driverHeaders = [
-    'Driver S.NO',
-    'Name',
-    'Licence Issued',
-    'Date of Birth',
-    'State Licenced',
-    'Licence No'
-  ];
+        return date.toLocaleString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
 
-  worksheet.getRow(5).values = driverHeaders;
+      }
 
-  worksheet.getRow(5).font = {
-    bold: true
-  };
-
-  worksheet.getRow(5).alignment = {
-    horizontal: 'center',
-    vertical: 'middle'
-  };
-
-  // =====================================================
-  // DRIVER DATA
-  // =====================================================
-
-  let driverRow = 6;
-
-  (this.listOfAllData?.Drivers || []).forEach(
-    (driver: any, index: number) => {
-
-      const row = worksheet.getRow(driverRow);
-
-      row.values = [
-        `${index + 1} - ${
-          driver.EndorsementID === 0
-            ? 'By Policy'
-            : 'By Endorsement'
-        }`,
-        driver.DriverName || '',
-        driver.YearofLicenceIssued
-          ? new Date(driver.YearofLicenceIssued)
-          : '',
-        driver.DateofBirth
-          ? new Date(driver.DateofBirth)
-          : '',
-        driver.StateLicenced || '',
-        driver.DriverLicenceNo || ''
-      ];
-
-      row.getCell(3).numFmt = 'mm/dd/yyyy';
-      row.getCell(4).numFmt = 'mm/dd/yyyy';
-
-      driverRow++;
     }
-  );
 
-  // =====================================================
-  // VEHICLE SECTION
-  // =====================================================
+  }
 
-  const vehicleTitleRow = driverRow + 2;
+  // Otherwise check date inside User field
+  return this.getAuditDate(item?.[userField]);
+}
 
-  worksheet.mergeCells(
-    `A${vehicleTitleRow}:G${vehicleTitleRow}`
-  );
 
-  const vehicleTitle =
-    worksheet.getCell(`A${vehicleTitleRow}`);
+async exportToExcel(): Promise<void> {
 
-  vehicleTitle.value = 'VEHICLES';
+  try {
 
-  vehicleTitle.font = {
-    bold: true,
-    size: 13
-  };
+    const workbook = new ExcelJS.Workbook();
 
-  vehicleTitle.alignment = {
-    horizontal: 'center'
-  };
+    workbook.creator = 'ATA';
+    workbook.created = new Date();
 
-  // =====================================================
-  // VEHICLE HEADERS
-  // =====================================================
 
-  const vehicleHeaderRow = vehicleTitleRow + 1;
+    // =========================================================
+    // WORKSHEET
+    // =========================================================
 
-  const vehicleHeaders = [
-    'Vehicle S.NO',
-    'Type',
-    'Year',
-    'Make',
-    'Model',
-    'VIN',
-    'Value'
-  ];
+    const worksheet = workbook.addWorksheet(
+      'Driver Vehicle Details'
+    );
 
-  worksheet.getRow(vehicleHeaderRow).values =
-    vehicleHeaders;
 
-  worksheet.getRow(vehicleHeaderRow).font = {
-    bold: true
-  };
+    // =========================================================
+    // PAGE SETTINGS
+    // =========================================================
 
-  worksheet.getRow(vehicleHeaderRow).alignment = {
-    horizontal: 'center',
-    vertical: 'middle'
-  };
+    worksheet.pageSetup = {
+      ...worksheet.pageSetup,
 
-  // =====================================================
-  // VEHICLE DATA
-  // =====================================================
+      orientation: 'landscape',
 
-  let vehicleRow = vehicleHeaderRow + 1;
+      paperSize: 9, // A4
 
-  (this.listOfAllData?.Vehicles || []).forEach(
-    (vehicle: any, index: number) => {
+      fitToPage: true,
 
-      const row = worksheet.getRow(vehicleRow);
+      fitToWidth: 1,
 
-      row.values = [
-        `${index + 1} - ${
-          vehicle.EndorsementID === 0
-            ? 'By Policy'
-            : 'By Endorsement'
-        }`,
-        vehicle.VehicleType || '',
-        vehicle.Year || '',
-        vehicle.Make || '',
-        vehicle.Model || '',
-        vehicle.VIN || '',
-        Number(vehicle.Value || 0)
-      ];
+      fitToHeight: 0,
 
-      row.getCell(7).numFmt = '$#,##0.00';
+      margins: {
+        left: 0.25,
+        right: 0.25,
+        top: 0.5,
+        bottom: 0.5,
+        header: 0.2,
+        footer: 0.2
+      }
+    };
 
-      vehicleRow++;
-    }
-  );
 
-  // =====================================================
-  // REMARKS
-  // =====================================================
+    // =========================================================
+    // FOOTER
+    // =========================================================
 
-  const remarkStartRow = vehicleRow + 2;
+    worksheet.headerFooter.oddFooter =
+      '&CDriver & Vehicle Details&RPage &P of &N';
 
-  worksheet.mergeCells(
-    `A${remarkStartRow}:G${remarkStartRow}`
-  );
 
-  worksheet.getCell(`A${remarkStartRow}`).value =
-    'REMARKS';
+    // =========================================================
+    // COLUMN WIDTHS
+    // =========================================================
 
-  worksheet.getCell(`A${remarkStartRow}`).font = {
-    bold: true,
-    size: 13
-  };
+    const widths = [
+      14, // A
+      22, // B
+      18, // C
+      18, // D
+      16, // E
+      24, // F
+      22, // G
+      22, // H
+      20, // I
+      22, // J
+      20, // K
+      22, // L
+      20, // M
+      22  // N
+    ];
 
-  let remarkRow = remarkStartRow + 1;
+    widths.forEach(
+      (width: number, index: number) => {
 
-  (this.listOfAllData?.Remarks || []).forEach(
-    (remark: any) => {
+        worksheet.getColumn(index + 1).width =
+          width;
 
-      worksheet.mergeCells(
-        `A${remarkRow}:G${remarkRow}`
+      }
+    );
+
+
+    // =========================================================
+    // COMMON FUNCTIONS
+    // =========================================================
+
+    const getAuditUser = (
+      value: any
+    ): string => {
+
+      if (!value) {
+        return '';
+      }
+
+      return this.getAuditName(value) || '';
+
+    };
+
+
+    const getAuditDateExcel = (
+      item: any,
+      userField: string,
+      dateFields: string[]
+    ): string => {
+
+      // No audit user = no audit date
+      if (!item?.[userField]) {
+        return '';
+      }
+
+
+      // First check separate date fields
+      for (const field of dateFields) {
+
+        const value =
+          item?.[field];
+
+        if (value) {
+
+          const date =
+            new Date(value);
+
+          if (!isNaN(date.getTime())) {
+
+            return date.toLocaleString(
+              'en-US',
+              {
+                month: '2-digit',
+                day: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              }
+            );
+
+          }
+
+          return String(value);
+
+        }
+
+      }
+
+
+      // Otherwise date may be inside
+      // EnteredBy / UpdatedBy / DeletedBy
+
+      return this.getAuditDate(
+        item[userField]
+      ) || '';
+
+    };
+
+
+    const formatDate = (
+      value: any
+    ): string => {
+
+      if (!value) {
+        return '';
+      }
+
+      const date =
+        new Date(value);
+
+      if (isNaN(date.getTime())) {
+        return String(value);
+      }
+
+      return date.toLocaleDateString(
+        'en-US'
       );
 
-      worksheet.getCell(`A${remarkRow}`).value =
-        remark.Remarks || '';
+    };
 
-      remarkRow++;
-    }
-  );
 
-  // =====================================================
-  // BORDERS
-  // =====================================================
+    const formatCurrency = (
+      value: any
+    ): string => {
 
-  worksheet.eachRow((row) => {
+      if (
+        value === null ||
+        value === undefined ||
+        value === ''
+      ) {
 
-    row.eachCell((cell) => {
+        return '';
 
-      cell.border = {
-        top: {
-          style: 'thin'
-        },
-        left: {
-          style: 'thin'
-        },
-        bottom: {
-          style: 'thin'
-        },
-        right: {
-          style: 'thin'
+      }
+
+      const number =
+        Number(value);
+
+      if (isNaN(number)) {
+        return String(value);
+      }
+
+      return number.toLocaleString(
+        'en-US',
+        {
+          style: 'currency',
+          currency: 'USD'
+        }
+      );
+
+    };
+
+
+    // =========================================================
+    // TITLE
+    // =========================================================
+
+    worksheet.mergeCells(
+      'A1:N1'
+    );
+
+    const titleCell =
+      worksheet.getCell('A1');
+
+    titleCell.value =
+      'Driver & Vehicle Details';
+
+    titleCell.font = {
+      bold: true,
+      size: 18,
+      color: {
+        argb: 'FFFFFF'
+      }
+    };
+
+    titleCell.alignment = {
+      horizontal: 'center',
+      vertical: 'middle'
+    };
+
+    titleCell.fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: {
+        argb: '1F4E78'
+      }
+    };
+
+    worksheet.getRow(1).height =
+      32;
+
+
+    // =========================================================
+    // SUB TITLE
+    // =========================================================
+
+    worksheet.mergeCells(
+      'A2:N2'
+    );
+
+    const subTitleCell =
+      worksheet.getCell('A2');
+
+    subTitleCell.value =
+      'Policy drivers, vehicles and activity history';
+
+    subTitleCell.font = {
+      italic: true,
+      size: 11,
+      color: {
+        argb: '666666'
+      }
+    };
+
+    subTitleCell.alignment = {
+      horizontal: 'center',
+      vertical: 'middle'
+    };
+
+    worksheet.getRow(2).height =
+      22;
+
+
+    // =========================================================
+    // SECTION HEADER
+    // =========================================================
+
+    const addSectionHeader = (
+      rowNumber: number,
+      title: string,
+      description: string
+    ): number => {
+
+      worksheet.mergeCells(
+        `A${rowNumber}:N${rowNumber}`
+      );
+
+      const cell =
+        worksheet.getCell(
+          `A${rowNumber}`
+        );
+
+      cell.value =
+        `${title}  |  ${description}`;
+
+      cell.font = {
+        bold: true,
+        size: 13,
+        color: {
+          argb: 'FFFFFF'
         }
       };
 
       cell.alignment = {
+        horizontal: 'left',
         vertical: 'middle'
       };
 
-    });
+      cell.fill = {
+        type: 'pattern',
+        pattern: 'solid',
+        fgColor: {
+          argb: '2F75B5'
+        }
+      };
 
-  });
+      worksheet.getRow(
+        rowNumber
+      ).height = 26;
 
-  // =====================================================
-  // COLUMN WIDTHS
-  // =====================================================
+      return rowNumber + 1;
 
-  worksheet.getColumn(1).width = 20;
-  worksheet.getColumn(2).width = 25;
-  worksheet.getColumn(3).width = 18;
-  worksheet.getColumn(4).width = 18;
-  worksheet.getColumn(5).width = 20;
-  worksheet.getColumn(6).width = 25;
-  worksheet.getColumn(7).width = 18;
-
-  // =====================================================
-  // FREEZE
-  // =====================================================
-
-  worksheet.views = [
-    {
-      state: 'frozen',
-      ySplit: 5
-    }
-  ];
-
-  // =====================================================
-  // FILTER DRIVER TABLE
-  // =====================================================
-
-  if ((this.listOfAllData?.Drivers || []).length > 0) {
-
-    worksheet.autoFilter = {
-      from: 'A5',
-      to: `F${driverRow - 1}`
     };
 
-  }
 
-  // =====================================================
-  // FILTER VEHICLE TABLE
-  // =====================================================
+    // =========================================================
+    // TABLE HEADER
+    // =========================================================
 
-  if ((this.listOfAllData?.Vehicles || []).length > 0) {
+    const addTableHeader = (
+      rowNumber: number,
+      headers: string[]
+    ): number => {
 
-    worksheet.autoFilter = {
-      from: `A${vehicleHeaderRow}`,
-      to: `G${vehicleRow - 1}`
+      headers.forEach(
+        (
+          header: string,
+          index: number
+        ) => {
+
+          const cell =
+            worksheet.getCell(
+              rowNumber,
+              index + 1
+            );
+
+          cell.value =
+            header;
+
+          cell.font = {
+            bold: true,
+            size: 10,
+            color: {
+              argb: 'FFFFFF'
+            }
+          };
+
+          cell.alignment = {
+            horizontal: 'center',
+            vertical: 'middle',
+            wrapText: true
+          };
+
+          cell.fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: {
+              argb: '5B9BD5'
+            }
+          };
+
+          cell.border = {
+            top: {
+              style: 'thin'
+            },
+            bottom: {
+              style: 'thin'
+            },
+            left: {
+              style: 'thin'
+            },
+            right: {
+              style: 'thin'
+            }
+          };
+
+        }
+      );
+
+      worksheet.getRow(
+        rowNumber
+      ).height = 30;
+
+      return rowNumber + 1;
+
     };
 
-  }
 
-  // =====================================================
-  // DOWNLOAD
-  // =====================================================
+    // =========================================================
+    // DATA ROW
+    // =========================================================
 
-  workbook.xlsx.writeBuffer().then((buffer: any) => {
+    const addDataRow = (
+      rowNumber: number,
+      values: any[],
+      rowType:
+        | 'normal'
+        | 'updated'
+        | 'endorsement'
+        | 'deleted' = 'normal'
+    ): number => {
 
-    const blob = new Blob(
-      [buffer],
-      {
-        type:
-          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      }
+      values.forEach(
+        (
+          value: any,
+          index: number
+        ) => {
+
+          const cell =
+            worksheet.getCell(
+              rowNumber,
+              index + 1
+            );
+
+          cell.value =
+            value === null ||
+            value === undefined
+              ? ''
+              : value;
+
+
+          cell.alignment = {
+            vertical: 'middle',
+            wrapText: true
+          };
+
+
+          cell.border = {
+            top: {
+              style: 'thin'
+            },
+            bottom: {
+              style: 'thin'
+            },
+            left: {
+              style: 'thin'
+            },
+            right: {
+              style: 'thin'
+            }
+          };
+
+
+          // =====================================================
+          // 🔴 DELETED ROW
+          // =====================================================
+
+          if (
+            rowType === 'deleted'
+          ) {
+
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: {
+                argb: 'F4CCCC'
+              }
+            };
+
+            cell.font = {
+              color: {
+                argb: '9C0006'
+              }
+            };
+
+          }
+
+
+          // =====================================================
+          // 🟡 UPDATED / ENDORSEMENT ROW
+          // =====================================================
+
+          else if (
+            rowType === 'updated' ||
+            rowType === 'endorsement'
+          ) {
+
+            cell.fill = {
+              type: 'pattern',
+              pattern: 'solid',
+              fgColor: {
+                argb: 'FFF2CC'
+              }
+            };
+
+            cell.font = {
+              color: {
+                argb: '7F6000'
+              }
+            };
+
+          }
+
+        }
+      );
+
+
+      worksheet.getRow(
+        rowNumber
+      ).height = 25;
+
+      return rowNumber + 1;
+
+    };
+
+
+    // =========================================================
+    // SPACE
+    // =========================================================
+
+    const addSpace = (
+      rowNumber: number
+    ): number => {
+
+      worksheet.getRow(
+        rowNumber
+      ).height = 8;
+
+      return rowNumber + 1;
+
+    };
+
+
+    // =========================================================
+    // START ROW
+    // =========================================================
+
+    let row = 4;
+
+
+    // =========================================================
+    // ACTIVE DRIVERS
+    // =========================================================
+
+    row = addSectionHeader(
+      row,
+      'Active Drivers',
+      'Current drivers assigned to the policy'
     );
+
+
+    row = addTableHeader(
+      row,
+      [
+        'Driver',
+        'Name',
+        'Licence Issued',
+        'Date of Birth',
+        'State',
+        'Licence No',
+        'Entered By',
+        'Entered Date',
+        'Updated By',
+        'Updated Date',
+        '',
+        '',
+        '',
+        ''
+      ]
+    );
+
+
+    (this.filteredDrivers || [])
+      .forEach(
+        (
+          driver: any,
+          index: number
+        ) => {
+
+          // ===================================================
+          // DETERMINE ROW TYPE
+          // ===================================================
+
+          let driverRowType:
+            | 'normal'
+            | 'updated'
+            | 'endorsement';
+
+          if (
+            Number(driver.EndorsementID) !== 0
+          ) {
+
+            driverRowType =
+              'endorsement';
+
+          }
+          else if (
+            driver.UpdatedBy
+          ) {
+
+            driverRowType =
+              'updated';
+
+          }
+          else {
+
+            driverRowType =
+              'normal';
+
+          }
+
+
+          row = addDataRow(
+            row,
+            [
+
+              // DRIVER
+              `${index + 1} - ${
+                driver.EndorsementID === 0
+                  ? 'Policy'
+                  : 'Endorsement'
+              }`,
+
+              // NAME
+              driver.DriverName || '',
+
+              // LICENCE ISSUED
+              formatDate(
+                driver.YearofLicenceIssued
+              ),
+
+              // DOB
+              formatDate(
+                driver.DateofBirth
+              ),
+
+              // STATE
+              driver.StateLicenced || '',
+
+              // LICENCE NO
+              driver.DriverLicenceNo || '',
+
+              // ENTERED BY
+              getAuditUser(
+                driver.EnteredBy
+              ),
+
+              // ENTERED DATE
+              getAuditDateExcel(
+                driver,
+                'EnteredBy',
+                [
+                  'EnteredDate',
+                  'EntryDate',
+                  'CreatedDate'
+                ]
+              ),
+
+              // UPDATED BY
+              getAuditUser(
+                driver.UpdatedBy
+              ),
+
+              // UPDATED DATE
+              getAuditDateExcel(
+                driver,
+                'UpdatedBy',
+                [
+                  'UpdatedDate',
+                  'UpdateDate',
+                  'ModifiedDate'
+                ]
+              ),
+
+              '',
+              '',
+              '',
+              ''
+
+            ],
+            driverRowType
+          );
+
+        }
+      );
+
+
+    // =========================================================
+    // DELETED DRIVERS
+    // =========================================================
+
+    row = addSpace(row);
+
+
+    row = addSectionHeader(
+      row,
+      'Deleted Drivers',
+      'Removed drivers and deletion history'
+    );
+
+
+    row = addTableHeader(
+      row,
+      [
+        'Driver',
+        'Name',
+        'Licence Issued',
+        'Date of Birth',
+        'State',
+        'Licence No',
+        'Delete Reason',
+        'Entered By',
+        'Entered Date',
+        'Updated By',
+        'Updated Date',
+        'Deleted By',
+        'Deleted Date',
+        ''
+      ]
+    );
+
+
+    (this.filteredDeletedDrivers || [])
+      .forEach(
+        (
+          driver: any,
+          index: number
+        ) => {
+
+          row = addDataRow(
+            row,
+            [
+
+              // DRIVER
+              index + 1,
+
+              // NAME
+              driver.DriverName || '',
+
+              // LICENCE ISSUED
+              formatDate(
+                driver.YearofLicenceIssued
+              ),
+
+              // DOB
+              formatDate(
+                driver.DateofBirth
+              ),
+
+              // STATE
+              driver.StateLicenced || '',
+
+              // LICENCE NO
+              driver.DriverLicenceNo || '',
+
+              // DELETE REASON
+              driver.DeleteReason || '',
+
+              // ENTERED BY
+              getAuditUser(
+                driver.EnteredBy
+              ),
+
+              // ENTERED DATE
+              getAuditDateExcel(
+                driver,
+                'EnteredBy',
+                [
+                  'EnteredDate',
+                  'EntryDate',
+                  'CreatedDate'
+                ]
+              ),
+
+              // UPDATED BY
+              getAuditUser(
+                driver.UpdatedBy
+              ),
+
+              // UPDATED DATE
+              getAuditDateExcel(
+                driver,
+                'UpdatedBy',
+                [
+                  'UpdatedDate',
+                  'UpdateDate',
+                  'ModifiedDate'
+                ]
+              ),
+
+              // DELETED BY
+              getAuditUser(
+                driver.DeletedBy
+              ),
+
+              // DELETED DATE
+              getAuditDateExcel(
+                driver,
+                'DeletedBy',
+                [
+                  'DeletedDate',
+                  'DeleteDate',
+                  'DeletedOn'
+                ]
+              ),
+
+              ''
+
+            ],
+            'deleted'
+          );
+
+        }
+      );
+
+
+    // =========================================================
+    // ACTIVE VEHICLES
+    // =========================================================
+
+    row = addSpace(row);
+
+
+    row = addSectionHeader(
+      row,
+      'Active Vehicles',
+      'Current vehicles assigned to the policy'
+    );
+
+
+    row = addTableHeader(
+      row,
+      [
+        'Vehicle',
+        'Type',
+        'Year',
+        'Make',
+        'Model',
+        'VIN',
+        'Value',
+        'Entered By',
+        'Entered Date',
+        'Updated By',
+        'Updated Date',
+        '',
+        '',
+        ''
+      ]
+    );
+
+
+    (this.filteredVehicles || [])
+      .forEach(
+        (
+          vehicle: any,
+          index: number
+        ) => {
+
+          // ===================================================
+          // DETERMINE ROW TYPE
+          // ===================================================
+
+          let vehicleRowType:
+            | 'normal'
+            | 'updated'
+            | 'endorsement';
+
+          if (
+            Number(vehicle.EndorsementID) !== 0
+          ) {
+
+            vehicleRowType =
+              'endorsement';
+
+          }
+          else if (
+            vehicle.UpdatedBy
+          ) {
+
+            vehicleRowType =
+              'updated';
+
+          }
+          else {
+
+            vehicleRowType =
+              'normal';
+
+          }
+
+
+          row = addDataRow(
+            row,
+            [
+
+              // VEHICLE
+              `${index + 1} - ${
+                vehicle.EndorsementID === 0
+                  ? 'Policy'
+                  : 'Endorsement'
+              }`,
+
+              // TYPE
+              vehicle.VehicleType || '',
+
+              // YEAR
+              vehicle.Year || '',
+
+              // MAKE
+              vehicle.Make || '',
+
+              // MODEL
+              vehicle.Model || '',
+
+              // VIN
+              vehicle.VIN || '',
+
+              // VALUE
+              formatCurrency(
+                vehicle.Value
+              ),
+
+              // ENTERED BY
+              getAuditUser(
+                vehicle.EnteredBy
+              ),
+
+              // ENTERED DATE
+              getAuditDateExcel(
+                vehicle,
+                'EnteredBy',
+                [
+                  'EnteredDate',
+                  'EntryDate',
+                  'CreatedDate'
+                ]
+              ),
+
+              // UPDATED BY
+              getAuditUser(
+                vehicle.UpdatedBy
+              ),
+
+              // UPDATED DATE
+              getAuditDateExcel(
+                vehicle,
+                'UpdatedBy',
+                [
+                  'UpdatedDate',
+                  'UpdateDate',
+                  'ModifiedDate'
+                ]
+              ),
+
+              '',
+              '',
+              ''
+
+            ],
+            vehicleRowType
+          );
+
+        }
+      );
+
+
+    // =========================================================
+    // DELETED VEHICLES
+    // =========================================================
+
+    row = addSpace(row);
+
+
+    row = addSectionHeader(
+      row,
+      'Deleted Vehicles',
+      'Removed vehicles and deletion history'
+    );
+
+
+    row = addTableHeader(
+      row,
+      [
+        'Vehicle',
+        'Type',
+        'Year',
+        'Make',
+        'Model',
+        'VIN',
+        'Value',
+        'Delete Reason',
+        'Entered By',
+        'Entered Date',
+        'Updated By',
+        'Updated Date',
+        'Deleted By',
+        'Deleted Date'
+      ]
+    );
+
+
+    (this.filteredDeletedVehicles || [])
+      .forEach(
+        (
+          vehicle: any,
+          index: number
+        ) => {
+
+          row = addDataRow(
+            row,
+            [
+
+              // VEHICLE
+              index + 1,
+
+              // TYPE
+              vehicle.VehicleType || '',
+
+              // YEAR
+              vehicle.Year || '',
+
+              // MAKE
+              vehicle.Make || '',
+
+              // MODEL
+              vehicle.Model || '',
+
+              // VIN
+              vehicle.VIN || '',
+
+              // VALUE
+              formatCurrency(
+                vehicle.Value
+              ),
+
+              // DELETE REASON
+              vehicle.DeleteReason || '',
+
+              // ENTERED BY
+              getAuditUser(
+                vehicle.EnteredBy
+              ),
+
+              // ENTERED DATE
+              getAuditDateExcel(
+                vehicle,
+                'EnteredBy',
+                [
+                  'EnteredDate',
+                  'EntryDate',
+                  'CreatedDate'
+                ]
+              ),
+
+              // UPDATED BY
+              getAuditUser(
+                vehicle.UpdatedBy
+              ),
+
+              // UPDATED DATE
+              getAuditDateExcel(
+                vehicle,
+                'UpdatedBy',
+                [
+                  'UpdatedDate',
+                  'UpdateDate',
+                  'ModifiedDate'
+                ]
+              ),
+
+              // DELETED BY
+              getAuditUser(
+                vehicle.DeletedBy
+              ),
+
+              // DELETED DATE
+              getAuditDateExcel(
+                vehicle,
+                'DeletedBy',
+                [
+                  'DeletedDate',
+                  'DeleteDate',
+                  'DeletedOn'
+                ]
+              )
+
+            ],
+            'deleted'
+          );
+
+        }
+      );
+
+
+    // =========================================================
+    // FREEZE
+    // =========================================================
+
+    worksheet.views = [
+      {
+        state: 'frozen',
+        ySplit: 3
+      }
+    ];
+
+
+    // =========================================================
+    // PRINT AREA
+    // =========================================================
+
+    worksheet.pageSetup.printArea =
+      `A1:N${row - 1}`;
+
+
+    // =========================================================
+    // PRINT SETTINGS
+    // =========================================================
+
+    worksheet.pageSetup.horizontalDpi =
+      300;
+
+    worksheet.pageSetup.verticalDpi =
+      300;
+
+
+    // =========================================================
+    // WRITE FILE
+    // =========================================================
+
+    const buffer =
+      await workbook.xlsx.writeBuffer();
+
+
+    const blob =
+      new Blob(
+        [buffer],
+        {
+          type:
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        }
+      );
+
+
+    // =========================================================
+    // FILE NAME
+    // =========================================================
+
+    const date =
+      new Date()
+        .toISOString()
+        .slice(0, 10);
+
 
     saveAs(
       blob,
-      `Policy_Driver_Vehicle_${this.MarkedPolicyID}.xlsx`
+      `Driver_Vehicle_Details_${date}.xlsx`
     );
 
-  });
+
+  }
+  catch (error) {
+
+    console.error(
+      'Excel export error:',
+      error
+    );
+
+  }
+
 }
+
+
+
   closeModel(): void {
     this.dialogRef.close();
    

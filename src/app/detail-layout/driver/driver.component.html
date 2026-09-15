@@ -128,7 +128,49 @@
                     : data?.DriverStage
                 }}</td>
                 <td [ngClass]="isAuthorized(data?.AuthType) ? 'force-green' : 'force-yellow'"> {{ capitalizeFirstLetter(data?.AuthType) }}</td>
-                 <td>{{ data?.EnteredBy === '' || data?.EnteredBy == null ? data.UpdatedBy + ' (Updated)' : data.EnteredBy }}</td>
+   <td>
+  <ng-container *ngIf="data?.EnteredBy || data?.UpdatedBy">
+
+    <!-- ================= UPDATED INFORMATION ================= -->
+    <div *ngIf="data?.UpdatedBy">
+
+      <div *ngIf="data.UpdatedBy.split('\n')[1]?.trim()">
+        <strong>DateOfUpdated:</strong>
+        <span class="date-highlight">
+          {{ data.UpdatedBy.split('\n')[1].trim() }}
+        </span>
+      </div>
+
+      <div *ngIf="data.UpdatedBy.split('\n')[0]?.trim()">
+        <strong>Updated By:</strong>
+        {{ data.UpdatedBy.split('\n')[0].trim() }}
+      </div>
+
+      <br>
+
+    </div>
+
+
+    <!-- ================= ENTERED INFORMATION ================= -->
+    <div *ngIf="data?.EnteredBy">
+
+      <div *ngIf="data.EnteredBy.split('\n')[1]?.trim()">
+        <strong>DateOnEntered:</strong>
+        <span class="date-highlight">
+          {{ data.EnteredBy.split('\n')[1].trim() }}
+        </span>
+      </div>
+
+      <div *ngIf="data.EnteredBy.split('\n')[0]?.trim()">
+        <strong>Entered By:</strong>
+        {{ data.EnteredBy.split('\n')[0].trim() }}
+      </div>
+
+    </div>
+
+  </ng-container>
+</td>        
+     
                  <td>{{data.RenewalStatus =="Fresh" ?'NEW':'RENEW'}}</td>
 
                  <td *ngIf="showSaveButtion"><i class="material-icons"  [matMenuTriggerFor]="menu"  style="color: #0397d6;">&#xE8B8;</i>

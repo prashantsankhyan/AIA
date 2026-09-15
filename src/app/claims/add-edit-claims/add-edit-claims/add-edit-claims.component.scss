@@ -255,3 +255,11 @@ tr.bold-row:hover {
  
   border-left: 4px solid #0c5460;
 }
+
+
+
+
+::ng-deep .mat-mdc-option {
+  font-size: 14px !important;
+  font-family: Arial, sans-serif !important;
+}

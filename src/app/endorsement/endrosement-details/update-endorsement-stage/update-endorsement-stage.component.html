@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 
@@ -21,7 +21,7 @@
              <select class="form-select formControl mt-1" formControlName ="StageType"  aria-label="Default select example" style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['StageType'].errors }" >
                  <option hidden value="" disabled selected  > Select Stage</option>
                  <option  value="Issue">Issue</option>
-                 <option  value="Not Issue">Not Issue</option>
+                 <option  value="In process">In process</option>
                
                  
                 
@@ -37,16 +37,6 @@
        
        
        
-       
-         <!-- <div class="text-center mt-5">
-             <div class="btn-group  gap-2  " *ngIf ="messageSuccess">
-                
-                 <button mat-stroked-button class="text-right" (click)="onSubmit()" >Save</button>
-                 <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
-                
-               
-               </div>
-         </div> -->
      
  
  
@@ -65,5 +55,105 @@
    
    </div>
 </div>
+
+</div> -->
+
+<div class="stage-update-container">
+
+  <!-- Header -->
+  <div class="stage-update-header">
+    <div class="header-title">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <span>Update Stage Type</span>
+    </div>
+
+    <button
+      type="button"
+      class="close-btn"
+      mat-dialog-close
+      aria-label="Close">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+
+  <!-- Form -->
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+    <div class="stage-update-body">
+
+      <div class="form-group">
+
+        <label for="stageType">
+          Select Stage
+          <span class="required">*</span>
+        </label>
+
+        <div class="select-wrapper">
+          <i class="fa fa-tasks select-icon"></i>
+
+          <select
+            id="stageType"
+            class="form-select stage-select"
+            formControlName="StageType"
+            [ngClass]="{
+              'is-invalid': submit && f['StageType'].errors
+            }">
+
+            <option value="" disabled>
+              Select Stage
+            </option>
+
+            <option value="Issue">
+              Issue
+            </option>
+
+            <option value="In process">
+              In process
+            </option>
+
+          </select>
+        </div>
+
+        <div
+          *ngIf="submit && f['StageType'].errors"
+          class="validation-error">
+
+          <i class="fa fa-exclamation-circle"></i>
+          Stage is required
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <div class="stage-update-footer">
+
+      <button
+        type="submit"
+        class="btn-update"
+        [disabled]="updateForm.invalid && submit">
+
+        <i class="fa fa-check"></i>
+        Update Stage
+
+      </button>
+
+      <button
+        type="button"
+        class="btn-cancel"
+        mat-dialog-close>
+
+        <i class="fa fa-times"></i>
+        Cancel
+
+      </button>
+
+    </div>
+
+  </form>
 
 </div>

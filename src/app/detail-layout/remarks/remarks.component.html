@@ -9,25 +9,25 @@
       <div class="row">
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="AutoLiability"></textarea>
+            <textarea class="form-control" formControlName="AutoLiability"  (input)="formatCurrencyText('AutoLiability', $event)"></textarea>
             <label>Limit</label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="AL_Deductible"></textarea>
+            <textarea class="form-control" formControlName="AL_Deductible"(input)="formatCurrencyText('AL_Deductible', $event)"></textarea>
             <label>Deductible</label>
           </div>
         </div>
          <div class="col-6 mt-2">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="UninsuredMotorist"></textarea>
+            <textarea class="form-control" formControlName="UninsuredMotorist" (input)="formatCurrencyText('UninsuredMotorist', $event)"></textarea>
             <label>Uninsured Motorist</label>
           </div>
         </div>
         <div class="col-6 mt-2">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="UnderinsuredMotorist"></textarea>
+            <textarea class="form-control" formControlName="UnderinsuredMotorist"(input)="formatCurrencyText('UnderinsuredMotorist', $event)"></textarea>
             <label>Underinsured Motorist</label>
           </div>
         </div>
@@ -37,13 +37,13 @@
       <div class="row">
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="PhysicalDamage"  (blur)="formatCoverage('PhysicalDamage', 'Comprehensive')"></textarea>
+            <textarea class="form-control" formControlName="PhysicalDamage"  (input)="formatCurrencyText('PhysicalDamage', $event)"></textarea>
             <label>Comprehensive Deductible</label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="PhyDamage_Deductible"(blur)="formatCoverage('PhyDamage_Deductible', 'Collision')"></textarea>
+            <textarea class="form-control" formControlName="PhyDamage_Deductible"(input)="formatCurrencyText('PhyDamage_Deductible', $event)"></textarea>
             <label>Collision Deductible</label>
           </div>
         </div>
@@ -53,25 +53,25 @@
       <div class="row">
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="MTC"  (blur)="formatCoverage('MTC', 'Limit')"></textarea>
+            <textarea class="form-control" formControlName="MTC"  (input)="formatCurrencyText('MTC', $event)"></textarea>
             <label>Limit</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="MTC_Deductible"(blur)="formatCoverage('MTC_Deductible', 'Ded')"></textarea>
+            <textarea class="form-control" formControlName="MTC_Deductible" (input)="formatCurrencyText('MTC_Deductible', $event)"></textarea>
             <label>Deductible</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="MTC_Refer_Breakdown"></textarea>
+            <textarea class="form-control" formControlName="MTC_Refer_Breakdown" (input)="formatCurrencyText('MTC_Refer_Breakdown', $event)"></textarea>
             <label>Reefer Breakdown Deductible</label>
           </div>
         </div>
           <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control"  formControlName="MTC_Theft_of_Electronic"></textarea>
+            <textarea class="form-control"  formControlName="MTC_Theft_of_Electronic" (input)="formatCurrencyText('MTC_Theft_of_Electronic', $event)"></textarea>
             <label>theft of electronic</label>
           </div>
         </div>
@@ -87,13 +87,13 @@
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="Trailer_limit"></textarea>
+            <textarea class="form-control" formControlName="Trailer_limit" (input)="formatCurrencyText('Trailer_limit', $event)"></textarea>
             <label>Limit</label>
           </div>
         </div>
          <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="Trailer_Interchange_Deductible"></textarea>
+            <textarea class="form-control" formControlName="Trailer_Interchange_Deductible" (input)="formatCurrencyText('Trailer_Interchange_Deductible', $event)"></textarea>
             <label>Trailer Interchange Deductible</label>
           </div>
         </div>
@@ -103,43 +103,43 @@
       <div class="row">
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_occurence"></textarea>
+            <textarea class="form-control" formControlName="GLC_occurence" (input)="formatCurrencyText('GLC_occurence', $event)"></textarea>
             <label>EACH OCCURRENCE</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_DamageToRented"></textarea>
+            <textarea class="form-control" formControlName="GLC_DamageToRented"(input)="formatCurrencyText('GLC_DamageToRented', $event)"></textarea>
             <label>DAMAGE TO RENTED</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_MedExp"></textarea>
+            <textarea class="form-control" formControlName="GLC_MedExp"  (input)="formatCurrencyText('GLC_MedExp', $event)"></textarea>
             <label>MED EXP</label>
           </div>
         </div>
         <div class="col-3">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_PersonalAdv"></textarea>
+            <textarea class="form-control" formControlName="GLC_PersonalAdv"  (input)="formatCurrencyText('GLC_PersonalAdv', $event)"></textarea>
             <label>PERSONAL & ADV INJURY</label>
           </div>
         </div>
         <div class="col-3 mt-1">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_GeneralAgg"></textarea>
+            <textarea class="form-control" formControlName="GLC_GeneralAgg"(input)="formatCurrencyText('GLC_GeneralAgg', $event)"></textarea>
             <label>GENERAL AGGREGATE</label>
           </div>
         </div>
         <div class="col-3 mt-1">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_Productcomp"></textarea>
+            <textarea class="form-control" formControlName="GLC_Productcomp"(input)="formatCurrencyText('GLC_Productcomp', $event)"></textarea>
             <label>PRODUCTS-COMP</label>
           </div>
         </div>
         <div class="col-3 mt-1">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="GLC_Others"></textarea>
+            <textarea class="form-control" formControlName="GLC_Others"(input)="formatCurrencyText('GLC_Others', $event)"></textarea>
             <label>Others</label>
           </div>
         </div>
@@ -245,13 +245,13 @@
       <div class="row">
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="TowingLimit_Limit"></textarea>
+            <textarea class="form-control" formControlName="TowingLimit_Limit"(input)="formatCurrencyText('TowingLimit_Limit', $event)"></textarea>
             <label>Limit:</label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-floating">
-            <textarea class="form-control" formControlName="TowingLimit_Deductible"></textarea>
+            <textarea class="form-control" formControlName="TowingLimit_Deductible"(input)="formatCurrencyText('TowingLimit_Deductible', $event)"></textarea>
             <label>Deductible</label>
           </div>
         </div>
@@ -261,7 +261,7 @@
         <div class="col-6">
           <div class="form-floating">
             <!-- <textarea class="form-control"  TIV  [value]="addEditRemarksForm.get('TIV')?.value | currency"></textarea> -->
-             <textarea class="form-control" formControlName="TIV"   ></textarea>
+             <textarea class="form-control" formControlName="TIV"  (input)="formatCurrencyText('TIV', $event)" ></textarea>
             <label>TIV</label>
           </div>
         </div>

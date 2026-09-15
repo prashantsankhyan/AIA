@@ -116,7 +116,7 @@ export class InnerDashboardComponent {
 
 
   ngOnInit(){
-
+  localStorage.removeItem('ExpirationDate')
      if (!sessionStorage.getItem('reloaded')) {
     sessionStorage.setItem('reloaded', 'true');
     window.location.reload();

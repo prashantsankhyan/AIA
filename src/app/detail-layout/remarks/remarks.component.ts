@@ -68,6 +68,101 @@ IsChildPolicyExist:any;
     // this.getDetails()
   }
 
+// formatCurrencyText(controlName: string, event: Event) {
+//   const textarea = event.target as HTMLTextAreaElement;
+
+//   let value = textarea.value;
+
+//   // Remove $ that is already before a number
+//   value = value.replace(/\$\s*(?=\d)/g, '');
+
+//   // Add $ before numbers
+//   value = value.replace(/(?<!\$)(?<!\d)(\d[\d,]*)/g, '$$$1');
+
+//   this.addEditRemarksForm.patchValue(
+//     {
+//       [controlName]: value
+//     },
+//     { emitEvent: false }
+//   );
+// }
+
+formatCurrencyText(controlName: string, event: Event) {
+  const textarea = event.target as HTMLTextAreaElement;
+
+  const oldValue = textarea.value;
+  const cursorPosition = textarea.selectionStart;
+
+  // Find the number currently being typed around the cursor
+  const beforeCursor = oldValue.substring(0, cursorPosition);
+  const match = beforeCursor.match(/(?:\$)?([\d,]*(?:\.\d*)?)$/);
+
+  if (!match) {
+    return;
+  }
+
+  const numberText = match[1];
+
+  // Need at least one digit
+  if (!/\d/.test(numberText)) {
+    return;
+  }
+
+  // Remove commas and convert to number
+  const cleanNumber = numberText.replace(/,/g, '');
+
+  const parts = cleanNumber.split('.');
+  const integerPart = parts[0] || '0';
+  const decimalPart = parts[1];
+
+  // Add commas to integer part
+  const formattedInteger = Number(integerPart).toLocaleString('en-US');
+
+  // Don't force .00 while user is still typing
+  let formattedNumber = formattedInteger;
+
+  if (cleanNumber.includes('.')) {
+    formattedNumber += '.' + (decimalPart ?? '');
+  }
+
+  // Keep $ if number has $ before it
+  const numberStart = cursorPosition - numberText.length;
+
+  const hasDollar =
+    numberStart > 0 && oldValue[numberStart - 1] === '$';
+
+  if (hasDollar) {
+    formattedNumber = '$' + formattedNumber;
+  } else {
+    formattedNumber = '$' + formattedNumber;
+  }
+
+  // Replace only the number being typed
+  const start = hasDollar ? numberStart - 1 : numberStart;
+
+  const newValue =
+    oldValue.substring(0, start) +
+    formattedNumber +
+    oldValue.substring(cursorPosition);
+
+  const newCursorPosition =
+    start + formattedNumber.length;
+
+  this.addEditRemarksForm.patchValue(
+    {
+      [controlName]: newValue
+    },
+    { emitEvent: false }
+  );
+
+  // Restore cursor
+  setTimeout(() => {
+    textarea.setSelectionRange(
+      newCursorPosition,
+      newCursorPosition
+    );
+  });
+}
   initForm() {
     this.addEditRemarksForm = this.fb.group({
       RemarkID: [0],

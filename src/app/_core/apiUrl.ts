@@ -260,6 +260,11 @@ loginStartDate:'Login/StartLoginSession',
 // api/Driver/GetDeletedLogDriverByChildPolicyIDMarkedIDEndrosementID/{MarkedPolicyID}/ChildPolicyId}/{EndorsementId}
 // api/Vehicle/GetDeletedLogDriverByChildPolicyIDMarkedIDEndrosementID/{MarkedPolicyID}/ChildPolicyId}/{EndorsementId} -- for all delete of vehicle
   allEditDeleteUpdatedDataList:'Driver/GetAllVehicleDriverAddByChildPolicyIDMarkedIDEndrosementID',
+  policyTimeAddVehicleOrDriver:'Driver/GetAllDriverVehicleIssueLog',
+  listOfDriverDetailEndrosemtTime:'Driver/GetDriverLogByMarkChild',
+  listOdDriverDetailsEndrosemtTimeByEndrosemetId:'Driver/GetDriverLogByMarkChildEnd',
+  listOfVehilceEndrosementTime:'Vehicle/GetVehicleLogByMarkChild',
+  listOfVehicleEndrosemetTimeByEndrsementId:'Vehicle/GetVehicleLogByMarkChildEnd'
 
 
 

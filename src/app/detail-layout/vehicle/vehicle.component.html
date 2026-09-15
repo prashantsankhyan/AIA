@@ -94,7 +94,7 @@
                 <th>Vehicle Type</th>
                 <th>BodyType</th>
                 <th>Value</th>
-                <th>EnteredBy</th>
+                <th style="text-align: center;">Info</th>
                 <th *ngIf ="showSaveButtion"></th>
               </tr>
             </thead>
@@ -110,16 +110,48 @@
                  <td>{{data?.VehicleType}}</td>
                  <td>{{data?.BodyType}}</td>
                  <td>{{data?.Value | currency:'USD':'symbol'}}</td>
-                 <td>
+<td>
+  <ng-container *ngIf="data?.EnteredBy || data?.UpdatedBy">
 
-                  <ng-container *ngIf="data?.UpdatedBy; else enteredByOnly">
-                    {{ data?.UpdatedBy }} (Updated by {{ data?.EnteredBy }})
-                  </ng-container>
-                  <ng-template #enteredByOnly>
-                    {{ data?.EnteredBy }}
-                  </ng-template>
-                 </td>
-               
+    <!-- ================= UPDATED INFORMATION ================= -->
+    <div *ngIf="data?.UpdatedBy">
+
+      <div *ngIf="data.UpdatedBy.split('\n')[1]?.trim()">
+        <strong>DateOfUpdated:</strong>
+        <span class="date-highlight">
+          {{ data.UpdatedBy.split('\n')[1].trim() }}
+        </span>
+      </div>
+
+      <div *ngIf="data.UpdatedBy.split('\n')[0]?.trim()">
+        <strong>Updated By:</strong>
+        {{ data.UpdatedBy.split('\n')[0].trim() }}
+      </div>
+
+      <br>
+
+    </div>
+
+
+    <!-- ================= ENTERED INFORMATION ================= -->
+    <div *ngIf="data?.EnteredBy">
+
+      <div *ngIf="data.EnteredBy.split('\n')[1]?.trim()">
+        <strong>DateOnEntered:</strong>
+        <span class="date-highlight">
+          {{ data.EnteredBy.split('\n')[1].trim() }}
+        </span>
+      </div>
+
+      <div *ngIf="data.EnteredBy.split('\n')[0]?.trim()">
+        <strong>Entered By:</strong>
+        {{ data.EnteredBy.split('\n')[0].trim() }}
+      </div>
+
+    </div>
+
+  </ng-container>
+</td>
      
                  <td *ngIf ="showSaveButtion"><button mat-button class="settings" title="Settings" [matMenuTriggerFor]="menu" *ngIf ="showSaveButtion" style="color: #0397d6;" ><i class="material-icons">&#xE8B8;</i></button>
                   <mat-menu #menu="matMenu" >

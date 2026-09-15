@@ -48,7 +48,6 @@
            <thead >
              <tr>
               <th>  Policy Type </th>
-         
               <th>Reported To</th>
               <th>Claim Type</th>
               <th>Driver</th>
@@ -56,6 +55,7 @@
               <th>Trailer </th>
               <th>Info Received</th>
               <th> ClaimNumber</th>  
+              <th>Date of Loss</th>
               <th >EnteredDate</th>
               <th >EnteredBy </th>
               <th > </th>
@@ -95,7 +95,8 @@
 
       <td>{{data.InformationReceivedBy}}</td>
       <td>{{data.ClaimNumber}}</td>
-     <td>{{data.EnteredDateTime|date:'dd/MM/yyyy'}}</td>
+      <td>{{data.DateofLoss |date:'MM/dd/yyyy'}}</td>
+     <td>{{data.EnteredDateTime|date:'MM/dd/yyyy'}}</td>
      <td>{{data.EnteredBy}} </td>
               <td>{{data.DeleteReason}}</td>
               <td>

@@ -81,7 +81,7 @@
                <option value="Running">🚗 Running Policy</option>
                 <option value="Expire Policy">⏳ Expire Policy</option>
              </select>
-             <label >Select Claim  Type</label>
+             <label >Select Policy Type</label>
              </div>
  
               
@@ -220,12 +220,37 @@
 
     <!-- DRIVER LIST -->
 <mat-option
-  *ngFor="let data of filteredDrivers"
-  [value]="data.DriverID"
+  *ngFor="let Ddata of filteredDrivers"
+  [value]="Ddata.DriverID"
 >
-  👤 {{ data.DriverName }}
-  | 🪪 {{ data.DriverLicenceNo }}
-  | 📅 {{ data.EnteredDateTime | date:'MM/dd/yyyy' }}
+  👤 {{ Ddata.DriverName }}
+  | 🪪 {{ Ddata.DriverLicenceNo }}
+  | 📅 {{ Ddata.EnteredDateTime | date:'MM/dd/yyyy' }}
+  <ng-container
+  *ngIf="Ddata.EnteredBy?.split('\n')[1]?.trim() || Ddata.BindTime"
+>
+  <span class="date-info">
+    🕒Enter
+    {{
+      Ddata.EnteredBy?.split('\n')[1]?.trim()
+        || (Ddata.BindTime | date:'MM/dd/yyyy')
+    }}
+  </span>
+</ng-container>
+
+<!-- Update Date -->
+<ng-container *ngIf="Ddata.UpdatedBy?.split('\n')[1]?.trim()">
+  <span
+    class="date-separator"
+    *ngIf="Ddata.EnteredBy?.split('\n')[1]?.trim() || Ddata.BindTime"
+  >
+    |
+  </span>
+
+  <span class="date-info">
+   🕒Updated {{ Ddata.UpdatedBy.split('\n')[1].trim() }}
+  </span>
+</ng-container>
 </mat-option>
 
     <!-- NO RESULTS -->
@@ -272,6 +297,7 @@
     formControlName="TruckID"
     panelWidth="650px"
      placeholder="Select Truck"
+      class="truck-select"
     (selectionChange)="onTruckChange($event)"
   >
 
@@ -305,6 +331,32 @@
       | 📅 Year - {{ data.Year }}
       | 🏭 Make - {{ data.Make }}
 
+    <!-- Enter Date -->
+<ng-container
+  *ngIf="data.EnteredBy?.split('\n')[1]?.trim() || data.BindTime"
+>
+  <span class="date-info">
+    🕒Enter
+    {{
+      data.EnteredBy?.split('\n')[1]?.trim()
+        || (data.BindTime | date:'MM/dd/yyyy')
+    }}
+  </span>
+</ng-container>
+
+<!-- Update Date -->
+<ng-container *ngIf="data.UpdatedBy?.split('\n')[1]?.trim()">
+  <span
+    class="date-separator"
+    *ngIf="data.EnteredBy?.split('\n')[1]?.trim() || data.BindTime"
+  >
+    |
+  </span>
+
+  <span class="date-info">
+   🕒Updated {{ data.UpdatedBy.split('\n')[1].trim() }}
+  </span>
+</ng-container>
     </mat-option>
 
     <!-- NO DATA -->
@@ -377,12 +429,38 @@
 
         <!-- TRAILERS -->
         <mat-option
-          *ngFor="let data of filteredTrailers"
-          [value]="data.VehicleID"
+          *ngFor="let Vdata of filteredTrailers"
+          [value]="Vdata.VehicleID"
         >
-          ({{ data.VIN }})
-          | 🛠️ Model - ({{ data.Model }})
-          | 🚙 Body Type - ({{ data.BodyType }})
+          ({{ Vdata.VIN }})
+          | 🛠️ Model - ({{ Vdata.Model }})
+          | 🚙 Body Type - ({{ Vdata.BodyType }})
+            <!-- Enter Date -->
+<ng-container
+  *ngIf="Vdata.EnteredBy?.split('\n')[1]?.trim() || Vdata.BindTime"
+>
+  <span class="date-info">
+    🕒Enter
+    {{
+      Vdata.EnteredBy?.split('\n')[1]?.trim()
+        || (Vdata.BindTime | date:'MM/dd/yyyy')
+    }}
+  </span>
+</ng-container>
+
+<!-- Update Date -->
+<ng-container *ngIf="Vdata.UpdatedBy?.split('\n')[1]?.trim()">
+  <span
+    class="date-separator"
+    *ngIf="Vdata.EnteredBy?.split('\n')[1]?.trim() || Vdata.BindTime"
+  >
+    |
+  </span>
+
+  <span class="date-info">
+   🕒Updated {{ Vdata.UpdatedBy.split('\n')[1].trim() }}
+  </span>
+</ng-container>
         </mat-option>
 
         <!-- NO DATA -->
