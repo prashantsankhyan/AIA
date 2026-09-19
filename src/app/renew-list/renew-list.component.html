@@ -23,6 +23,9 @@
     <div class="col-sm-2">
       <input type="text" class="form-control"[(ngModel)]="searchCriteria.ExpireInDays" (ngModelChange)="onExpireInDaysChange($event)"   placeholder="Search By Panding  Days">
     </div>
+     <div class="col-sm-2">
+      <input type="text" class="form-control"[(ngModel)]="searchCriteria.ExpireInDaysTo" (ngModelChange)="onExpireInDaysToChange($event)"   placeholder="Search By To  Days">
+    </div>
   </div>
 </div>
  

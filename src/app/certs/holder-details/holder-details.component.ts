@@ -122,7 +122,8 @@ onHoldingIDChange(newHoldingID: string) {
 
   viewOfPolcy(data:any){
       const dialogRef = this.dialog.open(CertsViewPolicyComponent, {
-         width: '1400px',
+        width: '95vw',
+    maxWidth: '95vw',
      
       data: {HoldingID:data.HoldingID},
     }); 

@@ -38,7 +38,8 @@ export class ListOfPolicyForEndrosementComponent {
   issuedPolicies: any[] = [];
   filteredPolicies: any[] = [];
   expiredPolicies: any[] = [];
-
+  repostingType:any;
+repostingTypeMap: { [key: number]: string } = {};
   constructor(
     private http: AllApiService,
     private router: Router,
@@ -109,6 +110,60 @@ export class ListOfPolicyForEndrosementComponent {
       this.showPolicyTableFilled = false;
     });
   }
+
+  
+getRepoting(data: any): void {
+
+  const childPolicyID = data?.ChildPolicyID;
+
+  if (!childPolicyID) {
+    return;
+  }
+
+  console.log('Mouse entered row:', childPolicyID);
+
+  this.http
+    .getAllDataId(
+      ApiUrl.getPolicyStatus,
+      childPolicyID
+    )
+    .subscribe((response: any) => {
+
+      const obj =
+        typeof response === 'string'
+          ? JSON.parse(response)
+          : response;
+
+      console.log(
+        'API Response:',
+        childPolicyID,
+        obj
+      );
+
+      if (obj?.Reposting?.length > 0) {
+
+        const repostingData = obj.Reposting[0];
+
+        this.repostingTypeMap[childPolicyID] =
+          repostingData.RepostingType || '';
+
+        console.log(
+          'ChildPolicyID:',
+          childPolicyID
+        );
+
+        console.log(
+          'RepostingType:',
+          this.repostingTypeMap[childPolicyID]
+        );
+
+      } else {
+
+        this.repostingTypeMap[childPolicyID] = '';
+
+      }
+    });
+}
 
   editPolicy(data: any) {
     this.ChildPolicyID = data.ChildPolicyID;

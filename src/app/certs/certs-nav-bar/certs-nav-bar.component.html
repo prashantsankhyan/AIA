@@ -91,102 +91,115 @@
              
             
              
-               <ul class="navbar-nav ml-auto">
-                
-                
+               <ul class="navbar-nav ml-auto" style="font-size: 14px;">
+                 
+                 
 
-                   <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                   <li class="nav-item dropdown no-arrow d-sm-none">
-                      
-                       <!-- Dropdown - Messages -->
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
                        
-                   </li>
+                        <!-- Dropdown - Messages -->
+                        
+                    </li>
 
-                   <!-- Nav Item - Alerts -->
-                   <li class="nav-item  ">
-                     <a class="nav-link " href="javascript:void(0)">
-                         <i class="fa fa-handshake-o fa-fw mr-1"></i>
-                         <!-- Counter - Alerts -->
-                         <span class="badge badge-danger" matTooltip="{{teamName}}"  style="background-color: #1397d5;color: white;">{{teamName}}</span>
-                     </a>
-                   </li>
-                   <li class="nav-item  ">
-                     <a class="nav-link " href="javascript:void(0)">
-                         <i class="fa fa-building fa-fw mr-1 " aria-hidden="true"></i>
-                         <!-- Counter - Alerts -->
-                         <span class="badge badge-danger"  matTooltip="{{accountName}}" style="background-color: #1397d5;color: white;">{{accountName}}</span>
-                     </a>
-                   </li>
-                   <li class="nav-item  ">
-                     <a class="nav-link " href="javascript:void(0)">
-                         <i class="fa fa-file-code-o fa-fw mr-1"></i>
-                         <!-- Counter - Alerts -->
-                         <span class="badge badge-danger" matTooltip="{{lookUpCode}}" style="background-color: #1397d5;color: white;">{{lookUpCode}}</span>
-                     </a>
-                   </li>
-                   <li class="nav-item  ">
-                     <a class="nav-link " href="javascript:void(0)">
-                         <i class="fas fa-envelope fa-fw mr-1"></i>
-                         <!-- Counter - Alerts -->
-                         <span class="badge badge-danger" matTooltip="{{emailID}}" style="background-color: #1397d5;color: white;">{{emailID}}</span>
-                     </a>
-                   </li>
-                   <li class="nav-item  ">
-                     <a class="nav-link " href="javascript:void(0)">
-                         <i class="fa fa-volume-control-phone fa-fw mr-1"></i>
-                         <!-- Counter - Alerts -->
-                         <span class="badge badge-danger"matTooltip="{{phoneNumber}}" style="background-color: #1397d5;color: white;">{{phoneNumber}}</span>
-                     </a>
-                   </li>
+                    <!-- Nav Item - Alerts -->
+                     
+                     
+                    <li class="nav-item  " >
+                      
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
+                          <i class="fa fa-handshake-o fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{teamName}}"  >{{teamName}}</span>
+                      </a>
+                      
+                      
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-building fa-fw mr-1 " aria-hidden="true"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{accountName}}">{{accountName}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  " >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
+                          <i class="fa fa-user mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{ownerName}}"  >{{ownerName}}</span>
+                      </a>
+                     </li>
+                    <li class="nav-item" >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-file-code-o fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{lookUpCode}}">{{lookUpCode}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fas fa-envelope fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{emailID}}" >{{emailID}}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item  ">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
+                          <i class="fa fa-volume-control-phone fa-fw mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span matTooltip="{{phoneNumber}}" >{{phoneNumber}}</span>
+                      </a>
+                    </li>
                    
-                   
+                    
+                    
 
-                   <!-- Nav Item - Messages -->
-                  
+                    <!-- Nav Item - Messages -->
+                   
 
 <div  class="topbar-divider d-none d-sm-block"></div>
 
 <!-- Nav Item - User Information -->
-  <li   class="nav-item dropdown no-arrow">
-   <a class="nav-link dropdown-toggle" (click)="logout()"  id="userDropdown" role="button"
-       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-         {{userName}}
-       </span>
-       <img class="img-profile rounded-circle"
-           src="/assets/img/undraw_profile.svg">
-     </a>
-   <!-- Dropdown - User Information -->
-   <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-   [class.show]="isNameDropdownOpen"
-       aria-labelledby="userDropdown">
-       <a class="dropdown-item" href="javascript:void(0)"(click)="addAccountDetail($event)">
-           
-         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-           Account
-       </a>
-       <a class="dropdown-item" href="javascript:void(0)"routerLink="/mainLayout/account">
-         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-           update
-       </a>
-        <a class="dropdown-item" href="javascript:void(0)">
-           <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-           Activity Log
-       </a> 
-      
-        <a class="dropdown-item"href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal" >
-         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-           Logout
-       </a>
-   </div> -->
-    </li>
+   <li   class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" (click)="logout()"  id="userDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+          {{userName}}
+        </span>
+        <img class="img-profile rounded-circle"
+            src="/assets/img/undraw_profile.svg">
+      </a>
+    <!-- Dropdown - User Information -->
+    <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+    [class.show]="isNameDropdownOpen"
+        aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="javascript:void(0)"(click)="addAccountDetail($event)">
+            
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Account
+        </a>
+        <a class="dropdown-item" href="javascript:void(0)"routerLink="/mainLayout/account">
+          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            update
+        </a>
+         <a class="dropdown-item" href="javascript:void(0)">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            Activity Log
+        </a> 
+       
+         <a class="dropdown-item"href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal" >
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+        </a>
+    </div> -->
+     </li>
 
 
 
 
-                  
+                   
 
-               </ul>
+                </ul>
 
            </nav>
            

@@ -39,6 +39,7 @@ export class RenewListComponent {
     Expiration: '',
     LookUpCode: '',
     ExpireInDays: '',
+    ExpireInDaysTo:'',
     ChildPolicyName:'',
     AccountName:'',
   
@@ -69,6 +70,9 @@ export class RenewListComponent {
   
   onExpireInDaysChange(newExpireInDays: string) {
     this.updateSearchCriteria({ ExpireInDays: newExpireInDays });
+  }
+  onExpireInDaysToChange(newExpireInDaysTo: string) {
+    this.updateSearchCriteria({ ExpireInDaysTo: newExpireInDaysTo });
   }
   onChildPolicyChange(newChildPolicyName: string) {
     this.updateSearchCriteria({ ChildPolicyName: newChildPolicyName });

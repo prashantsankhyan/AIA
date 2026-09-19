@@ -9,6 +9,7 @@ import { ViewRemkarsPolicyIdComponent } from '../../../policy/view-remkars-polic
 import { ViewRemakrsAccoutBaseComponent } from '../view-remakrs-accout-base/view-remakrs-accout-base.component';
 import { CertsViewTruckDriverComponent } from '../certs-view-truck-driver/certs-view-truck-driver.component';
 import { CabCardComponent } from '../cab-card/cab-card.component';
+import { ListOfAllDriverTruckAndAnotherComponent } from '../../../policy/list-of-all-driver-truck-and-another/list-of-all-driver-truck-and-another.component';
 
 @Component({
   selector: 'app-certs-view-policy',
@@ -88,17 +89,31 @@ export class CertsViewPolicyComponent {
 
 
 
+// listOfDriverTruckData(data:any) {
+  
+//   this.MarkedPolicyID = data.MarkedPolicyID
+ 
+//   const dialogRef = this.dialog.open(CertsViewTruckDriverComponent, {
+//     width: '1400px',
+//     height: '700px',
+//     data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
+    
+//   });
+// }
+
 listOfDriverTruckData(data:any) {
   
   this.MarkedPolicyID = data.MarkedPolicyID
  
-  const dialogRef = this.dialog.open(CertsViewTruckDriverComponent, {
+  const dialogRef = this.dialog.open(ListOfAllDriverTruckAndAnotherComponent, {
     width: '1400px',
     height: '700px',
     data: {MarkedPolicyID:this.MarkedPolicyID,ChildPolicyID:data.ChildPolicyID},
     
   });
 }
+
+
 
 cabCard(data:any) {
   

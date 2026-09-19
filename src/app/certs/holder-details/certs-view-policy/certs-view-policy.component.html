@@ -24,7 +24,7 @@
 </mat-tab-group> -->
     
   
- <div class="scrolling mt-5" >
+ <div class="scrolling mt-1" >
 
   <table class="table table-bordered table-hover dt-responsive" *ngIf="showTableIfDataHave; else emptyState">
     <thead>
@@ -58,6 +58,63 @@
         
       
       
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyState>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Line Name</th>
+          <th>Effective</th>
+          <th>Expiration</th>
+          <th>P.Number</th>
+          <th>Payable</th>
+          <th>Description</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="text-center" style="padding: 40px;">
+            <i class="fa fa-folder-open-o fa-5x" aria-hidden="true" style="color: #ccc;"></i>
+            <h3>No policies available.</h3>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+</div>
+
+<div class="scrolling" >
+
+  <table class="table table-bordered table-hover dt-responsive" *ngIf="showTableIfDataHave; else emptyState">
+    <thead>
+      <tr>
+        <th style="text-align: center;">Ex-Line Name</th>
+          <th style="text-align: center;">Description</th>
+        <th style="text-align: center;">Policy Number</th>
+        <th style="text-align: center;">Policy Period</th>
+        <th style="text-align: center;">Broker Name</th>
+        <th style="text-align: center;">Carrier</th>
+      
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listOfPolicy"  >
+        <td >{{ data.LineName }}/{{ data.LineShortName }}</td>
+        <td style="text-align: center;">{{ data.Description }}</td>
+        <td style="text-align: center;">{{ data.ChildPolicyName }}</td>
+        <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }} - {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
+        <td style="text-align: center;">{{ data.BrokerName }}</td>
+        <td style="text-align: center;">{{ data.IssuingCompanyName }}</td>
+        
+       
+     
       </tr>
     </tbody>
   </table>

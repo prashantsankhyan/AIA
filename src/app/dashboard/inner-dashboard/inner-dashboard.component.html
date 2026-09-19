@@ -937,12 +937,13 @@ aria-label="Search By Account Type"
 		
 	</div>
       </div>
-       <div class="col-sm-4">
+    
+        <div class="col-sm-4">
 		<div class="container__item">
 	
-			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.city"
-      (ngModelChange)="onCityChange($event)"/>
-			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Type</button>
+			<input type="text" class="form__field"   [(ngModel)]="searchCriteria.Email"
+      (ngModelChange)="onEmailChange($event)"/>
+			<button type="button" class="btn btn--primary btn--inside uppercase" >🔍 By Email</button>
 		
 	</div>
       </div>

@@ -67,11 +67,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of filteredPolicies"
-             >
-          <td (click)="goToEndrosement(data)">{{ data.LineName }}/{{ data.LineShortName }}</td>
-          <td>{{ data.ChildPolicyName }}</td>
+             (mouseenter)="getRepoting(data)"
+           
+            >
+            
+          <td (click)="goToEndrosement(data)"  >{{ data.LineName }}/{{ data.LineShortName }}</td>
+          <td >{{ data.ChildPolicyName }}</td>
           <td>{{ data.Effective | date: 'MM/dd/yyyy' }} - {{ data.Expiration | date: 'MM/dd/yyyy' }}</td>
-          <td>{{ data.BrokerName }}</td>
+          <td>{{ data.BrokerName }}
+
+            
+          </td>
           <td>{{ data.IssuingCompanyName }}</td>
           <td> <span [ngStyle]="data?.IsTemporaryDelete ? { color: 'red' } : {}">{{ data.Description }} <br/>
 
@@ -82,9 +88,16 @@
           </td>
         
           <td>
-            <a href="javascript:void(0)" [matMenuTriggerFor]="menu">
+              <div
+      [matTooltip]="repostingTypeMap[data.ChildPolicyID] || ''"
+      matTooltipPosition="above"
+      class="policy-tooltip"
+    >
+       <a href="javascript:void(0)" [matMenuTriggerFor]="menu">
               <i class="fa fa-cog"></i>
             </a>
+              </div>
+         
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="editPolicy(data)">Edit Policy</button>
               <button mat-menu-item (click)="deletePolicy(data)" style="color: red;">Delete Policy</button>
@@ -124,8 +137,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of expiredPolicies" (click)="goToEndrosement(data)">
-          <td>{{ data.LineName }}/{{ data.LineShortName }}</td>
+        <tr *ngFor="let data of expiredPolicies"   (click)="goToEndrosement(data)">
+          <td >{{ data.LineName }}/{{ data.LineShortName }}</td>
           <td>{{ data.ChildPolicyName }}</td>
           <td>{{ data.Effective | date: 'MM/dd/yyyy' }} - {{ data.Expiration | date: 'MM/dd/yyyy' }}</td>
           <td>{{ data.BrokerName }}</td>

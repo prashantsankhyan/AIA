@@ -100,6 +100,7 @@ export class InnerDashboardComponent {
   accountType:'',
   claimNumber:'',
   childPolicyName:'',
+  Email:'',
   };
 
   autoSelect ="Insured";
@@ -167,6 +168,10 @@ export class InnerDashboardComponent {
 
   onCityChange(newCity: string) {
     this.updateSearchCriteria({ city: newCity });
+  }
+   onEmailChange(EmailID: string) {
+    
+    this.updateSearchCriteria({ Email: EmailID });
   }
 
   onStateChange(newState: string) {

@@ -89,7 +89,7 @@
               
              
               
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" style="font-size: 14px;">
                  
                  
 
@@ -101,42 +101,54 @@
                     </li>
 
                     <!-- Nav Item - Alerts -->
-                    <li class="nav-item  ">
-                      <a class="nav-link " href="javascript:void(0)">
+                     
+                     
+                    <li class="nav-item  " >
+                      
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
                           <i class="fa fa-handshake-o fa-fw mr-1"></i>
                           <!-- Counter - Alerts -->
-                          
-                            <span   matTooltip="{{teamName}}" style="color: rgba(0, 0, 0, 0.459);">{{teamName}}</span>
+                          <span  matTooltip="{{teamName}}"  >{{teamName}}</span>
                       </a>
+                      
+                      
                     </li>
                     <li class="nav-item  ">
-                      <a class="nav-link " href="javascript:void(0)">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
                           <i class="fa fa-building fa-fw mr-1 " aria-hidden="true"></i>
                           <!-- Counter - Alerts -->
-                          <span  matTooltip="{{accountName}}" style="color: rgba(0, 0, 0, 0.459);">{{accountName}}</span>
+                          <span  matTooltip="{{accountName}}">{{accountName}}</span>
                       </a>
                     </li>
-                    <li class="nav-item  ">
-                      <a class="nav-link " href="javascript:void(0)">
+                    <li class="nav-item  " >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);" >
+                          <i class="fa fa-user mr-1"></i>
+                          <!-- Counter - Alerts -->
+                          <span  matTooltip="{{ownerName}}"  >{{ownerName}}</span>
+                      </a>
+                     </li>
+                    <li class="nav-item" >
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
                           <i class="fa fa-file-code-o fa-fw mr-1"></i>
                           <!-- Counter - Alerts -->
-                          <span matTooltip="{{lookUpCode}}" style="color: rgba(0, 0, 0, 0.459);">{{lookUpCode}}</span>
+                          <span  matTooltip="{{lookUpCode}}">{{lookUpCode}}</span>
                       </a>
                     </li>
                     <li class="nav-item  ">
-                      <a class="nav-link " href="javascript:void(0)">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
                           <i class="fas fa-envelope fa-fw mr-1"></i>
                           <!-- Counter - Alerts -->
-                          <span matTooltip="{{emailID}}" style="color: rgba(0, 0, 0, 0.459);">{{emailID}}</span>
+                          <span  matTooltip="{{emailID}}" >{{emailID}}</span>
                       </a>
                     </li>
                     <li class="nav-item  ">
-                      <a class="nav-link " href="javascript:void(0)">
+                      <a class="nav-link " href="javascript:void(0)" style="color: rgba(0, 0, 0, 0.529);">
                           <i class="fa fa-volume-control-phone fa-fw mr-1"></i>
                           <!-- Counter - Alerts -->
-                          <span matTooltip="{{phoneNumber}}" style="color: rgba(0, 0, 0, 0.459);">{{phoneNumber}}</span>
+                          <span matTooltip="{{phoneNumber}}" >{{phoneNumber}}</span>
                       </a>
                     </li>
+                   
                     
                     
 
@@ -147,7 +159,7 @@
 
 <!-- Nav Item - User Information -->
    <li   class="nav-item dropdown no-arrow">
-    <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"(click)="logout()"
+    <a class="nav-link dropdown-toggle" (click)="logout()"  id="userDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">
           {{userName}}
