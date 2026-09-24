@@ -1575,7 +1575,7 @@ CONTACT NAME: <br/>
       </div>
     </div> -->
 
-    <div class="vehicle-page">
+    <!-- <div class="vehicle-page">
    <div
     *ngFor="let vehicle of getSelectedVehicles(page); let i = index"
     (click)="toggleVehicle(vehicle)"
@@ -1591,9 +1591,25 @@ CONTACT NAME: <br/>
     </span>
 
   </div>
-</div>
+</div> -->
  
+<div class="vehicle-page">
+  <div
+    *ngFor="let vehicle of page; let vehicleIndex = index"
+    (click)="toggleVehicle(vehicle)"
+    style="cursor: pointer"
+  >
+    {{ i * 50 + vehicleIndex + 1 }}
+    ({{ vehicle.Year || 'N/A' }}) -
+    {{ vehicle.Make || '' }} -
+    {{ vehicle.Model || '' }} -
+    VIN: {{ vehicle.VIN || '' }}
 
+    <span *ngIf="showVehicleValue && vehicle.Value">
+      -${{ vehicle.Value | number:'1.2-2' }}
+    </span>
+  </div>
+</div>
 <!-- Manual pages if no data -->
 <!-- INPUT -->
 

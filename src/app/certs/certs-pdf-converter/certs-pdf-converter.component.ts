@@ -921,7 +921,7 @@ mergeAndDisplayTrucks(): void {
     ).values()
   );
 
-  // this.trucks = uniqueTrucks;
+ 
 
   this.trucks = uniqueTrucks.map(v => ({
   ...v,
@@ -962,21 +962,47 @@ onHideTrailerToggle(): void {
 
 
 
+// splitTrucksIntoPages(): void {
+//   const chunkSize = 50;
+//   this.pagedTrucks = [];
+
+//   for (let i = 0; i < this.trucks.length; i += chunkSize) {
+//     const chunk = this.trucks.slice(i, i + chunkSize);
+//     console.log(`Page ${this.pagedTrucks.length + 1} chunk:`, chunk);
+//     this.pagedTrucks.push(chunk);
+//       // ✅ Filter out empty pages (to avoid blank PDF pages)
+//   this.pagedTrucks = this.pagedTrucks.filter(page => page.length > 0);
+
+//   // ✅ Force Angular to update the view
+//   this.cdr.detectChanges();
+//   console.log('Final pagedTrucks count:', this.pagedTrucks.length);
+//   }
+// }
+
 splitTrucksIntoPages(): void {
   const chunkSize = 50;
+
+  // Click karke hataye gaye vehicles ko page count mein na lein
+  const selectedTrucks = this.trucks.filter(
+    truck => truck.selected
+  );
+
   this.pagedTrucks = [];
 
-  for (let i = 0; i < this.trucks.length; i += chunkSize) {
-    const chunk = this.trucks.slice(i, i + chunkSize);
-    console.log(`Page ${this.pagedTrucks.length + 1} chunk:`, chunk);
-    this.pagedTrucks.push(chunk);
-      // ✅ Filter out empty pages (to avoid blank PDF pages)
-  this.pagedTrucks = this.pagedTrucks.filter(page => page.length > 0);
-
-  // ✅ Force Angular to update the view
-  this.cdr.detectChanges();
-  console.log('Final pagedTrucks count:', this.pagedTrucks.length);
+  for (let i = 0; i < selectedTrucks.length; i += chunkSize) {
+    this.pagedTrucks.push(
+      selectedTrucks.slice(i, i + chunkSize)
+    );
   }
+
+  this.cdr.detectChanges();
+
+  console.log(
+    'Selected vehicles:',
+    selectedTrucks.length,
+    'Pages:',
+    this.pagedTrucks.length
+  );
 }
 
 

@@ -98,7 +98,7 @@
       <td>{{data.DateofLoss |date:'MM/dd/yyyy'}}</td>
      <td>{{data.EnteredDateTime|date:'MM/dd/yyyy'}}</td>
      <td>{{data.EnteredBy}} </td>
-              <td>{{data.DeleteReason}}</td>
+              <td   (click)="viewOfNote(data)"><a href="javascript:void(0)">{{data.DeleteReason}}</a></td>
               <td>
                 <a  href="javascript:void(0)"  (click)="reverseClaim(data)"><img src="../../../assets/reverse.png" width="40px" height="40px"></a>
                

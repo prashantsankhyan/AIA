@@ -139,7 +139,33 @@ getDataByAccountId(accountName: any) {
 
   });
 }
- 
+ vinSearch = '';
+
+get visibleVehicles(): any[] {
+  const searchedVins = this.vinSearch
+    .split(',')
+    .map(vin => vin.trim().toLowerCase())
+    .filter(vin => vin !== '');
+
+  if (searchedVins.length === 0) {
+    return this.vehicleDetail;
+  }
+
+  return this.vehicleDetail.filter(vehicle => {
+    const vehicleVin = String(
+      vehicle.VIN ??
+      vehicle.Vin ??
+      vehicle.VehicleIdentificationNumber ??
+      ''
+    ).trim().toLowerCase();
+
+    return searchedVins.includes(vehicleVin);
+  });
+}
+
+onVinSearchChange(event: Event): void {
+  this.vinSearch = (event.target as HTMLInputElement).value;
+}
      
      
   

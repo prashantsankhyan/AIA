@@ -29,6 +29,7 @@ export class CertsViewPolicyComponent {
   showEndrosementList = true;
   listOfEmpity:any;
   MarkedPolicyID:any;
+  listOfExpirePolicy:any;
     constructor(private http:AllApiService,public dialog: MatDialog,) { 
       this.http.listen().subscribe((m:any)=>{
         console.log(m)
@@ -40,6 +41,7 @@ export class CertsViewPolicyComponent {
       this.AccountID = JSON.parse(localStorage.getItem('accountId')||'{}') 
      
       this.getPolicyByAccountId();
+      this.getAllExpirePolicyListByAccontId()
     
   
   
@@ -86,6 +88,20 @@ export class CertsViewPolicyComponent {
   )   
 }
 
+
+
+  getAllExpirePolicyListByAccontId(){
+    this.http.getAllDataId(ApiUrl.getAllExpirePolicyByAccountId,this.AccountID).subscribe(
+      data=>{
+        this.showSpiner = false
+        let respone = JSON.stringify(data)
+        let obj  = JSON.parse(respone)
+        this.listOfExpirePolicy= obj.ChildPolicys ;
+        
+        
+      }
+    )
+  }
 
 
 

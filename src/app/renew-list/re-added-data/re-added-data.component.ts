@@ -30,6 +30,7 @@ export class ReAddedDataComponent {
   ChildPolicyID:any
 
   Expiration:any
+  LoginUserName:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,
   private fb: FormBuilder,private http:AllApiService ,
   private cRouter:ActivatedRoute, private router:Router,
@@ -39,6 +40,7 @@ export class ReAddedDataComponent {
     this.AccountID = this.data.AccountID;
     this.MarkedPolicyID =this.data.MarkedPolicyID;
     this.ChildPolicyID = this.data.ChildPolicyID;
+      this.LoginUserName = sessionStorage.getItem('UserName');
     this.makeForm()
     this.currentDate()
   }
@@ -70,9 +72,9 @@ export class ReAddedDataComponent {
         MarkedPolicyID:[this.MarkedPolicyID],
         ChildPolicyID:[this.ChildPolicyID,[Validators.required,]],
         Effective:['',[Validators.required,]],
-        Expiration:['',[Validators.required,]],
-       
-       
+         Expiration:['',[Validators.required,]],
+        CalculteExpiryDay:['No'],
+        UpdateExpiryDayStatusBy:[this.LoginUserName],
       });
     }
   onSubmit() {

@@ -1,6 +1,6 @@
 <div style="text-align: center; margin-top: 5px;">
 
-  <button
+  <!-- <button
     style="width: 300px; color: green;"
     ngxPrint
     class="learn-more"
@@ -10,7 +10,7 @@
 
     Cab Card
 
-  </button>
+  </button> -->
    <!-- <button
     type="button"
     class="btn btn-secondary"
@@ -20,6 +20,58 @@
 
   </button> -->
 
+</div>
+
+<div class="vin-search-panel">
+  <div class="vin-search-heading">
+    <div>
+      <h3>Find Cab Cards</h3>
+      <p>Also Can search Multiple Vin  no space in vin only ,</p>
+    </div>
+    
+     <button
+      class="result-badge" 
+    style="width: 300px; color: green;"
+    ngxPrint
+   
+    [useExistingCss]="true"
+    printTitle={{cabCard}}
+    printSectionId="print-section">
+
+     {{ visibleVehicles.length }} cards found
+
+  </button>
+    
+  </div>
+
+  <div class="vin-input-wrap">
+    <span class="search-icon">⌕</span>
+
+    <input
+      type="text"
+      class="vin-input"
+      placeholder="Example: 546654, 46456, 54654"
+      [value]="vinSearch"
+      (input)="onVinSearchChange($event)"
+      aria-label="Search by VIN numbers"
+    />
+
+    <button
+      *ngIf="vinSearch"
+      type="button"
+      class="clear-button"
+      (click)="vinSearch = ''"
+      aria-label="Clear VIN search"
+      title="Clear search"
+    >
+      ×
+    </button>
+  </div>
+
+  <div class="search-hint">
+    <span class="hint-dot"></span>
+    Search khaali rakhein to sabhi cards dikhenge
+  </div>
 </div>
 
 
@@ -32,7 +84,7 @@
 
   <div
     class="vehicle-card-wrapper"
-    *ngFor="let vehicle of vehicleDetail; let i = index"
+    *ngFor="let vehicle of visibleVehicles; let i = index"
   >
 
     <!-- TOP REFERENCE -->

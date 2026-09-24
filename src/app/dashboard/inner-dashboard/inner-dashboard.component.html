@@ -971,8 +971,8 @@ aria-label="Search By Account Type"
         </thead>
         <tbody>
         
-           <tr  *ngFor ="let data of listOfClinetForBunding | searchFilter: searchCriteria" (click)="certs(data)">
-            <td (click) ="certs(data)" class="hover-color"><p>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></p></td>
+           <tr  *ngFor ="let data of listOfClinetForBunding | searchFilter: searchCriteria" (dblclick)="certs(data)">
+            <td (dblclick) ="certs(data)" class="hover-color"><p>{{data.AccountName}} <span *ngIf="data.BDA"> - {{data.BDA}}</span></p></td>
            
              <td>{{data.LookUpCode}}</td>
              <td>{{data.PhoneNumber}}</td>

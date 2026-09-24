@@ -8,6 +8,7 @@ import { AllApiService } from '../../_service/all-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClaimsPipe } from '../add-edit-claims/_searchPipeForClaims/claims.pipe';
 import { ReverseClaimComponent } from './reverse-claim/reverse-claim.component';
+import { ListOfNoteComponent } from '../add-edit-claims/list-of-note/list-of-note.component';
 
 @Component({
   selector: 'app-done-claims',
@@ -81,6 +82,15 @@ export class DoneClaimsComponent {
     localStorage.setItem('confirmReason', this.confirmReason);
     this.cRouter.navigate(['/claims/adjustorsList',this.ClaimID])
   }
+
+     viewOfNote(data:any) {
+     
+      this.dialog.open(ListOfNoteComponent ,{
+      
+         data:{ClaimID:data.ClaimID}
+      });
+      
+    }
 
   reverseClaim(data:any) {
     this.dialog.open(ReverseClaimComponent ,{

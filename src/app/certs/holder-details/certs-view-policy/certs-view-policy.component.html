@@ -97,7 +97,7 @@
         <th style="text-align: center;">Ex-Line Name</th>
           <th style="text-align: center;">Description</th>
         <th style="text-align: center;">Policy Number</th>
-        <th style="text-align: center;">Policy Period</th>
+        <th style="text-align: center;">Ex-Policy Period</th>
         <th style="text-align: center;">Broker Name</th>
         <th style="text-align: center;">Carrier</th>
       
@@ -105,13 +105,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listOfPolicy"  >
+      <tr *ngFor="let data of listOfExpirePolicy"  (dblclick)="viewRemkarsByChiledPolciy(data)">
         <td >{{ data.LineName }}/{{ data.LineShortName }}</td>
         <td style="text-align: center;">{{ data.Description }}</td>
-        <td style="text-align: center;">{{ data.ChildPolicyName }}</td>
+        <td     style="text-align: center; cursor: pointer;"
+    (click)="listOfDriverTruckData(data)">{{ data.ChildPolicyName }}</td>
         <td style="text-align: center;">{{ data.Effective | date:'MM/dd/yyyy' }} - {{ data.Expiration | date:'MM/dd/yyyy' }}</td>
         <td style="text-align: center;">{{ data.BrokerName }}</td>
-        <td style="text-align: center;">{{ data.IssuingCompanyName }}</td>
+        <td style="text-align: center;"(click)="cabCard(data)">{{ data.IssuingCompanyName }}</td>
         
        
      

@@ -34,7 +34,7 @@
             <div class="col-sm-3">
              <div class="form-floating mb-3"> 
               <select class="form-select formControl mt-1"  formControlName ='ReportedBy'  aria-label="Default select example" style="margin-top: 28px;" >
-               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option hidden value="" disabled selected  > Select Reported  Type</option>
                <option  value="Insured">Insured</option>
                <option  value="Other Party">Other Party</option>
              </select>
@@ -77,7 +77,7 @@
             <div class="col-sm-3 mt-1">
              <div class="form-floating mb-3">
               <select class="form-select formControl"[(ngModel)]="ClaimType"  formControlName ='ClaimType' (change)="changePolicyType()"  >
-               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option hidden value="" disabled selected  > Select Policy  Type</option>
                <option value="Running">🚗 Running Policy</option>
                 <option value="Expire Policy">⏳ Expire Policy</option>
              </select>
@@ -497,7 +497,7 @@
             <div class="col-sm-3 ">
              <div class="form-floating">
               <select class="form-select formControl "  formControlName ='InformationReceivedBy'>
-               <option hidden value="" disabled selected  > Select Claim  Type</option>
+               <option hidden value="" disabled selected  > Select Received  Type</option>
                <option  value="By Email">By Email</option>
                <option  value="By Call">By Call</option>
              </select>
