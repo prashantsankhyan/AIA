@@ -996,9 +996,30 @@ aria-label="Search By Account Type"
   </div>
 
 
-  <div *ngIf ="showAccountTeam">
-   <app-account-team></app-account-team>
+<div *ngIf="showAccountTeam" class="account-team-message">
+
+  <div class="account-team-card">
+
+    <div class="account-team-icon">
+      <i class="fas fa-folder-open"></i>
+    </div>
+
+    <h3>Documents</h3>
+
+    <p routerLink="/dashboard/document">
+      Please click on <strong >Document</strong> to continue.
+    </p>
+
+    <div class="account-team-hint">
+      <i class="fas fa-arrow-up"></i>
+      Select Document from the menu
+    </div>
+
+  </div>
+
 </div>
+
+
 
 
 

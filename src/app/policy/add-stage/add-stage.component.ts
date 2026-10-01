@@ -69,7 +69,7 @@ export class AddStageComponent {
     obj['ChildPolicyID'] = this.ChildPolicyID
   }
 
-    this.http.addEditData(ApiUrl.updateStage,obj).pipe().subscribe(
+    this.http.addEditData(ApiUrl.updateStage,obj).subscribe(
       data => {
         let response  = JSON.stringify(data)
         var obj = JSON.parse(response);
@@ -101,7 +101,7 @@ export class AddStageComponent {
     this.toastr.success(this.alertMessage, '' ,{
       timeOut: 3000,
     });
-    this.changeLocation()
+   
   } 
 
   error() {

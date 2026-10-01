@@ -1,0 +1,174 @@
+/* =========================================================
+   TOPBAR RIGHT NAVBAR
+   ========================================================= */
+
+.topbar-right {
+
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  height: 40px;
+
+  padding: 2px 4px;
+
+  background: transparent;
+
+  border: none;
+
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   NAV ITEM
+   ========================================================= */
+
+.topbar-nav-item {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  height: 34px;
+
+  padding: 0 12px;
+
+  color: rgb(16, 24, 50) !important;
+
+  text-decoration: none !important;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  border-radius: 6px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.topbar-nav-item i {
+
+  font-size: 13px;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.topbar-nav-item:hover {
+
+  color: #008fb0 !important;
+
+  background: rgba(0, 188, 221, 0.08);
+
+  transform: translateY(-1px);
+}
+
+
+.topbar-nav-item:hover i {
+
+  color: #00a9ca;
+
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.topbar-nav-item.active {
+
+  color: #ffffff !important;
+
+  background: linear-gradient(
+    135deg,
+    #00bcdd,
+    #008fb0
+  );
+
+  box-shadow:
+    0 3px 8px rgba(0, 188, 221, 0.20);
+}
+
+
+.topbar-nav-item.active i {
+
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   REMOVE ACTIVE BOTTOM LINE
+   ========================================================= */
+
+.topbar-nav-item.active::after {
+
+  display: none !important;
+
+  content: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .topbar-right {
+
+    gap: 2px;
+
+    height: 38px;
+
+    padding: 2px;
+  }
+
+
+  .topbar-nav-item {
+
+    width: 36px;
+
+    height: 32px;
+
+    padding: 0;
+
+    gap: 0;
+  }
+
+
+  .topbar-nav-item span {
+
+    display: none;
+  }
+
+
+  .topbar-nav-item i {
+
+    font-size: 14px;
+  }
+}

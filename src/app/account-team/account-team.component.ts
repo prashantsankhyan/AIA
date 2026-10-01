@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../sharingModule/material/material.module';
@@ -10,6 +10,7 @@ import { AddEditAccountDetaisComponent } from './add-edit-account-detais/add-edi
 import { AllApiService } from '../_service/all-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiUrl } from '../_core/apiUrl';
+import { AccountTeamNavbarComponent } from './account-team-navbar/account-team-navbar.component';
 
 @Component({
   selector: 'app-account-team',
@@ -21,7 +22,9 @@ import { ApiUrl } from '../_core/apiUrl';
      RouterLink,
      MaterialModule,
      HttpClientModule,
-     SpinnerComponent
+     SpinnerComponent,
+     AccountTeamNavbarComponent,
+     RouterOutlet
    ],
   templateUrl: './account-team.component.html',
   styleUrl: './account-team.component.scss'

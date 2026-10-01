@@ -68,6 +68,7 @@
       <tbody>
         <tr *ngFor="let data of filteredPolicies"
              (mouseenter)="getRepoting(data)"
+              [class.non-issue-policy]="data?.StageType !== 'Issue'"
            
             >
             
@@ -99,8 +100,8 @@
               </div>
          
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="editPolicy(data)">Edit Policy</button>
-              <button mat-menu-item (click)="deletePolicy(data)" style="color: red;">Delete Policy</button>
+              <button mat-menu-item  [disabled]="data?.StageType !== 'Issue'" (click)="editPolicy(data)">Edit Policy</button>
+              <button mat-menu-item  [disabled]="data?.StageType !== 'Issue'" (click)="deletePolicy(data)" style="color: red;">Delete Policy</button>
               <button mat-menu-item (click)="remarksViews(data)" >View Remarks</button>
                <button mat-menu-item (click)="viewAllData(data)" >View All Data</button>
                 <button mat-menu-item (click)="remarksViews(data)">View Remarks</button>

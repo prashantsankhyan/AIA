@@ -1,0 +1,305 @@
+<!-- =========================================================
+     LOADER
+     ========================================================= -->
+
+<div
+  *ngIf="showSpiner"
+  class="page-loader"
+>
+  <app-spinner></app-spinner>
+</div>
+
+
+<!-- =========================================================
+     MAIN PAGE
+     ========================================================= -->
+
+<div
+  *ngIf="!showSpiner"
+  class="container-fluid attachment-page"
+>
+
+
+  <!-- =======================================================
+       PAGE HEADER
+       ======================================================= -->
+
+  <div class="page-header">
+
+    <div class="page-title-section">
+
+      <div class="page-icon">
+        <i class="fas fa-file-alt"></i>
+      </div>
+
+      <div class="search-wrapper">
+
+      <i class="fas fa-search search-icon"></i>
+
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search file, document, description, date or user..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+      />
+
+      <button
+        *ngIf="searchTerm"
+        type="button"
+        class="clear-search"
+        (click)="searchTerm = ''; onSearchChange()"
+        title="Clear Search"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+
+    </div>
+
+    </div>
+
+
+    <!-- Add Button -->
+
+    <button
+      type="button"
+      class="add-document-btn"
+      (click)="addEditAttachement()"
+    >
+
+      <i class="fas fa-plus"></i>
+
+      <span>
+        ADD Agency Document
+      </span>
+
+    </button>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       SEARCH / SUMMARY BAR
+       ======================================================= -->
+
+ 
+
+
+
+  <!-- =======================================================
+       TABLE CARD
+       ======================================================= -->
+
+  <div class="table-card">
+
+
+    <!-- TABLE SCROLL AREA -->
+
+    <div class="table-scroll">
+
+      <table class="agency-table">
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <thead>
+
+          <tr>
+
+            <th class="file-column">
+              <div class="th-content">
+                <i class="fas fa-file"></i>
+                File
+              </div>
+            </th>
+
+
+            <th class="agency-column">
+              <div class="th-content">
+                <i class="fas fa-folder"></i>
+                Agency Document
+              </div>
+            </th>
+
+
+            <th class="description-column">
+              <div class="th-content">
+                <i class="fas fa-align-left"></i>
+                Description
+              </div>
+            </th>
+
+
+            <th class="date-column">
+              <div class="th-content">
+                <i class="fas fa-calendar-alt"></i>
+                Date
+              </div>
+            </th>
+
+
+            <th class="user-column">
+              <div class="th-content">
+                <i class="fas fa-user"></i>
+                By
+              </div>
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+
+        <!-- =================================================
+             BODY
+             ================================================= -->
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let data of paginatedAttachments;
+              trackBy: trackByFileId
+            "
+            (click)="onRowClick(data)"
+            class="data-row"
+          >
+
+
+            <!-- File -->
+
+            <td>
+
+              <div class="file-cell">
+
+                <div class="file-icon">
+
+                  <i
+                    [ngClass]="getFileIcon(data.FileType)"
+                  ></i>
+
+                </div>
+
+                <div
+                  class="file-name"
+                  [title]="data.FileName"
+                >
+                  {{ data.FileName }}
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- Agency Document -->
+
+            <td>
+
+              <span class="document-badge">
+                {{ data.AgencyDocument || '—' }}
+              </span>
+
+            </td>
+
+
+            <!-- Description -->
+
+            <td>
+
+              <span
+                class="description-text"
+                [title]="data.Description || ''"
+              >
+                {{ data.Description || '—' }}
+              </span>
+
+            </td>
+
+
+            <!-- Date -->
+
+            <td>
+
+              <span class="date-text">
+                {{ data.EnteredDate | date:'MM/dd/yyyy' }}
+              </span>
+
+            </td>
+
+
+            <!-- User -->
+
+            <td>
+
+              <div class="user-cell">
+
+                <div class="user-avatar">
+                  {{ (data.EnteredBy || '?').charAt(0).toUpperCase() }}
+                </div>
+
+                <span>
+                  {{ data.EnteredBy || '—' }}
+                </span>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+
+          <!-- =================================================
+               NO RECORDS
+               ================================================= -->
+
+          <tr
+            *ngIf="paginatedAttachments.length === 0"
+            class="no-record-row"
+          >
+
+            <td colspan="5">
+
+              <div class="no-records">
+
+                <div class="no-record-icon">
+                  <i class="fas fa-folder-open"></i>
+                </div>
+
+                <div class="no-record-title">
+                  No records found
+                </div>
+
+                <div class="no-record-text">
+                  Try changing your search text.
+                </div>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+
+    <!-- =======================================================
+         PAGINATION
+         ======================================================= -->
+
+   
+
+
+  </div>
+
+</div>

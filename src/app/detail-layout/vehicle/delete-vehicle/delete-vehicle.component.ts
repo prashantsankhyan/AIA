@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { ApiUrl } from '../../../_core/apiUrl';
 @Component({
   selector: 'app-delete-vehicle',
   standalone: true,
-  imports: [CommonModule,MaterialModule,RouterModule,ReactiveFormsModule],
+  imports: [CommonModule,MaterialModule,RouterModule,ReactiveFormsModule,FormsModule],
   templateUrl: './delete-vehicle.component.html',
   styleUrl: './delete-vehicle.component.scss'
 })
@@ -32,6 +32,8 @@ export class DeleteVehicleComponent {
   ChildPolicyID:any;
   AccountID:any;
  ExpirationDate:any;
+ isManualReason = false;
+manualReason = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,private fb: FormBuilder, private http:AllApiService,private toastr: ToastrService ,private cRouter:ActivatedRoute,private router: Router,public dialog: MatDialog,public dialogRef: MatDialogRef<DeleteVehicleComponent>){
  
   }
@@ -43,7 +45,28 @@ export class DeleteVehicleComponent {
   }
     this.makeForm()
   }
+onReasonChange(): void {
 
+  const reason = this.deleteForm.get('Reason')?.value;
+
+  if (reason === 'None of These') {
+    this.isManualReason = true;
+    this.manualReason = '';
+  } else {
+    this.isManualReason = false;
+    this.manualReason = '';
+  }
+}
+setManualReason(): void {
+
+  if (this.isManualReason && this.manualReason.trim()) {
+
+    this.deleteForm.patchValue({
+      Reason: this.manualReason.trim()
+    });
+
+  }
+}
   makeForm(){
     this.data;
     this.data;
@@ -77,48 +100,84 @@ if (this.ExpirationDate) {
      
     });
   }
-  onSubmit() {
-    this.messageSuccess = false;
-    this.submit = true ; 
-    
-    if(!this.deleteForm.valid){
-      this.messageSuccess = true
-      
-      return
+ onSubmit() {
+
+  this.messageSuccess = false;
+  this.submit = true;
+
+  if (!this.deleteForm.valid) {
+    this.messageSuccess = true;
+    return;
+  }
+
+  const selectedReason = this.deleteForm.get('Reason')?.value;
+
+  // None of These selected
+  if (selectedReason === 'None of These') {
+
+    if (!this.manualReason.trim()) {
+      this.toastr.error('Please enter a reason', '');
+      this.messageSuccess = true;
+      return;
     }
-   
 
-   let obj = JSON.parse(JSON.stringify(this.deleteForm.value))
-
-   if(this.VehicleID){
-    obj['VehicleID'] = this.VehicleID
+    // Replace None of These with manual reason
+    this.deleteForm.patchValue({
+      Reason: this.manualReason.trim()
+    });
   }
 
-    this.http.deleteAddQuery(ApiUrl.deleteVehicle,obj).pipe().subscribe(
-      data => {
-        let response  = JSON.stringify(data)
-        var obj = JSON.parse(response);
-        this.dataResponse =obj.Data;
-       
-        if(this.dataResponse == '0'){
-          this.errorMessage = obj.Data.ErrorMessage
-         
-        
-        }
-        else{
-          this.alertMessage = obj.Data.ErrorMessage
-          this.showSuccess();
-          this.changeLocation();
-          this.closeComponent()
-        }
-     
-       
-        console.log(obj)
-        
+  // Now Reason contains only final value
+  let obj = JSON.parse(
+    JSON.stringify(this.deleteForm.value)
+  );
+
+  console.log('Final Reason:', obj.Reason);
+
+  if (this.VehicleID) {
+    obj.VehicleID = this.VehicleID;
+  }
+
+this.http.deleteAddQuery(ApiUrl.deleteVehicle, obj)
+  .subscribe({
+    next: (data: any) => {
+
+      console.log('Delete Response:', data);
+
+      if (data?.Data?.Response === 1) {
+
+        this.toastr.success(
+          data.Data.ErrorMessage || 'Record Delete Successfully',
+          ''
+        );
+
+        // Close dialog and tell parent that record was deleted
+        this.dialogRef.close({
+          deleted: true,
+          VehicleID: this.VehicleID
+        });
+
+      } else {
+
+        this.toastr.error(
+          data?.Data?.ErrorMessage || 'Unable to delete record',
+          ''
+        );
+
       }
-    
-    )
-  }
+    },
+
+    error: (error) => {
+
+      console.error('Delete error:', error);
+
+      this.toastr.error(
+        'Something went wrong while deleting record',
+        ''
+      );
+    }
+  });
+}
 
   deleteRecord(){
     this.closeComponent()

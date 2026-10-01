@@ -1,0 +1,279 @@
+<div class="container-fluid">
+
+  <!-- =====================================================
+       UPLOAD LOADER
+       ===================================================== -->
+
+  <div
+    *ngIf="!showFiv"
+    class="text-center p-3"
+  >
+
+    <h5>
+      File Size is Big so it will take some time to Upload
+    </h5>
+
+    <app-spinner></app-spinner>
+
+  </div>
+
+
+  <form
+    [formGroup]="addEditAttachmentForm"
+    *ngIf="showFiv"
+  >
+
+    <mat-dialog-content
+      class="dialog-content mt-1"
+    >
+
+
+      <!-- =================================================
+           FILE UPLOAD
+           ================================================= -->
+
+      <div class="col-sm-12">
+
+        <label class="form-label">
+          Upload File
+          <span class="required">*</span>
+        </label>
+
+
+        <div
+          class="file-container center text-center"
+        >
+
+          <input
+            type="file"
+            class="file"
+            multiple
+            accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.wav"
+            (change)="onFileUpload($event)"
+            [ngClass]="{
+              'is-invalid':
+                submit && f['abc'].errors
+            }"
+          />
+
+
+          <label>
+            Upload file here
+          </label>
+
+        </div>
+
+
+        <!-- File validation -->
+
+        <div
+          *ngIf="submit && f['abc'].errors"
+          class="invalid-feedback d-block"
+        >
+          File is required
+        </div>
+
+
+        <!-- Selected file -->
+
+        <div
+          *ngIf="files"
+          class="selected-file mt-1"
+        >
+          {{ files.name }}
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           EXPENSE
+           ================================================= -->
+
+      <div class="mt-3">
+
+        <label class="form-label">
+          Expense
+          <span class="required">*</span>
+        </label>
+
+
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+        >
+
+          <mat-select
+            formControlName="DocumentType"
+            placeholder="Select Expense"
+          >
+
+
+            <!-- Search -->
+
+            <mat-option>
+
+              <ngx-mat-select-search
+                [formControl]="documentTypeSearchCtrl"
+                placeholderLabel="Search Expense..."
+                noEntriesFoundLabel="No Expense found"
+              >
+              </ngx-mat-select-search>
+
+            </mat-option>
+
+
+            <!-- Expense options -->
+
+            <mat-option
+              *ngFor="
+                let doc of filteredDocumentTypes
+              "
+              [value]="doc"
+            >
+
+              {{ doc }}
+
+            </mat-option>
+
+          </mat-select>
+
+
+          <!-- Validation -->
+
+          <mat-error
+            *ngIf="
+              submit &&
+              f['DocumentType'].hasError('required')
+            "
+          >
+            Please select Expense
+          </mat-error>
+
+        </mat-form-field>
+
+      </div>
+
+
+
+      <!-- =================================================
+           DESCRIPTION
+           ================================================= -->
+
+      <div class="mt-2">
+
+        <label class="form-label">
+          Description
+          <span class="required">*</span>
+        </label>
+
+
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+        >
+
+          <textarea
+            matInput
+            formControlName="Description"
+            rows="3"
+            maxlength="500"
+            placeholder="Enter description"
+          ></textarea>
+
+
+          <mat-hint align="end">
+            {{
+              addEditAttachmentForm
+                .get('Description')
+                ?.value?.length || 0
+            }}/500
+          </mat-hint>
+
+
+          <!-- Required -->
+
+          <mat-error
+            *ngIf="
+              submit &&
+              f['Description'].hasError('required')
+            "
+          >
+            Description is required
+          </mat-error>
+
+
+          <!-- Minimum length -->
+
+          <mat-error
+            *ngIf="
+              submit &&
+              f['Description'].hasError('minlength')
+            "
+          >
+            Description must be at least 3 characters
+          </mat-error>
+
+
+          <!-- Maximum length -->
+
+          <mat-error
+            *ngIf="
+              submit &&
+              f['Description'].hasError('maxlength')
+            "
+          >
+            Description cannot exceed 500 characters
+          </mat-error>
+
+        </mat-form-field>
+
+      </div>
+
+
+    </mat-dialog-content>
+
+
+
+    <!-- =====================================================
+         BUTTONS
+         ===================================================== -->
+
+    <mat-dialog-actions
+      align="end"
+      class="dialog-footer"
+    >
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="onSubmit()"
+      >
+
+        <mat-icon>
+          upload
+        </mat-icon>
+
+        Upload Data
+
+      </button>
+
+
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        mat-dialog-close
+      >
+
+        Cancel
+
+      </button>
+
+    </mat-dialog-actions>
+
+  </form>
+
+</div>

@@ -1,65 +1,167 @@
-<div class="container">
- <div class="card mt-2">
-     <div  class="card-header" style="background-color: #17a0bc; color: white;">
-         <a href="javascript:void(0)" style=" color: white;text-decoration: dashed;" > Update StageType </a>  
-       </div>
- </div>
+<div class="stage-dialog">
 
-<div class="  ">
- <form [formGroup]="updateForm">
-     <div class="row p-1">
-       
-       
-       
-        
-         <div class="col-sm-12 mt-2 ">
-             <label>Select Stage</label>
-             <select class="form-select formControl mt-1" formControlName ="StageType"  aria-label="Default select example" style="margin-top: 28px;"[ngClass]= "{ 'is-invalid': submit && f['StageType'].errors }" >
-                 <option hidden value="" disabled selected  > Select Stage</option>
-                 <option  value="Issue">Issue</option>
-                 <option  value="Submit">Submit</option>
-               
-                 
-                
-               </select>
-               <div *ngIf ="submit && f['StageType'].errors" class="invalid-feedback">
-                 <div *ngIf ="f['StageType'].errors">StageType is required</div>
-             </div> 
- 
-         </div>
-      
-      
-      
-       
-       
-       
-       
-         <!-- <div class="text-center mt-5">
-             <div class="btn-group  gap-2  " *ngIf ="messageSuccess">
-                
-                 <button mat-stroked-button class="text-right" (click)="onSubmit()" >Save</button>
-                 <button mat-stroked-button class="text-right" color="warn" mat-button mat-dialog-close>Clear</button>
-                
-               
-               </div>
-         </div> -->
-     
- 
- 
-     </div>
- 
- </form>
-</div>
-<div class="text-center mt-5">
- <div  *ngIf ="messageSuccess">
-  <button type="button" style="width: 130px;" class="btn btn-outline-success"(click)="onSubmit()">Update Stage</button>
-  <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
-  
- 
+  <!-- ================= HEADER ================= -->
+  <div class="stage-header">
 
-    
-   
-   </div>
-</div>
+    <div class="stage-header-icon">
+      <i class="bi bi-flag-fill"></i>
+    </div>
+
+    <div class="stage-header-content">
+      <h2>Enter Stage</h2>
+      <span>Select the current stage for this record</span>
+    </div>
+
+    <button
+      type="button"
+      class="stage-close-btn"
+      mat-dialog-close
+      aria-label="Close">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+  </div>
+
+
+  <!-- ================= BODY ================= -->
+  <div class="stage-body">
+
+    <form [formGroup]="updateForm">
+
+      <div class="stage-field">
+
+        <label for="stageType">
+          <span>Stage</span>
+          <span class="required">*</span>
+        </label>
+
+        <div class="stage-input-wrapper">
+
+          <i class="bi bi-list-check stage-input-icon"></i>
+
+          <select
+            id="stageType"
+            class="form-select stage-select"
+            formControlName="StageType"
+            [ngClass]="{
+              'is-invalid': submit && f['StageType'].errors
+            }">
+
+            <option value="" disabled>
+              Select Stage
+            </option>
+
+            <option value="Issue">
+              Issue
+            </option>
+
+            <option value="Submit">
+              Submit
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Validation -->
+        <div
+          *ngIf="submit && f['StageType'].errors"
+          class="stage-validation">
+
+          <i class="bi bi-exclamation-circle"></i>
+
+          <span>
+            Stage is required
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= SELECTED STAGE ================= -->
+      <div
+        class="selected-stage"
+        *ngIf="updateForm.get('StageType')?.value">
+
+        <div class="selected-stage-icon">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+
+        <div class="selected-stage-content">
+
+          <span>
+            Selected Stage
+          </span>
+
+          <strong>
+            {{ updateForm.get('StageType')?.value }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= EMPTY MESSAGE ================= -->
+      <div
+        class="stage-info"
+        *ngIf="!updateForm.get('StageType')?.value">
+
+        <div class="stage-info-icon">
+          <i class="bi bi-info-circle-fill"></i>
+        </div>
+
+        <div class="stage-info-content">
+
+          <span>
+            Stage Status
+          </span>
+
+          <strong>
+            Please select a stage to continue.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+  <div class="stage-footer" *ngIf="messageSuccess">
+
+    <button
+      type="button"
+      class="stage-clear-btn"
+      mat-dialog-close>
+
+      <i class="bi bi-x-circle"></i>
+
+      <span>
+        Clear
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="stage-save-btn"
+      (click)="onSubmit()">
+
+      <i class="bi bi-check2-circle"></i>
+
+      <span>
+        Save
+      </span>
+
+    </button>
+
+  </div>
 
 </div>

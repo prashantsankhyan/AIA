@@ -215,7 +215,7 @@ updateStage(data:any){
   this.ChildPolicyID = data.ChildPolicyID
   this.dialog.open(AddStageComponent ,{
     width: '400px',
-    height:'300px',
+    height:'320px',
    data: {ChildPolicyID:this.ChildPolicyID }
   });
  }
@@ -264,8 +264,12 @@ deletePolicy(data:any){
 
 addPlicyRepostingStatus(data:any){
   this.dialog.open(AddPolicyRepotingStatusComponent ,{
-    width: '400px',
-    height:'410px',
+       width: '400px',
+    height: '390px',
+    maxWidth: '95vw',
+    maxHeight: '85vh',
+    panelClass: 'policy-reporting-dialog',
+
    data: {ChildPolicyID:data.ChildPolicyID }
   });
 }

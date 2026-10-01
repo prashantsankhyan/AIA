@@ -64,13 +64,40 @@ repostingTypeMap: { [key: number]: string } = {};
     this.getAllExpirePolicyListByAccontId();
   }
 
-  getPolicyByAccountId() {
-    this.showSpiner = true;
-    this.showPolicyTableEmpty = false;
-    this.showPolicyTableFilled = false;
+  // getPolicyByAccountId() {
+  //   this.showSpiner = true;
+  //   this.showPolicyTableEmpty = false;
+  //   this.showPolicyTableFilled = false;
 
-    this.http.getAllDataId(ApiUrl.getAllPolicyByAccountId, this.AccountID).subscribe(data => {
+  //   this.http.getAllDataId(ApiUrl.getAllPolicyByAccountId, this.AccountID).subscribe(data => {
+  //     this.showSpiner = false;
+  //     const obj = JSON.parse(JSON.stringify(data));
+  //     const policies = obj.ChildPolicys || [];
+
+  //     if (policies.length === 0) {
+  //       this.showPolicyTableEmpty = true;
+  //     } else {
+  //       this.showPolicyTableFilled = true;
+  //       this.issuedPolicies = policies;
+  //       this.filteredPolicies = policies.filter((item:any) => item.StageType === 'Issue');
+  //     }
+
+  //     // hide expire view
+  //     this.showExpireTableFilled = false;
+  //     this.showExpireTableEmpty = false;
+  //   });
+  // }
+getPolicyByAccountId() {
+  this.showSpiner = true;
+  this.showPolicyTableEmpty = false;
+  this.showPolicyTableFilled = false;
+
+  this.http
+    .getAllDataId(ApiUrl.getAllPolicyByAccountId, this.AccountID)
+    .subscribe(data => {
+
       this.showSpiner = false;
+
       const obj = JSON.parse(JSON.stringify(data));
       const policies = obj.ChildPolicys || [];
 
@@ -78,15 +105,22 @@ repostingTypeMap: { [key: number]: string } = {};
         this.showPolicyTableEmpty = true;
       } else {
         this.showPolicyTableFilled = true;
+
         this.issuedPolicies = policies;
-        this.filteredPolicies = policies.filter((item:any) => item.StageType === 'Issue');
+
+        // Issue policies first, then all other policies
+        this.filteredPolicies = [...policies].sort((a: any, b: any) => {
+          const aIssue = a?.StageType === 'Issue' ? 0 : 1;
+          const bIssue = b?.StageType === 'Issue' ? 0 : 1;
+
+          return aIssue - bIssue;
+        });
       }
 
-      // hide expire view
       this.showExpireTableFilled = false;
       this.showExpireTableEmpty = false;
     });
-  }
+}
 
   getAllExpirePolicyListByAccontId() {
     this.showSpiner = true;
@@ -228,18 +262,35 @@ getRepoting(data: any): void {
     });
   }
 
-  goToEndrosement(data: any) {
-    this.clearLocalStorage();
+  // goToEndrosement(data: any) {
+  //   this.clearLocalStorage();
 
-    localStorage.setItem('MarkedPolicyID', data.MarkedPolicyID);
-    localStorage.setItem('ChildPolicyID', data.ChildPolicyID);
-    localStorage.setItem('accountId', this.AccountID);
+  //   localStorage.setItem('MarkedPolicyID', data.MarkedPolicyID);
+  //   localStorage.setItem('ChildPolicyID', data.ChildPolicyID);
+  //   localStorage.setItem('accountId', this.AccountID);
    
     
-    localStorage.setItem('Description', data.Description);
+  //   localStorage.setItem('Description', data.Description);
 
-    this.router.navigate(['./endorsement/endrosementDetail']);
+  //   this.router.navigate(['./endorsement/endrosementDetail']);
+  // }
+  goToEndrosement(data: any) {
+
+  // Only Issue policies are clickable
+  if (data?.StageType !== 'Issue') {
+    return;
   }
+
+  this.clearLocalStorage();
+
+  localStorage.setItem('MarkedPolicyID', data.MarkedPolicyID);
+  localStorage.setItem('ChildPolicyID', data.ChildPolicyID);
+  localStorage.setItem('accountId', this.AccountID);
+
+  localStorage.setItem('Description', data.Description);
+
+  this.router.navigate(['./endorsement/endrosementDetail']);
+}
 
   clearLocalStorage() {
     localStorage.removeItem('EndorsementID');

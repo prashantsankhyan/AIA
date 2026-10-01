@@ -941,3 +941,18 @@ color: rgba(15, 15, 15, 0.542);
   margin-left: 10px;
  
 }
+
+.red-row {
+  background-color: red !important;
+  color: white !important;
+}
+
+.yellow-row {
+  background-color: yellow !important;
+}
+
+tr.red-row,
+tr.red-row td {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+}

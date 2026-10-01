@@ -94,6 +94,7 @@
                 <th>Vehicle Type</th>
                 <th>BodyType</th>
                 <th>Value</th>
+                <th>Enter Date</th>
                 <th style="text-align: center;">Info</th>
                 <th *ngIf ="showSaveButtion"></th>
               </tr>
@@ -110,6 +111,7 @@
                  <td>{{data?.VehicleType}}</td>
                  <td>{{data?.BodyType}}</td>
                  <td>{{data?.Value | currency:'USD':'symbol'}}</td>
+               <td>{{ data?.EnteredDateTime | date:'MM/dd/yyyy' }}</td>
 <td>
   <ng-container *ngIf="data?.EnteredBy || data?.UpdatedBy">
 

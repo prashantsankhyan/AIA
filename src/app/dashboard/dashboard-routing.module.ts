@@ -75,6 +75,11 @@ const routes: Routes = [
         loadChildren:()=> import('./all-transaction-view/all-transaction-view.module').then(m=>m.AllTransactionViewModule)
        
       },
+       {
+        path:'document',
+        loadChildren:()=> import('./documet/documet.module').then(m=>m.DocumetModule)
+       
+      },
       
 
 

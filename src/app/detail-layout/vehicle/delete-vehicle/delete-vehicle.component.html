@@ -1,31 +1,136 @@
-<div class="container">
- <form [formGroup]="deleteForm">
-   <h2 class="text-center">Are you  Sure ?</h2>
-   <h5 class="text-center"> Please select reason to delete It ?</h5>
-   <select class="form-select formControl mt-1" formControlName="Reason"   aria-label="Default select example" style="margin-top: 28px;" >
-     <option hidden value="" disabled selected  > Select Reason to Delete</option>
-     <option  value="Invole in Accident">Invole in Accident</option>
-     <option  value="Total Loss">Total Loss</option>
-     <option  value="Lease  Terminated">Lease  Terminated</option>
-     <option  value="Rental">Rental</option>
-     <option  value="Sold">Sold</option>
-     <option  value="PLO No Operational">PLO No Operational</option>
-     <option  value="Policy Line Adjustment">Policy Line Adjustment</option>
-   
-     
-    
-   </select>
-   </form>
-   <!-- <div class="btn-group  gap-2 mt-4 mb-5 ">
-          
-       <button mat-stroked-button class="text-right" color="warn" (click)="onSubmit()" >Delete</button>
-       <button mat-stroked-button class="text-right"  mat-button mat-dialog-close>Clear</button>
-      
-     
-     </div> -->
-     <div class="clearfix mt-2" *ngIf ="messageSuccess">
-       <button type="button" class="cancelbtn"  mat-dialog-close>Cancel</button>
-       <button type="button" class="deletebtn" (click)="onSubmit()">Delete</button>
-     </div>
+
+<div class="delete-dialog">
+
+  <!-- Header -->
+  <div class="delete-header">
+    <div class="delete-icon">
+      <i class="fas fa-trash-alt"></i>
+    </div>
+
+    <div class="header-text">
+      <h2>Delete Confirmation</h2>
+      <p>Please select a reason before deleting this item.</p>
+    </div>
+  </div>
+
+  <form [formGroup]="deleteForm" class="delete-form">
+
+    <!-- Reason -->
+    <div class="form-group">
+
+      <label for="reason">
+        <i class="fas fa-list-ul"></i>
+        Reason for Deletion
+      </label>
+
+      <div class="select-wrapper" *ngIf="!isManualReason">
+        <select
+          id="reason"
+          class="form-select delete-select"
+          formControlName="Reason"
+          (change)="onReasonChange()">
+
+          <option value="" disabled>
+            Select reason to delete
+          </option>
+
+          <option value="Invole in Accident">
+            Involved in Accident
+          </option>
+
+          <option value="Total Loss">
+            Total Loss
+          </option>
+
+          <option value="Lease Terminated">
+            Lease Terminated
+          </option>
+
+          <option value="Rental">
+            Rental
+          </option>
+
+          <option value="Sold">
+            Sold
+          </option>
+
+          <option value="PLO No Operational">
+            PLO Not Operational
+          </option>
+
+          <option value="Policy Line Adjustment">
+            Policy Line Adjustment
+          </option>
+
+          <option value="None of These">
+            None of These
+          </option>
+
+        </select>
+
+        <i class="fas fa-chevron-down select-arrow"></i>
+      </div>
+
+    </div>
+
+
+    <!-- Manual Reason -->
+    <div
+      *ngIf="isManualReason"
+      class="manual-reason">
+
+      <label for="manualReason">
+        <i class="fas fa-pen"></i>
+        Enter Reason
+      </label>
+
+      <div class="manual-input-wrapper">
+
+        <i class="fas fa-comment-alt input-icon"></i>
+
+        <input
+          id="manualReason"
+          type="text"
+          class="form-control manual-input"
+          placeholder="Please enter your reason"
+          [(ngModel)]="manualReason"
+          [ngModelOptions]="{ standalone: true }"
+          (blur)="setManualReason()"
+        />
+
+      </div>
+
+    </div>
+
+  </form>
+
+
+  <!-- Buttons -->
+  <div
+    class="delete-actions"
+    *ngIf="messageSuccess">
+
+    <button
+      type="button"
+      class="cancel-btn"
+      mat-dialog-close>
+
+      <i class="fas fa-times"></i>
+      Cancel
+
+    </button>
+
+    <button
+      type="button"
+      class="delete-btn"
+      (click)="onSubmit()">
+
+      <i class="fas fa-trash-alt"></i>
+      Delete
+
+    </button>
+
+  </div>
 
 </div>
+

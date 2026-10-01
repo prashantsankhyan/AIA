@@ -131,12 +131,19 @@
          <tbody *ngIf="listOfEndorsements?.length > 0">
            <ng-container >
              <tr *ngFor ="let data of listOfEndorsements | searchEndrosement:searchCriteria; let i = index"
-           [ngClass]="{
+            [ngClass]="{
     'yellow-row':
       data.Stage == null ||
-      data.Stage?.trim() === '' ||
-      data.Stage?.trim().toLowerCase() === 'in process'
-  }" style="height: 40px;"  (dblclick)="i !== 0 && goToChickAddOrVistEndroseemtLine(data)" >
+      data.Stage?.trim().toLowerCase() === '' ||
+      data.Stage?.trim().toLowerCase() === 'in process',
+
+    'red-row':
+      data.Stage?.trim().toLowerCase() === 'not issue'
+  }"style="height: 40px;"   (dblclick)="
+data.Stage?.trim().toLowerCase() !== 'not issue' &&
+    i !== 0 &&
+    goToChickAddOrVistEndroseemtLine(data)
+  " >
                <td>{{data.IDBasedOnAMC == null? data.LineShortName:data.IDBasedOnAMC}}</td>
                <td>{{data.Entered | date:'MM/dd/yyyy'}}</td>
               

@@ -861,3 +861,146 @@ a {
   background-color: #d9edf7 !important;
   font-weight: bold;
 }
+
+
+.account-team-message {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: #f6f8fb;
+}
+
+
+/* Card */
+
+.account-team-card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 38px 35px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e8ebf0;
+  border-radius: 18px;
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.08);
+
+  animation: accountTeamFade 0.35s ease;
+}
+
+
+/* Icon */
+
+.account-team-icon {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #eef6ff;
+
+  color: #168ed6;
+
+  font-size: 28px;
+}
+
+
+/* Heading */
+
+.account-team-card h3 {
+  margin: 0 0 8px;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #101832;
+}
+
+
+/* Description */
+
+.account-team-card p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  color: #687386;
+}
+
+.account-team-card p strong {
+  color: #168ed6;
+  font-weight: 600;
+}
+
+
+/* Hint */
+
+.account-team-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 22px;
+  padding: 9px 14px;
+
+  border-radius: 8px;
+
+  background: #f5f7fa;
+
+  color: #596579;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.account-team-hint i {
+  color: #168ed6;
+}
+
+
+/* Animation */
+
+@keyframes accountTeamFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+  .account-team-message {
+    padding: 20px;
+  }
+
+  .account-team-card {
+    padding: 30px 22px;
+  }
+
+}

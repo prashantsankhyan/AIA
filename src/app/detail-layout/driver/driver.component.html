@@ -95,17 +95,18 @@
             <thead>
               <tr>
                 <th>#</th>
-               <th> Name</th>
+               <th>Name</th>
                 
-                <th>Date Of Birth</th>
+                <th>BirthDate</th>
                 <th>Issued</th>
                 <th>State </th>
-                <th>Licence No</th>  
+                <th>Licence</th>  
                 <th>Age</th> 
                 <th>Experience</th>
                 <th> Stage</th>
                 <th> Type</th>
-                <th>Enter</th>
+                <th> Date</th>
+                <th>Info</th>
                 <th *ngIf="showSaveButtion">Status</th>
                 <th></th>
               </tr>
@@ -122,13 +123,15 @@
                  <td>{{data?.DriverLicenceNo}}</td>
                  <td>{{data?.Age}}</td>
                  <td>{{data?.Experience}}</td>
+                 
                  <td> {{
                   isRealDate(data?.DriverStage)
                     ? (data?.DriverStage | date: 'MM/dd/yyyy')
                     : data?.DriverStage
                 }}</td>
                 <td [ngClass]="isAuthorized(data?.AuthType) ? 'force-green' : 'force-yellow'"> {{ capitalizeFirstLetter(data?.AuthType) }}</td>
-   <td>
+   <td> {{ data?.EnteredDateTime | date:'MM/dd/yyyy' }}</td>
+                <td>
   <ng-container *ngIf="data?.EnteredBy || data?.UpdatedBy">
 
     <!-- ================= UPDATED INFORMATION ================= -->

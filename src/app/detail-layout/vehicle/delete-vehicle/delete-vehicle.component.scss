@@ -1,99 +1,405 @@
 
-* {box-sizing: border-box}
+/* =========================================================
+   DELETE DIALOG
+   ========================================================= */
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+.delete-dialog {
   width: 100%;
-  opacity: 0.9;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.18);
+  font-family: "Inter", "Segoe UI", sans-serif;
 }
 
-button:hover {
-  opacity:1;
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.delete-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 26px;
+
+  background: linear-gradient(
+    135deg,
+    #fff5f5,
+    #fffafa
+  );
+
+  border-bottom: 1px solid #f1dede;
 }
 
-/* Float cancel and delete buttons and add an equal width */
-.cancelbtn, .deletebtn {
-  float: left;
-  width: 50%;
+.delete-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #fee2e2;
+  color: #dc2626;
+
+  font-size: 21px;
+
+  box-shadow:
+    0 6px 15px rgba(220, 38, 38, 0.12);
 }
 
-/* Add a color to the cancel button */
-.cancelbtn {
-  background-color: #ccc;
-  color: black;
+.header-text h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  color: #111827;
 }
 
-/* Add a color to the delete button */
-.deletebtn {
-  background-color: #f44336;
+.header-text p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #6b7280;
 }
 
-/* Add padding and center-align text to the container */
-.container {
-  padding: 16px;
-  text-align: center;
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.delete-form {
+  padding: 24px 26px 10px;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #474e5d;
-  padding-top: 50px;
+.form-group,
+.manual-reason {
+  width: 100%;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+.form-group label,
+.manual-reason label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #374151;
 }
 
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+.form-group label i,
+.manual-reason label i {
+  color: #dc2626;
+  font-size: 12px;
 }
 
-/* The Modal Close Button (x) */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.select-wrapper {
+  position: relative;
 }
 
-.close:hover,
-.close:focus {
-  color: #f44336;
+.delete-select {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 42px 0 15px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+
+  background: #f9fafb;
+
+  color: #1f2937;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  outline: none;
+
   cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
+.delete-select:hover {
+  border-color: #c5cad4;
+  background: #ffffff;
 }
 
-/* Change styles for cancel button and delete button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .deletebtn {
-    width: 100%;
+.delete-select:focus {
+  border-color: #dc2626;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(220, 38, 38, 0.10);
+}
+
+
+/* Dropdown arrow */
+
+.select-arrow {
+  position: absolute;
+
+  right: 16px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MANUAL REASON
+   ========================================================= */
+
+.manual-reason {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  background: #fff8f8;
+
+  border: 1px solid #f5d0d0;
+
+  border-radius: 12px;
+
+  animation: slideDown 0.2s ease;
+}
+
+.manual-input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #9ca3af;
+
+  font-size: 13px;
+
+  pointer-events: none;
+}
+
+.manual-input {
+  height: 45px;
+
+  padding-left: 38px;
+
+  border: 1px solid #d9dee7;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  font-size: 14px;
+
+  color: #1f2937;
+
+  transition: all 0.2s ease;
+}
+
+.manual-input::placeholder {
+  color: #9ca3af;
+}
+
+.manual-input:focus {
+  border-color: #dc2626;
+
+  box-shadow:
+    0 0 0 3px rgba(220, 38, 38, 0.08);
+
+  outline: none;
+}
+
+
+/* =========================================================
+   BUTTON AREA
+   ========================================================= */
+
+.delete-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 18px 26px 22px;
+
+  border-top: 1px solid #eef0f3;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-btn,
+.delete-btn {
+  height: 43px;
+
+  padding: 0 19px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.cancel-btn {
+  border: 1px solid #d7dce3;
+
+  background: #ffffff;
+
+  color: #4b5563;
+}
+
+.cancel-btn:hover {
+  background: #f8fafc;
+
+  border-color: #c7ccd4;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
+.delete-btn {
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 12px rgba(220, 38, 38, 0.22);
+}
+
+.delete-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #dc2626,
+    #b91c1c
+  );
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(220, 38, 38, 0.28);
+}
+
+.delete-btn:active,
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes slideDown {
+
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
   }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .delete-dialog {
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .delete-header {
+    padding: 20px;
+  }
+
+  .delete-form {
+    padding: 20px 20px 8px;
+  }
+
+  .delete-actions {
+    padding: 16px 20px 20px;
+  }
+
+  .delete-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+  }
+
+  .header-text h2 {
+    font-size: 18px;
+  }
+
+  .cancel-btn,
+  .delete-btn {
+    flex: 1;
+  }
+
+}
+

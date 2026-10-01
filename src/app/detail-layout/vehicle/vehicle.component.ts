@@ -291,20 +291,52 @@ replaceDataByExcleFile(data:any){
 
 
 
-  id =''
-  userName =''
-  delete(data:any) {
-    this.id = data.VehicleID ;
-    this.userName = data.VehicleType;
-    this.EndorsementID;
-    this.dialog.open(DeleteVehicleComponent ,{
-      width: '450px',
-      height:'265px',
-      data:{VehicleID:this.id ,VehicleType:this.userName,EndorsementID:this.EndorsementID,ChildPolicyID:data.ChildPolicyID,AccountID:data.AccountID}
+  // id =''
+  // userName =''
+  // delete(data:any) {
+  //   this.id = data.VehicleID ;
+  //   this.userName = data.VehicleType;
+  //   this.EndorsementID;
+  //   this.dialog.open(DeleteVehicleComponent ,{
+  //     width: '450px',
+  //     height:'265px',
+  //     data:{VehicleID:this.id ,VehicleType:this.userName,EndorsementID:this.EndorsementID,ChildPolicyID:data.ChildPolicyID,AccountID:data.AccountID}
 
-    });
+  //   });
     
-  }
+  // }
+
+  id = '';
+userName = '';
+
+delete(data: any) {
+
+  this.id = data.VehicleID;
+  this.userName = data.VehicleType;
+  this.EndorsementID;
+
+  const dialogRef = this.dialog.open(DeleteVehicleComponent, {
+    width: '450px',
+    height: '350px',
+    data: {
+      VehicleID: this.id,
+      VehicleType: this.userName,
+      EndorsementID: this.EndorsementID,
+      ChildPolicyID: data.ChildPolicyID,
+      AccountID: data.AccountID
+    }
+  });
+
+  dialogRef.afterClosed().subscribe((result: any) => {
+
+    if (result?.deleted === true) {
+
+      // Call your existing API/list method here
+      this.getAllallVehicleList();
+    }
+
+  });
+}
 
 
   exportVehicleToExcel() {

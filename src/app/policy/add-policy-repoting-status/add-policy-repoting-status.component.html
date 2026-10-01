@@ -1,183 +1,322 @@
 <div class="reporting-dialog">
 
-  <!-- Header -->
+  <!-- ========================================================= -->
+  <!-- HEADER -->
+  <!-- ========================================================= -->
 
   <div class="dialog-header">
+
     <div class="header-icon">
       <i class="bi bi-file-earmark-check"></i>
     </div>
 
+    <div class="header-content">
+      <h2>Policy Reporting Status</h2>
+      <span>Manage reporting status for this policy</span>
+    </div>
 
-<div class="header-content">
-  <h2>Policy Reporting Status</h2>
-  <span>Manage reporting status for this policy</span>
-</div>
+    <button
+      type="button"
+      class="close-btn"
+      (click)="closeModel()"
+      aria-label="Close">
 
-<button
-  type="button"
-  class="close-btn"
-  (click)="closeModel()"
-  aria-label="Close">
-  <i class="bi bi-x-lg"></i>
-</button>
+      <i class="bi bi-x-lg"></i>
 
+    </button>
 
   </div>
 
-  <!-- Loading -->
 
-  <div class="loading-container" *ngIf="showSpiner">
-    <div class="spinner-border" role="status"></div>
-    <span>Loading policy status...</span>
+  <!-- ========================================================= -->
+  <!-- LOADING -->
+  <!-- ========================================================= -->
+
+  <div
+    class="loading-container"
+    *ngIf="showSpiner">
+
+    <div
+      class="spinner-border"
+      role="status">
+    </div>
+
+    <span>
+      Loading policy status...
+    </span>
+
   </div>
 
-  <!-- Form -->
+
+  <!-- ========================================================= -->
+  <!-- FORM -->
+  <!-- ========================================================= -->
 
   <form
     *ngIf="!showSpiner"
     [formGroup]="updateForm"
     (ngSubmit)="onSubmit()">
 
+    <!-- ======================================================= -->
+    <!-- BODY -->
+    <!-- ======================================================= -->
 
-<div class="dialog-body">
-
-  <!-- Policy Information -->
- 
-
-
-
-  <!-- Status Section -->
+    <div class="dialog-body">
 
 
-  <!-- Existing / New Status -->
-  <div
-    class="record-status"
-    [ngClass]="RepostingID && RepostingID != 0 ? 'existing' : 'new'">
+      <!-- ===================================================== -->
+      <!-- RECORD STATUS -->
+      <!-- ===================================================== -->
+
+      <div
+        class="record-status"
+        [ngClass]="
+          RepostingID && RepostingID != 0
+            ? 'existing'
+            : 'new'
+        ">
+
+        <div class="record-status-icon">
+
+          <i
+            class="bi"
+            [ngClass]="
+              RepostingID && RepostingID != 0
+                ? 'bi-pencil-square'
+                : 'bi-plus-circle'
+            ">
+          </i>
+
+        </div>
+
+
+        <div class="record-status-content">
+
+          <strong>
+            {{
+              RepostingID && RepostingID != 0
+                ? 'Existing Status'
+                : 'New Status'
+            }}
+          </strong>
+
+          <small>
+            {{
+              RepostingID && RepostingID != 0
+                ? 'Existing reporting status will be updated.'
+                : 'No reporting status found. A new record will be created.'
+            }}
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================== -->
+      <!-- REPORTING TYPE -->
+      <!-- ===================================================== -->
+
+      <div class="form-field full-width">
+
+        <label
+          for="repostingType">
+
+          <span>
+            Reporting Type
+          </span>
+
+          <span class="required">
+            *
+          </span>
+
+        </label>
+
+
+        <div class="input-wrapper select-wrapper">
+
+          <i class="bi bi-list-check input-icon"></i>
+
+
+          <select
+            id="repostingType"
+            class="form-select reporting-select"
+            formControlName="RepostingType">
+
+
+            <!-- Default -->
+
+            <option value="">
+              Select Reporting Type
+            </option>
+
+
+            <!-- ================================================= -->
+            <!-- GENERAL REPORTING -->
+            <!-- ================================================= -->
+
+
+
+            <!-- ================================================= -->
+            <!-- SCHEDULED REPORTING -->
+            <!-- ================================================= -->
+
+            
+
+              <option value="Scheduled Policy">
+                Scheduled Policy
+              </option>
+
+              <option value="Gross Receipts Reporting – Monthly">
+                Gross Receipts Reporting – Monthly
+              </option>
+
+              <option value="Gross Receipts Reporting – Annual">
+                Gross Receipts Reporting – Annual
+              </option>
+
+              <option value="Mileage Reporting - Monthly">
+                Mileage Reporting - Monthly
+              </option>
+
+              <option value="Monthly Reporting">
+                Monthly Reporting
+              </option>
+
+              <option value="Quarterly Reporting">
+                Quarterly Reporting
+              </option>
+
+          
+
+          </select>
+
+        </div>
+
+
+        <!-- Validation -->
+
+        <div
+          class="validation-message"
+          *ngIf="
+            submit &&
+            f['RepostingType'].invalid
+          ">
+
+          <i class="bi bi-exclamation-circle"></i>
+
+          <span>
+            Please select reporting type.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================== -->
+      <!-- SELECTED STATUS PREVIEW -->
+      <!-- ===================================================== -->
+
+      <div class="selected-status">
+
+  <div class="selected-status-icon">
 
     <i
       class="bi"
       [ngClass]="
-        RepostingID && RepostingID != 0
-          ? 'bi-pencil-square'
-          : 'bi-plus-circle'
+        updateForm.get('RepostingType')?.value
+          ? 'bi-check-circle-fill'
+          : 'bi-info-circle-fill'
       ">
     </i>
 
-    <div>
-      <strong>
-        {{
-          RepostingID && RepostingID != 0
-            ? 'Existing Status'
-            : 'New Status'
-        }}
-      </strong>
-
-      <small>
-        {{
-          RepostingID && RepostingID != 0
-            ? 'Existing reporting status will be updated.'
-            : 'No reporting status found. A new record will be created.'
-        }}
-      </small>
-    </div>
   </div>
 
-  <!-- Reporting Type -->
-  <div class="form-field full-width">
+  <div class="selected-status-content">
 
-    <label for="repostingType">
-      Reporting Type
-      <span class="required">*</span>
-    </label>
-
-    <div class="input-wrapper select-wrapper">
-
-      <i class="bi bi-list-check input-icon"></i>
-
-      <select
-        id="repostingType"
-        class="form-select"
-        formControlName="RepostingType">
-
-        <option value="">
-          Select Reporting Type
-        </option>
-
-        <option value="Reporting Policy">
-          Reporting Policy
-        </option>
-        <option value="Scheduled Policy">
-          Scheduled Policy
-        </option>
-
-
-      </select>
-
-    </div>
-
-    <div
-      class="validation-message"
-      *ngIf="submit && f['RepostingType'].invalid">
-
-      <i class="bi bi-exclamation-circle"></i>
-      Please select reporting type.
-    </div>
-
-  </div>
-
-  <!-- Existing ID -->
-  <div
-    class="existing-id"
-    *ngIf="RepostingID && RepostingID != 0">
-
-    <span>Record ID</span>
-    <strong>#{{ RepostingID }}</strong>
-
-    <span class="update-label">
-      <i class="bi bi-arrow-repeat"></i>
-      Update Mode
+    <span>
+      Reporting Status
     </span>
 
+    <strong *ngIf="updateForm.get('RepostingType')?.value">
+      Selected:
+      {{ updateForm.get('RepostingType')?.value }}
+    </strong>
+
+    <strong
+      *ngIf="!updateForm.get('RepostingType')?.value"
+      class="no-selection">
+      Please select a reporting type.
+    </strong>
+
   </div>
 
 </div>
 
-<!-- Footer -->
-<div class="dialog-footer">
 
-  <button
-    type="button"
-    class="btn btn-light cancel-btn"
-    (click)="closeModel()">
+      <!-- ===================================================== -->
+      <!-- EXISTING RECORD -->
+      <!-- ===================================================== -->
 
-    <i class="bi bi-x-circle"></i>
-    Cancel
-  </button>
+    
 
-  <button
-    type="submit"
-    class="btn btn-primary save-btn"
-    [disabled]="submit && updateForm.invalid">
+    </div>
 
-    <i
-      class="bi"
-      [ngClass]="
-        RepostingID && RepostingID != 0
-          ? 'bi-check2-square'
-          : 'bi-plus-circle'
-      ">
-    </i>
 
-    {{
-      RepostingID && RepostingID != 0
-        ? 'Update Status'
-        : 'Save Status'
-    }}
+    <!-- ======================================================= -->
+    <!-- FOOTER -->
+    <!-- ======================================================= -->
 
-  </button>
+    <div class="dialog-footer">
 
-</div>
 
+      <!-- Cancel -->
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="closeModel()">
+
+        <i class="bi bi-x-circle"></i>
+
+        <span>
+          Cancel
+        </span>
+
+      </button>
+
+
+      <!-- Save / Update -->
+
+      <button
+        type="submit"
+        class="save-btn"
+        [disabled]="
+          submit &&
+          updateForm.invalid
+        ">
+
+        <i
+          class="bi"
+          [ngClass]="
+            RepostingID && RepostingID != 0
+              ? 'bi-check2-square'
+              : 'bi-plus-circle'
+          ">
+        </i>
+
+        <span>
+          {{
+            RepostingID && RepostingID != 0
+              ? 'Update Status'
+              : 'Save Status'
+          }}
+        </span>
+
+      </button>
+
+    </div>
 
   </form>
 
