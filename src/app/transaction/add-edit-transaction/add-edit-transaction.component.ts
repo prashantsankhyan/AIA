@@ -215,21 +215,59 @@ addAmount(){
 //     + agencyFees;
 // }
 
+// getTotal() {
+
+//   const amount = Number(this.addEditTransactionForm.value.Amount) || 0;
+//   const policyFee = Number(this.addEditTransactionForm.value.PolicyFee) || 0;
+//   const surpluxTaxRate = Number(this.addEditTransactionForm.value.SurpluxTax) || 0; // %
+//   const agencyDiscount = Number(this.addEditTransactionForm.value.AgencyDiscount) || 0;
+//   const agencyFees = Number(this.addEditTransactionForm.value.AgencyFees) || 0;
+//   const stampingRate = Number(this.addEditTransactionForm.value.StamingFee) || 0; // %
+
+//   // ✅ Convert percentage properly
+//   const surplusTaxAmount = amount * (surpluxTaxRate / 100);
+//   const stampingAmount = amount * (stampingRate / 100);
+
+//   console.log("Surplus Tax Amount:", surplusTaxAmount);
+//   console.log("Stamping Amount:", stampingAmount);
+
+//   this.Total =
+//       amount
+//     + surplusTaxAmount
+//     + stampingAmount
+//     + policyFee
+//     - agencyDiscount
+//     + agencyFees;
+
+// }
+
 getTotal() {
 
-  const amount = Number(this.addEditTransactionForm.value.Amount) || 0;
-  const policyFee = Number(this.addEditTransactionForm.value.PolicyFee) || 0;
-  const surpluxTaxRate = Number(this.addEditTransactionForm.value.SurpluxTax) || 0; // %
-  const agencyDiscount = Number(this.addEditTransactionForm.value.AgencyDiscount) || 0;
-  const agencyFees = Number(this.addEditTransactionForm.value.AgencyFees) || 0;
-  const stampingRate = Number(this.addEditTransactionForm.value.StamingFee) || 0; // %
+  const amount = Number(
+    this.addEditTransactionForm.value.Amount
+  ) || 0;
 
-  // ✅ Convert percentage properly
-  const surplusTaxAmount = amount * (surpluxTaxRate / 100);
-  const stampingAmount = amount * (stampingRate / 100);
+  const policyFee = Number(
+    this.addEditTransactionForm.value.PolicyFee
+  ) || 0;
 
-  console.log("Surplus Tax Amount:", surplusTaxAmount);
-  console.log("Stamping Amount:", stampingAmount);
+  // These are now AMOUNTS, not percentages
+  const surplusTaxAmount = Number(
+    this.addEditTransactionForm.value.SurpluxTax
+  ) || 0;
+
+  const stampingAmount = Number(
+    this.addEditTransactionForm.value.StamingFee
+  ) || 0;
+
+  const agencyDiscount = Number(
+    this.addEditTransactionForm.value.AgencyDiscount
+  ) || 0;
+
+  const agencyFees = Number(
+    this.addEditTransactionForm.value.AgencyFees
+  ) || 0;
+
 
   this.Total =
       amount
@@ -239,6 +277,11 @@ getTotal() {
     - agencyDiscount
     + agencyFees;
 
+
+  console.log('Amount:', amount);
+  console.log('Surplus Tax Amount:', surplusTaxAmount);
+  console.log('Stamping Amount:', stampingAmount);
+  console.log('Total:', this.Total);
 }
 
 
@@ -630,16 +673,51 @@ getOpeningBalance() {
   WY: { taxRate: 3.000, stampingFee: 0.175 }
 };
 
+// onStateChange(state: string) {
+
+//   const selected = this.stateData[state];
+
+//   if (selected) {
+//     this.addEditTransactionForm.patchValue({
+//       SurpluxTax: selected.taxRate,
+//       StamingFee: selected.stampingFee
+//     });
+//   }
+// }
+
 onStateChange(state: string) {
 
   const selected = this.stateData[state];
 
-  if (selected) {
-    this.addEditTransactionForm.patchValue({
-      SurpluxTax: selected.taxRate,
-      StamingFee: selected.stampingFee
-    });
+  if (!selected) {
+    return;
   }
+
+  const amount =
+    Number(this.addEditTransactionForm.get('Amount')?.value) || 0;
+
+  // Calculate tax amount from percentage
+  const surplusTaxAmount =
+    amount * (Number(selected.taxRate) / 100);
+
+  // Stamping fee
+  let stampingAmount = 0;
+
+  if (state === 'OR' || state === 'PA') {
+    // Flat fee
+    stampingAmount = Number(selected.stampingFee) || 0;
+  } else {
+    // Percentage
+    stampingAmount =
+      amount * (Number(selected.stampingFee) / 100);
+  }
+
+  this.addEditTransactionForm.patchValue({
+    SurpluxTax: Number(surplusTaxAmount.toFixed(2)),
+    StamingFee: Number(stampingAmount.toFixed(2))
+  });
+
+  this.getTotal();
 }
 
 

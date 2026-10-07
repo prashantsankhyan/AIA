@@ -141,8 +141,8 @@
       
       <ng-container *ngIf="data.IsDeleted !== true">
           <td (click)="!data?.IsChildPolicyExist && completeNextStep(data)"
-  [class.disabled-cell]="data?.IsChildPolicyExist">{{data?.LineShortName}}</td>
-          <td>{{data?.LineName}}</td>
+  [class.disabled-cell]="data?.IsChildPolicyExist"> {{ data?.LineShortName === 'AL' ? 'Auto Liability' : data?.LineShortName }}</td>
+          <td>{{data?.LineName === 'Auto Liability'?'AL':data?.LineName}}</td>
           <td>{{data?.Source}}</td>
           <td>{{data?.Effective | date:'MM/dd/yyyy'}}</td>
           <td>{{data?.Expiration | date:'MM/dd/yyyy'}}</td>

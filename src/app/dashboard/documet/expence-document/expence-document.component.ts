@@ -9,7 +9,6 @@ import { MaterialModule } from '../../../sharingModule/material/material.module'
 import { SpinnerComponent } from '../../../spinner/spinner.component';
 import { AccountTeamNavbarComponent } from '../../../account-team/account-team-navbar/account-team-navbar.component';
 
-
 import { AllApiService } from '../../../_service/all-api.service';
 import { ApiUrl } from '../../../_core/apiUrl';
 import { AddExoenceDocumentComponent } from './add-exoence-document/add-exoence-document.component';
@@ -17,7 +16,8 @@ import { AddExoenceDocumentComponent } from './add-exoence-document/add-exoence-
 @Component({
   selector: 'app-expence-document',
   standalone: true,
-   imports: [
+
+  imports: [
     CommonModule,
     FormsModule,
     MatButtonModule,
@@ -26,27 +26,104 @@ import { AddExoenceDocumentComponent } from './add-exoence-document/add-exoence-
     SpinnerComponent,
     AccountTeamNavbarComponent
   ],
+
   templateUrl: './expence-document.component.html',
   styleUrl: './expence-document.component.scss'
 })
 export class ExpenceDocumentComponent {
 
+  /* =========================================================
+     LOADER
+     ========================================================= */
+
   showSpiner = true;
 
+
+  /* =========================================================
+     SEARCH
+     ========================================================= */
+
   searchTerm = '';
+
+
+  /* =========================================================
+     ACCOUNT / TEAM
+     ========================================================= */
 
   accountId = '';
   teamName: any;
 
+
+  /* =========================================================
+     ORIGINAL API DATA
+     ========================================================= */
+
   listOfAllFatchData: any[] = [];
-pageIndex = 0;
-pageSize = 10;
+
+
+  /* =========================================================
+     PAGINATION
+     ========================================================= */
+
+  pageIndex = 0;
+  pageSize = 10;
+
+
+  /* =========================================================
+     DOCUMENT TYPE FILTER
+     ========================================================= */
+
+  selectedDocumentType = '';
+
+
+  documentTypes: string[] = [
+
+    'Resource Pro-Invoice',
+
+    'Surplus Lines-Invoice',
+
+    'Applied Invoice',
+
+    'Cab & Carrier Software-Invoice',
+
+    'Computer Devices & Related-Invoice',
+
+    'Docu Sign',
+
+    'DYL',
+
+    'E&O',
+
+    'Electricity',
+
+    'Gifts',
+
+    'Internet',
+
+    'Miscellaneous',
+
+    'MVRs',
+
+    'Phone Devices & Related',
+
+    'Producer-Commissions',
+
+    'Team-Viewer',
+
+    'Excel Sheet-Expenses'
+
+  ];
+
 
   constructor(
     private http: AllApiService,
     public dialog: MatDialog
   ) {}
 
+
+  /* =========================================================
+     INIT
+     ========================================================= */
 
   ngOnInit(): void {
 
@@ -55,207 +132,428 @@ pageSize = 10;
         localStorage.getItem('accountId') || '""'
       );
 
+
     this.teamName =
       localStorage.getItem('teamName');
+
 
     // API CALL
     this.getAllFile();
 
   }
+
+
+  /* =========================================================
+     PAGINATED DATA
+     ========================================================= */
+
   get paginatedAttachments(): any[] {
-  const start = this.pageIndex * this.pageSize;
-  const end = start + this.pageSize;
 
-  return this.filteredAttachments.slice(start, end);
-}
+    const start =
+      this.pageIndex * this.pageSize;
 
-get pageStart(): number {
-  return this.filteredAttachments.length === 0
-    ? 0
-    : this.pageIndex * this.pageSize;
-}
+    const end =
+      start + this.pageSize;
 
-get pageEnd(): number {
-  return Math.min(
-    (this.pageIndex + 1) * this.pageSize,
-    this.filteredAttachments.length
-  );
-}
 
-onPageChange(event: any): void {
-  this.pageIndex = event.pageIndex;
-  this.pageSize = event.pageSize;
-}
+    return this.filteredAttachments.slice(
+      start,
+      end
+    );
 
-onSearchChange(): void {
-  this.pageIndex = 0;
-}
-
-trackByFileId(index: number, item: any): number {
-  return item.FileID;
-}
-
-getFileIcon(fileType: string): string {
-
-  const type = (fileType || '').toLowerCase();
-
-  if (type === '.pdf') {
-    return 'fas fa-file-pdf';
   }
-
-  if (type === '.xlsx' || type === '.xls') {
-    return 'fas fa-file-excel';
-  }
-
-  if (type === '.doc' || type === '.docx') {
-    return 'fas fa-file-word';
-  }
-
-  if (type === '.ppt' || type === '.pptx') {
-    return 'fas fa-file-powerpoint';
-  }
-
-  if (
-    type === '.jpg' ||
-    type === '.jpeg' ||
-    type === '.png' ||
-    type === '.gif'
-  ) {
-    return 'fas fa-file-image';
-  }
-
-  return 'fas fa-file';
-}
 
 
   /* =========================================================
-     GET ALL FILES FROM API
-     ONLY AGENCY DOCUMENT RECORDS
+     PAGE START
      ========================================================= */
 
- getAllFile(): void {
+  get pageStart(): number {
 
-  this.showSpiner = true;
+    return this.filteredAttachments.length === 0
 
-  this.http
-    .getAllData(ApiUrl.getDataForAccountingTeam)
-    .subscribe({
+      ? 0
 
-      next: (data: any) => {
+      : this.pageIndex * this.pageSize;
 
-        this.showSpiner = false;
-
-        console.log('Expense Document API Response:', data);
-
-        const allFiles =
-          data?.AttachmentDetail || [];
-
-
-        // ONLY RECORDS HAVING DocumentType
-        this.listOfAllFatchData =
-          allFiles.filter((item: any) =>
-            item.DocumentType !== null &&
-            item.DocumentType !== undefined &&
-            item.DocumentType.toString().trim() !== ''
-          );
-
-
-        // Latest first
-        this.listOfAllFatchData.sort(
-          (a: any, b: any) =>
-            new Date(b.EnteredDate || 0).getTime() -
-            new Date(a.EnteredDate || 0).getTime()
-        );
-
-
-        console.log(
-          'Expense Document Records:',
-          this.listOfAllFatchData
-        );
-
-      },
-
-      error: (error) => {
-
-        this.showSpiner = false;
-
-        console.error(
-          'Expense Document API Error:',
-          error
-        );
-
-        this.listOfAllFatchData = [];
-
-      }
-
-    });
-
-}
+  }
 
 
   /* =========================================================
-     FILTERED DATA
-     SEARCH
+     PAGE END
      ========================================================= */
 
-  get filteredAttachments(): any[] {
+  get pageEnd(): number {
 
-    if (!this.searchTerm?.trim()) {
+    return Math.min(
 
-      return this.listOfAllFatchData;
+      (this.pageIndex + 1) * this.pageSize,
+
+      this.filteredAttachments.length
+
+    );
+
+  }
+
+
+  /* =========================================================
+     PAGE CHANGE
+     ========================================================= */
+
+  onPageChange(event: any): void {
+
+    this.pageIndex =
+      event.pageIndex;
+
+
+    this.pageSize =
+      event.pageSize;
+
+  }
+
+
+  /* =========================================================
+     SEARCH CHANGE
+     ========================================================= */
+
+  onSearchChange(): void {
+
+    // Always go back to first page
+    this.pageIndex = 0;
+
+  }
+
+
+  /* =========================================================
+     DOCUMENT TYPE FILTER
+     ========================================================= */
+
+  selectDocumentType(documentType: string): void {
+
+    this.selectedDocumentType =
+      documentType;
+
+
+    // Reset pagination
+    this.pageIndex = 0;
+
+  }
+
+
+  /* =========================================================
+     TRACK BY
+     ========================================================= */
+
+  trackByFileId(
+    index: number,
+    item: any
+  ): number {
+
+    return item.FileID;
+
+  }
+
+
+  /* =========================================================
+     FILE ICON
+     ========================================================= */
+
+  getFileIcon(fileType: string): string {
+
+    const type =
+      (fileType || '').toLowerCase();
+
+
+    if (type === '.pdf') {
+
+      return 'fas fa-file-pdf';
 
     }
 
 
-    const term =
-      this.searchTerm
-        .toLowerCase()
-        .trim();
+    if (
+      type === '.xlsx' ||
+      type === '.xls'
+    ) {
+
+      return 'fas fa-file-excel';
+
+    }
 
 
-    return this.listOfAllFatchData.filter(
+    if (
+      type === '.doc' ||
+      type === '.docx'
+    ) {
+
+      return 'fas fa-file-word';
+
+    }
+
+
+    if (
+      type === '.ppt' ||
+      type === '.pptx'
+    ) {
+
+      return 'fas fa-file-powerpoint';
+
+    }
+
+
+    if (
+      type === '.jpg' ||
+      type === '.jpeg' ||
+      type === '.png' ||
+      type === '.gif'
+    ) {
+
+      return 'fas fa-file-image';
+
+    }
+
+
+    return 'fas fa-file';
+
+  }
+
+
+  /* =========================================================
+     GET ALL FILES FROM API
+     ONLY EXPENSE DOCUMENT RECORDS
+     ========================================================= */
+
+  getAllFile(): void {
+
+    this.showSpiner = true;
+
+
+    this.http
+      .getAllData(ApiUrl.getDataForAccountingTeam)
+      .subscribe({
+
+        next: (data: any) => {
+
+          this.showSpiner = false;
+
+
+          console.log(
+            'Expense Document API Response:',
+            data
+          );
+
+
+          const allFiles =
+            data?.AttachmentDetail || [];
+
+
+          /* =================================================
+             ONLY RECORDS HAVING DocumentType
+             ================================================= */
+
+          this.listOfAllFatchData =
+            allFiles.filter((item: any) =>
+
+              item.DocumentType !== null &&
+
+              item.DocumentType !== undefined &&
+
+              item.DocumentType
+                .toString()
+                .trim() !== ''
+
+            );
+
+
+          /* =================================================
+             LATEST FIRST
+             ================================================= */
+
+          this.listOfAllFatchData.sort(
+            (a: any, b: any) =>
+
+              new Date(
+                b.EnteredDate || 0
+              ).getTime()
+
+              -
+
+              new Date(
+                a.EnteredDate || 0
+              ).getTime()
+
+          );
+
+
+          /* =================================================
+             RESET PAGE
+             ================================================= */
+
+          this.pageIndex = 0;
+
+
+          console.log(
+            'Expense Document Records:',
+            this.listOfAllFatchData
+          );
+
+        },
+
+
+        error: (error) => {
+
+          this.showSpiner = false;
+
+
+          console.error(
+            'Expense Document API Error:',
+            error
+          );
+
+
+          this.listOfAllFatchData = [];
+
+        }
+
+      });
+
+  }
+
+
+  /* =========================================================
+     FILTERED DATA
+     SEARCH + DOCUMENT TYPE FILTER
+     ========================================================= */
+
+  get filteredAttachments(): any[] {
+
+  const search =
+    (this.searchTerm || '')
+      .trim()
+      .toLowerCase();
+
+
+  const selectedType =
+    (this.selectedDocumentType || '')
+      .trim()
+      .toLowerCase();
+
+
+  // =====================================================
+  // NOTHING SELECTED = NO DATA
+  // =====================================================
+
+  if (!selectedType) {
+
+    return [];
+
+  }
+
+
+  // =====================================================
+  // ALL DOCUMENTS SELECTED
+  // =====================================================
+
+  let result: any[];
+
+  if (selectedType === 'all') {
+
+    result = [...this.listOfAllFatchData];
+
+  }
+
+  else {
+
+    // ===================================================
+    // SELECTED DOCUMENT TYPE
+    // ===================================================
+
+    result =
+      this.listOfAllFatchData.filter(
+        (item: any) => {
+
+          const itemType =
+            (item.DocumentType || '')
+              .toString()
+              .trim()
+              .toLowerCase();
+
+          return itemType === selectedType;
+
+        }
+      );
+
+  }
+
+
+  // =====================================================
+  // SEARCH
+  // =====================================================
+
+  if (search) {
+
+    result = result.filter(
       (item: any) => {
 
         return Object.keys(item).some(
           (key: string) => {
 
-            const value = item[key];
+            const value =
+              item[key];
 
 
             if (
               value === null ||
               value === undefined
             ) {
+
               return false;
+
             }
 
 
-            // Date search
+            // ===========================================
+            // DATE SEARCH
+            // ===========================================
+
             if (key === 'EnteredDate') {
 
               const d =
                 new Date(value);
 
 
+              if (isNaN(d.getTime())) {
+
+                return false;
+
+              }
+
+
               const formattedDate =
                 ('0' + (d.getMonth() + 1)).slice(-2)
-                + '/' +
+                + '/'
+                +
                 ('0' + d.getDate()).slice(-2)
-                + '/' +
+                + '/'
+                +
                 d.getFullYear();
 
 
               return formattedDate
                 .toLowerCase()
-                .includes(term);
+                .includes(search);
 
             }
 
 
+            // ===========================================
+            // NORMAL SEARCH
+            // ===========================================
+
             return value
               .toString()
               .toLowerCase()
-              .includes(term);
+              .includes(search);
 
           }
         );
@@ -266,6 +564,11 @@ getFileIcon(fileType: string): string {
   }
 
 
+  return result;
+
+}
+
+
   /* =========================================================
      DOWNLOAD FILE
      ========================================================= */
@@ -273,7 +576,9 @@ getFileIcon(fileType: string): string {
   onRowClick(file: any): void {
 
     if (!file?.FileUrl) {
+
       return;
+
     }
 
 
@@ -288,26 +593,35 @@ getFileIcon(fileType: string): string {
       document.createElement('a');
 
 
-    link.href = httpsFileUrl;
+    link.href =
+      httpsFileUrl;
+
 
     link.download =
       file.FileName || 'download';
 
 
-    link.target = '_blank';
+    link.target =
+      '_blank';
 
 
-    document.body.appendChild(link);
+    document.body.appendChild(
+      link
+    );
+
 
     link.click();
 
-    document.body.removeChild(link);
+
+    document.body.removeChild(
+      link
+    );
 
   }
 
 
   /* =========================================================
-     ADD AGENCY DOCUMENT
+     ADD EXPENSE DOCUMENT
      ========================================================= */
 
   addEditAttachement(): void {
@@ -321,12 +635,17 @@ getFileIcon(fileType: string): string {
       );
 
 
-    // Refresh list after upload
-    dialogRef.afterClosed().subscribe(() => {
+    /* =======================================================
+       REFRESH LIST AFTER UPLOAD
+       ======================================================= */
 
-      this.getAllFile();
+    dialogRef
+      .afterClosed()
+      .subscribe(() => {
 
-    });
+        this.getAllFile();
+
+      });
 
   }
 

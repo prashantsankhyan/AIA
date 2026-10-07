@@ -782,3 +782,139 @@
   }
 
 }
+
+/* =========================================================
+   AGENCY DOCUMENT FILTER
+   ========================================================= */
+
+.agency-document-filter {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 10px 12px;
+  margin-bottom: 10px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  /* Allow buttons to move to next line */
+  flex-wrap: wrap;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   FILTER BUTTON
+   ========================================================= */
+
+.document-filter-btn {
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  height: 32px;
+
+  padding: 0 11px;
+
+  border: 1px solid #d9dee7;
+  border-radius: 6px;
+
+  background: #f8fafc;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.document-filter-btn i {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.document-filter-btn:hover {
+
+  background: #eef2f7;
+
+  border-color: #cbd5e1;
+
+  color: #1e293b;
+
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.document-filter-btn.active {
+
+  background: #1f4e78;
+
+  border-color: #1f4e78;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.12);
+
+}
+
+
+.document-filter-btn.active i {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .agency-document-filter {
+
+    padding: 8px;
+
+    gap: 5px;
+
+  }
+
+
+  .document-filter-btn {
+
+    height: 30px;
+
+    padding: 0 9px;
+
+    font-size: 11px;
+
+  }
+
+}

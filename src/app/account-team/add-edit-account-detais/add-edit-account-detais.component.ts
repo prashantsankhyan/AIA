@@ -58,6 +58,14 @@ export class AddEditAccountDetaisComponent {
 
    agencyDocuments: string[] = [
     "All Licenses-AIA",
+    "Parmjit Dhami",
+    "Farmers insurance",
+    "Cyber Liability",
+    "Surplus Lines Tax",
+    "Agency Info",
+    "Bhuta Dhami",
+    "Kabir Sidhu",
+    "Nation Producer Number (NPN)",
     "Passwords",
     "Cyber Insurancer",
     "Renewal Test Certificates-Parm Dhami & Sandy",
@@ -68,6 +76,7 @@ export class AddEditAccountDetaisComponent {
     "Pardeep Sidhu",
     "Tax",
     "Two Bros-Invoices",
+    "Rain sbd hill",
     "W9"
   ];
 

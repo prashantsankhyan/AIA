@@ -1,236 +1,655 @@
+/* =========================================================
+   MAIN DIALOG
+   ========================================================= */
 
-
-
-
-
-
-
-@media (min-height: 400px) and (max-height: 600px) {
-  .label01 {
-  margin-top: -5px !important;
-}
-
-.form-control {
-  display: block;
+.marked-policy-dialog {
   width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
- .form-select {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- height: 30px;
- }
- 
+  background: #f5f7fa;
+  color: #1f2937;
+  overflow: hidden;
 }
 
 
-@media (min-height: 601px) and (max-height: 700px) {
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-.label {
+.policy-dialog-header {
+  height: 72px;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.header-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #eef4ff;
+  color: #2563eb;
+
+  font-size: 18px;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #172033;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  margin-top: 3px;
+
+  font-size: 11px;
+  color: #7b8494;
+}
+
+.header-close {
+  width: 36px;
+  height: 36px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #f3f4f6;
+  color: #6b7280;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.header-close:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.marked-policy-content {
+  padding: 18px 22px !important;
+  margin: 0 !important;
+
+  background: #f5f7fa;
+
+  max-height: calc(100vh - 145px);
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.design-section {
+  background: #ffffff;
+
+  border: 1px solid #e4e8ee;
+  border-radius: 12px;
+
+  padding: 18px 20px 20px;
+
+  margin-bottom: 15px;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 18px;
+}
+
+.section-title-icon {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 8px;
+
+  background: #f1f5ff;
+  color: #315ee7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+}
+
+.section-title h3 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: #020508;
+}
+
+.section-title span {
+  display: block;
+
+  // margin-top: 2px;
+
+  font-size: 12px;
+  color: #8a94a4;
+}
+
+
+/* =========================================================
+   TOP POLICY GRID
+   ========================================================= */
+
+.policy-info-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  column-gap: 12px;
+  row-gap: 10px;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.modern-field {
+  min-width: 0;
+}
+
+.modern-field > label {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 2px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #4b5563;
+}
+
+.modern-field > label i {
+  font-size: 10px;
+  color: #64748b;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
+
+.field-control {
+  position: relative;
+  width: 100%;
+}
+
+.field-icon {
+  position: absolute;
+
+  left: 13px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 2;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.modern-input {
+  width: 100%;
+  height: 42px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d9dee7;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+
+  font-size: 15px;
+
+  padding: 0 12px 0 37px;
+
+  outline: none;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.modern-input::placeholder {
+  color: #a5adba;
+}
+
+.modern-input:focus {
+  border-color: #5b7cfa;
+
+  box-shadow:
+    0 0 0 3px rgba(91, 124, 250, .10);
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.modern-select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding-right: 36px;
+
+  cursor: pointer;
+}
+
+.select-arrow {
+  position: absolute;
+
+  right: 13px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #9aa3b1;
+
+  font-size: 10px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   READONLY
+   ========================================================= */
+
+.readonly-control .modern-input {
+  background: #f7f8fa;
+  color: #667085;
+
+  cursor: not-allowed;
+}
+
+.readonly-control .field-icon {
+  color: #a5adba;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.modern-error {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 5px;
+
+  color: #dc2626;
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.modern-error i {
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   INVALID INPUT
+   ========================================================= */
+
+.modern-input.is-invalid {
+  border-color: #ef4444 !important;
+
+  box-shadow:
+    0 0 0 2px rgba(239, 68, 68, .06);
+}
+
+
+/* =========================================================
+   POLICY DETAILS
+   ========================================================= */
+
+.policy-detail-section {
+  padding-bottom: 16px;
+}
+
+
+/* =========================================================
+   COLUMN HEADER
+   ========================================================= */
+
+.policy-column-header {
+  display: grid;
+
+  grid-template-columns:
+    1.05fr
+    1.1fr
+    1fr
+    1.2fr;
+
+  gap: 14px;
+
+  padding: 0 12px 8px;
+}
+
+.policy-column-header > div {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.policy-column-header i {
+  font-size: 9px;
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   POLICY ROW
+   ========================================================= */
+
+.policy-detail-row {
+  display: grid;
+
+  grid-template-columns:
+    1.05fr
+    1.1fr
+    1fr
+    1.2fr;
+
+  gap: 14px;
+
+  padding: 13px;
+
+  margin-bottom: 10px;
+
+  border: 1px solid #e3e7ed;
+
+  border-radius: 9px;
+
+  background: #f9fafb;
+
+  transition: all .2s ease;
+}
+
+.policy-detail-row:hover {
+  border-color: #d5dce7;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, .04);
+}
+
+
+/* =========================================================
+   DETAIL FIELD
+   ========================================================= */
+
+.detail-field {
+  min-width: 0;
+}
+
+.mobile-field-label {
+  display: none;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.modern-dialog-actions {
+  min-height: 64px !important;
+
+  padding: 11px 22px !important;
+
+  margin: 0 !important;
+
+  background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 9px;
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.modern-save-btn,
+.modern-cancel-btn {
+  height: 37px;
+
+  min-width: 95px;
+
+  padding: 0 16px;
+
+  border-radius: 7px;
+
   display: inline-flex;
-  font-size: smaller;
-  color: #212529fa !important;;
-  
-}
-.label01 {
-  margin-top: -5px !important;
-}
 
-.form-control {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
-  .form-select {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #011427fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- height: 30px;
- }
+  align-items: center;
+  justify-content: center;
 
+  gap: 7px;
 
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
 }
 
+.modern-save-btn {
+  background: #2563eb;
+  color: #ffffff;
 
-@media (min-height: 701px) and (max-height: 750px) {
-
-.label {
-  display: inline-flex;
-  font-size: smaller;
-  color: #212529fa !important;;
-  
-}
-.label01 {
-  margin-top: -5px !important;
+  box-shadow:
+    0 2px 5px rgba(37, 99, 235, .20);
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
-  .form-select {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- height: 30px;
- }
+.modern-save-btn:hover {
+  background: #1d4ed8;
 
+  transform: translateY(-1px);
 
+  box-shadow:
+    0 4px 10px rgba(37, 99, 235, .25);
 }
 
-@media (min-height: 751px) and (max-height: 850px) {
- .label01 {
-  margin-top: -5px !important;
-}
-  
-label {
-  display: inline-flex;
-  font-size: medium;
-  color: #212529fa !important;;
-  
+.modern-cancel-btn {
+  background: #ffffff;
+
+  color: #475569;
+
+  border: 1px solid #d9dee7;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
- .form-select {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: small;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
+.modern-cancel-btn:hover {
+  background: #fef2f2;
 
+  border-color: #fecaca;
+
+  color: #dc2626;
 }
 
-@media (min-height: 851px) and (max-height: 950px) {
-
-.label01 {
-  margin-top: -6px !important;
+.modern-save-btn i,
+.modern-cancel-btn i {
+  font-size: 10px;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: medium;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
- .form-select {
-  display: block;
-  width: 100%;
-  /* padding: 0.375rem 0.75rem; */
-  font-size: medium;
-  font-weight: 400;
 
-  color: #212529fa !important;;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  height: 30px;
- }
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+.policy-loader {
+  min-height: 300px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.marked-policy-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.marked-policy-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.marked-policy-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+.marked-policy-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .policy-info-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .policy-column-header,
+  .policy-detail-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
 
 }
 
 
+@media (max-width: 700px) {
 
-//
+  .policy-dialog-header {
+    padding: 0 14px;
+  }
+
+  .marked-policy-content {
+    padding: 12px !important;
+  }
+
+  .design-section {
+    padding: 14px;
+  }
+
+  .policy-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .policy-column-header {
+    display: none;
+  }
+
+  .policy-detail-row {
+    grid-template-columns: 1fr;
+
+    padding: 12px;
+  }
+
+  .mobile-field-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color: #64748b;
+  }
+
+  .modern-dialog-actions {
+    padding: 10px 12px !important;
+  }
+
+}

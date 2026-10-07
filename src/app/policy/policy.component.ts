@@ -157,7 +157,7 @@ editPolicy(data:any) {
  
   const dialogRef = this.dialog.open(AddEditPolicyComponent, {
     width: '1400px',
-    height: '400px',
+    height: '640px',
     data: {ChildPolicyID:this.ChildPolicyID,MarkedPolicyID:this.MarkedPolicyID},
     
   });
@@ -294,7 +294,7 @@ addPolicyHere() {
  
   const dialogRef = this.dialog.open(AddEditPolicyComponent, {
     width: '1400px',
-    height: '320px',
+    height: '640px',
     data: {ChildPolicyID:this.ChildPolicyID},
   });
 }

@@ -78,7 +78,46 @@
 
   </div>
 
+<!-- =======================================================
+     DOCUMENT TYPE FILTER
+     ======================================================= -->
 
+<div class="document-type-filter">
+
+  <!-- ALL DOCUMENTS -->
+
+  <button
+    type="button"
+    class="document-filter-btn"
+    [class.active]="selectedDocumentType === 'ALL'"
+    (click)="selectDocumentType('ALL')"
+  >
+
+    <i class="fas fa-layer-group"></i>
+
+    All Documents
+
+  </button>
+
+
+  <!-- DOCUMENT TYPES -->
+
+  <button
+    type="button"
+    class="document-filter-btn"
+    *ngFor="let documentType of documentTypes"
+    [class.active]="selectedDocumentType === documentType"
+    (click)="selectDocumentType(documentType)"
+    [title]="documentType"
+  >
+
+    <i class="fas fa-folder"></i>
+
+    {{ documentType }}
+
+  </button>
+
+</div>
 
  
 

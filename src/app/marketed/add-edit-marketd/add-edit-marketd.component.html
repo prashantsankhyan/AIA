@@ -1,404 +1,603 @@
-
-
-
-
-
-  <div *ngIf ="showSpiner">
-    <app-spinner></app-spinner>
-  </div>
-  
-  <!-- <div class="card mt-2 mb-2" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
-   <h2 style="text-align: center;font-family: sans-serif;margin-top: 10px;"> MARKETED</h2>
-  </div> -->
- 
-  
-<div  *ngIf ="!showSpiner" >
-  <mat-dialog-content class="mat-typography">
-   
-   <form [formGroup] ="addEditMarkedForm">
-     <div class="row p-1">
-        <div class="col-sm-4">
-          <div class="form-floating" >
-            <input
-             type="text" 
-            class="form-control mt-1"
-            id="floatingName" 
-            placeholder="Name" 
-            formControlName ="Name"
-            [ngClass]= "{ 'is-invalid': submit && f['Name'].errors }">
-            <div *ngIf ="submit && f['Name'].errors" class="invalid-feedback">
-              <div *ngIf ="f['Name'].errors">Name is required</div>
-             
-          </div> 
-          <label for="floatingName">Account Name</label>
-          </div>
-           
-           
-        </div>
-        <div class="col-sm-4">
-          <div class="form-floating" >
-        
-        <input type="text" id="floatingEffective" 
-          placeholder="Effective"  class="form-control mt-1"
-          formControlName ="Effective"[(ngModel)]="Effective" 
-          (ngModelChange)="changeNextDate()"[ngClass]= "{ 'is-invalid': submit && f['Effective'].errors }">
-        <div *ngIf ="submit && f['Effective'].errors" class="invalid-feedback">
-          <div *ngIf ="f['Effective'].errors">Effective is required</div>
-        </div> 
-      <label for="floatingEffective">Effective Date</label> 
-    </div>
-      </div>
-        <div class="col-sm-4">
-          <div class="form-floating" >
-            
-            <input type="text" class="form-control mt-1"
-             formControlName ="Expiration"
-             id="floatingExpiration" 
-             placeholder="Expiration"  
-             [(ngModel)]="Expiration" bsDatepicker  [ngClass]= "{ 'is-invalid': submit && f['Expiration'].errors }">
-            <div *ngIf ="submit && f['Expiration'].errors" class="invalid-feedback">
-              <div *ngIf ="f['Expiration'].errors">Expiration is required</div>
-          </div> 
-          <label for="floatingExpiration">Expiration Date</label> 
-        </div>
-          </div>
-
-        <div class="col-sm-4 mt-2">
-            
-            <div class="form-floating" >
-            <select  aria-label="Default select example" 
-            id="floatingSource" 
-            placeholder="Source"
-            class="form-control mt-1" 
-            formControlName ="Source"[ngClass]= "{ 'is-invalid': submit && f['Source'].errors }">
-                <option hidden value="" disabled selected  > Select Source</option>
-                <option  value="AIA Direct">AIA Direct </option>
-                <option value="AIA Call Center">AIA Call Center</option>
-                <option value="Boota Singh Dhami">Boota Singh Dhami</option>
-                 <option  value="Many">Many </option>
-                <option value="Kabier">Kabier</option>
-               
-             
-              </select>
-              <div *ngIf ="submit && f['Source'].errors" class="invalid-feedback">
-                <div *ngIf ="f['Source'].errors">Source is required</div>
-            </div> 
-            <label class="label01" for="floatingSource">Source</label>
-            </div> 
-        </div>
-        <div class="col-sm-4 mt-2">
-           
-            <div class="form-floating" >
-            <input type="text"  id="floatingDepartment" 
-            placeholder="Department"  class="form-control mt-1"  [(ngModel)]="Department" formControlName ="Department"  readonlyt tabindex="-1" [ngClass]= "{ 'is-invalid': submit && f['Department'].errors }" readonly>
-           
-              <div *ngIf ="submit && f['Department'].errors" class="invalid-feedback">
-                <div *ngIf ="f['Department'].errors">Department is required</div>
-            </div>
-            <label for="floatingDepartment">Department</label> 
-          </div> 
-        </div>
-        <div class="col-sm-4 mt-2">
-           
-            <div class="form-floating" >
-            <input type="text" id="floatingType" 
-            placeholder="Type"  class="form-control mt-1"  [(ngModel)]="Type" formControlName ="Type"  readonlyt tabindex="-1" [ngClass]= "{ 'is-invalid': submit && f['Type'].errors }" readonly>
-         
-              <div *ngIf ="submit && f['Type'].errors" class="invalid-feedback">
-                <div *ngIf ="f['Type'].errors">Type is required</div>
-            </div> 
-            <label for="floatingType">Type</label>
-            </div>
-        </div>
- 
-     </div>
-    
-     
-     <div class="mt-4" formArrayName="MarkedPolicyDetail">
-      <div *ngFor="let data of formArr.controls; let i = index" [formGroupName]="i" class="row mb-1">
-        <!-- Name Field -->
-        <div class="col-md-3">
-            <div class="form-floating">
-                 
-               <select  class="form-control"  id="floatingLineNameID{{i}}" 
-                  placeholder="LineNameID"  formControlName ="LineNameID" [(ngModel)]="LineNameID" (change)="getlineIdToHideAndClose()">
-                 <option hidden value="" disabled selected  > Select </option>
-                   <option *ngFor ="let dataOfLineName of getAllLineName"  value="{{dataOfLineName.ID}}">{{dataOfLineName.LineCode}} </option>
-                 </select>
-                 
-                
-               <label class="label01" for="floatingLineNameID{{i}}">Line</label>
-             </div>
-             <label style="color: red;"
-             *ngIf="formArr.controls[i].get('LineNameID')?.errors?.['required'] && formArr != null && submit"
-             class="invalid-feedback">
-             LineNameID is required.
-           </label>
-        </div>
-    
-        <!-- Designation Field -->
-        <div class="col-md-3">
-           <div class="form-floating">
-            <select  class="form-control"  id="floatingProfileCenterID{{i}}" 
-            placeholder="ProfileCenterID"  formControlName ="ProfileCenterID" aria-label="Default select example">
-              <option hidden value="" disabled selected  > Select Profile</option>
-              <option *ngFor ="let dataProfileCenter of getAllProfleName"  value="{{dataProfileCenter.ProfileCenterID}}">{{dataProfileCenter.ProfileCenter}} </option>
-             
-            </select>
-            
-           
-          <label class="label01" for="floatingProfileCenterID{{i}}">Profit Center</label>
-          </div>
-          <label style="color: red;"
-          *ngIf="formArr.controls[i].get('ProfileCenterID')?.errors?.['required'] && formArr != null && submit"
-          class="invalid-feedback">
-          ProfileCenterID is required.
-        </label>
-        </div>
-    
-        <!-- Phone No Field -->
-        <div class="col-md-3">
-            <div class="form-floating">
-               <select class="form-control" id="floatingLineCodeID{{i}}" 
-               placeholder="LineCodeID"   formControlName ="LineCodeID"  aria-label="Default select example">
-               
-                <option hidden value="" disabled selected  > Select LineCode</option>
-                   <option *ngFor="let dataLineCode of getAllLineCode" value="{{dataLineCode.ID}}">{{dataLineCode.LineCode}}</option>
-                 
-                  
-                 </select>
-                
-               <label class="label01" for="floatingLineCodeID{{i}}">Line Status</label>
-            </div>
-            <label  style="color: red;"
-            *ngIf="formArr.controls[i].get('LineCodeID')?.errors?.['required'] && formArr != null && submit"
-            class="invalid-feedback">
-            LineCodeID is required.
-          </label>
-        </div>
-    
-        <!-- Email ID Field -->
-        <div class="col-md-3">
-           <div class="form-floating">
-             <select class="form-control"
-             id="floatingLocationID{{i}}" 
-               placeholder="LocationID"   formControlName ="LocationID" aria-label="Default select example">
-              <option hidden value="" disabled selected  > Select Location</option>
-               <option *ngFor ="let dataLocationID of getAllLineLocation" value="{{dataLocationID.IssuingLocationID}}">{{dataLocationID.IssuingLocation}} </option>
-             
-             </select>
-             
-           <label class="label01" for="floatingLocationID{{i}}">Issuing location</label>
-          </div>
-          <label style="color: red;"
-             *ngIf="formArr.controls[i].get('LocationID')?.errors?.['required'] && formArr != null && submit"
-             class="invalid-feedback">
-             LocationID is required.
-           </label>
-        </div>
-      </div>
-    </div>
-   
-        <!-- <div class="row  mt-5">
-         <div class="col-sm-12"> 
-           <table class="table ">
-             <thead  >
-               <tr>
-                 <th style="font-weight: 400"> <label>Line</label></th>
-                 <th style="font-weight: 400"><label>Profit Center</label></th>
-                 <th style="font-weight: 400"><label>Line Status</label></th>
-                 <th style="font-weight: 400"> <label>Issuing location</label></th>
-                
-               </tr>
-             </thead>
-             <tbody formArrayName ="MarkedPolicyDetail"  *ngFor ="let data of formArr.controls;let i = index">
-               <tr [formGroupName] = "i">
-                 <td >
-                  <div class="form-floating">
-                       
-                     <select  class="form-control"  id="floatingLineNameID{{i}}" 
-                        placeholder="LineNameID"  formControlName ="LineNameID" [(ngModel)]="LineNameID" (change)="getlineIdToHideAndClose()">
-                       <option hidden value="" disabled selected  > Select </option>
-                         <option *ngFor ="let dataOfLineName of getAllLineName"  value="{{dataOfLineName.ID}}">{{dataOfLineName.LineCode}} </option>
-                       </select>
-                       <label
-                       *ngIf="formArr.controls[i].get('LineNameID')?.errors?.['required'] && formArr != null && submit"
-                       class="invalid-feedback">
-                       LineNameID is required.
-                     </label>
-                     <label for="floatingLineNameID{{i}}">Line</label>
-                   </div>
-                 </td>
-                 <td>
-                  <div class="form-floating">
-                  <select  class="form-control"  id="floatingProfileCenterID{{i}}" 
-                  placeholder="ProfileCenterID"  formControlName ="ProfileCenterID" aria-label="Default select example">
-                    <option hidden value="" disabled selected  > Select Profile</option>
-                    <option *ngFor ="let dataProfileCenter of getAllProfleName"  value="{{dataProfileCenter.ProfileCenterID}}">{{dataProfileCenter.ProfileCenter}} </option>
-                   
-                  </select>
-                  
-                  <label
-                  *ngIf="formArr.controls[i].get('ProfileCenterID')?.errors?.['required'] && formArr != null && submit"
-                  class="invalid-feedback">
-                  ProfileCenterID is required.
-                </label>
-                <label for="floatingProfileCenterID{{i}}">Profit Center</label>
-                </div>
-                </td>
-                 <td>
-
-                  <div class="form-floating">
-                     <select class="form-control" id="floatingLineCodeID{{i}}" 
-                     placeholder="LineCodeID"   formControlName ="LineCodeID"  aria-label="Default select example">
-                     
-                      <option hidden value="" disabled selected  > Select LineCode</option>
-                         <option *ngFor="let dataLineCode of getAllLineCode" value="{{dataLineCode.ID}}">{{dataLineCode.LineCode}}</option>
-                       
-                        
-                       </select>
-                       <label
-                       *ngIf="formArr.controls[i].get('LineCodeID')?.errors?.['required'] && formArr != null && submit"
-                       class="invalid-feedback">
-                       LineCodeID is required.
-                     </label>
-                     <label for="floatingLineCodeID{{i}}">Line Status</label>
-                  </div>
-                    
-                 </td>
-              
-                 <td>
-                  <div class="form-floating">
-                   <select class="form-control"
-                   id="floatingLocationID{{i}}" 
-                     placeholder="LocationID"   formControlName ="LocationID" aria-label="Default select example">
-                    <option hidden value="" disabled selected  > Select Location</option>
-                     <option *ngFor ="let dataLocationID of getAllLineLocation" value="{{dataLocationID.IssuingLocationID}}">{{dataLocationID.IssuingLocation}} </option>
-                   
-                   </select>
-                   <label
-                   *ngIf="formArr.controls[i].get('LocationID')?.errors?.['required'] && formArr != null && submit"
-                   class="invalid-feedback">
-                   LocationID is required.
-                 </label>
-                 <label for="floatingLocationID{{i}}">Issuing location</label>
-                </div>
-               </td>
-            
-               
-             </tbody>
-           </table>
-           </div>
- 
-        
-      
-        
-         
-          
-          
-      
-      </div>
-      <div *ngIf ="alDeductible">
-        <div class="row p-1">
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;"> AL Deductible</label>
-            <input type="text" class="form-control" formControlName ="AL_Deductible">
-  
-          </div>
-  
-        </div>
-      </div>
-      <div *ngIf ="pdDeductible">
-        <div class="row p-1">
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;">Physical Damage Deductible</label>
-            <select class="form-select formControl mt-1"  formControlName ="Physical_Damage_Deductible"   >
-              <option hidden value="" disabled selected  > Select Deductible</option>
-              <option  value="$500"> $500</option>
-              <option value="$1,000">$1,000</option>
-              <option value="$2,500">$2,500</option>
-              <option value="$5,000">$5,000</option>
-              <option value="$10,000">$10,000</option>
-              <option value="$20,000">$20,000</option>
-              <option value="$25,000">$25,000</option>
-            </select>
-  
-          </div>
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;">Physical Damage Combined  Deductible</label>
-            <select class="form-select formControl mt-1" formControlName ="Physical_Damage_Combined_Deductible"   >
-              <option hidden value="" disabled selected  > Select Deductible</option>
-              <option  value="Yes"> Yes</option>
-              <option value="No">No</option>
-            </select>
-  
-          </div>
-         
-  
-        </div>
-      </div>
-      <div *ngIf ="coverageDeductible">
-        <div class="row p-1">
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;"> Cargo Limit</label>
-            <select class="form-select formControl mt-1"    formControlName ="Cargo_Limit"  >
-              <option hidden value="" disabled selected  > Select Limit</option>
-              <option  value="$100,000"> $100,000</option>
-              <option value="$250,000">$250,000</option>
-             
-            </select>
-  
-          </div>
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;"> Cargo Deductible</label>
-            <select class="form-select formControl mt-1"  formControlName ="Cargo_Deductible"  >
-              <option hidden value="" disabled selected  > Select Deductible</option>
-              <option  value="$1,000"> $1,000</option>
-              <option value="$2,500">$2,500</option>
-              <option value="$5,000">$5,000</option>
-              <option value="$10,000">$10,000</option>
-            </select>
-  
-          </div>
-          <div class="col-sm-4">
-            <label style="text-align: left;font-size: smaller;"> Cargo Type</label>
-            <select class="form-select formControl mt-1"  formControlName ="Cargo_Type"  >
-              <option hidden value="" disabled selected  > Select Deductible</option>
-              <option  value="Reefer"> Reefer</option>
-              <option value="Dry">Dry</option>
-              <option value="Flatbed">Flatbed</option>
-              
-            </select>
-  
-          </div>
-         
-  
-        </div>
-      </div> -->
-
-      <!-- <div class="text-center mt-4 mb-4">
-       <div  *ngIf ="messageSuccess">
-         <button type="button" style="width: 130px;" class="btn btn-outline-success"(click)="onSubmit()">{{MarkedPolicyID == '0'? ' Save ':'Update'}}</button>
-         <button type="button" style="width: 130px; margin-left: 5px;" class="btn btn-outline-danger "mat-dialog-close>Cancel</button>
-       </div> 
-     </div> -->
-
-    
-   
-  </form>
-  
- 
-  </mat-dialog-content>
-  <mat-dialog-actions align="end"  *ngIf ="messageSuccess">
-    <a href="javascript:void(0)" (click)="onSubmit();" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm me-2"><i class="fas fa-check fa-sm text-white-50"></i> {{MarkedPolicyID == '0'? ' Save ':'Update'}}</a>
-    <a href="javascript:void(0)"  class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"  mat-dialog-close><i class="fas fa-times fa-sm text-white-50"></i> Cancel</a>
-   
-  </mat-dialog-actions>
+<!-- =========================================================
+     LOADER
+     ========================================================= -->
+<div *ngIf="showSpiner" class="policy-loader">
+  <app-spinner></app-spinner>
 </div>
 
- 
-  
-   
-   
-  
- 
+
+<!-- =========================================================
+     MAIN DIALOG
+     ========================================================= -->
+<div *ngIf="!showSpiner" class="marked-policy-dialog">
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+  <div class="policy-dialog-header">
+
+    <div class="header-left">
+
+      <div class="header-icon">
+        <i class="fas fa-file-signature"></i>
+      </div>
+
+      <div>
+        <div class="header-title">
+          {{ MarkedPolicyID == '0' ? 'ADD MARKED' : 'UPDATE MARKED' }}
+        </div>
+
+        <div class="header-subtitle">
+          Enter policy information and coverage details
+        </div>
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="header-close"
+      mat-dialog-close
+      aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+
+  </div>
+
+
+  <!-- =======================================================
+       CONTENT
+       ======================================================= -->
+  <mat-dialog-content class="marked-policy-content">
+
+    <form [formGroup]="addEditMarkedForm">
+
+
+      <!-- =====================================================
+           POLICY INFORMATION
+           ===================================================== -->
+      <div class="design-section">
+
+        <div class="section-title">
+
+          <div class="section-title-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+
+          <div>
+            <h3>Basic Information</h3>
+            <span>Basic account and policy details</span>
+          </div>
+
+        </div>
+
+
+        <div class="policy-info-grid">
+
+
+          <!-- ACCOUNT NAME -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-building"></i>
+              Account Name
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-building field-icon"></i>
+
+              <input
+                type="text"
+                class="modern-input"
+                id="floatingName"
+                placeholder="Name"
+                formControlName="Name"
+                [ngClass]="{
+                  'is-invalid': submit && f['Name'].errors
+                }">
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Name'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Name is required
+            </div>
+
+          </div>
+
+
+          <!-- EFFECTIVE DATE -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-calendar-days"></i>
+              Effective Date
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-calendar-days field-icon"></i>
+
+              <input
+                type="text"
+                id="floatingEffective"
+                placeholder="Effective"
+                class="modern-input"
+                formControlName="Effective"
+                [(ngModel)]="Effective"
+                (ngModelChange)="changeNextDate()"
+                [ngClass]="{
+                  'is-invalid': submit && f['Effective'].errors
+                }">
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Effective'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Effective is required
+            </div>
+
+          </div>
+
+
+          <!-- EXPIRATION DATE -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-calendar-check"></i>
+              Expiration Date
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-calendar-check field-icon"></i>
+
+              <input
+                type="text"
+                class="modern-input"
+                formControlName="Expiration"
+                id="floatingExpiration"
+                placeholder="Expiration"
+                [(ngModel)]="Expiration"
+                bsDatepicker
+                [ngClass]="{
+                  'is-invalid': submit && f['Expiration'].errors
+                }">
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Expiration'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Expiration is required
+            </div>
+
+          </div>
+
+
+          <!-- SOURCE -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-share-nodes"></i>
+              Source
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-share-nodes field-icon"></i>
+
+              <select
+                aria-label="Default select example"
+                id="floatingSource"
+                placeholder="Source"
+                class="modern-input modern-select"
+                formControlName="Source"
+                [ngClass]="{
+                  'is-invalid': submit && f['Source'].errors
+                }">
+
+                <option hidden value="" disabled selected>
+                  Select Source
+                </option>
+
+                <option value="AIA Direct">
+                  AIA Direct
+                </option>
+
+                <option value="AIA Call Center">
+                  AIA Call Center
+                </option>
+
+                <option value="Boota Singh Dhami">
+                  Boota Singh Dhami
+                </option>
+
+                <option value="Many">
+                  Many
+                </option>
+
+                <option value="Kabier">
+                  Kabier
+                </option>
+
+              </select>
+
+              <i class="fas fa-chevron-down select-arrow"></i>
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Source'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Source is required
+            </div>
+
+          </div>
+
+
+          <!-- DEPARTMENT -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-sitemap"></i>
+              Department
+            </label>
+
+            <div class="field-control readonly-control">
+
+              <i class="fas fa-sitemap field-icon"></i>
+
+              <input
+                type="text"
+                id="floatingDepartment"
+                placeholder="Department"
+                class="modern-input"
+                [(ngModel)]="Department"
+                formControlName="Department"
+                readonlyt
+                tabindex="-1"
+                [ngClass]="{
+                  'is-invalid': submit && f['Department'].errors
+                }"
+                readonly>
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Department'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Department is required
+            </div>
+
+          </div>
+
+
+          <!-- TYPE -->
+          <div class="modern-field">
+
+            <label>
+              <i class="fas fa-tag"></i>
+              Type
+            </label>
+
+            <div class="field-control readonly-control">
+
+              <i class="fas fa-tag field-icon"></i>
+
+              <input
+                type="text"
+                id="floatingType"
+                placeholder="Type"
+                class="modern-input"
+                [(ngModel)]="Type"
+                formControlName="Type"
+                readonlyt
+                tabindex="-1"
+                [ngClass]="{
+                  'is-invalid': submit && f['Type'].errors
+                }"
+                readonly>
+
+            </div>
+
+            <div
+              *ngIf="submit && f['Type'].errors"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              Type is required
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =====================================================
+           POLICY DETAILS
+           ===================================================== -->
+      <div
+        class="design-section policy-detail-section"
+        formArrayName="MarkedPolicyDetail">
+
+        <div class="section-title">
+
+          <div class="section-title-icon">
+            <i class="fas fa-list-check"></i>
+          </div>
+
+          <div>
+            <h3>Policy Details</h3>
+            <span>Configure line, profit center, status and location</span>
+          </div>
+
+        </div>
+
+
+        <!-- COLUMN HEADERS -->
+        <div class="policy-column-header">
+
+          <div>
+            <i class="fas fa-road"></i>
+            Line
+          </div>
+
+          <div>
+            <i class="fas fa-chart-line"></i>
+            Profit Center
+          </div>
+
+          <div>
+            <i class="fas fa-circle-check"></i>
+            Line Status
+          </div>
+
+          <div>
+            <i class="fas fa-location-dot"></i>
+            Issuing Location
+          </div>
+
+        </div>
+
+
+        <!-- FORM ARRAY -->
+        <div
+          *ngFor="let data of formArr.controls; let i = index"
+          [formGroupName]="i"
+          class="policy-detail-row">
+
+
+          <!-- LINE -->
+          <div class="detail-field">
+
+            <label class="mobile-field-label">
+              Line
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-road field-icon"></i>
+
+              <select
+                class="modern-input modern-select"
+                id="floatingLineNameID{{i}}"
+                placeholder="LineNameID"
+                formControlName="LineNameID"
+                [(ngModel)]="LineNameID"
+                (change)="getlineIdToHideAndClose()">
+
+                <option hidden value="" disabled selected>
+                  Select
+                </option>
+
+                <option
+                  *ngFor="let dataOfLineName of getAllLineName"
+                  value="{{dataOfLineName.ID}}">
+                  {{dataOfLineName.LineCode}}
+                </option>
+
+              </select>
+
+              <i class="fas fa-chevron-down select-arrow"></i>
+
+            </div>
+
+            <div
+              *ngIf="formArr.controls[i].get('LineNameID')?.errors?.['required'] && formArr != null && submit"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              LineNameID is required.
+            </div>
+
+          </div>
+
+
+
+          <!-- PROFIT CENTER -->
+          <div class="detail-field">
+
+            <label class="mobile-field-label">
+              Profit Center
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-chart-line field-icon"></i>
+
+              <select
+                class="modern-input modern-select"
+                id="floatingProfileCenterID{{i}}"
+                placeholder="ProfileCenterID"
+                formControlName="ProfileCenterID"
+                aria-label="Default select example">
+
+                <option hidden value="" disabled selected>
+                  Select Profile
+                </option>
+
+                <option
+                  *ngFor="let dataProfileCenter of getAllProfleName"
+                  value="{{dataProfileCenter.ProfileCenterID}}">
+                  {{dataProfileCenter.ProfileCenter}}
+                </option>
+
+              </select>
+
+              <i class="fas fa-chevron-down select-arrow"></i>
+
+            </div>
+
+            <div
+              *ngIf="formArr.controls[i].get('ProfileCenterID')?.errors?.['required'] && formArr != null && submit"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              ProfileCenterID is required.
+            </div>
+
+          </div>
+
+
+
+          <!-- LINE STATUS -->
+          <div class="detail-field">
+
+            <label class="mobile-field-label">
+              Line Status
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-circle-check field-icon"></i>
+
+              <select
+                class="modern-input modern-select"
+                id="floatingLineCodeID{{i}}"
+                placeholder="LineCodeID"
+                formControlName="LineCodeID"
+                aria-label="Default select example">
+
+                <option hidden value="" disabled selected>
+                  Select LineCode
+                </option>
+
+                <option
+                  *ngFor="let dataLineCode of getAllLineCode"
+                  value="{{dataLineCode.ID}}">
+                  {{dataLineCode.LineCode}}
+                </option>
+
+              </select>
+
+              <i class="fas fa-chevron-down select-arrow"></i>
+
+            </div>
+
+            <div
+              *ngIf="formArr.controls[i].get('LineCodeID')?.errors?.['required'] && formArr != null && submit"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              LineCodeID is required.
+            </div>
+
+          </div>
+
+
+
+          <!-- ISSUING LOCATION -->
+          <div class="detail-field">
+
+            <label class="mobile-field-label">
+              Issuing Location
+            </label>
+
+            <div class="field-control">
+
+              <i class="fas fa-location-dot field-icon"></i>
+
+              <select
+                class="modern-input modern-select"
+                id="floatingLocationID{{i}}"
+                placeholder="LocationID"
+                formControlName="LocationID"
+                aria-label="Default select example">
+
+                <option hidden value="" disabled selected>
+                  Select Location
+                </option>
+
+                <option
+                  *ngFor="let dataLocationID of getAllLineLocation"
+                  value="{{dataLocationID.IssuingLocationID}}">
+                  {{dataLocationID.IssuingLocation}}
+                </option>
+
+              </select>
+
+              <i class="fas fa-chevron-down select-arrow"></i>
+
+            </div>
+
+            <div
+              *ngIf="formArr.controls[i].get('LocationID')?.errors?.['required'] && formArr != null && submit"
+              class="modern-error">
+              <i class="fas fa-circle-exclamation"></i>
+              LocationID is required.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </mat-dialog-content>
+
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+  <mat-dialog-actions
+    align="end"
+    *ngIf="messageSuccess"
+    class="modern-dialog-actions">
+
+    <a
+      href="javascript:void(0)"
+      (click)="onSubmit();"
+      class="modern-save-btn">
+
+      <i class="fas fa-check"></i>
+
+      {{ MarkedPolicyID == '0' ? ' Save ' : 'Update' }}
+
+    </a>
+
+
+    <a
+      href="javascript:void(0)"
+      class="modern-cancel-btn"
+      mat-dialog-close>
+
+      <i class="fas fa-times"></i>
+
+      Cancel
+
+    </a>
+
+  </mat-dialog-actions>
+
+</div>

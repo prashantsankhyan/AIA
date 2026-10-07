@@ -72,18 +72,20 @@ getCalculatedValues(data1: any) {
   const policyFee = Number(data1?.PolicyFee || 0);
   const companyFinanced = Number(data1?.CompanyFinanced || 0);
 
+  const AgencyFees = Number(data1?.AgencyFees || 0);
+
   const surpluxPercent = Number(data1?.SurpluxTax || 0);
   const stamingPercent = Number(data1?.StamingFee || 0);
 
-  const surpluxValue = (amount * surpluxPercent) / 100;
-  const stamingValue = (amount * stamingPercent) / 100;
+
 
   const total =
-    amount + policyFee + surpluxValue + stamingValue + companyFinanced;
+    amount + policyFee +AgencyFees + surpluxPercent + stamingPercent + companyFinanced;
 
   return {
-    surpluxValue,
-    stamingValue,
+    AgencyFees,
+    surpluxPercent,
+    stamingPercent,
     total
   };
 }

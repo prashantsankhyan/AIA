@@ -80,17 +80,26 @@ ngOnInit(): void {
 
  agencyDocuments: string[] = [
   "All Licenses-AIA",
-  "Passwords",
-  "Cyber Insurancer",
-  "Renewal Test Certificates-Parm Dhami & Sandy",
-  "Bond",
-  "Commercial Reqester-DMV-MVR(Related)",
-  "E&O",
-  "Miscellaneous Receipts",
-  "Pardeep Sidhu",
-  "Tax",
-  "Two Bros-Invoices",
-  "W9"
+    "Parmjit Dhami",
+    "Farmers insurance",
+    "Cyber Liability",
+    "Surplus Lines Tax",
+    "Agency Info",
+    "Bhuta Dhami",
+    "Kabir Sidhu",
+    "Nation Producer Number (NPN)",
+    "Passwords",
+    "Cyber Insurancer",
+    "Renewal Test Certificates-Parm Dhami & Sandy",
+    "Bond",
+    "Commercial Reqester-DMV-MVR(Related)",
+    "E&O",
+    "Miscellaneous Receipts",
+    "Pardeep Sidhu",
+    "Tax",
+    "Two Bros-Invoices",
+    "Rain sbd hill",
+    "W9"
 ];
 
   invoices: string[] = [

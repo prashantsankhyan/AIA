@@ -215,7 +215,9 @@
             <!-- <span > {{data1.Service == 0 ? data1.ChildPolicy_Description : data1.Endorsement_Description}}</span> -->
              <br/>
             <span style="margin-top: 20px;">Policy Fees:</span> <br/>
+            <span style="margin-top: 20px;">Agency Fees:</span> <br/>
             <span style="margin-top: 20px;">Surplux Tax: </span><br/>
+            <span style="margin-top: 20px;">Stamping Fees: </span><br/>
             <span style="margin-top: 20px;">Financed: </span> <br/>
             <span style="margin-top: 20px;">Down: </span>
 
@@ -231,10 +233,16 @@
   <span style="color: red; margin-top:20px;">
     {{ data1.PolicyFee | currency:'USD' }}
   </span><br/>
+  <span style="color: red; margin-top:20px;">
+    {{ data1.AgencyFees | currency:'USD' }}
+  </span><br/>
 
   <!-- Surplus Tax (Calculated Amount, NOT percent) -->
   <span style="color: red; margin-top:20px;">
-    {{ getCalculatedValues(data1).surpluxValue | currency:'USD' }}
+    {{ getCalculatedValues(data1).surpluxPercent | currency:'USD' }}
+  </span><br/>
+   <span style="color: red; margin-top:20px;">
+    {{ getCalculatedValues(data1).stamingPercent | currency:'USD' }}
   </span><br/>
 
   <!-- Company Financed -->
@@ -258,6 +266,8 @@
         <td scope="row"></td>
         <td  scope="row"></td>
         <td  scope="row"></td>
+        <td  scope="row"></td>
+        
         <!-- <td  scope="row"></td> -->
         
        
