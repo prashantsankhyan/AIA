@@ -108,7 +108,20 @@ export class IssuePolicyDetailComponent {
 
         console.log('Response:', data);
 
-        this.listOfAllData = data?.ChildPolicys ?? [];
+        this.listOfAllData = (data?.ChildPolicys ?? [])
+    .sort((a: any, b: any) => {
+      const dateA = a.Effective
+        ? new Date(a.Effective).getTime()
+        : Number.MAX_SAFE_INTEGER;
+
+      const dateB = b.Effective
+        ? new Date(b.Effective).getTime()
+        : Number.MAX_SAFE_INTEGER;
+
+      return dateA - dateB;
+    });
+
+  this.cdr.detectChanges();
 
       },
 
